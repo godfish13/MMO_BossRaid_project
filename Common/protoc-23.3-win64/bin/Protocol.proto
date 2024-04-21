@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package Protocol;
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "Google.Protobuf.Protocol";
+
+enum MsgId 
+{
+	S_ENTER_GAME = 0;
+	C_MOVE = 1;
+}
+
+message S_EnterGame 
+{
+	ObjectInfo player = 1;
+}
+
+message C_Move
+{
+	int32 tmp = 1;
+}
+
+message ObjectInfo
+{
+	int32 objectId = 1;
+	string name = 2;
+	PositionInfo posInfo = 3;
+	StatInfo statInfo = 4;
+}
+
+message StatInfo
+{
+	int32 level = 1;
+	int32 hp = 2;
+	int32 maxHp = 3;
+	int32 attack = 4;
+	float speed = 5;
+	int32 totalExp = 6;
+}
+
+message PositionInfo
+{
+
+}

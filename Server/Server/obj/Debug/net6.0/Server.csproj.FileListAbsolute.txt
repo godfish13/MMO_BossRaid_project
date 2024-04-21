@@ -1,0 +1,58 @@
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\Server.csproj.AssemblyReference.cache
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\Server.AssemblyInfoInputs.cache
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\Server.AssemblyInfo.cs
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\Server.csproj.CoreCompileInputs.cache
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\bin\Debug\net6.0\Server.exe
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\bin\Debug\net6.0\Server.deps.json
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\bin\Debug\net6.0\Server.runtimeconfig.json
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\bin\Debug\net6.0\Server.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\bin\Debug\net6.0\Server.pdb
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\bin\Debug\net6.0\ServerCore.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\bin\Debug\net6.0\ServerCore.pdb
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\Server.csproj.Up2Date
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\Server.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\refint\Server.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\Server.pdb
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\Server.genruntimeconfig.cache
+C:\Unity_Server\Server_with.protoc-23.3\Server-Base-main\Server Base\obj\Debug\net6.0\ref\Server.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\Server.csproj.AssemblyReference.cache
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\Server.AssemblyInfoInputs.cache
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\Server.AssemblyInfo.cs
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\Server.csproj.CoreCompileInputs.cache
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\Server.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\refint\Server.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\Server.pdb
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\bin\Debug\net6.0\Server.exe
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\bin\Debug\net6.0\Server.deps.json
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\bin\Debug\net6.0\Server.runtimeconfig.json
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\bin\Debug\net6.0\Server.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\bin\Debug\net6.0\Server.pdb
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\bin\Debug\net6.0\ServerCore.dll
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\bin\Debug\net6.0\ServerCore.pdb
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\Server.csproj.Up2Date
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\Server.genruntimeconfig.cache
+C:\Unity_Server\Server_with.protoc-23.3\Server\Server\obj\Debug\net6.0\ref\Server.dll
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\bin\Debug\net6.0\Server.exe
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\bin\Debug\net6.0\Server.deps.json
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\bin\Debug\net6.0\Server.runtimeconfig.json
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\bin\Debug\net6.0\Server.dll
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\bin\Debug\net6.0\Server.pdb
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\bin\Debug\net6.0\ServerCore.dll
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\bin\Debug\net6.0\ServerCore.pdb
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.csproj.AssemblyReference.cache
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.AssemblyInfoInputs.cache
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.AssemblyInfo.cs
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.csproj.CoreCompileInputs.cache
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.csproj.Up2Date
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.dll
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\refint\Server.dll
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.pdb
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.genruntimeconfig.cache
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\ref\Server.dll

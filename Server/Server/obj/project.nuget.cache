@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "SLr9no5NCrI3seOaIhx4rWozZUDpYViJcYHjLubcj19Os0kJemhN40rRjuAGekyelYUqNXsbF1qHdaOpbFG4mw==",
+  "success": true,
+  "projectFilePath": "C:\\Unity_Projects\\MMO_BossRaid_project\\Server\\Server\\Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gustk\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",
+    "C:\\Users\\gustk\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

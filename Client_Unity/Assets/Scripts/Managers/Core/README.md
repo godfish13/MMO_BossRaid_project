@@ -1,0 +1,1 @@
+Managers in this folder are Essential for all Games (base Mgrs)
