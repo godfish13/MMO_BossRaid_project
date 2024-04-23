@@ -17866,6 +17866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -22097,6 +22098,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: -10
@@ -25113,30 +25115,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1191892127}
     m_Modifications:
-    - target: {fileID: 1739975837317619315, guid: b0dc9ea194626a544a9ad86055a2c8e3, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1739975837317619315, guid: b0dc9ea194626a544a9ad86055a2c8e3, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1739975837317619315, guid: b0dc9ea194626a544a9ad86055a2c8e3, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1739975837317619315, guid: b0dc9ea194626a544a9ad86055a2c8e3, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1739975837317619315, guid: b0dc9ea194626a544a9ad86055a2c8e3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1739975837317619315, guid: b0dc9ea194626a544a9ad86055a2c8e3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3312212735144750633, guid: b0dc9ea194626a544a9ad86055a2c8e3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

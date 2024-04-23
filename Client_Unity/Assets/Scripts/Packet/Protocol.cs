@@ -29,23 +29,27 @@ namespace Google.Protobuf.Protocol {
             "MhQuUHJvdG9jb2wuT2JqZWN0SW5mbyIVCgZDX01vdmUSCwoDdG1wGAEgASgF",
             "InsKCk9iamVjdEluZm8SEAoIb2JqZWN0SWQYASABKAUSDAoEbmFtZRgCIAEo",
             "CRInCgdwb3NJbmZvGAMgASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvEiQK",
-            "CHN0YXRJbmZvGAQgASgLMhIuUHJvdG9jb2wuU3RhdEluZm8iqQEKCFN0YXRJ",
-            "bmZvEg0KBW1heEhwGAEgASgFEgoKAmhwGAIgASgFEhAKCG1heFNwZWVkGAMg",
-            "ASgCEhQKDGFjY2VsZXJhdGlvbhgEIAEoAhISCgpza2lsbFBvd2VyGAUgASgF",
-            "EhUKDXN1YlNraWxsUG93ZXIYBiABKAUSFQoNc2tpbGxDb29sVGltZRgHIAEo",
-            "BRIYChBzdWJTa2lsbENvb2xUaW1lGAggASgFIg4KDFBvc2l0aW9uSW5mbyol",
-            "CgVNc2dJZBIQCgxTX0VOVEVSX0dBTUUQABIKCgZDX01PVkUQASp0Cg1DcmVh",
-            "dHVyZVN0YXRlEggKBElETEUQABIHCgNSVU4QARIICgRKVU1QEAISCgoGQ1JP",
-            "VUNIEAMSCQoFQ1JBV0wQBBILCgdST0xMSU5HEAUSCQoFU0tJTEwQBhIMCghT",
-            "VUJTS0lMTBAHEgkKBURFQVRIEAgqHgoHTW92ZURpchIJCgVSSUdIVBAAEggK",
-            "BExFRlQQAUIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
+            "CHN0YXRJbmZvGAQgASgLMhIuUHJvdG9jb2wuU3RhdEluZm8ikgEKCFN0YXRJ",
+            "bmZvEg8KB2NsYXNzSWQYASABKAUSDQoFY2xhc3MYAiABKAkSDQoFbWF4SHAY",
+            "AyABKAUSCgoCaHAYBCABKAUSEAoIbWF4U3BlZWQYBSABKAISFAoMYWNjZWxl",
+            "cmF0aW9uGAYgASgCEiMKBnNraWxscxgHIAEoCzITLlByb3RvY29sLlNraWxs",
+            "SW5mbyKSAQoJU2tpbGxJbmZvEhMKC3NraWxsRGFtYWdlGAEgASgFEhUKDXNr",
+            "aWxsQ29vbFRpbWUYAiABKAISFgoOc3ViU2tpbGxEYW1hZ2UYAyABKAUSGAoQ",
+            "c3ViU2tpbGxDb29sVGltZRgEIAEoAhIRCglqdW1wUG93ZXIYBSABKAISFAoM",
+            "anVtcENvb2xUaW1lGAYgASgCIg4KDFBvc2l0aW9uSW5mbyolCgVNc2dJZBIQ",
+            "CgxTX0VOVEVSX0dBTUUQABIKCgZDX01PVkUQASp+Cg1DcmVhdHVyZVN0YXRl",
+            "EggKBElETEUQABIHCgNSVU4QARIICgRKVU1QEAISCAoETEFORBADEgoKBkNS",
+            "T1VDSBAEEgkKBUNSQVdMEAUSCwoHUk9MTElORxAGEgkKBVNLSUxMEAcSDAoI",
+            "U1VCU0tJTEwQCBIJCgVERUFUSBAJKh4KB01vdmVEaXISCQoFUklHSFQQABII",
+            "CgRMRUZUEAFCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Qcm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.MoveDir), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_EnterGame), global::Google.Protobuf.Protocol.S_EnterGame.Parser, new[]{ "Player" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Move), global::Google.Protobuf.Protocol.C_Move.Parser, new[]{ "Tmp" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ObjectInfo), global::Google.Protobuf.Protocol.ObjectInfo.Parser, new[]{ "ObjectId", "Name", "PosInfo", "StatInfo" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.StatInfo), global::Google.Protobuf.Protocol.StatInfo.Parser, new[]{ "MaxHp", "Hp", "MaxSpeed", "Acceleration", "SkillPower", "SubSkillPower", "SkillCoolTime", "SubSkillCoolTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.StatInfo), global::Google.Protobuf.Protocol.StatInfo.Parser, new[]{ "ClassId", "Class", "MaxHp", "Hp", "MaxSpeed", "Acceleration", "Skills" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.SkillInfo), global::Google.Protobuf.Protocol.SkillInfo.Parser, new[]{ "SkillDamage", "SkillCoolTime", "SubSkillDamage", "SubSkillCoolTime", "JumpPower", "JumpCoolTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PositionInfo), global::Google.Protobuf.Protocol.PositionInfo.Parser, null, null, null, null, null)
           }));
     }
@@ -62,12 +66,13 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("IDLE")] Idle = 0,
     [pbr::OriginalName("RUN")] Run = 1,
     [pbr::OriginalName("JUMP")] Jump = 2,
-    [pbr::OriginalName("CROUCH")] Crouch = 3,
-    [pbr::OriginalName("CRAWL")] Crawl = 4,
-    [pbr::OriginalName("ROLLING")] Rolling = 5,
-    [pbr::OriginalName("SKILL")] Skill = 6,
-    [pbr::OriginalName("SUBSKILL")] Subskill = 7,
-    [pbr::OriginalName("DEATH")] Death = 8,
+    [pbr::OriginalName("LAND")] Land = 3,
+    [pbr::OriginalName("CROUCH")] Crouch = 4,
+    [pbr::OriginalName("CRAWL")] Crawl = 5,
+    [pbr::OriginalName("ROLLING")] Rolling = 6,
+    [pbr::OriginalName("SKILL")] Skill = 7,
+    [pbr::OriginalName("SUBSKILL")] Subskill = 8,
+    [pbr::OriginalName("DEATH")] Death = 9,
   }
 
   public enum MoveDir {
@@ -817,14 +822,13 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StatInfo(StatInfo other) : this() {
+      classId_ = other.classId_;
+      class_ = other.class_;
       maxHp_ = other.maxHp_;
       hp_ = other.hp_;
       maxSpeed_ = other.maxSpeed_;
       acceleration_ = other.acceleration_;
-      skillPower_ = other.skillPower_;
-      subSkillPower_ = other.subSkillPower_;
-      skillCoolTime_ = other.skillCoolTime_;
-      subSkillCoolTime_ = other.subSkillCoolTime_;
+      skills_ = other.skills_ != null ? other.skills_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -834,8 +838,32 @@ namespace Google.Protobuf.Protocol {
       return new StatInfo(this);
     }
 
+    /// <summary>Field number for the "classId" field.</summary>
+    public const int ClassIdFieldNumber = 1;
+    private int classId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ClassId {
+      get { return classId_; }
+      set {
+        classId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "class" field.</summary>
+    public const int ClassFieldNumber = 2;
+    private string class_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Class {
+      get { return class_; }
+      set {
+        class_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "maxHp" field.</summary>
-    public const int MaxHpFieldNumber = 1;
+    public const int MaxHpFieldNumber = 3;
     private int maxHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -847,7 +875,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "hp" field.</summary>
-    public const int HpFieldNumber = 2;
+    public const int HpFieldNumber = 4;
     private int hp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -859,7 +887,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "maxSpeed" field.</summary>
-    public const int MaxSpeedFieldNumber = 3;
+    public const int MaxSpeedFieldNumber = 5;
     private float maxSpeed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -871,7 +899,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "acceleration" field.</summary>
-    public const int AccelerationFieldNumber = 4;
+    public const int AccelerationFieldNumber = 6;
     private float acceleration_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -882,51 +910,15 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "skillPower" field.</summary>
-    public const int SkillPowerFieldNumber = 5;
-    private int skillPower_;
+    /// <summary>Field number for the "skills" field.</summary>
+    public const int SkillsFieldNumber = 7;
+    private global::Google.Protobuf.Protocol.SkillInfo skills_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int SkillPower {
-      get { return skillPower_; }
+    public global::Google.Protobuf.Protocol.SkillInfo Skills {
+      get { return skills_; }
       set {
-        skillPower_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "subSkillPower" field.</summary>
-    public const int SubSkillPowerFieldNumber = 6;
-    private int subSkillPower_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int SubSkillPower {
-      get { return subSkillPower_; }
-      set {
-        subSkillPower_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "skillCoolTime" field.</summary>
-    public const int SkillCoolTimeFieldNumber = 7;
-    private int skillCoolTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int SkillCoolTime {
-      get { return skillCoolTime_; }
-      set {
-        skillCoolTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "subSkillCoolTime" field.</summary>
-    public const int SubSkillCoolTimeFieldNumber = 8;
-    private int subSkillCoolTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int SubSkillCoolTime {
-      get { return subSkillCoolTime_; }
-      set {
-        subSkillCoolTime_ = value;
+        skills_ = value;
       }
     }
 
@@ -945,14 +937,13 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ClassId != other.ClassId) return false;
+      if (Class != other.Class) return false;
       if (MaxHp != other.MaxHp) return false;
       if (Hp != other.Hp) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxSpeed, other.MaxSpeed)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Acceleration, other.Acceleration)) return false;
-      if (SkillPower != other.SkillPower) return false;
-      if (SubSkillPower != other.SubSkillPower) return false;
-      if (SkillCoolTime != other.SkillCoolTime) return false;
-      if (SubSkillCoolTime != other.SubSkillCoolTime) return false;
+      if (!object.Equals(Skills, other.Skills)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -960,14 +951,13 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (ClassId != 0) hash ^= ClassId.GetHashCode();
+      if (Class.Length != 0) hash ^= Class.GetHashCode();
       if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
       if (Hp != 0) hash ^= Hp.GetHashCode();
       if (MaxSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxSpeed);
       if (Acceleration != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Acceleration);
-      if (SkillPower != 0) hash ^= SkillPower.GetHashCode();
-      if (SubSkillPower != 0) hash ^= SubSkillPower.GetHashCode();
-      if (SkillCoolTime != 0) hash ^= SkillCoolTime.GetHashCode();
-      if (SubSkillCoolTime != 0) hash ^= SubSkillCoolTime.GetHashCode();
+      if (skills_ != null) hash ^= Skills.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -986,37 +976,33 @@ namespace Google.Protobuf.Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MaxHp != 0) {
+      if (ClassId != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(ClassId);
+      }
+      if (Class.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Class);
+      }
+      if (MaxHp != 0) {
+        output.WriteRawTag(24);
         output.WriteInt32(MaxHp);
       }
       if (Hp != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteInt32(Hp);
       }
       if (MaxSpeed != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(45);
         output.WriteFloat(MaxSpeed);
       }
       if (Acceleration != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(53);
         output.WriteFloat(Acceleration);
       }
-      if (SkillPower != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(SkillPower);
-      }
-      if (SubSkillPower != 0) {
-        output.WriteRawTag(48);
-        output.WriteInt32(SubSkillPower);
-      }
-      if (SkillCoolTime != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(SkillCoolTime);
-      }
-      if (SubSkillCoolTime != 0) {
-        output.WriteRawTag(64);
-        output.WriteInt32(SubSkillCoolTime);
+      if (skills_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Skills);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1028,37 +1014,33 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MaxHp != 0) {
+      if (ClassId != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(ClassId);
+      }
+      if (Class.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Class);
+      }
+      if (MaxHp != 0) {
+        output.WriteRawTag(24);
         output.WriteInt32(MaxHp);
       }
       if (Hp != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteInt32(Hp);
       }
       if (MaxSpeed != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(45);
         output.WriteFloat(MaxSpeed);
       }
       if (Acceleration != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(53);
         output.WriteFloat(Acceleration);
       }
-      if (SkillPower != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(SkillPower);
-      }
-      if (SubSkillPower != 0) {
-        output.WriteRawTag(48);
-        output.WriteInt32(SubSkillPower);
-      }
-      if (SkillCoolTime != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(SkillCoolTime);
-      }
-      if (SubSkillCoolTime != 0) {
-        output.WriteRawTag(64);
-        output.WriteInt32(SubSkillCoolTime);
+      if (skills_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Skills);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1070,6 +1052,12 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (ClassId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ClassId);
+      }
+      if (Class.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Class);
+      }
       if (MaxHp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHp);
       }
@@ -1082,17 +1070,8 @@ namespace Google.Protobuf.Protocol {
       if (Acceleration != 0F) {
         size += 1 + 4;
       }
-      if (SkillPower != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillPower);
-      }
-      if (SubSkillPower != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SubSkillPower);
-      }
-      if (SkillCoolTime != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillCoolTime);
-      }
-      if (SubSkillCoolTime != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SubSkillCoolTime);
+      if (skills_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Skills);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1106,6 +1085,12 @@ namespace Google.Protobuf.Protocol {
       if (other == null) {
         return;
       }
+      if (other.ClassId != 0) {
+        ClassId = other.ClassId;
+      }
+      if (other.Class.Length != 0) {
+        Class = other.Class;
+      }
       if (other.MaxHp != 0) {
         MaxHp = other.MaxHp;
       }
@@ -1118,17 +1103,11 @@ namespace Google.Protobuf.Protocol {
       if (other.Acceleration != 0F) {
         Acceleration = other.Acceleration;
       }
-      if (other.SkillPower != 0) {
-        SkillPower = other.SkillPower;
-      }
-      if (other.SubSkillPower != 0) {
-        SubSkillPower = other.SubSkillPower;
-      }
-      if (other.SkillCoolTime != 0) {
-        SkillCoolTime = other.SkillCoolTime;
-      }
-      if (other.SubSkillCoolTime != 0) {
-        SubSkillCoolTime = other.SubSkillCoolTime;
+      if (other.skills_ != null) {
+        if (skills_ == null) {
+          Skills = new global::Google.Protobuf.Protocol.SkillInfo();
+        }
+        Skills.MergeFrom(other.Skills);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1146,35 +1125,34 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
+            ClassId = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Class = input.ReadString();
+            break;
+          }
+          case 24: {
             MaxHp = input.ReadInt32();
             break;
           }
-          case 16: {
+          case 32: {
             Hp = input.ReadInt32();
             break;
           }
-          case 29: {
+          case 45: {
             MaxSpeed = input.ReadFloat();
             break;
           }
-          case 37: {
+          case 53: {
             Acceleration = input.ReadFloat();
             break;
           }
-          case 40: {
-            SkillPower = input.ReadInt32();
-            break;
-          }
-          case 48: {
-            SubSkillPower = input.ReadInt32();
-            break;
-          }
-          case 56: {
-            SkillCoolTime = input.ReadInt32();
-            break;
-          }
-          case 64: {
-            SubSkillCoolTime = input.ReadInt32();
+          case 58: {
+            if (skills_ == null) {
+              Skills = new global::Google.Protobuf.Protocol.SkillInfo();
+            }
+            input.ReadMessage(Skills);
             break;
           }
         }
@@ -1193,35 +1171,408 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
+            ClassId = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Class = input.ReadString();
+            break;
+          }
+          case 24: {
             MaxHp = input.ReadInt32();
             break;
           }
-          case 16: {
+          case 32: {
             Hp = input.ReadInt32();
             break;
           }
-          case 29: {
+          case 45: {
             MaxSpeed = input.ReadFloat();
             break;
           }
-          case 37: {
+          case 53: {
             Acceleration = input.ReadFloat();
             break;
           }
-          case 40: {
-            SkillPower = input.ReadInt32();
+          case 58: {
+            if (skills_ == null) {
+              Skills = new global::Google.Protobuf.Protocol.SkillInfo();
+            }
+            input.ReadMessage(Skills);
             break;
           }
-          case 48: {
-            SubSkillPower = input.ReadInt32();
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class SkillInfo : pb::IMessage<SkillInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<SkillInfo> _parser = new pb::MessageParser<SkillInfo>(() => new SkillInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<SkillInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SkillInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SkillInfo(SkillInfo other) : this() {
+      skillDamage_ = other.skillDamage_;
+      skillCoolTime_ = other.skillCoolTime_;
+      subSkillDamage_ = other.subSkillDamage_;
+      subSkillCoolTime_ = other.subSkillCoolTime_;
+      jumpPower_ = other.jumpPower_;
+      jumpCoolTime_ = other.jumpCoolTime_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SkillInfo Clone() {
+      return new SkillInfo(this);
+    }
+
+    /// <summary>Field number for the "skillDamage" field.</summary>
+    public const int SkillDamageFieldNumber = 1;
+    private int skillDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int SkillDamage {
+      get { return skillDamage_; }
+      set {
+        skillDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "skillCoolTime" field.</summary>
+    public const int SkillCoolTimeFieldNumber = 2;
+    private float skillCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float SkillCoolTime {
+      get { return skillCoolTime_; }
+      set {
+        skillCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "subSkillDamage" field.</summary>
+    public const int SubSkillDamageFieldNumber = 3;
+    private int subSkillDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int SubSkillDamage {
+      get { return subSkillDamage_; }
+      set {
+        subSkillDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "subSkillCoolTime" field.</summary>
+    public const int SubSkillCoolTimeFieldNumber = 4;
+    private float subSkillCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float SubSkillCoolTime {
+      get { return subSkillCoolTime_; }
+      set {
+        subSkillCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "jumpPower" field.</summary>
+    public const int JumpPowerFieldNumber = 5;
+    private float jumpPower_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float JumpPower {
+      get { return jumpPower_; }
+      set {
+        jumpPower_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "jumpCoolTime" field.</summary>
+    public const int JumpCoolTimeFieldNumber = 6;
+    private float jumpCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float JumpCoolTime {
+      get { return jumpCoolTime_; }
+      set {
+        jumpCoolTime_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as SkillInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(SkillInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (SkillDamage != other.SkillDamage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SkillCoolTime, other.SkillCoolTime)) return false;
+      if (SubSkillDamage != other.SubSkillDamage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubSkillCoolTime, other.SubSkillCoolTime)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(JumpPower, other.JumpPower)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(JumpCoolTime, other.JumpCoolTime)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (SkillDamage != 0) hash ^= SkillDamage.GetHashCode();
+      if (SkillCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SkillCoolTime);
+      if (SubSkillDamage != 0) hash ^= SubSkillDamage.GetHashCode();
+      if (SubSkillCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubSkillCoolTime);
+      if (JumpPower != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(JumpPower);
+      if (JumpCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(JumpCoolTime);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (SkillDamage != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(SkillDamage);
+      }
+      if (SkillCoolTime != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(SkillCoolTime);
+      }
+      if (SubSkillDamage != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(SubSkillDamage);
+      }
+      if (SubSkillCoolTime != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(SubSkillCoolTime);
+      }
+      if (JumpPower != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(JumpPower);
+      }
+      if (JumpCoolTime != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(JumpCoolTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (SkillDamage != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(SkillDamage);
+      }
+      if (SkillCoolTime != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(SkillCoolTime);
+      }
+      if (SubSkillDamage != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(SubSkillDamage);
+      }
+      if (SubSkillCoolTime != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(SubSkillCoolTime);
+      }
+      if (JumpPower != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(JumpPower);
+      }
+      if (JumpCoolTime != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(JumpCoolTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (SkillDamage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillDamage);
+      }
+      if (SkillCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (SubSkillDamage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SubSkillDamage);
+      }
+      if (SubSkillCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (JumpPower != 0F) {
+        size += 1 + 4;
+      }
+      if (JumpCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(SkillInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.SkillDamage != 0) {
+        SkillDamage = other.SkillDamage;
+      }
+      if (other.SkillCoolTime != 0F) {
+        SkillCoolTime = other.SkillCoolTime;
+      }
+      if (other.SubSkillDamage != 0) {
+        SubSkillDamage = other.SubSkillDamage;
+      }
+      if (other.SubSkillCoolTime != 0F) {
+        SubSkillCoolTime = other.SubSkillCoolTime;
+      }
+      if (other.JumpPower != 0F) {
+        JumpPower = other.JumpPower;
+      }
+      if (other.JumpCoolTime != 0F) {
+        JumpCoolTime = other.JumpCoolTime;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            SkillDamage = input.ReadInt32();
             break;
           }
-          case 56: {
-            SkillCoolTime = input.ReadInt32();
+          case 21: {
+            SkillCoolTime = input.ReadFloat();
             break;
           }
-          case 64: {
-            SubSkillCoolTime = input.ReadInt32();
+          case 24: {
+            SubSkillDamage = input.ReadInt32();
+            break;
+          }
+          case 37: {
+            SubSkillCoolTime = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            JumpPower = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            JumpCoolTime = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            SkillDamage = input.ReadInt32();
+            break;
+          }
+          case 21: {
+            SkillCoolTime = input.ReadFloat();
+            break;
+          }
+          case 24: {
+            SubSkillDamage = input.ReadInt32();
+            break;
+          }
+          case 37: {
+            SubSkillCoolTime = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            JumpPower = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            JumpCoolTime = input.ReadFloat();
             break;
           }
         }
@@ -1245,7 +1596,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

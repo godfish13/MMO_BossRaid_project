@@ -1,0 +1,44 @@
+{
+  "Skills": [
+    {
+      "ClassId": "0",
+      "Class": "Human",
+      "SkillDamage": "10",
+      "SkillCoolTime": "0.4f",
+      "SubSkillDamage": "100",
+      "SubSkillCoolTime": "10.0f",
+      "JumpPower": "1000.0f",
+      "JumpCoolTime": "0.1f"
+    },
+    {
+      "ClassId": "1",
+      "Class": "Elf",
+      "SkillDamage": "10",
+      "SkillCoolTime": "0.4f",
+      "SubSkillDamage": "100",
+      "SubSkillCoolTime": "10.0f",
+      "JumpPower": "1000.0f",
+      "JumpCoolTime": "0.05f"
+    },
+    {
+      "ClassId": "2",
+      "Class": "Furry",
+      "SkillDamage": "10",
+      "SkillCoolTime": "0.4f",
+      "SubSkillDamage": "100",
+      "SubSkillCoolTime": "10.0f",
+      "JumpPower": "1000.0f",
+      "JumpCoolTime": "0.05f"
+    },
+    {
+      "ClassId": "3",
+      "Class": "Lizard",
+      "SkillDamage": "10",
+      "SkillCoolTime": "0.4f",
+      "SubSkillDamage": "100",
+      "SubSkillCoolTime": "10.0f",
+      "JumpPower": "1000.0f",
+      "JumpCoolTime": "0.05f"
+    }
+  ]
+}

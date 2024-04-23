@@ -15,12 +15,13 @@ enum CreatureState
 	IDLE = 0;
 	RUN = 1;
 	JUMP = 2;
-	CROUCH = 3;
-	CRAWL = 4;
-	ROLLING = 5;
-	SKILL = 6;
-	SUBSKILL = 7;
-	DEATH = 8;
+	LAND = 3;
+	CROUCH = 4;
+	CRAWL = 5;
+	ROLLING = 6;
+	SKILL = 7;
+	SUBSKILL = 8;
+	DEATH = 9;
 }
 
 enum MoveDir
@@ -49,14 +50,23 @@ message ObjectInfo
 
 message StatInfo
 {
-	int32 maxHp = 1;
-	int32 hp = 2;
-	float maxSpeed = 3;
-	float acceleration = 4;
-	int32 skillPower = 5;
-	int32 subSkillPower = 6;
-	int32 skillCoolTime = 7;
-	int32 subSkillCoolTime = 8;
+	int32 classId = 1;
+	string class = 2;
+	int32 maxHp = 3;
+	int32 hp = 4;
+	float maxSpeed = 5;
+	float acceleration = 6;
+	SkillInfo skills = 7;
+}
+
+message SkillInfo
+{
+	int32 skillDamage = 1;
+	float skillCoolTime = 2;
+	int32 subSkillDamage = 3;
+	float subSkillCoolTime = 4;
+	float jumpPower = 5;
+	float jumpCoolTime = 6;
 }
 
 message PositionInfo
