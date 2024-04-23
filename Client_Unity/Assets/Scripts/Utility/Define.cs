@@ -6,9 +6,7 @@ public class Define
 {
     public enum Layer
     {
-        Monster = 6,
-        Ground = 7,
-        Block = 8,
+        Platform = 6,
     }
 
     public enum Scene
@@ -36,10 +34,5 @@ public class Define
     {
         Press,
         Click,
-    }
-
-    public enum CameraMode
-    {
-        QuaterView,
     }
 }

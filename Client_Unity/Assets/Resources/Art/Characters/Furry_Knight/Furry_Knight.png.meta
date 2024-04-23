@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ad35a245f26d12647b60d6d05c4ff4f4
+guid: a57468ed70eeaf8488f5a093b19176f4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -1122,7 +1122,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Roll_7: -7728431268270919474
       Icon: -4804603286184142772
       Crawl_2: -485111123018289494
       Ready_1: 7683567802946276634
@@ -1168,6 +1167,7 @@ TextureImporter:
       Run_0: 4944230376442633554
       Slash_3: -1817706105750108133
       Jab_1: -227019496086430530
+      Roll_7: -7728431268270919474
       Roll_4: 4811183109302650746
       Slash_1: -3696019449777573715
   spritePackingTag: 

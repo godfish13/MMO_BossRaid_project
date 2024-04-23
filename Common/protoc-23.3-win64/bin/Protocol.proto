@@ -10,6 +10,25 @@ enum MsgId
 	C_MOVE = 1;
 }
 
+enum CreatureState
+{
+	IDLE = 0;
+	RUN = 1;
+	JUMP = 2;
+	CROUCH = 3;
+	CRAWL = 4;
+	ROLLING = 5;
+	SKILL = 6;
+	SUBSKILL = 7;
+	DEATH = 8;
+}
+
+enum MoveDir
+{
+	RIGHT= 0;
+	LEFT = 1;
+}
+
 message S_EnterGame 
 {
 	ObjectInfo player = 1;
@@ -30,12 +49,14 @@ message ObjectInfo
 
 message StatInfo
 {
-	int32 level = 1;
+	int32 maxHp = 1;
 	int32 hp = 2;
-	int32 maxHp = 3;
-	int32 attack = 4;
-	float speed = 5;
-	int32 totalExp = 6;
+	float maxSpeed = 3;
+	float acceleration = 4;
+	int32 skillPower = 5;
+	int32 subSkillPower = 6;
+	int32 skillCoolTime = 7;
+	int32 subSkillCoolTime = 8;
 }
 
 message PositionInfo

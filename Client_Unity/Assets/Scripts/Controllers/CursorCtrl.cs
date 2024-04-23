@@ -15,7 +15,7 @@ public class CursorCtrl : MonoBehaviour
     }
     CursorType _cursorType = CursorType.None;
 
-    int GroundMonsterLayerMask = (1 << (int)Define.Layer.Monster) | (1 << (int)Define.Layer.Ground);
+    /*int GroundMonsterLayerMask = (1 << (int)Define.Layer.Monster) | (1 << (int)Define.Layer.Ground);
 
     void Start()
     {
@@ -50,5 +50,5 @@ public class CursorCtrl : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

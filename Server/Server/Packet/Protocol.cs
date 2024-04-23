@@ -29,19 +29,23 @@ namespace Google.Protobuf.Protocol {
             "MhQuUHJvdG9jb2wuT2JqZWN0SW5mbyIVCgZDX01vdmUSCwoDdG1wGAEgASgF",
             "InsKCk9iamVjdEluZm8SEAoIb2JqZWN0SWQYASABKAUSDAoEbmFtZRgCIAEo",
             "CRInCgdwb3NJbmZvGAMgASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvEiQK",
-            "CHN0YXRJbmZvGAQgASgLMhIuUHJvdG9jb2wuU3RhdEluZm8iZQoIU3RhdElu",
-            "Zm8SDQoFbGV2ZWwYASABKAUSCgoCaHAYAiABKAUSDQoFbWF4SHAYAyABKAUS",
-            "DgoGYXR0YWNrGAQgASgFEg0KBXNwZWVkGAUgASgCEhAKCHRvdGFsRXhwGAYg",
-            "ASgFIg4KDFBvc2l0aW9uSW5mbyolCgVNc2dJZBIQCgxTX0VOVEVSX0dBTUUQ",
-            "ABIKCgZDX01PVkUQAUIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZw",
-            "cm90bzM="));
+            "CHN0YXRJbmZvGAQgASgLMhIuUHJvdG9jb2wuU3RhdEluZm8iqQEKCFN0YXRJ",
+            "bmZvEg0KBW1heEhwGAEgASgFEgoKAmhwGAIgASgFEhAKCG1heFNwZWVkGAMg",
+            "ASgCEhQKDGFjY2VsZXJhdGlvbhgEIAEoAhISCgpza2lsbFBvd2VyGAUgASgF",
+            "EhUKDXN1YlNraWxsUG93ZXIYBiABKAUSFQoNc2tpbGxDb29sVGltZRgHIAEo",
+            "BRIYChBzdWJTa2lsbENvb2xUaW1lGAggASgFIg4KDFBvc2l0aW9uSW5mbyol",
+            "CgVNc2dJZBIQCgxTX0VOVEVSX0dBTUUQABIKCgZDX01PVkUQASp0Cg1DcmVh",
+            "dHVyZVN0YXRlEggKBElETEUQABIHCgNSVU4QARIICgRKVU1QEAISCgoGQ1JP",
+            "VUNIEAMSCQoFQ1JBV0wQBBILCgdST0xMSU5HEAUSCQoFU0tJTEwQBhIMCghT",
+            "VUJTS0lMTBAHEgkKBURFQVRIEAgqHgoHTW92ZURpchIJCgVSSUdIVBAAEggK",
+            "BExFRlQQAUIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.MoveDir), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_EnterGame), global::Google.Protobuf.Protocol.S_EnterGame.Parser, new[]{ "Player" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Move), global::Google.Protobuf.Protocol.C_Move.Parser, new[]{ "Tmp" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ObjectInfo), global::Google.Protobuf.Protocol.ObjectInfo.Parser, new[]{ "ObjectId", "Name", "PosInfo", "StatInfo" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.StatInfo), global::Google.Protobuf.Protocol.StatInfo.Parser, new[]{ "Level", "Hp", "MaxHp", "Attack", "Speed", "TotalExp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.StatInfo), global::Google.Protobuf.Protocol.StatInfo.Parser, new[]{ "MaxHp", "Hp", "MaxSpeed", "Acceleration", "SkillPower", "SubSkillPower", "SkillCoolTime", "SubSkillCoolTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PositionInfo), global::Google.Protobuf.Protocol.PositionInfo.Parser, null, null, null, null, null)
           }));
     }
@@ -52,6 +56,23 @@ namespace Google.Protobuf.Protocol {
   public enum MsgId {
     [pbr::OriginalName("S_ENTER_GAME")] SEnterGame = 0,
     [pbr::OriginalName("C_MOVE")] CMove = 1,
+  }
+
+  public enum CreatureState {
+    [pbr::OriginalName("IDLE")] Idle = 0,
+    [pbr::OriginalName("RUN")] Run = 1,
+    [pbr::OriginalName("JUMP")] Jump = 2,
+    [pbr::OriginalName("CROUCH")] Crouch = 3,
+    [pbr::OriginalName("CRAWL")] Crawl = 4,
+    [pbr::OriginalName("ROLLING")] Rolling = 5,
+    [pbr::OriginalName("SKILL")] Skill = 6,
+    [pbr::OriginalName("SUBSKILL")] Subskill = 7,
+    [pbr::OriginalName("DEATH")] Death = 8,
+  }
+
+  public enum MoveDir {
+    [pbr::OriginalName("RIGHT")] Right = 0,
+    [pbr::OriginalName("LEFT")] Left = 1,
   }
 
   #endregion
@@ -796,12 +817,14 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StatInfo(StatInfo other) : this() {
-      level_ = other.level_;
-      hp_ = other.hp_;
       maxHp_ = other.maxHp_;
-      attack_ = other.attack_;
-      speed_ = other.speed_;
-      totalExp_ = other.totalExp_;
+      hp_ = other.hp_;
+      maxSpeed_ = other.maxSpeed_;
+      acceleration_ = other.acceleration_;
+      skillPower_ = other.skillPower_;
+      subSkillPower_ = other.subSkillPower_;
+      skillCoolTime_ = other.skillCoolTime_;
+      subSkillCoolTime_ = other.subSkillCoolTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -811,15 +834,15 @@ namespace Google.Protobuf.Protocol {
       return new StatInfo(this);
     }
 
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 1;
-    private int level_;
+    /// <summary>Field number for the "maxHp" field.</summary>
+    public const int MaxHpFieldNumber = 1;
+    private int maxHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Level {
-      get { return level_; }
+    public int MaxHp {
+      get { return maxHp_; }
       set {
-        level_ = value;
+        maxHp_ = value;
       }
     }
 
@@ -835,51 +858,75 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "maxHp" field.</summary>
-    public const int MaxHpFieldNumber = 3;
-    private int maxHp_;
+    /// <summary>Field number for the "maxSpeed" field.</summary>
+    public const int MaxSpeedFieldNumber = 3;
+    private float maxSpeed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int MaxHp {
-      get { return maxHp_; }
+    public float MaxSpeed {
+      get { return maxSpeed_; }
       set {
-        maxHp_ = value;
+        maxSpeed_ = value;
       }
     }
 
-    /// <summary>Field number for the "attack" field.</summary>
-    public const int AttackFieldNumber = 4;
-    private int attack_;
+    /// <summary>Field number for the "acceleration" field.</summary>
+    public const int AccelerationFieldNumber = 4;
+    private float acceleration_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Attack {
-      get { return attack_; }
+    public float Acceleration {
+      get { return acceleration_; }
       set {
-        attack_ = value;
+        acceleration_ = value;
       }
     }
 
-    /// <summary>Field number for the "speed" field.</summary>
-    public const int SpeedFieldNumber = 5;
-    private float speed_;
+    /// <summary>Field number for the "skillPower" field.</summary>
+    public const int SkillPowerFieldNumber = 5;
+    private int skillPower_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float Speed {
-      get { return speed_; }
+    public int SkillPower {
+      get { return skillPower_; }
       set {
-        speed_ = value;
+        skillPower_ = value;
       }
     }
 
-    /// <summary>Field number for the "totalExp" field.</summary>
-    public const int TotalExpFieldNumber = 6;
-    private int totalExp_;
+    /// <summary>Field number for the "subSkillPower" field.</summary>
+    public const int SubSkillPowerFieldNumber = 6;
+    private int subSkillPower_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int TotalExp {
-      get { return totalExp_; }
+    public int SubSkillPower {
+      get { return subSkillPower_; }
       set {
-        totalExp_ = value;
+        subSkillPower_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "skillCoolTime" field.</summary>
+    public const int SkillCoolTimeFieldNumber = 7;
+    private int skillCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int SkillCoolTime {
+      get { return skillCoolTime_; }
+      set {
+        skillCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "subSkillCoolTime" field.</summary>
+    public const int SubSkillCoolTimeFieldNumber = 8;
+    private int subSkillCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int SubSkillCoolTime {
+      get { return subSkillCoolTime_; }
+      set {
+        subSkillCoolTime_ = value;
       }
     }
 
@@ -898,12 +945,14 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Level != other.Level) return false;
-      if (Hp != other.Hp) return false;
       if (MaxHp != other.MaxHp) return false;
-      if (Attack != other.Attack) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Speed, other.Speed)) return false;
-      if (TotalExp != other.TotalExp) return false;
+      if (Hp != other.Hp) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxSpeed, other.MaxSpeed)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Acceleration, other.Acceleration)) return false;
+      if (SkillPower != other.SkillPower) return false;
+      if (SubSkillPower != other.SubSkillPower) return false;
+      if (SkillCoolTime != other.SkillCoolTime) return false;
+      if (SubSkillCoolTime != other.SubSkillCoolTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -911,12 +960,14 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Level != 0) hash ^= Level.GetHashCode();
-      if (Hp != 0) hash ^= Hp.GetHashCode();
       if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
-      if (Attack != 0) hash ^= Attack.GetHashCode();
-      if (Speed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Speed);
-      if (TotalExp != 0) hash ^= TotalExp.GetHashCode();
+      if (Hp != 0) hash ^= Hp.GetHashCode();
+      if (MaxSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxSpeed);
+      if (Acceleration != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Acceleration);
+      if (SkillPower != 0) hash ^= SkillPower.GetHashCode();
+      if (SubSkillPower != 0) hash ^= SubSkillPower.GetHashCode();
+      if (SkillCoolTime != 0) hash ^= SkillCoolTime.GetHashCode();
+      if (SubSkillCoolTime != 0) hash ^= SubSkillCoolTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -935,29 +986,37 @@ namespace Google.Protobuf.Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Level != 0) {
+      if (MaxHp != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Level);
+        output.WriteInt32(MaxHp);
       }
       if (Hp != 0) {
         output.WriteRawTag(16);
         output.WriteInt32(Hp);
       }
-      if (MaxHp != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(MaxHp);
+      if (MaxSpeed != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(MaxSpeed);
       }
-      if (Attack != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(Attack);
+      if (Acceleration != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Acceleration);
       }
-      if (Speed != 0F) {
-        output.WriteRawTag(45);
-        output.WriteFloat(Speed);
+      if (SkillPower != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(SkillPower);
       }
-      if (TotalExp != 0) {
+      if (SubSkillPower != 0) {
         output.WriteRawTag(48);
-        output.WriteInt32(TotalExp);
+        output.WriteInt32(SubSkillPower);
+      }
+      if (SkillCoolTime != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(SkillCoolTime);
+      }
+      if (SubSkillCoolTime != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(SubSkillCoolTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -969,29 +1028,37 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Level != 0) {
+      if (MaxHp != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Level);
+        output.WriteInt32(MaxHp);
       }
       if (Hp != 0) {
         output.WriteRawTag(16);
         output.WriteInt32(Hp);
       }
-      if (MaxHp != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(MaxHp);
+      if (MaxSpeed != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(MaxSpeed);
       }
-      if (Attack != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(Attack);
+      if (Acceleration != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Acceleration);
       }
-      if (Speed != 0F) {
-        output.WriteRawTag(45);
-        output.WriteFloat(Speed);
+      if (SkillPower != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(SkillPower);
       }
-      if (TotalExp != 0) {
+      if (SubSkillPower != 0) {
         output.WriteRawTag(48);
-        output.WriteInt32(TotalExp);
+        output.WriteInt32(SubSkillPower);
+      }
+      if (SkillCoolTime != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(SkillCoolTime);
+      }
+      if (SubSkillCoolTime != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(SubSkillCoolTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1003,23 +1070,29 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Level);
+      if (MaxHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHp);
       }
       if (Hp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Hp);
       }
-      if (MaxHp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHp);
-      }
-      if (Attack != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Attack);
-      }
-      if (Speed != 0F) {
+      if (MaxSpeed != 0F) {
         size += 1 + 4;
       }
-      if (TotalExp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TotalExp);
+      if (Acceleration != 0F) {
+        size += 1 + 4;
+      }
+      if (SkillPower != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillPower);
+      }
+      if (SubSkillPower != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SubSkillPower);
+      }
+      if (SkillCoolTime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillCoolTime);
+      }
+      if (SubSkillCoolTime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SubSkillCoolTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1033,23 +1106,29 @@ namespace Google.Protobuf.Protocol {
       if (other == null) {
         return;
       }
-      if (other.Level != 0) {
-        Level = other.Level;
+      if (other.MaxHp != 0) {
+        MaxHp = other.MaxHp;
       }
       if (other.Hp != 0) {
         Hp = other.Hp;
       }
-      if (other.MaxHp != 0) {
-        MaxHp = other.MaxHp;
+      if (other.MaxSpeed != 0F) {
+        MaxSpeed = other.MaxSpeed;
       }
-      if (other.Attack != 0) {
-        Attack = other.Attack;
+      if (other.Acceleration != 0F) {
+        Acceleration = other.Acceleration;
       }
-      if (other.Speed != 0F) {
-        Speed = other.Speed;
+      if (other.SkillPower != 0) {
+        SkillPower = other.SkillPower;
       }
-      if (other.TotalExp != 0) {
-        TotalExp = other.TotalExp;
+      if (other.SubSkillPower != 0) {
+        SubSkillPower = other.SubSkillPower;
+      }
+      if (other.SkillCoolTime != 0) {
+        SkillCoolTime = other.SkillCoolTime;
+      }
+      if (other.SubSkillCoolTime != 0) {
+        SubSkillCoolTime = other.SubSkillCoolTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1067,27 +1146,35 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Level = input.ReadInt32();
+            MaxHp = input.ReadInt32();
             break;
           }
           case 16: {
             Hp = input.ReadInt32();
             break;
           }
-          case 24: {
-            MaxHp = input.ReadInt32();
+          case 29: {
+            MaxSpeed = input.ReadFloat();
             break;
           }
-          case 32: {
-            Attack = input.ReadInt32();
+          case 37: {
+            Acceleration = input.ReadFloat();
             break;
           }
-          case 45: {
-            Speed = input.ReadFloat();
+          case 40: {
+            SkillPower = input.ReadInt32();
             break;
           }
           case 48: {
-            TotalExp = input.ReadInt32();
+            SubSkillPower = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            SkillCoolTime = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            SubSkillCoolTime = input.ReadInt32();
             break;
           }
         }
@@ -1106,27 +1193,35 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Level = input.ReadInt32();
+            MaxHp = input.ReadInt32();
             break;
           }
           case 16: {
             Hp = input.ReadInt32();
             break;
           }
-          case 24: {
-            MaxHp = input.ReadInt32();
+          case 29: {
+            MaxSpeed = input.ReadFloat();
             break;
           }
-          case 32: {
-            Attack = input.ReadInt32();
+          case 37: {
+            Acceleration = input.ReadFloat();
             break;
           }
-          case 45: {
-            Speed = input.ReadFloat();
+          case 40: {
+            SkillPower = input.ReadInt32();
             break;
           }
           case 48: {
-            TotalExp = input.ReadInt32();
+            SubSkillPower = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            SkillCoolTime = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            SubSkillCoolTime = input.ReadInt32();
             break;
           }
         }
