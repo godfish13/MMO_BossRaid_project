@@ -4,7 +4,7 @@
       "ClassId": "0",
       "Class": "Human",
       "SkillDamage": "10",
-      "SkillCoolTime": "0.4f",
+      "SkillCoolTime": "0.3f",
       "SubSkillDamage": "100",
       "SubSkillCoolTime": "10.0f",
       "JumpPower": "1000.0f",

@@ -22,6 +22,7 @@ enum CreatureState
 	SKILL = 7;
 	SUBSKILL = 8;
 	DEATH = 9;
+	TMP = 10;
 }
 
 enum MoveDir

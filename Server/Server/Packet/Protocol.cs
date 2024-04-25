@@ -37,11 +37,12 @@ namespace Google.Protobuf.Protocol {
             "aWxsQ29vbFRpbWUYAiABKAISFgoOc3ViU2tpbGxEYW1hZ2UYAyABKAUSGAoQ",
             "c3ViU2tpbGxDb29sVGltZRgEIAEoAhIRCglqdW1wUG93ZXIYBSABKAISFAoM",
             "anVtcENvb2xUaW1lGAYgASgCIg4KDFBvc2l0aW9uSW5mbyolCgVNc2dJZBIQ",
-            "CgxTX0VOVEVSX0dBTUUQABIKCgZDX01PVkUQASp+Cg1DcmVhdHVyZVN0YXRl",
-            "EggKBElETEUQABIHCgNSVU4QARIICgRKVU1QEAISCAoETEFORBADEgoKBkNS",
-            "T1VDSBAEEgkKBUNSQVdMEAUSCwoHUk9MTElORxAGEgkKBVNLSUxMEAcSDAoI",
-            "U1VCU0tJTEwQCBIJCgVERUFUSBAJKh4KB01vdmVEaXISCQoFUklHSFQQABII",
-            "CgRMRUZUEAFCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Qcm90b2NvbGIGcHJvdG8z"));
+            "CgxTX0VOVEVSX0dBTUUQABIKCgZDX01PVkUQASqHAQoNQ3JlYXR1cmVTdGF0",
+            "ZRIICgRJRExFEAASBwoDUlVOEAESCAoESlVNUBACEggKBExBTkQQAxIKCgZD",
+            "Uk9VQ0gQBBIJCgVDUkFXTBAFEgsKB1JPTExJTkcQBhIJCgVTS0lMTBAHEgwK",
+            "CFNVQlNLSUxMEAgSCQoFREVBVEgQCRIHCgNUTVAQCioeCgdNb3ZlRGlyEgkK",
+            "BVJJR0hUEAASCAoETEVGVBABQhuqAhhHb29nbGUuUHJvdG9idWYuUHJvdG9j",
+            "b2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.MoveDir), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -73,6 +74,7 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("SKILL")] Skill = 7,
     [pbr::OriginalName("SUBSKILL")] Subskill = 8,
     [pbr::OriginalName("DEATH")] Death = 9,
+    [pbr::OriginalName("TMP")] Tmp = 10,
   }
 
   public enum MoveDir {
