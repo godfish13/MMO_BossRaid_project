@@ -70,6 +70,7 @@ public class BaseCtrl : MonoBehaviour
     float Gravity = 70.0f;        // 중력 가속도
     bool _isGrounded = true;           // 땅에 붙어있는지 판별
     bool _jumpable = true;  // 점프가능여부 + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
+    protected bool _isSkill = false; // 스킬키 한번 누르면 스킬 사용도중에 x키를 떼도 애니메이션 끝까지 사용되도록 판정용
 
     protected virtual void Init()
     {
@@ -134,6 +135,9 @@ public class BaseCtrl : MonoBehaviour
             case CreatureState.Jump:
                 _animator.Play("JUMP");
                 break;
+            case CreatureState.Fall:
+                _animator.Play("FALL");
+                break;
             case CreatureState.Land:
                 _animator.Play("LAND");
                 break;
@@ -165,19 +169,23 @@ public class BaseCtrl : MonoBehaviour
         {
             case CreatureState.Idle:
                 GetDirInput();
-                UpdateIdle();
+                UpdateMoving();
                 break;
             case CreatureState.Run:
                 GetDirInput();
-                UpdateRun();
+                UpdateMoving();
                 break;
             case CreatureState.Jump:
                 GetDirInput();
-                UpdateJump();
+                UpdateMoving();
+                break;
+            case CreatureState.Fall:
+                GetDirInput();
+                UpdateMoving();
                 break;
             case CreatureState.Land:
                 GetDirInput();
-                UpdateJump();
+                UpdateMoving();
                 break;
             case CreatureState.Crouch:
                 GetDirInput();
@@ -203,31 +211,16 @@ public class BaseCtrl : MonoBehaviour
                 break;
             case CreatureState.Tmp:  // 스킬 사용 후 Idle, Move 등 원래 상태로 돌아가되 animation 업데이트는 안해주기 위한 임시 상태
                 GetDirInput();
-                UpdateRun();
+                UpdateMoving();
                 break;
         }
     }
 
-    private void UpdateIdle()
+    private void UpdateMoving() // Idle, Move, Jump, Fall Land 의 updates 통일
     {
         Move();
         Jump();
-        MainSkill();
-        SubSkill();
-    }
-
-    private void UpdateRun()
-    {
-        Move();
-        Jump();
-        MainSkill();
-        SubSkill();
-    }
-
-    private void UpdateJump()
-    {
-        Move();
-        Jump();
+        Fall();
         MainSkill();
         SubSkill();
     }
@@ -246,7 +239,8 @@ public class BaseCtrl : MonoBehaviour
     private void UpdateSkill()
     {
         MoveWhileSkill();
-        Jump();
+        JumpWhileSkill();
+        Fall();
         MainSkill();
         SubSkill();
     }
@@ -299,6 +293,9 @@ public class BaseCtrl : MonoBehaviour
         
         if (_input.x == 0)   // 좌우 입력 없을 시 브레이크
         {
+            if (_isGrounded == false)
+                State = CreatureState.Fall;
+
             velocity.x = Mathf.MoveTowards(velocity.x, 0, Stat.Acceleration * 2 * Time.fixedDeltaTime);
             // rg의 x속도 가속도*3만큼 0까지 감속
 
@@ -321,8 +318,10 @@ public class BaseCtrl : MonoBehaviour
                     // MoveTowards : rg의 x속도, 최대 _MaxSpeed까지, 시간당 가속도만큼 가속
                 }
             }
-            else
+            else if (_isGrounded == false)
             {
+                if (_isSkill == false)      // 점프 중 스킬쓰고 쭉 떨어지는 경우
+                    State = CreatureState.Fall; // State Change flag
                 velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed, Stat.Acceleration * 0.5f * Time.fixedDeltaTime);
                 // 체공중일 시 가속도 절반
             }
@@ -349,8 +348,8 @@ public class BaseCtrl : MonoBehaviour
             }
             else
             {
-                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed, Stat.Acceleration * 0.5f * Time.fixedDeltaTime);
-                // 체공중일 시 가속도 절반
+                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed * 0.25f, Stat.Acceleration * 0.25f * Time.fixedDeltaTime);
+                // 스킬쓰며 체공중일 시 가속도 1/4
             }
         }
 
@@ -367,16 +366,43 @@ public class BaseCtrl : MonoBehaviour
             if (_input.y > 0)
             {
                 _isGrounded = false;
+
                 State = CreatureState.Jump;     // State Change flag
+
+                _rigidbody.AddForce(Vector2.up * SkillData.JumpPower);
+                // AnimEvent : 점프 애니메이션 재생후 바로 체공애니메이션으로 변경
+            }
+        }
+    }
+
+    protected void JumpWhileSkill()
+    {
+        if (_isGrounded && _jumpable)
+        {
+            if (_input.y > 0)
+            {
+                _isGrounded = false;
+
                 _rigidbody.AddForce(Vector2.up * SkillData.JumpPower);
             }
         }
-        else
-        {
-            velocity.y -= Gravity * Time.fixedDeltaTime;
-        }
 
         _rigidbody.velocity = velocity;
+    }
+
+    protected void Fall()
+    {
+        if (_isGrounded == false)
+        {
+            velocity.y -= Gravity * Time.fixedDeltaTime;
+            _rigidbody.velocity = velocity;
+        }
+    }
+
+    protected void AnimEvent_ChangeState2Fall()
+    {
+        State = CreatureState.Fall;     // State Change flag
+        // AnimEvent : 점프 애니메이션 재생후 바로 체공애니메이션으로 변경
     }
     #endregion
 
@@ -392,8 +418,10 @@ public class BaseCtrl : MonoBehaviour
         {
             _platformCollider = collision.collider;
             _isGrounded = true;
-
-            State = CreatureState.Land; // State Change flag
+      
+            if (Input.GetKey(KeyCode.X) == false)
+                State = CreatureState.Land; // State Change flag
+            //Debug.Log("Landed");
             _coJumpCoolTimer = StartCoroutine("CoJumpCoolTimer", SkillData.JumpCoolTime);     // 착지 후 점프 0.1초 쿨타임 (애니메이션 꼬임 문제 방지)
         }
     }
@@ -422,7 +450,6 @@ public class BaseCtrl : MonoBehaviour
     #region CoolTimes
     // Jump
     private Coroutine _coJumpCoolTimer;
-    protected Coroutine _coSkillCoolTimer;
 
     IEnumerator CoJumpCoolTimer(float time)
     {
@@ -433,14 +460,7 @@ public class BaseCtrl : MonoBehaviour
     }
 
     // SKill
-    protected bool _isSkill = false;    // 스킬키 한번 누르면 스킬 사용도중에 x키를 떼도 애니메이션 끝까지 사용되도록 체크하는 플래그
-    IEnumerator CoSkillCoolTimer(float time)
-    {
-        _isSkill = true;   
-        yield return new WaitForSeconds(time);
+    
 
-        if (Input.GetKey(KeyCode.X) == false)
-            _isSkill = false;
-    }
     #endregion
 }

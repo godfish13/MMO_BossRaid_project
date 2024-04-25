@@ -37,12 +37,12 @@ namespace Google.Protobuf.Protocol {
             "aWxsQ29vbFRpbWUYAiABKAISFgoOc3ViU2tpbGxEYW1hZ2UYAyABKAUSGAoQ",
             "c3ViU2tpbGxDb29sVGltZRgEIAEoAhIRCglqdW1wUG93ZXIYBSABKAISFAoM",
             "anVtcENvb2xUaW1lGAYgASgCIg4KDFBvc2l0aW9uSW5mbyolCgVNc2dJZBIQ",
-            "CgxTX0VOVEVSX0dBTUUQABIKCgZDX01PVkUQASqHAQoNQ3JlYXR1cmVTdGF0",
-            "ZRIICgRJRExFEAASBwoDUlVOEAESCAoESlVNUBACEggKBExBTkQQAxIKCgZD",
-            "Uk9VQ0gQBBIJCgVDUkFXTBAFEgsKB1JPTExJTkcQBhIJCgVTS0lMTBAHEgwK",
-            "CFNVQlNLSUxMEAgSCQoFREVBVEgQCRIHCgNUTVAQCioeCgdNb3ZlRGlyEgkK",
-            "BVJJR0hUEAASCAoETEVGVBABQhuqAhhHb29nbGUuUHJvdG9idWYuUHJvdG9j",
-            "b2xiBnByb3RvMw=="));
+            "CgxTX0VOVEVSX0dBTUUQABIKCgZDX01PVkUQASqRAQoNQ3JlYXR1cmVTdGF0",
+            "ZRIICgRJRExFEAASBwoDUlVOEAESCAoESlVNUBACEggKBEZBTEwQAxIICgRM",
+            "QU5EEAQSCgoGQ1JPVUNIEAUSCQoFQ1JBV0wQBhILCgdST0xMSU5HEAcSCQoF",
+            "U0tJTEwQCBIMCghTVUJTS0lMTBAJEgkKBURFQVRIEAoSBwoDVE1QEAsqHgoH",
+            "TW92ZURpchIJCgVSSUdIVBAAEggKBExFRlQQAUIbqgIYR29vZ2xlLlByb3Rv",
+            "YnVmLlByb3RvY29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.MoveDir), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -67,14 +67,15 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("IDLE")] Idle = 0,
     [pbr::OriginalName("RUN")] Run = 1,
     [pbr::OriginalName("JUMP")] Jump = 2,
-    [pbr::OriginalName("LAND")] Land = 3,
-    [pbr::OriginalName("CROUCH")] Crouch = 4,
-    [pbr::OriginalName("CRAWL")] Crawl = 5,
-    [pbr::OriginalName("ROLLING")] Rolling = 6,
-    [pbr::OriginalName("SKILL")] Skill = 7,
-    [pbr::OriginalName("SUBSKILL")] Subskill = 8,
-    [pbr::OriginalName("DEATH")] Death = 9,
-    [pbr::OriginalName("TMP")] Tmp = 10,
+    [pbr::OriginalName("FALL")] Fall = 3,
+    [pbr::OriginalName("LAND")] Land = 4,
+    [pbr::OriginalName("CROUCH")] Crouch = 5,
+    [pbr::OriginalName("CRAWL")] Crawl = 6,
+    [pbr::OriginalName("ROLLING")] Rolling = 7,
+    [pbr::OriginalName("SKILL")] Skill = 8,
+    [pbr::OriginalName("SUBSKILL")] Subskill = 9,
+    [pbr::OriginalName("DEATH")] Death = 10,
+    [pbr::OriginalName("TMP")] Tmp = 11,
   }
 
   public enum MoveDir {

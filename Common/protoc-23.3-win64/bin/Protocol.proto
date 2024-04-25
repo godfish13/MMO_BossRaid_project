@@ -15,14 +15,15 @@ enum CreatureState
 	IDLE = 0;
 	RUN = 1;
 	JUMP = 2;
-	LAND = 3;
-	CROUCH = 4;
-	CRAWL = 5;
-	ROLLING = 6;
-	SKILL = 7;
-	SUBSKILL = 8;
-	DEATH = 9;
-	TMP = 10;
+	FALL = 3;
+	LAND = 4;
+	CROUCH = 5;
+	CRAWL = 6;
+	ROLLING = 7;
+	SKILL = 8;
+	SUBSKILL = 9;
+	DEATH = 10;
+	TMP = 11;
 }
 
 enum MoveDir

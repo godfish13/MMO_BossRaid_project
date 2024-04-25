@@ -20,10 +20,11 @@ namespace Assets.Scripts.Controllers
 
         protected override void MainSkill()
         {
-            if (Input.GetKey(KeyCode.X))
+            if (Input.GetKey(KeyCode.X)) // 착지모션중에는 스킬사용불가
             {
+                if (_isSkill == false)
+                    _isSkill = true;
                 State = CreatureState.Skill;
-                _coSkillCoolTimer = StartCoroutine("CoSkillCoolTimer", SkillData.SkillCoolTime);
             }
             else
             {
@@ -35,6 +36,13 @@ namespace Assets.Scripts.Controllers
         protected override void SubSkill()
         {
 
+        }
+
+        protected void AnimEvent_SkillFrameEnded()
+        {
+            if (_isSkill)
+                _isSkill = false;
+            // AnimEvent : Skill 애니메이션 끝나기 전까지 State변화 방지
         }
     }
 }
