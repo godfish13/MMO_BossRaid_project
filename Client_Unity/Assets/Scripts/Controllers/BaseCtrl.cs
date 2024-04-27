@@ -12,7 +12,7 @@ public class BaseCtrl : MonoBehaviour
     Animator _animator;
     SpriteRenderer _spriteRenderer;
     private Collider2D _collider;
-    private Rigidbody2D _rigidbody;
+    protected Rigidbody2D _rigidbody;
 
     public int ClassId = 0;
 
@@ -68,7 +68,7 @@ public class BaseCtrl : MonoBehaviour
     [SerializeField] Vector2 _input = new Vector2();    // 화살표 키입력
     Vector2 velocity;                  // 가속도에따른 속력
     float Gravity = 70.0f;        // 중력 가속도
-    bool _isGrounded = true;           // 땅에 붙어있는지 판별
+    public bool _isGrounded = true;           // 땅에 붙어있는지 판별
     bool _jumpable = true;  // 점프가능여부 + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
     protected bool _isSkill = false; // 스킬키 한번 누르면 스킬 사용도중에 x키를 떼도 애니메이션 끝까지 사용되도록 판정용
 
@@ -85,7 +85,7 @@ public class BaseCtrl : MonoBehaviour
         UpdateAnim();
     }
 
-    protected void BindData(int ClassId)    // Json파일 데이터 Stat과 Skill에 연결 // 기본 Human, 하위 클래스에서 ClassId 변경해서 쓰기
+    protected void BindData(int ClassId)    // Json파일 데이터 Stat과 Skill에 연결 // 기본 Human, 하위 클래스에서 ClassId 변경
     {
         Stat HumanStatData = null;
         Skill HumanSkillData = null;
@@ -119,6 +119,7 @@ public class BaseCtrl : MonoBehaviour
         UpdateCtrl();
     }
 
+    #region Animation
     protected void UpdateAnim()
     {
         if (_animator == null || _spriteRenderer == null)   // 각각이 아직 초기화 안된상태면 return
@@ -161,6 +162,7 @@ public class BaseCtrl : MonoBehaviour
                 break;
         }
     }
+    #endregion
 
     #region UpdateCtrl series
     protected virtual void UpdateCtrl()
@@ -247,8 +249,6 @@ public class BaseCtrl : MonoBehaviour
 
     private void UpdateSubSkill()
     {
-        MoveWhileSkill();
-        MainSkill();
         SubSkill();
     }
 
@@ -258,6 +258,7 @@ public class BaseCtrl : MonoBehaviour
     }
     #endregion
 
+    #region Get Arrow Input
     protected void GetDirInput()  // 키 입력 시 상태 지정
     {
         // 좌우이동 입력
@@ -285,6 +286,7 @@ public class BaseCtrl : MonoBehaviour
         if (_input.x == 0 && _input.y == 0 && _isGrounded && _jumpable && State != CreatureState.Skill)
             State = CreatureState.Idle;     // State Change flag
     }
+    #endregion
 
     #region Move
     protected void Move()
@@ -439,11 +441,13 @@ public class BaseCtrl : MonoBehaviour
     protected virtual void MainSkill()
     {
         // Class 별 개별구현
+        Debug.Log("No MainSkill implemented");
     }
 
     protected virtual void SubSkill()
     {
         // Class 별 개별구현
+        Debug.Log("No SubSkill implemented");
     }
     #endregion
 
