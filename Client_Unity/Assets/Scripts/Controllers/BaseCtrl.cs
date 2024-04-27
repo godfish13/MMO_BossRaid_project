@@ -66,10 +66,9 @@ public class BaseCtrl : MonoBehaviour
     }
 
     [SerializeField] Vector2 _input = new Vector2();    // 화살표 키입력
-    Vector2 velocity;                  // 가속도에따른 속력
+    protected Vector2 velocity;                  // 가속도에따른 속력
     float Gravity = 70.0f;        // 중력 가속도
     public bool _isGrounded = true;           // 땅에 붙어있는지 판별
-    bool _jumpable = true;  // 점프가능여부 + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
     protected bool _isSkill = false; // 스킬키 한번 누르면 스킬 사용도중에 x키를 떼도 애니메이션 끝까지 사용되도록 판정용
 
     protected virtual void Init()
@@ -205,7 +204,6 @@ public class BaseCtrl : MonoBehaviour
                 UpdateSkill();
                 break;
             case CreatureState.Subskill:
-                GetDirInput();
                 UpdateSubSkill();
                 break;
             case CreatureState.Death:
@@ -247,9 +245,11 @@ public class BaseCtrl : MonoBehaviour
         SubSkill();
     }
 
-    private void UpdateSubSkill()
+    private void UpdateSubSkill()     // SubSkill은 사용중에 다른 행동 불가
     {
         SubSkill();
+        Fall();
+        BrakeIfSubSkill();    // SubSkill 사용하면 Brake
     }
 
     private void UpdateDeath()
@@ -258,7 +258,7 @@ public class BaseCtrl : MonoBehaviour
     }
     #endregion
 
-    #region Get Arrow Input
+    #region Get Arrow Input // MyCtrl로 이전 예정
     protected void GetDirInput()  // 키 입력 시 상태 지정
     {
         // 좌우이동 입력
@@ -292,21 +292,21 @@ public class BaseCtrl : MonoBehaviour
     protected void Move()
     {
         velocity = _rigidbody.velocity; // 현재 속도 tmp저장
-        
+
         if (_input.x == 0)   // 좌우 입력 없을 시 브레이크
         {
             if (_isGrounded == false)
                 State = CreatureState.Fall;
 
-            velocity.x = Mathf.MoveTowards(velocity.x, 0, Stat.Acceleration * 2 * Time.fixedDeltaTime);
-            // rg의 x속도 가속도*3만큼 0까지 감속
+            velocity.x = Mathf.MoveTowards(velocity.x, 0, Stat.Acceleration * 10 * Time.fixedDeltaTime);
+            // rg의 x속도 가속도*2로 0까지 감속
 
             if (_isGrounded && _input.y == -1)
                 State = CreatureState.Crouch;   // State Change flag
         }
         else  // 입력 있을 시 가속
         {
-            if (_isGrounded && _jumpable)    // 점프 후 착지시 잠깐 가속 무시
+            if (_isGrounded && _jumpable)    // 점프 후 착지시 잠깐 가속 무시 + 점프쿨타임동안 Land 모션 유지
             {
                 if (_input.y == -1) // 기어다니고 있으면 이동속도 하락
                 {
@@ -322,7 +322,7 @@ public class BaseCtrl : MonoBehaviour
             }
             else if (_isGrounded == false)
             {
-                if (_isSkill == false)      // 점프 중 스킬쓰고 쭉 떨어지는 경우
+                if (_isSkill == false)      // 점프 중 스킬쓰고 애니메이션이 끝난 이후 쭉 떨어지는 경우
                     State = CreatureState.Fall; // State Change flag
                 velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed, Stat.Acceleration * 0.5f * Time.fixedDeltaTime);
                 // 체공중일 시 가속도 절반
@@ -350,14 +350,23 @@ public class BaseCtrl : MonoBehaviour
             }
             else
             {
-                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed * 0.25f, Stat.Acceleration * 0.25f * Time.fixedDeltaTime);
-                // 스킬쓰며 체공중일 시 가속도 1/4
+                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed, Stat.Acceleration * 0.5f * Time.fixedDeltaTime);
+                // 스킬쓰며 체공중일 시 이동속도 절반
             }
         }
 
         _rigidbody.velocity = velocity;   // 현재 속도 조절
     }
 
+    private void BrakeIfSubSkill()  // SubSkill 사용중이면 좌우이동 정지
+    {
+        if (State == CreatureState.Subskill && _isGrounded)
+        {
+            velocity.x = Mathf.MoveTowards(velocity.x, 0, Stat.Acceleration * Time.fixedDeltaTime);
+            _rigidbody.velocity = velocity;
+        }
+        // rg의 x속도 가속도*2로 0까지 감속
+    }
     #endregion
 
     #region Jump
@@ -421,7 +430,7 @@ public class BaseCtrl : MonoBehaviour
             _platformCollider = collision.collider;
             _isGrounded = true;
       
-            if (Input.GetKey(KeyCode.X) == false)
+            if (Input.GetKey(KeyCode.X) == false && State != CreatureState.Subskill)    // 스킬들 사용중에는 Land모션 재생 x
                 State = CreatureState.Land; // State Change flag
             //Debug.Log("Landed");
             _coJumpCoolTimer = StartCoroutine("CoJumpCoolTimer", SkillData.JumpCoolTime);     // 착지 후 점프 0.1초 쿨타임 (애니메이션 꼬임 문제 방지)
@@ -441,20 +450,26 @@ public class BaseCtrl : MonoBehaviour
     protected virtual void MainSkill()
     {
         // Class 별 개별구현
-        Debug.Log("No MainSkill implemented");
+        if (Input.GetKey(KeyCode.X))
+        {
+            Debug.Log("No MainSkill implemented");
+        }
     }
 
     protected virtual void SubSkill()
     {
         // Class 별 개별구현
-        Debug.Log("No SubSkill implemented");
+        if (Input.GetKey(KeyCode.A))
+        {
+            Debug.Log("No SubSkill implemented");
+        }
     }
     #endregion
 
     #region CoolTimes
     // Jump
+    bool _jumpable = true;  // 점프가능여부(쿨타임) + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
     private Coroutine _coJumpCoolTimer;
-
     IEnumerator CoJumpCoolTimer(float time)
     {
         _jumpable = false;
@@ -464,7 +479,14 @@ public class BaseCtrl : MonoBehaviour
     }
 
     // SKill
-    
-
+    public bool _isSubSkillOn = true;
+    protected Coroutine _coSubSkillCoolTimer;
+    IEnumerator CoSubSkillCoolTimer(float time)
+    {
+        _isSubSkillOn = false;
+        yield return new WaitForSeconds(time);
+        _isSubSkillOn = true;
+        _coSubSkillCoolTimer = null;
+    }
     #endregion
 }

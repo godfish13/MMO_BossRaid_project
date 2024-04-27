@@ -6,7 +6,7 @@
       "SkillDamage": "10",
       "SkillCoolTime": "0.3f",
       "SubSkillDamage": "100",
-      "SubSkillCoolTime": "10.0f",
+      "SubSkillCoolTime": "3.0f",
       "JumpPower": "1000.0f",
       "JumpCoolTime": "0.1f"
     },
