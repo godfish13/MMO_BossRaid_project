@@ -14,12 +14,12 @@ public interface ILoader<key, value>            // DataContents에서 활용
 public class DataMgr
 {
     public Dictionary<int, Stat> StatDictionary { get; private set; } = new Dictionary<int, Stat>();
-    public Dictionary<int, SkillInfo> SkillDictionary { get; private set; } = new Dictionary<int, SkillInfo>();
+    public Dictionary<int, Skill> SkillDictionary { get; private set; } = new Dictionary<int, Skill>();
 
     public void init()
     {
         StatDictionary = LoadJson<StatData, int, Stat>("StatData").MakeDict();
-        SkillDictionary = LoadJson<SkillData, int, SkillInfo>("SkillData").MakeDict();
+        SkillDictionary = LoadJson<SkillData, int, Skill>("SkillData").MakeDict();
     }
 
     Loader LoadJson<Loader, key, value>(string path) where Loader : ILoader<key, value>

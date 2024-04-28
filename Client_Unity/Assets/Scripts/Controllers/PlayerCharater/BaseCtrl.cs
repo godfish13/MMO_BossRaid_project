@@ -91,7 +91,7 @@ public class BaseCtrl : MonoBehaviour
     protected void BindData(int ClassId)    // Json파일 데이터 Stat과 Skill에 연결 // 기본 Human, 하위 클래스에서 ClassId 변경
     {
         Stat HumanStatData = null;
-        SkillInfo HumanSkillData = null;
+        Skill HumanSkillData = null;
 
         if (Managers.dataMgr.StatDictionary.TryGetValue(ClassId, out HumanStatData))
         {
@@ -398,7 +398,7 @@ public class BaseCtrl : MonoBehaviour
                 if (_input.y == -1) // 기어다니고 있으면 이동속도 하락
                 {
                     State = CreatureState.Crawl;    // State Change flag
-                    velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed * 0.3f, Stat.Acceleration * 0.3f * Time.fixedDeltaTime);
+                    velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed * 0.3f, Stat.Acceleration * Time.fixedDeltaTime);
                 }
                 else
                 {
