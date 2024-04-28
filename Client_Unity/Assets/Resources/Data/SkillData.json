@@ -4,41 +4,41 @@
       "ClassId": "0",
       "Class": "Human",
       "SkillDamage": "10",
-      "SkillCoolTime": "0.3f",
+      "SkillCoolTime": "0.3",
       "SubSkillDamage": "100",
-      "SubSkillCoolTime": "3.0f",
-      "JumpPower": "1000.0f",
-      "JumpCoolTime": "0.1f"
+      "SubSkillCoolTime": "3.0",
+      "JumpPower": "1000.0",
+      "JumpCoolTime": "0.1"
     },
     {
       "ClassId": "1",
       "Class": "Elf",
       "SkillDamage": "10",
-      "SkillCoolTime": "0.4f",
+      "SkillCoolTime": "0.4",
       "SubSkillDamage": "100",
-      "SubSkillCoolTime": "10.0f",
-      "JumpPower": "1000.0f",
-      "JumpCoolTime": "0.05f"
+      "SubSkillCoolTime": "10.0",
+      "JumpPower": "1000.0",
+      "JumpCoolTime": "0.05"
     },
     {
       "ClassId": "2",
       "Class": "Furry",
       "SkillDamage": "10",
-      "SkillCoolTime": "0.4f",
+      "SkillCoolTime": "0.4",
       "SubSkillDamage": "100",
-      "SubSkillCoolTime": "10.0f",
-      "JumpPower": "1000.0f",
-      "JumpCoolTime": "0.05f"
+      "SubSkillCoolTime": "10.0",
+      "JumpPower": "1000.0",
+      "JumpCoolTime": "0.05"
     },
     {
       "ClassId": "3",
       "Class": "Lizard",
       "SkillDamage": "10",
-      "SkillCoolTime": "0.4f",
+      "SkillCoolTime": "0.4",
       "SubSkillDamage": "100",
-      "SubSkillCoolTime": "10.0f",
-      "JumpPower": "1000.0f",
-      "JumpCoolTime": "0.05f"
+      "SubSkillCoolTime": "10.0",
+      "JumpPower": "1000.0",
+      "JumpCoolTime": "0.05"
     }
   ]
 }

@@ -33,16 +33,17 @@ namespace Google.Protobuf.Protocol {
             "bmZvEg8KB2NsYXNzSWQYASABKAUSDQoFY2xhc3MYAiABKAkSDQoFbWF4SHAY",
             "AyABKAUSCgoCaHAYBCABKAUSEAoIbWF4U3BlZWQYBSABKAISFAoMYWNjZWxl",
             "cmF0aW9uGAYgASgCEiMKBnNraWxscxgHIAEoCzITLlByb3RvY29sLlNraWxs",
-            "SW5mbyKSAQoJU2tpbGxJbmZvEhMKC3NraWxsRGFtYWdlGAEgASgFEhUKDXNr",
-            "aWxsQ29vbFRpbWUYAiABKAISFgoOc3ViU2tpbGxEYW1hZ2UYAyABKAUSGAoQ",
-            "c3ViU2tpbGxDb29sVGltZRgEIAEoAhIRCglqdW1wUG93ZXIYBSABKAISFAoM",
-            "anVtcENvb2xUaW1lGAYgASgCIg4KDFBvc2l0aW9uSW5mbyolCgVNc2dJZBIQ",
-            "CgxTX0VOVEVSX0dBTUUQABIKCgZDX01PVkUQASqRAQoNQ3JlYXR1cmVTdGF0",
-            "ZRIICgRJRExFEAASBwoDUlVOEAESCAoESlVNUBACEggKBEZBTEwQAxIICgRM",
-            "QU5EEAQSCgoGQ1JPVUNIEAUSCQoFQ1JBV0wQBhILCgdST0xMSU5HEAcSCQoF",
-            "U0tJTEwQCBIMCghTVUJTS0lMTBAJEgkKBURFQVRIEAoSBwoDVE1QEAsqHgoH",
-            "TW92ZURpchIJCgVSSUdIVBAAEggKBExFRlQQAUIbqgIYR29vZ2xlLlByb3Rv",
-            "YnVmLlByb3RvY29sYgZwcm90bzM="));
+            "SW5mbyKyAQoJU2tpbGxJbmZvEg8KB2NsYXNzSWQYASABKAUSDQoFY2xhc3MY",
+            "AiABKAkSEwoLc2tpbGxEYW1hZ2UYAyABKAUSFQoNc2tpbGxDb29sVGltZRgE",
+            "IAEoAhIWCg5zdWJTa2lsbERhbWFnZRgFIAEoBRIYChBzdWJTa2lsbENvb2xU",
+            "aW1lGAYgASgCEhEKCWp1bXBQb3dlchgHIAEoAhIUCgxqdW1wQ29vbFRpbWUY",
+            "CCABKAIiDgoMUG9zaXRpb25JbmZvKiUKBU1zZ0lkEhAKDFNfRU5URVJfR0FN",
+            "RRAAEgoKBkNfTU9WRRABKpEBCg1DcmVhdHVyZVN0YXRlEggKBElETEUQABIH",
+            "CgNSVU4QARIICgRKVU1QEAISCAoERkFMTBADEggKBExBTkQQBBIKCgZDUk9V",
+            "Q0gQBRIJCgVDUkFXTBAGEgsKB1JPTExJTkcQBxIJCgVTS0lMTBAIEgwKCFNV",
+            "QlNLSUxMEAkSCQoFREVBVEgQChIHCgNUTVAQCyoeCgdNb3ZlRGlyEgkKBVJJ",
+            "R0hUEAASCAoETEVGVBABQhuqAhhHb29nbGUuUHJvdG9idWYuUHJvdG9jb2xi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.MoveDir), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -50,7 +51,7 @@ namespace Google.Protobuf.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Move), global::Google.Protobuf.Protocol.C_Move.Parser, new[]{ "Tmp" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ObjectInfo), global::Google.Protobuf.Protocol.ObjectInfo.Parser, new[]{ "ObjectId", "Name", "PosInfo", "StatInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.StatInfo), global::Google.Protobuf.Protocol.StatInfo.Parser, new[]{ "ClassId", "Class", "MaxHp", "Hp", "MaxSpeed", "Acceleration", "Skills" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.SkillInfo), global::Google.Protobuf.Protocol.SkillInfo.Parser, new[]{ "SkillDamage", "SkillCoolTime", "SubSkillDamage", "SubSkillCoolTime", "JumpPower", "JumpCoolTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.SkillInfo), global::Google.Protobuf.Protocol.SkillInfo.Parser, new[]{ "ClassId", "Class", "SkillDamage", "SkillCoolTime", "SubSkillDamage", "SubSkillCoolTime", "JumpPower", "JumpCoolTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PositionInfo), global::Google.Protobuf.Protocol.PositionInfo.Parser, null, null, null, null, null)
           }));
     }
@@ -1245,6 +1246,8 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SkillInfo(SkillInfo other) : this() {
+      classId_ = other.classId_;
+      class_ = other.class_;
       skillDamage_ = other.skillDamage_;
       skillCoolTime_ = other.skillCoolTime_;
       subSkillDamage_ = other.subSkillDamage_;
@@ -1260,8 +1263,32 @@ namespace Google.Protobuf.Protocol {
       return new SkillInfo(this);
     }
 
+    /// <summary>Field number for the "classId" field.</summary>
+    public const int ClassIdFieldNumber = 1;
+    private int classId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ClassId {
+      get { return classId_; }
+      set {
+        classId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "class" field.</summary>
+    public const int ClassFieldNumber = 2;
+    private string class_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Class {
+      get { return class_; }
+      set {
+        class_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "skillDamage" field.</summary>
-    public const int SkillDamageFieldNumber = 1;
+    public const int SkillDamageFieldNumber = 3;
     private int skillDamage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1273,7 +1300,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "skillCoolTime" field.</summary>
-    public const int SkillCoolTimeFieldNumber = 2;
+    public const int SkillCoolTimeFieldNumber = 4;
     private float skillCoolTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1285,7 +1312,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "subSkillDamage" field.</summary>
-    public const int SubSkillDamageFieldNumber = 3;
+    public const int SubSkillDamageFieldNumber = 5;
     private int subSkillDamage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1297,7 +1324,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "subSkillCoolTime" field.</summary>
-    public const int SubSkillCoolTimeFieldNumber = 4;
+    public const int SubSkillCoolTimeFieldNumber = 6;
     private float subSkillCoolTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1309,7 +1336,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "jumpPower" field.</summary>
-    public const int JumpPowerFieldNumber = 5;
+    public const int JumpPowerFieldNumber = 7;
     private float jumpPower_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1321,7 +1348,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "jumpCoolTime" field.</summary>
-    public const int JumpCoolTimeFieldNumber = 6;
+    public const int JumpCoolTimeFieldNumber = 8;
     private float jumpCoolTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1347,6 +1374,8 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ClassId != other.ClassId) return false;
+      if (Class != other.Class) return false;
       if (SkillDamage != other.SkillDamage) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SkillCoolTime, other.SkillCoolTime)) return false;
       if (SubSkillDamage != other.SubSkillDamage) return false;
@@ -1360,6 +1389,8 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (ClassId != 0) hash ^= ClassId.GetHashCode();
+      if (Class.Length != 0) hash ^= Class.GetHashCode();
       if (SkillDamage != 0) hash ^= SkillDamage.GetHashCode();
       if (SkillCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SkillCoolTime);
       if (SubSkillDamage != 0) hash ^= SubSkillDamage.GetHashCode();
@@ -1384,28 +1415,36 @@ namespace Google.Protobuf.Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SkillDamage != 0) {
+      if (ClassId != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(ClassId);
+      }
+      if (Class.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Class);
+      }
+      if (SkillDamage != 0) {
+        output.WriteRawTag(24);
         output.WriteInt32(SkillDamage);
       }
       if (SkillCoolTime != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(37);
         output.WriteFloat(SkillCoolTime);
       }
       if (SubSkillDamage != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteInt32(SubSkillDamage);
       }
       if (SubSkillCoolTime != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(53);
         output.WriteFloat(SubSkillCoolTime);
       }
       if (JumpPower != 0F) {
-        output.WriteRawTag(45);
+        output.WriteRawTag(61);
         output.WriteFloat(JumpPower);
       }
       if (JumpCoolTime != 0F) {
-        output.WriteRawTag(53);
+        output.WriteRawTag(69);
         output.WriteFloat(JumpCoolTime);
       }
       if (_unknownFields != null) {
@@ -1418,28 +1457,36 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SkillDamage != 0) {
+      if (ClassId != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(ClassId);
+      }
+      if (Class.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Class);
+      }
+      if (SkillDamage != 0) {
+        output.WriteRawTag(24);
         output.WriteInt32(SkillDamage);
       }
       if (SkillCoolTime != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(37);
         output.WriteFloat(SkillCoolTime);
       }
       if (SubSkillDamage != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteInt32(SubSkillDamage);
       }
       if (SubSkillCoolTime != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(53);
         output.WriteFloat(SubSkillCoolTime);
       }
       if (JumpPower != 0F) {
-        output.WriteRawTag(45);
+        output.WriteRawTag(61);
         output.WriteFloat(JumpPower);
       }
       if (JumpCoolTime != 0F) {
-        output.WriteRawTag(53);
+        output.WriteRawTag(69);
         output.WriteFloat(JumpCoolTime);
       }
       if (_unknownFields != null) {
@@ -1452,6 +1499,12 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (ClassId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ClassId);
+      }
+      if (Class.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Class);
+      }
       if (SkillDamage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillDamage);
       }
@@ -1481,6 +1534,12 @@ namespace Google.Protobuf.Protocol {
     public void MergeFrom(SkillInfo other) {
       if (other == null) {
         return;
+      }
+      if (other.ClassId != 0) {
+        ClassId = other.ClassId;
+      }
+      if (other.Class.Length != 0) {
+        Class = other.Class;
       }
       if (other.SkillDamage != 0) {
         SkillDamage = other.SkillDamage;
@@ -1516,26 +1575,34 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            SkillDamage = input.ReadInt32();
+            ClassId = input.ReadInt32();
             break;
           }
-          case 21: {
-            SkillCoolTime = input.ReadFloat();
+          case 18: {
+            Class = input.ReadString();
             break;
           }
           case 24: {
-            SubSkillDamage = input.ReadInt32();
+            SkillDamage = input.ReadInt32();
             break;
           }
           case 37: {
-            SubSkillCoolTime = input.ReadFloat();
+            SkillCoolTime = input.ReadFloat();
             break;
           }
-          case 45: {
-            JumpPower = input.ReadFloat();
+          case 40: {
+            SubSkillDamage = input.ReadInt32();
             break;
           }
           case 53: {
+            SubSkillCoolTime = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            JumpPower = input.ReadFloat();
+            break;
+          }
+          case 69: {
             JumpCoolTime = input.ReadFloat();
             break;
           }
@@ -1555,26 +1622,34 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            SkillDamage = input.ReadInt32();
+            ClassId = input.ReadInt32();
             break;
           }
-          case 21: {
-            SkillCoolTime = input.ReadFloat();
+          case 18: {
+            Class = input.ReadString();
             break;
           }
           case 24: {
-            SubSkillDamage = input.ReadInt32();
+            SkillDamage = input.ReadInt32();
             break;
           }
           case 37: {
-            SubSkillCoolTime = input.ReadFloat();
+            SkillCoolTime = input.ReadFloat();
             break;
           }
-          case 45: {
-            JumpPower = input.ReadFloat();
+          case 40: {
+            SubSkillDamage = input.ReadInt32();
             break;
           }
           case 53: {
+            SubSkillCoolTime = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            JumpPower = input.ReadFloat();
+            break;
+          }
+          case 69: {
             JumpCoolTime = input.ReadFloat();
             break;
           }

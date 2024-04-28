@@ -3,7 +3,7 @@ guid: 48392f9ed8f3fc7489a4d3f81af2a273
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -3075,12 +3074,12 @@ TextureImporter:
       name: Explosives_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 24
         y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3096,12 +3095,12 @@ TextureImporter:
       name: Explosives_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 86
         y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3117,12 +3116,12 @@ TextureImporter:
       name: Explosives_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 143
         y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 34
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3138,12 +3137,12 @@ TextureImporter:
       name: Explosives_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 207
         y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 31
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3159,12 +3158,12 @@ TextureImporter:
       name: Explosives_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 268
         y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 35
+        height: 31
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3180,12 +3179,12 @@ TextureImporter:
       name: Explosives_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 334
         y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 34
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3201,12 +3200,12 @@ TextureImporter:
       name: Explosives_6
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 397
+        y: 6
+        width: 35
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.49}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3229,152 +3228,152 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      GoldenChestbox_Idle_1: -775365907
+      SilverChestbox_Idle_4: -1059326858
+      TombstoneB_0: 750261631
+      MediumBox_4: -728391713
+      SilverChestbox_Open_5: -1395989507
+      WoodenChestbox_Open_0: -382106804
+      SilverChestbox_Open_1: 1695787819
+      SmallBox_6: -826192436
       Barrel_0: -1516297784
+      SplashB_1: -2127318696
+      SilverChestbox_Open_2: 1294573950
+      TombstoneB_6: 285642259
+      Coffin_4: -1595825257
+      SilverChestbox_Idle_0: 198402727
+      TombstoneB_3: 2146823083
+      Jug_3: -487724855
+      LargeBarrel_4: -1333331750
+      Coffin_6: 1612862283
+      Coffin_5: 24136211
+      SmallBox_3: -1745754512
+      GoldenChestbox_Idle_3: -355677696
+      GoldenChestbox_Idle_2: 704341287
+      SplashA_3: 646980739
+      Explosives_6: 873768808
+      WoodenChestbox_Idle_3: 566892004
+      Explosives_1: -1526189317
+      SilverChestbox_Open_4: 1472193516
+      Vase_6: -234443891
+      TombstoneB_5: -992534564
+      SplashB_3: -712526602
+      SilverChestbox_Idle_2: 1677126401
+      GoldenChestbox_Open_0: 176661915
+      LargeBarrel_3: -578801660
+      TombstoneA_5: -1863696677
+      WoodenChestbox_Idle_2: -521278875
+      TombstoneC_6: -1544982520
+      Bucket_6: -108045788
+      SmallBox_2: 191152400
+      Bookcase_3: 1176256311
+      WoodenChestbox_Idle_4: -778918445
+      Urn_4: 842464088
+      Jug_6: -1830922548
+      SplashB_2: -831056128
+      MediumBox_5: -1005404367
+      Bucket_0: -2086016272
+      TombstoneA_4: 1407030886
+      Explosives_2: -1312037734
+      Coffin_2: -1892905563
+      Urn_6: 1716949168
+      TombstoneB_4: 1761045857
+      LargeBarrel_5: -1821315205
+      SplashB_0: -630193615
+      Urn_3: -314950008
+      Bucket_4: 449947096
+      Explosives_5: -1115908215
       Barrel_1: -9990967
+      Coffin_3: 2013085860
+      MediumBox_1: 480265261
+      Vase_2: -1489766986
+      TombstoneC_1: 1364132305
+      SplashA_1: -1595518912
+      TombstoneC_2: 706893354
+      WoodenChestbox_Open_5: -1050101409
+      Explosives_0: 989456832
+      Barrel_6: -1029411994
+      Barrel_5: -527988990
+      Urn_0: -1403197914
+      WoodenChestbox_Idle_0: -566615186
+      Jug_1: -1544904925
+      WoodenChestbox_Idle_1: -765429016
+      Coffin_0: -1112857255
+      Jug_0: 1613454298
+      LargeBox_1: -1661113397
+      WoodenChestbox_Open_3: 642435712
+      GoldenChestbox_Idle_0: 78971553
+      SplashA_2: -22912275
+      Barrel_4: -1052684180
+      SilverChestbox_Idle_1: 1846179414
+      LargeBarrel_0: -1272494649
+      TombstoneA_1: -602029218
+      WoodenChestbox_Open_2: -326507282
       Barrel_2: -726368827
       Barrel_3: 241689267
-      Barrel_4: -1052684180
-      Barrel_5: -527988990
-      Barrel_6: -1029411994
-      Bookcase_0: 1837721152
-      Bookcase_1: 295545101
-      Bookcase_2: 2124304628
-      Bookcase_3: 1176256311
-      Bookcase_4: -463087173
-      Bookcase_5: -1113196669
-      Bookcase_6: -1419216300
-      Bucket_0: -2086016272
       Bucket_1: 1379740059
-      Bucket_2: -1988645568
-      Bucket_3: 1234349914
-      Bucket_4: 449947096
-      Bucket_5: -552875329
-      Bucket_6: -108045788
-      Coffin_0: -1112857255
-      Coffin_1: 1199932943
-      Coffin_2: -1892905563
-      Coffin_3: 2013085860
-      Coffin_4: -1595825257
-      Coffin_5: 24136211
-      Coffin_6: 1612862283
-      Explosives_0: 989456832
-      Explosives_1: -1526189317
-      Explosives_2: -1312037734
-      Explosives_3: 656543726
-      Explosives_4: -1661853903
-      Explosives_5: -1115908215
-      Explosives_6: 873768808
-      GoldenChestbox_Idle_0: 78971553
-      GoldenChestbox_Idle_1: -775365907
-      GoldenChestbox_Idle_2: 704341287
-      GoldenChestbox_Idle_3: -355677696
-      GoldenChestbox_Idle_4: -1169772650
-      GoldenChestbox_Open_0: 176661915
-      GoldenChestbox_Open_1: 847048725
-      GoldenChestbox_Open_2: 26773850
       GoldenChestbox_Open_3: 895549515
-      GoldenChestbox_Open_4: -1729094638
-      GoldenChestbox_Open_5: 183236383
-      Jug_0: 1613454298
-      Jug_1: -1544904925
-      Jug_2: -1468716063
-      Jug_3: -487724855
-      Jug_4: 339841447
-      Jug_5: 2073204819
-      Jug_6: -1830922548
-      LargeBarrel_0: -1272494649
+      MediumBox_6: -961151463
       LargeBarrel_1: -132038148
       LargeBarrel_2: -1855950574
-      LargeBarrel_3: -578801660
-      LargeBarrel_4: -1333331750
-      LargeBarrel_5: -1821315205
-      LargeBarrel_6: -757476015
-      LargeBox_0: -303129489
-      LargeBox_1: -1661113397
-      LargeBox_2: -52926015
-      LargeBox_3: -767831311
-      LargeBox_4: 1306032756
-      LargeBox_5: 1152685459
-      LargeBox_6: 789729436
-      MediumBox_0: 1182552448
-      MediumBox_1: 480265261
-      MediumBox_2: -748282722
-      MediumBox_3: 961969558
-      MediumBox_4: -728391713
-      MediumBox_5: -1005404367
-      MediumBox_6: -961151463
-      SilverChestbox_Idle_0: 198402727
-      SilverChestbox_Idle_1: 1846179414
-      SilverChestbox_Idle_2: 1677126401
-      SilverChestbox_Idle_3: 276590543
-      SilverChestbox_Idle_4: -1059326858
-      SilverChestbox_Open_0: -1983913286
-      SilverChestbox_Open_1: 1695787819
-      SilverChestbox_Open_2: 1294573950
-      SilverChestbox_Open_3: -2106062867
-      SilverChestbox_Open_4: 1472193516
-      SilverChestbox_Open_5: -1395989507
-      SmallBox_0: -957105946
       SmallBox_1: -1209646166
-      SmallBox_2: 191152400
-      SmallBox_3: -1745754512
-      SmallBox_4: -1453798345
+      LargeBox_4: 1306032756
+      LargeBox_0: -303129489
       SmallBox_5: -1502808210
-      SmallBox_6: -826192436
-      SplashA_0: -1744481997
-      SplashA_1: -1595518912
-      SplashA_2: -22912275
-      SplashA_3: 646980739
-      SplashB_0: -630193615
-      SplashB_1: -2127318696
-      SplashB_2: -831056128
-      SplashB_3: -712526602
-      TombstoneA_0: 810897458
-      TombstoneA_1: -602029218
-      TombstoneA_2: 1937403158
-      TombstoneA_3: 528701452
-      TombstoneA_4: 1407030886
-      TombstoneA_5: -1863696677
-      TombstoneA_6: -137501585
-      TombstoneB_0: 750261631
-      TombstoneB_1: 1369009563
-      TombstoneB_2: -80238346
-      TombstoneB_3: 2146823083
-      TombstoneB_4: 1761045857
-      TombstoneB_5: -992534564
-      TombstoneB_6: 285642259
-      TombstoneC_0: 633812471
-      TombstoneC_1: 1364132305
-      TombstoneC_2: 706893354
-      TombstoneC_3: -302767801
-      TombstoneC_4: -2080562274
-      TombstoneC_5: 2027455263
-      TombstoneC_6: -1544982520
-      Urn_0: -1403197914
-      Urn_1: 813972180
-      Urn_2: -1100553939
-      Urn_3: -314950008
-      Urn_4: 842464088
-      Urn_5: 2040045185
-      Urn_6: 1716949168
-      Vase_0: -2125119479
-      Vase_1: 920092712
-      Vase_2: -1489766986
-      Vase_3: -1924878746
-      Vase_4: -1645160160
-      Vase_5: 1379226994
-      Vase_6: -234443891
-      WoodenChestbox_Idle_0: -566615186
-      WoodenChestbox_Idle_1: -765429016
-      WoodenChestbox_Idle_2: -521278875
-      WoodenChestbox_Idle_3: 566892004
-      WoodenChestbox_Idle_4: -778918445
-      WoodenChestbox_Open_0: -382106804
+      LargeBox_2: -52926015
+      Jug_2: -1468716063
+      LargeBox_6: 789729436
+      GoldenChestbox_Open_4: -1729094638
       WoodenChestbox_Open_1: -894245740
-      WoodenChestbox_Open_2: -326507282
-      WoodenChestbox_Open_3: 642435712
+      SplashA_0: -1744481997
+      Urn_1: 813972180
+      LargeBarrel_6: -757476015
+      Vase_3: -1924878746
+      SilverChestbox_Open_0: -1983913286
+      Urn_2: -1100553939
+      LargeBox_3: -767831311
+      GoldenChestbox_Open_5: 183236383
       WoodenChestbox_Open_4: -700251881
-      WoodenChestbox_Open_5: -1050101409
+      Bucket_3: 1234349914
+      MediumBox_3: 961969558
+      TombstoneA_6: -137501585
+      Bookcase_6: -1419216300
+      Vase_5: 1379226994
+      TombstoneC_0: 633812471
+      SmallBox_0: -957105946
+      TombstoneC_5: 2027455263
+      TombstoneA_2: 1937403158
+      Bucket_5: -552875329
+      Explosives_3: 656543726
+      Bookcase_1: 295545101
+      SilverChestbox_Idle_3: 276590543
+      TombstoneB_2: -80238346
+      Explosives_4: -1661853903
+      TombstoneC_3: -302767801
+      GoldenChestbox_Open_1: 847048725
+      Bookcase_4: -463087173
+      Vase_1: 920092712
+      Bookcase_0: 1837721152
+      TombstoneA_0: 810897458
+      Bucket_2: -1988645568
+      GoldenChestbox_Idle_4: -1169772650
+      GoldenChestbox_Open_2: 26773850
+      Urn_5: 2040045185
+      LargeBox_5: 1152685459
+      SilverChestbox_Open_3: -2106062867
+      TombstoneA_3: 528701452
+      Jug_4: 339841447
+      Bookcase_5: -1113196669
+      Jug_5: 2073204819
+      MediumBox_0: 1182552448
+      Vase_4: -1645160160
+      Bookcase_2: 2124304628
+      TombstoneC_4: -2080562274
+      SmallBox_4: -1453798345
+      TombstoneB_1: 1369009563
+      MediumBox_2: -748282722
+      Vase_0: -2125119479
+      Coffin_1: 1199932943
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

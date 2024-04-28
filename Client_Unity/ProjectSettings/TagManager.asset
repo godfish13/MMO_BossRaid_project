@@ -15,9 +15,9 @@ TagManager:
   - Platform
   - Skill
   - Player
+  - PlayerHitBox
+  - Projectile
   - Monster
-  - 
-  - 
   - 
   - 
   - 

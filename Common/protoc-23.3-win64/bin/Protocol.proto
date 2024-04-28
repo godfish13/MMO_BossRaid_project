@@ -58,17 +58,18 @@ message StatInfo
 	int32 hp = 4;
 	float maxSpeed = 5;
 	float acceleration = 6;
-	SkillInfo skills = 7;
 }
 
 message SkillInfo
 {
-	int32 skillDamage = 1;
-	float skillCoolTime = 2;
-	int32 subSkillDamage = 3;
-	float subSkillCoolTime = 4;
-	float jumpPower = 5;
-	float jumpCoolTime = 6;
+	int32 classId = 1;
+	string class = 2;
+	int32 skillDamage = 3;
+	float skillCoolTime = 4;
+	int32 subSkillDamage = 5;
+	float subSkillCoolTime = 6;
+	float jumpPower = 7;
+	float jumpCoolTime = 8;
 }
 
 message PositionInfo

@@ -13,39 +13,19 @@ namespace Assets.Scripts.Controllers
 {
     class HumanCtrl : BaseCtrl          // MyCtrl_Human로 이름 변경?
     {
-        private BoxCollider2D[] BoxCollider2Ds;
         private BoxCollider2D SlashBox;
         private ParticleSystem SlashEffect;
+        private float BombThrowPower = 400.0f;
 
         protected override void Init()
         {
             ClassId = 0;
             SlashEffect = GetComponentInChildren<ParticleSystem>();
-            BoxCollider2Ds = GetComponentsInChildren<BoxCollider2D>();
-            SlashBox = BoxCollider2Ds[1];
+            SlashBox = GetComponentsInChildren<BoxCollider2D>()[2];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
             base.Init();
         }
 
         #region MainSkill
-        protected override void MainSkill()
-        {
-            if (Input.GetKey(KeyCode.X)) // 착지모션중에는 스킬사용불가
-            {
-                if (_isSkill == false)
-                    _isSkill = true;
-                State = CreatureState.Skill;
-
-                // Skill Packet Send Todo
-            }
-            else
-            {
-                if (State == CreatureState.Skill && _isSkill == false)
-                    State = CreatureState.Tmp;   // State Change flag
-
-                // Tmp Packet Send Todo
-            }
-        }
-
         private void AnimEvent_MainSkillSlashOn()
         {
             SlashBox.enabled = true;
@@ -72,26 +52,23 @@ namespace Assets.Scripts.Controllers
         private void OnTriggerEnter2D(Collider2D collision)
         {
             //_rigidbody.AddForce(new Vector3(transform.localScale.x * -ReBoundOffset, 0));
-            Debug.Log("Hitted!");       
+            Debug.Log("Hitted!");    
+            
+            // Todo Skill Packet Send
         }
         #endregion
 
-        #region SubSkill
-        protected override void SubSkill()
-        {
-            if (_isSubSkillOn && Input.GetKey(KeyCode.A)) // 한번 사용시 쿨타임동안 스킬사용불가
-            {
-                _coSubSkillCoolTimer = StartCoroutine("CoSubSkillCoolTimer", SkillData.SubSkillCoolTime);
-                State = CreatureState.Subskill;     // State Change flag
-
-                // Skill Packet Send Todo
-            }
-        }
-
+        #region SubSkill      
         private void AnimEvent_SubSkillThrowBomb()
         {
-            Debug.Log("Fire in the Hole!");
-            // Todo : instantiate Bomb, Bomb 피격판정 및 이펙트는 projectile 클래스로 분리해서 각 Bomb에 따로 적용
+            ThrowBomb();
+        }
+
+        private void ThrowBomb()
+        {
+            GameObject Bomb = Managers.resourceMgr.Instantiate("Projectiles/Explosive");
+            Bomb.transform.position = transform.position + new Vector3(1.0f * transform.localScale.x, 0.5f, 0);
+            Bomb.GetComponent<Rigidbody2D>().AddForce((Vector2.up + (Vector2.right * transform.localScale.x * 2)).normalized * BombThrowPower);
         }
 
         private void AnimEvent_SubSkillFrameEnded()
@@ -99,6 +76,8 @@ namespace Assets.Scripts.Controllers
             State = CreatureState.Tmp;  // State Change flag
             // AnimEvent : SubSkill 애니메이션 끝나기 전까지 상태변화 X
         }
+
+        // Hit 판정 OnTriggerEnter2D는 BombCtrl에 존재
         #endregion
     }
 }

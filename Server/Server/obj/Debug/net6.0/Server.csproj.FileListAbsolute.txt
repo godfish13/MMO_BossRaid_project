@@ -56,3 +56,4 @@ C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\refint\Ser
 C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.pdb
 C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.genruntimeconfig.cache
 C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\ref\Server.dll
+C:\Unity_Projects\MMO_BossRaid_project\Server\Server\obj\Debug\net6.0\Server.sourcelink.json

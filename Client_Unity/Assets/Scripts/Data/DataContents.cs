@@ -1,3 +1,4 @@
+using Google.Protobuf.Protocol;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,6 +37,8 @@ public class StatData : ILoader<int, Stat>
 [Serializable]
 public class Skill
 {
+    // public or [SerializeField] 선언해야지 JSON에서 데이터 받아올 수 있음
+    // 각 항목의 이름이랑 JSON 파일 내 항목의 이름이 꼭 같아야 데이터 받아올 수 있음  // 자료형 또한 주의!
     public int ClassId;
     public string Class;
     public int SkillDamage;
@@ -54,9 +57,23 @@ public class SkillData : ILoader<int, Skill>
     public Dictionary<int, Skill> MakeDict()
     {
         Dictionary<int, Skill> dict = new Dictionary<int, Skill>();
-        foreach (Skill skill in Skills)
-            dict.Add(skill.ClassId, skill);
+        foreach (Skill skillInfo in Skills)
+            dict.Add(skillInfo.ClassId, skillInfo);
         return dict;
     }
 }
+
+/*[Serializable]
+public class SkillData : ILoader<int, SkillInfo>
+{
+    public List<SkillInfo> Skills = new List<SkillInfo>();     // !!!!!!중요!!!!!! JSON파일에서 받아오려는 list와 이름이 꼭!!! 같아야함
+
+    public Dictionary<int, SkillInfo> MakeDict()
+    {
+        Dictionary<int, SkillInfo> dict = new Dictionary<int, SkillInfo>();
+        foreach (SkillInfo skillInfo in Skills)
+            dict.Add(skillInfo.ClassId, skillInfo);
+        return dict;
+    }
+}*/
 #endregion

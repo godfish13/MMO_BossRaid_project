@@ -14,12 +14,12 @@ namespace Server.Data
     public class DataMgr
     {
         public static Dictionary<int, StatInfo> StatDictionary { get; private set; } = new Dictionary<int, StatInfo>();
-        public static Dictionary<int, Skill> SkillDictionary { get; private set; } = new Dictionary<int, Skill>();
+        public static Dictionary<int, SkillInfo> SkillDictionary { get; private set; } = new Dictionary<int, SkillInfo>();
 
         public static void LoadData()
         {
             StatDictionary = LoadJson<StatData, int, StatInfo>("StatData").MakeDict();
-            SkillDictionary = LoadJson<SkillData, int, Skill>("SkillData").MakeDict();
+            SkillDictionary = LoadJson<SkillData, int, SkillInfo>("SkillData").MakeDict();
         }
 
         static Loader LoadJson<Loader, key, value>(string path) where Loader : ILoader<key, value>

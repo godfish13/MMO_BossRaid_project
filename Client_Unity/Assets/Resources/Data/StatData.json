@@ -6,7 +6,7 @@
       "MaxHp": "10",
       "Hp": "10",
       "MaxSpeed": "8",
-      "Acceleration": "40.0f"
+      "Acceleration": "40"
     },
     {
       "ClassId": "1",
@@ -14,7 +14,7 @@
       "MaxHp": "10",
       "Hp": "10",
       "MaxSpeed": "10",
-      "Acceleration": "40.0f"
+      "Acceleration": "40"
     },
     {
       "ClassId": "2",
@@ -22,7 +22,7 @@
       "MaxHp": "10",
       "Hp": "10",
       "MaxSpeed": "6",
-      "Acceleration": "40.0f"
+      "Acceleration": "40"
     },
     {
       "ClassId": "3",
@@ -30,7 +30,7 @@
       "MaxHp": "10",
       "Hp": "10",
       "MaxSpeed": "8",
-      "Acceleration": "40.0f"
+      "Acceleration": "40"
     }
   ]
 }
