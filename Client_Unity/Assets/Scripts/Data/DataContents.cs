@@ -5,6 +5,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 #region Stat
+[Serializable]
+public class StatData : ILoader<int, StatInfo>
+{
+    public List<StatInfo> Stats = new List<StatInfo>();     // !!!!!!중요!!!!!! JSON파일에서 받아오려는 list와 이름이 꼭!!! 같아야함
+
+    public Dictionary<int, StatInfo> MakeDict()
+    {
+        Dictionary<int, StatInfo> dict = new Dictionary<int, StatInfo>();
+        foreach (StatInfo statInfo in Stats)
+            dict.Add(statInfo.ClassId, statInfo);
+        return dict;
+    }
+}
+#endregion
+
+#region Skill
+[Serializable]
+public class SkillData : ILoader<int, SkillInfo>
+{
+    public List<SkillInfo> Skills = new List<SkillInfo>();     // !!!!!!중요!!!!!! JSON파일에서 받아오려는 list와 이름이 꼭!!! 같아야함
+
+    public Dictionary<int, SkillInfo> MakeDict()
+    {
+        Dictionary<int, SkillInfo> dict = new Dictionary<int, SkillInfo>();
+        foreach (SkillInfo skillInfo in Skills)
+            dict.Add(skillInfo.ClassId, skillInfo);
+        return dict;
+    }
+}
+#endregion
+
+/* Legacy) Data Modeling 방식
 [Serializable]      // 메모리에 들고있는 정보를 파일로 변환시키기 위해 필요한 선언 // 그냥 써라...
 public class Stat
 {
@@ -31,9 +63,7 @@ public class StatData : ILoader<int, Stat>
         return dict;
     }
 }
-#endregion
 
-#region Skill
 [Serializable]
 public class Skill
 {
@@ -62,4 +92,4 @@ public class SkillData : ILoader<int, Skill>
         return dict;
     }
 }
-#endregion
+*/

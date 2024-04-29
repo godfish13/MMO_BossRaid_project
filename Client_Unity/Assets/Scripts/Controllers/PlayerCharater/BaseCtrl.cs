@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro.EditorUtilities;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BaseCtrl : MonoBehaviour
@@ -90,8 +91,8 @@ public class BaseCtrl : MonoBehaviour
 
     protected void BindData(int ClassId)    // Json파일 데이터 Stat과 Skill에 연결 // 기본 Human, 하위 클래스에서 ClassId 변경
     {
-        Stat HumanStatData = null;
-        Skill HumanSkillData = null;
+        StatInfo HumanStatData = null;
+        SkillInfo HumanSkillData = null;
 
         if (Managers.dataMgr.StatDictionary.TryGetValue(ClassId, out HumanStatData))
         {

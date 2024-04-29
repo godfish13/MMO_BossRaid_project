@@ -34,19 +34,16 @@ namespace Assets.Scripts.Controllers
             SlashEffect.Play();
         }
 
-        private void AnimEvent_MainSkillSlashOff()
-        {
-            SlashBox.enabled = false;
-            SlashBox.transform.localPosition = new Vector2(0, 0);
-            // 위치 복귀
-            SlashEffect.Stop();
-        }
-
         private void AnimEvent_MainSkillFrameEnded()
         {
             if (_isSkill)
                 _isSkill = false;
             // AnimEvent : Skill 애니메이션 끝나기 전까지 State변화 방지
+
+            SlashBox.enabled = false;
+            SlashBox.transform.localPosition = new Vector2(0, 0);
+            // 위치 복귀
+            SlashEffect.Stop();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
