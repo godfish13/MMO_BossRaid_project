@@ -1,18 +1,15 @@
 ﻿using Google.Protobuf.Protocol;
 using Google.Protobuf;
 using ServerCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using Server.Game;
+using Server.Data;
 
 namespace Server   
 {
-    class ClientSession : PacketSession // 실제로 각 상황에서 사용될 기능 구현     // Client에 앉혀둘 대리인
-    {                                         
+    public class ClientSession : PacketSession // 실제로 각 상황에서 사용될 기능 구현     // Client에 앉혀둘 대리인
+    {
+        public Player myPlayer { get; set; }	// 이 Session을 가진 Player
         public int Sessionid { get; set; }
 
         public void Send(IMessage packet)
@@ -27,11 +24,19 @@ namespace Server
             Array.Copy(packet.ToByteArray(), 0, sendBuffer, 4, size);						// 패킷 내용
 
             Send(new ArraySegment<byte>(sendBuffer));
+            //Console.WriteLine($"Send {packet}");
         }
 
         public override void OnConnected(EndPoint endPoint)
         {
             Console.WriteLine($"Client Session ({this.Sessionid}) OnConnected : {endPoint}");
+            myPlayer = ObjectMgr.Instance.Add<Player>();    // 플레이어 목록에 접속한 플레이어 넣고 자신이 대변하는 플레이어 기록
+
+            myPlayer.MySession = this;
+
+            GameRoom gameRoom = RoomMgr.Instance.Find(1);
+            gameRoom.Push(gameRoom.EnterGame, myPlayer);
+            Console.WriteLine($"{myPlayer.Class} has entered to GameRoom_{RoomMgr.Instance.Find(1).RoomId}");
         }
         
         public override void OnReceivePacket(ArraySegment<byte> buffer)
@@ -44,6 +49,10 @@ namespace Server
         public override void OnDisConnected(EndPoint endPoint)
         {
             SessionManager.instance.Remove(this);
+
+            GameRoom gameRoom = RoomMgr.Instance.Find(1);
+            gameRoom.Push(gameRoom.LeaveGame, myPlayer.CreatureId);
+
             Console.WriteLine($"OnDisConnected ({this.Sessionid}) : {endPoint}");
         }
 

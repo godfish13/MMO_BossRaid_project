@@ -11,8 +11,10 @@ public class Managers : MonoBehaviour
 
     #region Contents
     NetworkMgr _networkMgr = new NetworkMgr();
+    ObjectMgr _objecMgr = new ObjectMgr();
 
     public static NetworkMgr networkMgr { get { return Instance._networkMgr; } }
+    public static ObjectMgr objecMgr { get {  return Instance._objecMgr; } }
     #endregion
 
     DataMgr _dataMgr = new DataMgr();

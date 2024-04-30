@@ -4,17 +4,39 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro.EditorUtilities;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BaseCtrl : MonoBehaviour
 {
+    #region for Server Connection
+    [SerializeField] private int _id;
+    public int Id { get { return _id; } set { _id = value; } }
+
+    private PositionInfo _positionInfo = new PositionInfo();
+    public PositionInfo PosInfo             // State, X, Y
+    {
+        get { return _positionInfo; }
+        set
+        {
+            if (_positionInfo.Equals(value))    // positionInfo에 변화가 생길때만 Set
+                return;
+
+            _positionInfo = value;
+        }
+    }
+
+    public void SyncPos()
+    {
+        State = PosInfo.State;
+        transform.position = new Vector2(PosInfo.PosX, PosInfo.PosY);
+    }
+    #endregion
+
     SpriteRenderer _spriteRenderer;
     Animator _animator;
     protected Rigidbody2D _rigidbody;
     private Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정
-    private Collider2D _hitBoxCollider;     // 플레이어 피격판정 히트박스
+    
 
     public int ClassId = 0;
 
@@ -68,7 +90,7 @@ public class BaseCtrl : MonoBehaviour
         }
     }
 
-    [SerializeField] Vector2 _input = new Vector2();    // 화살표 키입력
+    [SerializeField] protected Vector2 _input = new Vector2();    // 화살표 키입력
     protected Vector2 velocity;                  // 가속도에따른 속력
     float Gravity = 70.0f;        // 중력 가속도
     public bool _isGrounded = true;           // 땅에 붙어있는지 판별
@@ -82,8 +104,7 @@ public class BaseCtrl : MonoBehaviour
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _hitBoxCollider = GetComponentsInChildren<Collider2D>()[1];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
-
+        
         BindData(ClassId);
 
         UpdateAnim();
@@ -212,164 +233,70 @@ public class BaseCtrl : MonoBehaviour
         }
     }
 
-    private void UpdateIdle()   // 이동, 구르기, MainSkill, SubSkill 가능
+    protected virtual void UpdateIdle()   // 이동, 구르기, MainSkill, SubSkill 가능
     {
         Move();
         Jump();
         Fall();
-        GetDirInput();
-        GetRollingInput();
-        GetSkillInput();
-        GetSubSkillInput();
     }
 
-    private void UpdateRun()    // 이동, 구르기, MainSkill, SubSkill 가능
+    protected virtual void UpdateRun()    // 이동, 구르기, MainSkill, SubSkill 가능
     {
         Move();
         Jump();
         Fall();
-        GetDirInput();
-        GetRollingInput();
-        GetSkillInput();
-        GetSubSkillInput();
     }
 
-    private void UpdateJump()    // 이동, MainSkill, SubSkill 가능
+    protected virtual void UpdateJump()    // 이동, MainSkill, SubSkill 가능
     {
         Move();
         Jump();
         Fall();
-        GetDirInput();
-        GetSkillInput();
-        GetSubSkillInput();
-    }
-        
-    private void UpdateFall()   // 이동, MainSkill, SubSkill 가능
-    {
-        Move();
-        Jump();
-        Fall();
-        GetDirInput();
-        GetSkillInput();
-        GetSubSkillInput();
     }
 
-    private void UpdateLand()   // 이동, MainSkill 가능
+    protected virtual void UpdateFall()   // 이동, MainSkill, SubSkill 가능
     {
         Move();
         Jump();
         Fall();
-        GetDirInput();
-        GetSkillInput();
     }
 
-    private void UpdateCrawl()  // 이동, 구르기 가능
+    protected virtual void UpdateLand()   // 이동, MainSkill 가능
     {
         Move();
         Jump();
         Fall();
-        GetDirInput();
-        GetRollingInput();
     }
 
-    private void UpdateRolling()     // 다른 행동 불가
+    protected virtual void UpdateCrawl()  // 이동, 구르기 가능
+    {
+        Move();
+        Jump();
+        Fall();
+    }
+
+    protected virtual void UpdateRolling()     // 다른 행동 불가
     {
         Fall();
         Rolling();
     }
 
-    private void UpdateSkill()  // 이동, 스킬 가능
+    protected virtual void UpdateSkill()  // 이동, 스킬 가능
     {
         MoveWhileSkill();
         JumpWhileSkill();
         Fall();
-        GetDirInput();
-        GetSkillInput();
-        GetSubSkillInput();
     }
 
-    private void UpdateSubSkill()     // 다른 행동 불가
+    protected virtual void UpdateSubSkill()     // 다른 행동 불가
     {
         Fall();
         BrakeIfSubSkill();    // SubSkill 사용하면 Brake
     }
 
-    private void UpdateDeath()
+    protected virtual void UpdateDeath()
     {
 
-    }
-    #endregion
-
-    #region Get Input // MyCtrl로 이전 예정
-    // Dirtection Input
-    protected void GetDirInput()  // 키 입력 시 상태 지정
-    {
-        // 좌우이동 입력
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            _input.x = -1;
-            transform.localScale = new Vector2(-1, 1);
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            _input.x = 1;
-            transform.localScale = new Vector2(1, 1);
-        }
-        else
-            _input.x = 0;
-
-        // 점프 입력
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.C))
-            _input.y = 1;
-        else if (Input.GetKey(KeyCode.DownArrow))
-            _input.y = -1;
-        else
-            _input.y = 0;       
-
-        if (_input.x == 0 && _input.y == 0 && _isGrounded && _jumpable && State != CreatureState.Skill && State != CreatureState.Rolling)
-            State = CreatureState.Idle;     // State Change flag
-    }
-
-    // Roll Input
-    protected void GetRollingInput()
-    {
-        // 구르기 입력
-        if (_isGrounded && _isRollingOn && Input.GetKey(KeyCode.Z))
-        {
-            State = CreatureState.Rolling;  // State Change flag
-        }
-    }
-
-    // Main Skill Input
-    protected void GetSkillInput()
-    {
-        if (Input.GetKey(KeyCode.X))
-        {
-            if (_isSkill == false)
-                _isSkill = true;
-            State = CreatureState.Skill;    // State Change flag
-
-            // Skill Packet Send Todo
-        }
-        else
-        {
-            if (State == CreatureState.Skill && _isSkill == false)
-                State = CreatureState.Tmp;   // State Change flag
-
-            // Tmp Packet Send Todo
-        }
-    }
-
-    // Sub Skill Input
-    protected void GetSubSkillInput()
-    {
-        if (_isSubSkillOn && Input.GetKey(KeyCode.A)) // 한번 사용시 쿨타임동안 스킬사용불가
-        {
-            _coSubSkillCoolTimer = StartCoroutine("CoSubSkillCoolTimer", SkillData.SubSkillCoolTime);
-            State = CreatureState.Subskill;     // State Change flag
-
-            // Skill Packet Send Todo
-        }
     }
     #endregion
 
@@ -446,7 +373,7 @@ public class BaseCtrl : MonoBehaviour
         _rigidbody.velocity = velocity;   // 현재 속도 조절
     }
 
-    private void BrakeIfSubSkill()  // SubSkill 사용중이면 좌우이동 정지
+    protected void BrakeIfSubSkill()  // SubSkill 사용중이면 좌우이동 정지
     {
         if (State == CreatureState.Subskill && _isGrounded)
         {
@@ -506,20 +433,19 @@ public class BaseCtrl : MonoBehaviour
     #endregion
 
     #region Rolling
-    private void Rolling()
+    protected void Rolling()
     {
-        velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, transform.localScale.x * Stat.MaxSpeed * 3, Stat.Acceleration * 10 * Time.fixedDeltaTime);
+        velocity.x = transform.localScale.x * Stat.MaxSpeed * 3;
         _rigidbody.velocity = velocity;
     }
 
-    private void AnimEvent_RollingStart()   // 구르기 중 무적
+    protected virtual void AnimEvent_RollingStart()   // 구르기 중 무적
     {
-        _hitBoxCollider.enabled = false;
+        
     }
 
-    private void AnimEvent_RollingEnded()
+    protected virtual void AnimEvent_RollingEnded()
     {
-        _hitBoxCollider.enabled = true;
         State = CreatureState.Tmp;     // State Change flag
         _coRollingCoolTimer = StartCoroutine("CoRollingCoolTimer", SkillData.JumpCoolTime + 1.0f);
     }
@@ -537,7 +463,13 @@ public class BaseCtrl : MonoBehaviour
         {
             _platformCollider = collision.collider;
             _isGrounded = true;
-      
+
+            if (State == CreatureState.Rolling) // 구르기 가속도 반동 초기화
+            {
+                velocity.x = transform.localScale.x * Stat.MaxSpeed;
+                _rigidbody.velocity = velocity;
+            }
+
             if (Input.GetKey(KeyCode.X) == false && State != CreatureState.Subskill)    // 스킬들 사용중에는 Land모션 재생 x
                 State = CreatureState.Land; // State Change flag
             //Debug.Log("Landed");
@@ -576,7 +508,7 @@ public class BaseCtrl : MonoBehaviour
 
     #region CoolTimes
     // Jump
-    bool _jumpable = true;  // 점프가능여부(쿨타임) + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
+    protected bool _jumpable = true;  // 점프가능여부(쿨타임) + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
     private Coroutine _coJumpCoolTimer;
     IEnumerator CoJumpCoolTimer(float time)
     {
@@ -587,7 +519,7 @@ public class BaseCtrl : MonoBehaviour
     }
 
     // Rolling
-    public bool _isRollingOn = true;  // 점프가능여부(쿨타임) + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
+    protected bool _isRollingOn = true;  // 점프가능여부(쿨타임) + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
     private Coroutine _coRollingCoolTimer;
     IEnumerator CoRollingCoolTimer(float time)
     {
@@ -598,7 +530,7 @@ public class BaseCtrl : MonoBehaviour
     }
 
     // SKill
-    public bool _isSubSkillOn = true;
+    protected bool _isSubSkillOn = true;
     protected Coroutine _coSubSkillCoolTimer;
     IEnumerator CoSubSkillCoolTimer(float time)
     {

@@ -31,6 +31,14 @@
       "Hp": "10",
       "MaxSpeed": "8",
       "Acceleration": "40"
+    },
+    {
+      "ClassId": "10",
+      "Class": "Dragon",
+      "MaxHp": "100",
+      "Hp": "100",
+      "MaxSpeed": "8",
+      "Acceleration": "40"
     }
   ]
 }
