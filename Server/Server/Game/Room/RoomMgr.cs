@@ -13,10 +13,10 @@ namespace Server.Game
         Dictionary<int, GameRoom> _rooms = new Dictionary<int, GameRoom>();
         int _roomId = 1;    // 일단 한개만 하드코딩으로 생성
 
-        public GameRoom Add()
+        public GameRoom Add(string mapName)
         {
             GameRoom gameRoom = new GameRoom();
-            //gameRoom.Push(gameRoom.Init, mapId);
+            gameRoom.Push(gameRoom.Init, mapName);
 
             lock (_lock)
             {

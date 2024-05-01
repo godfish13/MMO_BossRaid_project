@@ -15,10 +15,13 @@ namespace Server.Game
         Dictionary<int, Player> _players = new Dictionary<int, Player>(); // 해당 룸에 접속중인 player들
         //Dictionary<int, Monster> _monsters = new Dictionary<int, Monster>();
         //Dictionary<int, Projectile> _projectiles = new Dictionary<int, Projectile>();
-        
-        public void Init(int mapId)
+
+        public Map Map { get; set; } = new Map();
+
+        public void Init(string mapName)
         {
-            
+            Map.LoadMap(mapName);
+            Console.WriteLine($"{Map.MapName} : X({Map.MinX} ~ {Map.MaxX}), Y({Map.MinY} ~ {Map.MaxY})");
         }
 
         public void Update()

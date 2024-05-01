@@ -98,7 +98,7 @@ public class BaseCtrl : MonoBehaviour
 
     protected virtual void Init()
     {
-        Vector3 pos = new Vector3(0, -3.0f, 0);
+        Vector3 pos = new Vector3(0, 0, 0);
         transform.position = pos;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();

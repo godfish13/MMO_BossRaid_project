@@ -18,7 +18,7 @@ public class MyHumanCtrl : HumanCtrl
 
     private void LateUpdate()
     {
-        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y + 4.6f, -10);
+        Camera.main.transform.position = new Vector3(transform.position.x, 3.7f, -7);
     }
 
     #region UpdateCtrl series

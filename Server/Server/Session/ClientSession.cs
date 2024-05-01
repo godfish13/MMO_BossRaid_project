@@ -36,7 +36,6 @@ namespace Server
 
             GameRoom gameRoom = RoomMgr.Instance.Find(1);
             gameRoom.Push(gameRoom.EnterGame, myPlayer);
-            Console.WriteLine($"{myPlayer.Class} has entered to GameRoom_{RoomMgr.Instance.Find(1).RoomId}");
         }
         
         public override void OnReceivePacket(ArraySegment<byte> buffer)
