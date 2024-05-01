@@ -12,6 +12,8 @@ public class BaseCtrl : MonoBehaviour
     [SerializeField] private int _id;
     public int Id { get { return _id; } set { _id = value; } }
 
+    private bool PacketSenderFlag = false;  // PosInfo (State, transform X Y 의 값이 변하면 true)
+
     private PositionInfo _positionInfo = new PositionInfo();
     public PositionInfo PosInfo             // State, X, Y
     {
@@ -21,7 +23,9 @@ public class BaseCtrl : MonoBehaviour
             if (_positionInfo.Equals(value))    // positionInfo에 변화가 생길때만 Set
                 return;
 
-            _positionInfo = value;
+            _positionInfo.State = value.State; 
+            _positionInfo.PosX = value.PosX;
+            _positionInfo.PosY = value.PosY;
         }
     }
 
@@ -37,7 +41,6 @@ public class BaseCtrl : MonoBehaviour
     protected Rigidbody2D _rigidbody;
     private Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정
     
-
     public int ClassId = 0;
 
     [SerializeField] protected CreatureState _state;
@@ -50,6 +53,8 @@ public class BaseCtrl : MonoBehaviour
                 return;
 
             _state = value;
+            PosInfo.State = value;
+            PacketSenderFlag = true;
             UpdateAnim();
         }
     }
@@ -142,6 +147,33 @@ public class BaseCtrl : MonoBehaviour
     void FixedUpdate()  // Update에서 실행하면 가속도처리가 너무 빠름
     {
         UpdateCtrl();
+
+        #region Server 통신
+        if (PosInfo.PosX != transform.position.x || PosInfo.PosY != transform.position.y)   // 현재상태랑 달라졌을때만 Set
+        {
+            PosInfo.PosX = transform.position.x;
+            PosInfo.PosY = transform.position.y;
+            PacketSenderFlag = true;
+        }
+
+        if (PacketSenderFlag && _packetCoolTime)    // PosInfo에 변화가 있고 PacketCoolTime on이면 송신
+        {
+            Debug.Log("PacketSenderFlag!");
+            PacketSenderFlag = false;
+            C_MovePacketSend();
+        }
+        #endregion
+    }
+
+    public void C_MovePacketSend()
+    {
+        C_Move movePacket = new C_Move();
+
+        movePacket.ObjectId = Id;
+        movePacket.PositionInfo = PosInfo;
+
+        Managers.networkMgr.Send(movePacket);
+        _coPacketCoolTimer = StartCoroutine("CopacketCoolTimer", 0.25f);    // 0.25초마다 패킷 송신 가능 1초에 4번
     }
 
     #region Animation
@@ -365,7 +397,7 @@ public class BaseCtrl : MonoBehaviour
             }
             else
             {
-                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed, Stat.Acceleration * 0.5f * Time.fixedDeltaTime);
+                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed * 0.5f, Stat.Acceleration * 0.5f * Time.fixedDeltaTime);
                 // 스킬쓰며 체공중일 시 이동속도 절반
             }
         }
@@ -538,6 +570,17 @@ public class BaseCtrl : MonoBehaviour
         yield return new WaitForSeconds(time);
         _isSubSkillOn = true;
         _coSubSkillCoolTimer = null;
+    }
+
+    // Server 통신
+    protected bool _packetCoolTime = true;
+    protected Coroutine _coPacketCoolTimer;
+    IEnumerator CopacketCoolTimer(float time)
+    {
+        _packetCoolTime = false;
+        yield return new WaitForSeconds(time);
+        _packetCoolTime = true;
+        _coPacketCoolTimer = null;
     }
     #endregion
 }

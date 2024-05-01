@@ -24,12 +24,10 @@ namespace Server.Game
             StringReader reader = new StringReader(text);
 
             MapName = mapName;
-            Console.WriteLine(MapName);
             MaxX = float.Parse(reader.ReadLine());    // txt의 맨 윗줄 읽어서 int로 파싱하여 MaxX에 저장
             MinX = float.Parse(reader.ReadLine());    // txt의 그 다음 줄 읽어서 int로 파싱하여 MinX에 저장
             MaxY = float.Parse(reader.ReadLine());    // ReadLine이 WriteLine처럼 한줄씩 읽고 넘겨줌
-            MinY = float.Parse(reader.ReadLine());
-            
+            MinY = float.Parse(reader.ReadLine());          
         }
     }
 }
