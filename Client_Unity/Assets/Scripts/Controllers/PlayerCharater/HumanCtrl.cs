@@ -32,53 +32,8 @@ public class HumanCtrl : BaseCtrl
         State = PositionInfo.State;
         transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
         transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
+        Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
     }
-
-    #region UpdateCtrl series   // 아무 기능 없게 override
-    protected override void UpdateCtrl()
-    {
-    }
-              
-    protected override void UpdateIdle()   // 이동, 구르기, MainSkill, SubSkill 가능
-    {
-    }
-              
-    protected override void UpdateRun()    // 이동, 구르기, MainSkill, SubSkill 가능
-    {
-    }
-              
-    protected override void UpdateJump()    // 이동, MainSkill, SubSkill 가능
-    {
-    }
-              
-    protected override void UpdateFall()   // 이동, MainSkill, SubSkill 가능
-    {
-    }
-              
-    protected override void UpdateLand()   // 이동, MainSkill 가능
-    {
-    }
-              
-    protected override void UpdateCrawl()  // 이동, 구르기 가능
-    {
-    }
-              
-    protected override void UpdateRolling()     // 다른 행동 불가
-    {
-    }
-              
-    protected override void UpdateSkill()  // 이동, 스킬 가능
-    {
-    }
-              
-    protected override void UpdateSubSkill()     // 다른 행동 불가
-    {
-    }
-              
-    protected override void UpdateDeath()
-    {
-    }
-    #endregion
 
     #region MainSkill
     protected virtual void AnimEvent_MainSkillSlashOn()

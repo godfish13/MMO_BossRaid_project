@@ -22,8 +22,6 @@ namespace Server.Game
             SkillInfo _skill = null;
             DataMgr.SkillDictionary.TryGetValue(key: StatInfo.ClassId, out _skill);
             GameObjectInfo.SkillInfo.MergeFrom(_skill);
-
-            PositionInfo _posInfo = new PositionInfo() { PosX = 0, PosY = 0, LocalScaleX = 1 };
         }
 
         public StatInfo StatInfo = new StatInfo();      // Json Data Loading용
@@ -39,7 +37,7 @@ namespace Server.Game
         {
             get { return StatInfo.Class; }
             set { StatInfo.Class = value; }
-        }
+        }    
 
         #region Stat
         public int MaxHp

@@ -98,17 +98,12 @@ public class BaseCtrl : MonoBehaviour
 
     protected virtual void Init()
     {
-        Vector3 pos = new Vector3(0, 0, 0);
-        transform.position = pos;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
 
-        PositionInfo.State = State;
-        PositionInfo.PosX = transform.position.x;
-        PositionInfo.PosY = transform.position.y;
-        PositionInfo.LocalScaleX = transform.localScale.x;
+        transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
 
         BindData(ClassId);
 
@@ -194,114 +189,49 @@ public class BaseCtrl : MonoBehaviour
     }
     #endregion
 
-    #region UpdateCtrl series
+    #region UpdateCtrl series   // 상속받는 MyCtrl series에서 override로 구현
     protected virtual void UpdateCtrl()
     {
-        switch (State)
-        {
-            case CreatureState.Idle:    
-                UpdateIdle();
-                break;
-            case CreatureState.Run:     
-                UpdateRun();
-                break;
-            case CreatureState.Jump:   
-                UpdateJump();
-                break;
-            case CreatureState.Fall:    
-                UpdateFall();
-                break;
-            case CreatureState.Land:    
-                UpdateLand();
-                break;
-            case CreatureState.Crouch:  
-                UpdateCrawl();
-                break;
-            case CreatureState.Crawl:              
-                UpdateCrawl();
-                break;
-            case CreatureState.Rolling:
-                UpdateRolling();
-                break;
-            case CreatureState.Skill:   
-                UpdateSkill();
-                break;
-            case CreatureState.Subskill:  
-                UpdateSubSkill();
-                break;
-            case CreatureState.Death:   // 사망
-                UpdateDeath();
-                break;
-            case CreatureState.Tmp:  // 스킬 사용 후 Idle, Move 등 원래 상태로 돌아가되 animation 업데이트는 안해주기 위한 임시 상태
-                UpdateIdle();
-                break;
-        }
     }
 
     protected virtual void UpdateIdle()   // 이동, 구르기, MainSkill, SubSkill 가능
     {
-        Move();
-        Jump();
-        Fall();
     }
 
     protected virtual void UpdateRun()    // 이동, 구르기, MainSkill, SubSkill 가능
     {
-        Move();
-        Jump();
-        Fall();
     }
 
     protected virtual void UpdateJump()    // 이동, MainSkill, SubSkill 가능
     {
-        Move();
-        Jump();
-        Fall();
     }
 
     protected virtual void UpdateFall()   // 이동, MainSkill, SubSkill 가능
     {
-        Move();
-        Jump();
-        Fall();
     }
 
     protected virtual void UpdateLand()   // 이동, MainSkill 가능
     {
-        Move();
-        Jump();
-        Fall();
     }
 
     protected virtual void UpdateCrawl()  // 이동, 구르기 가능
     {
-        Move();
-        Jump();
-        Fall();
     }
 
     protected virtual void UpdateRolling()     // 다른 행동 불가
     {
-        Fall();
-        Rolling();
     }
 
     protected virtual void UpdateSkill()  // 이동, 스킬 가능
     {
-        MoveWhileSkill();
-        JumpWhileSkill();
-        Fall();
     }
 
     protected virtual void UpdateSubSkill()     // 다른 행동 불가
     {
-        Fall();
-        BrakeIfSubSkill();    // SubSkill 사용하면 Brake
     }
 
     protected virtual void UpdateDeath()
     {
-
     }
     #endregion
 

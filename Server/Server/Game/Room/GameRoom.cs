@@ -46,6 +46,8 @@ namespace Server.Game
                 Player newPlayer = newGameObject as Player;
                 _players.Add(newPlayer.ObjectId, newPlayer);
                 newPlayer.MyRoom = this;
+                newPlayer.PositionInfo = new PositionInfo() { State = CreatureState.Idle, PosX = 0, PosY = 0, LocalScaleX = 1}; 
+                // 입장시킬 초기 위치 및 상태
 
                 #region Player 입장 성공 시 입장 성공했다고 전송
                 S_EnterGame EnterPacket = new S_EnterGame();

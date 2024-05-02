@@ -29,6 +29,8 @@ public class ObjectMgr : MonoBehaviour
                 MyHumanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
                 MyHumanCtrl.Stat = gameObjectInfo.StatInfo;
                 MyHumanCtrl.SkillData = gameObjectInfo.SkillInfo;
+
+                MyHumanCtrl.SyncPos();  // 서버상 위치와 유니티상 위치 동기화
             }
             else
             {
@@ -41,7 +43,8 @@ public class ObjectMgr : MonoBehaviour
                 humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
                 humanCtrl.Stat = gameObjectInfo.StatInfo;
                 humanCtrl.SkillData = gameObjectInfo.SkillInfo;
-
+                humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+               
                 humanCtrl.SyncPos();        // 서버상 위치와 유니티상 위치 동기화
             }
         }

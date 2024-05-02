@@ -25,5 +25,11 @@ namespace Server.Game
             get { return GameObjectInfo.ObjectId; }
             set { GameObjectInfo.ObjectId = value; }
         }
+
+        public PositionInfo PositionInfo
+        {
+            get { return GameObjectInfo.PositionInfo; }
+            set { GameObjectInfo.PositionInfo = value; }
+        }
     }
 }
