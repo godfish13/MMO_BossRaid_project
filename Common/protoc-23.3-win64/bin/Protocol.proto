@@ -40,22 +40,22 @@ enum GameObjectType
 
 message S_EnterGame 
 {
-	CreatureInfo creatureInfo = 1;
+	GameObjectInfo gameObjectInfo = 1;
 }
 
 message S_LeaveGame 
 {
-	CreatureInfo creatureInfo = 1;
+	GameObjectInfo gameObjectInfo = 1;
 }
 
 message S_Spawn
 {
-	repeated CreatureInfo creatureInfoList = 1;
+	repeated GameObjectInfo gameObjectInfoList = 1;
 }
 
 message S_Despawn
 {
-	CreatureInfo creatureInfo = 1;
+	GameObjectInfo gameObjectInfo = 1;
 }
 
 message S_Move
@@ -77,9 +77,9 @@ message PositionInfo
 	float posY = 3;
 }
 
-message CreatureInfo
+message GameObjectInfo
 {
-	int32 creatureId = 1;
+	int32 ObjectId = 1;
 	StatInfo statInfo = 2;
 	SkillInfo skillInfo = 3;
 	PositionInfo posInfo = 4;

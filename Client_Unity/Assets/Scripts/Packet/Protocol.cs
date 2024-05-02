@@ -25,48 +25,48 @@ namespace Google.Protobuf.Protocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5Qcm90b2NvbC5wcm90bxIIUHJvdG9jb2waH2dvb2dsZS9wcm90b2J1Zi90",
-            "aW1lc3RhbXAucHJvdG8iOwoLU19FbnRlckdhbWUSLAoMY3JlYXR1cmVJbmZv",
-            "GAEgASgLMhYuUHJvdG9jb2wuQ3JlYXR1cmVJbmZvIjsKC1NfTGVhdmVHYW1l",
-            "EiwKDGNyZWF0dXJlSW5mbxgBIAEoCzIWLlByb3RvY29sLkNyZWF0dXJlSW5m",
-            "byI7CgdTX1NwYXduEjAKEGNyZWF0dXJlSW5mb0xpc3QYASADKAsyFi5Qcm90",
-            "b2NvbC5DcmVhdHVyZUluZm8iOQoJU19EZXNwYXduEiwKDGNyZWF0dXJlSW5m",
-            "bxgBIAEoCzIWLlByb3RvY29sLkNyZWF0dXJlSW5mbyJICgZTX01vdmUSEAoI",
+            "aW1lc3RhbXAucHJvdG8iPwoLU19FbnRlckdhbWUSMAoOZ2FtZU9iamVjdElu",
+            "Zm8YASABKAsyGC5Qcm90b2NvbC5HYW1lT2JqZWN0SW5mbyI/CgtTX0xlYXZl",
+            "R2FtZRIwCg5nYW1lT2JqZWN0SW5mbxgBIAEoCzIYLlByb3RvY29sLkdhbWVP",
+            "YmplY3RJbmZvIj8KB1NfU3Bhd24SNAoSZ2FtZU9iamVjdEluZm9MaXN0GAEg",
+            "AygLMhguUHJvdG9jb2wuR2FtZU9iamVjdEluZm8iPQoJU19EZXNwYXduEjAK",
+            "DmdhbWVPYmplY3RJbmZvGAEgASgLMhguUHJvdG9jb2wuR2FtZU9iamVjdElu",
+            "Zm8iSAoGU19Nb3ZlEhAKCG9iamVjdElkGAEgASgFEiwKDHBvc2l0aW9uSW5m",
+            "bxgCIAEoCzIWLlByb3RvY29sLlBvc2l0aW9uSW5mbyJICgZDX01vdmUSEAoI",
             "b2JqZWN0SWQYASABKAUSLAoMcG9zaXRpb25JbmZvGAIgASgLMhYuUHJvdG9j",
-            "b2wuUG9zaXRpb25JbmZvIkgKBkNfTW92ZRIQCghvYmplY3RJZBgBIAEoBRIs",
-            "Cgxwb3NpdGlvbkluZm8YAiABKAsyFi5Qcm90b2NvbC5Qb3NpdGlvbkluZm8i",
-            "UgoMUG9zaXRpb25JbmZvEiYKBVN0YXRlGAEgASgOMhcuUHJvdG9jb2wuQ3Jl",
-            "YXR1cmVTdGF0ZRIMCgRwb3NYGAIgASgCEgwKBHBvc1kYAyABKAIimQEKDENy",
-            "ZWF0dXJlSW5mbxISCgpjcmVhdHVyZUlkGAEgASgFEiQKCHN0YXRJbmZvGAIg",
-            "ASgLMhIuUHJvdG9jb2wuU3RhdEluZm8SJgoJc2tpbGxJbmZvGAMgASgLMhMu",
-            "UHJvdG9jb2wuU2tpbGxJbmZvEicKB3Bvc0luZm8YBCABKAsyFi5Qcm90b2Nv",
-            "bC5Qb3NpdGlvbkluZm8ibQoIU3RhdEluZm8SDwoHY2xhc3NJZBgBIAEoBRIN",
-            "CgVjbGFzcxgCIAEoCRINCgVtYXhIcBgDIAEoBRIKCgJocBgEIAEoBRIQCght",
-            "YXhTcGVlZBgFIAEoAhIUCgxhY2NlbGVyYXRpb24YBiABKAIisgEKCVNraWxs",
-            "SW5mbxIPCgdjbGFzc0lkGAEgASgFEg0KBWNsYXNzGAIgASgJEhMKC3NraWxs",
-            "RGFtYWdlGAMgASgFEhUKDXNraWxsQ29vbFRpbWUYBCABKAISFgoOc3ViU2tp",
-            "bGxEYW1hZ2UYBSABKAUSGAoQc3ViU2tpbGxDb29sVGltZRgGIAEoAhIRCglq",
-            "dW1wUG93ZXIYByABKAISFAoManVtcENvb2xUaW1lGAggASgCIk8KDlByb2pl",
-            "Y3RpbGVJbmZvEhQKDHByb2plY3RpbGVJZBgBIAEoBRInCgdwb3NJbmZvGAIg",
-            "ASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvKl8KBU1zZ0lkEhAKDFNfRU5U",
-            "RVJfR0FNRRAAEhAKDFNfTEVBVkVfR0FNRRABEgsKB1NfU1BBV04QAhINCglT",
-            "X0RFU1BBV04QAxIKCgZTX01PVkUQBBIKCgZDX01PVkUQBSqRAQoNQ3JlYXR1",
-            "cmVTdGF0ZRIICgRJRExFEAASBwoDUlVOEAESCAoESlVNUBACEggKBEZBTEwQ",
-            "AxIICgRMQU5EEAQSCgoGQ1JPVUNIEAUSCQoFQ1JBV0wQBhILCgdST0xMSU5H",
-            "EAcSCQoFU0tJTEwQCBIMCghTVUJTS0lMTBAJEgkKBURFQVRIEAoSBwoDVE1Q",
-            "EAsqQwoOR2FtZU9iamVjdFR5cGUSCAoETk9ORRAAEgoKBlBMQVlFUhABEgsK",
-            "B01PTlNURVIQAhIOCgpQUk9KRUNUSUxFEANCG6oCGEdvb2dsZS5Qcm90b2J1",
-            "Zi5Qcm90b2NvbGIGcHJvdG8z"));
+            "b2wuUG9zaXRpb25JbmZvIlIKDFBvc2l0aW9uSW5mbxImCgVTdGF0ZRgBIAEo",
+            "DjIXLlByb3RvY29sLkNyZWF0dXJlU3RhdGUSDAoEcG9zWBgCIAEoAhIMCgRw",
+            "b3NZGAMgASgCIpkBCg5HYW1lT2JqZWN0SW5mbxIQCghPYmplY3RJZBgBIAEo",
+            "BRIkCghzdGF0SW5mbxgCIAEoCzISLlByb3RvY29sLlN0YXRJbmZvEiYKCXNr",
+            "aWxsSW5mbxgDIAEoCzITLlByb3RvY29sLlNraWxsSW5mbxInCgdwb3NJbmZv",
+            "GAQgASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvIm0KCFN0YXRJbmZvEg8K",
+            "B2NsYXNzSWQYASABKAUSDQoFY2xhc3MYAiABKAkSDQoFbWF4SHAYAyABKAUS",
+            "CgoCaHAYBCABKAUSEAoIbWF4U3BlZWQYBSABKAISFAoMYWNjZWxlcmF0aW9u",
+            "GAYgASgCIrIBCglTa2lsbEluZm8SDwoHY2xhc3NJZBgBIAEoBRINCgVjbGFz",
+            "cxgCIAEoCRITCgtza2lsbERhbWFnZRgDIAEoBRIVCg1za2lsbENvb2xUaW1l",
+            "GAQgASgCEhYKDnN1YlNraWxsRGFtYWdlGAUgASgFEhgKEHN1YlNraWxsQ29v",
+            "bFRpbWUYBiABKAISEQoJanVtcFBvd2VyGAcgASgCEhQKDGp1bXBDb29sVGlt",
+            "ZRgIIAEoAiJPCg5Qcm9qZWN0aWxlSW5mbxIUCgxwcm9qZWN0aWxlSWQYASAB",
+            "KAUSJwoHcG9zSW5mbxgCIAEoCzIWLlByb3RvY29sLlBvc2l0aW9uSW5mbypf",
+            "CgVNc2dJZBIQCgxTX0VOVEVSX0dBTUUQABIQCgxTX0xFQVZFX0dBTUUQARIL",
+            "CgdTX1NQQVdOEAISDQoJU19ERVNQQVdOEAMSCgoGU19NT1ZFEAQSCgoGQ19N",
+            "T1ZFEAUqkQEKDUNyZWF0dXJlU3RhdGUSCAoESURMRRAAEgcKA1JVThABEggK",
+            "BEpVTVAQAhIICgRGQUxMEAMSCAoETEFORBAEEgoKBkNST1VDSBAFEgkKBUNS",
+            "QVdMEAYSCwoHUk9MTElORxAHEgkKBVNLSUxMEAgSDAoIU1VCU0tJTEwQCRIJ",
+            "CgVERUFUSBAKEgcKA1RNUBALKkMKDkdhbWVPYmplY3RUeXBlEggKBE5PTkUQ",
+            "ABIKCgZQTEFZRVIQARILCgdNT05TVEVSEAISDgoKUFJPSkVDVElMRRADQhuq",
+            "AhhHb29nbGUuUHJvdG9idWYuUHJvdG9jb2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_EnterGame), global::Google.Protobuf.Protocol.S_EnterGame.Parser, new[]{ "CreatureInfo" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_LeaveGame), global::Google.Protobuf.Protocol.S_LeaveGame.Parser, new[]{ "CreatureInfo" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Spawn), global::Google.Protobuf.Protocol.S_Spawn.Parser, new[]{ "CreatureInfoList" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Despawn), global::Google.Protobuf.Protocol.S_Despawn.Parser, new[]{ "CreatureInfo" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_EnterGame), global::Google.Protobuf.Protocol.S_EnterGame.Parser, new[]{ "GameObjectInfo" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_LeaveGame), global::Google.Protobuf.Protocol.S_LeaveGame.Parser, new[]{ "GameObjectInfo" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Spawn), global::Google.Protobuf.Protocol.S_Spawn.Parser, new[]{ "GameObjectInfoList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Despawn), global::Google.Protobuf.Protocol.S_Despawn.Parser, new[]{ "GameObjectInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Move), global::Google.Protobuf.Protocol.S_Move.Parser, new[]{ "ObjectId", "PositionInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Move), global::Google.Protobuf.Protocol.C_Move.Parser, new[]{ "ObjectId", "PositionInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PositionInfo), global::Google.Protobuf.Protocol.PositionInfo.Parser, new[]{ "State", "PosX", "PosY" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.CreatureInfo), global::Google.Protobuf.Protocol.CreatureInfo.Parser, new[]{ "CreatureId", "StatInfo", "SkillInfo", "PosInfo" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.GameObjectInfo), global::Google.Protobuf.Protocol.GameObjectInfo.Parser, new[]{ "ObjectId", "StatInfo", "SkillInfo", "PosInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.StatInfo), global::Google.Protobuf.Protocol.StatInfo.Parser, new[]{ "ClassId", "Class", "MaxHp", "Hp", "MaxSpeed", "Acceleration" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.SkillInfo), global::Google.Protobuf.Protocol.SkillInfo.Parser, new[]{ "ClassId", "Class", "SkillDamage", "SkillCoolTime", "SubSkillDamage", "SubSkillCoolTime", "JumpPower", "JumpCoolTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ProjectileInfo), global::Google.Protobuf.Protocol.ProjectileInfo.Parser, new[]{ "ProjectileId", "PosInfo" }, null, null, null, null)
@@ -144,7 +144,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public S_EnterGame(S_EnterGame other) : this() {
-      creatureInfo_ = other.creatureInfo_ != null ? other.creatureInfo_.Clone() : null;
+      gameObjectInfo_ = other.gameObjectInfo_ != null ? other.gameObjectInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -154,15 +154,15 @@ namespace Google.Protobuf.Protocol {
       return new S_EnterGame(this);
     }
 
-    /// <summary>Field number for the "creatureInfo" field.</summary>
-    public const int CreatureInfoFieldNumber = 1;
-    private global::Google.Protobuf.Protocol.CreatureInfo creatureInfo_;
+    /// <summary>Field number for the "gameObjectInfo" field.</summary>
+    public const int GameObjectInfoFieldNumber = 1;
+    private global::Google.Protobuf.Protocol.GameObjectInfo gameObjectInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Protobuf.Protocol.CreatureInfo CreatureInfo {
-      get { return creatureInfo_; }
+    public global::Google.Protobuf.Protocol.GameObjectInfo GameObjectInfo {
+      get { return gameObjectInfo_; }
       set {
-        creatureInfo_ = value;
+        gameObjectInfo_ = value;
       }
     }
 
@@ -181,7 +181,7 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(CreatureInfo, other.CreatureInfo)) return false;
+      if (!object.Equals(GameObjectInfo, other.GameObjectInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -189,7 +189,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (creatureInfo_ != null) hash ^= CreatureInfo.GetHashCode();
+      if (gameObjectInfo_ != null) hash ^= GameObjectInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -208,9 +208,9 @@ namespace Google.Protobuf.Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (creatureInfo_ != null) {
+      if (gameObjectInfo_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(CreatureInfo);
+        output.WriteMessage(GameObjectInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -222,9 +222,9 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (creatureInfo_ != null) {
+      if (gameObjectInfo_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(CreatureInfo);
+        output.WriteMessage(GameObjectInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -236,8 +236,8 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (creatureInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreatureInfo);
+      if (gameObjectInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GameObjectInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -251,11 +251,11 @@ namespace Google.Protobuf.Protocol {
       if (other == null) {
         return;
       }
-      if (other.creatureInfo_ != null) {
-        if (creatureInfo_ == null) {
-          CreatureInfo = new global::Google.Protobuf.Protocol.CreatureInfo();
+      if (other.gameObjectInfo_ != null) {
+        if (gameObjectInfo_ == null) {
+          GameObjectInfo = new global::Google.Protobuf.Protocol.GameObjectInfo();
         }
-        CreatureInfo.MergeFrom(other.CreatureInfo);
+        GameObjectInfo.MergeFrom(other.GameObjectInfo);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -273,10 +273,10 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (creatureInfo_ == null) {
-              CreatureInfo = new global::Google.Protobuf.Protocol.CreatureInfo();
+            if (gameObjectInfo_ == null) {
+              GameObjectInfo = new global::Google.Protobuf.Protocol.GameObjectInfo();
             }
-            input.ReadMessage(CreatureInfo);
+            input.ReadMessage(GameObjectInfo);
             break;
           }
         }
@@ -295,10 +295,10 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            if (creatureInfo_ == null) {
-              CreatureInfo = new global::Google.Protobuf.Protocol.CreatureInfo();
+            if (gameObjectInfo_ == null) {
+              GameObjectInfo = new global::Google.Protobuf.Protocol.GameObjectInfo();
             }
-            input.ReadMessage(CreatureInfo);
+            input.ReadMessage(GameObjectInfo);
             break;
           }
         }
@@ -342,7 +342,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public S_LeaveGame(S_LeaveGame other) : this() {
-      creatureInfo_ = other.creatureInfo_ != null ? other.creatureInfo_.Clone() : null;
+      gameObjectInfo_ = other.gameObjectInfo_ != null ? other.gameObjectInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -352,15 +352,15 @@ namespace Google.Protobuf.Protocol {
       return new S_LeaveGame(this);
     }
 
-    /// <summary>Field number for the "creatureInfo" field.</summary>
-    public const int CreatureInfoFieldNumber = 1;
-    private global::Google.Protobuf.Protocol.CreatureInfo creatureInfo_;
+    /// <summary>Field number for the "gameObjectInfo" field.</summary>
+    public const int GameObjectInfoFieldNumber = 1;
+    private global::Google.Protobuf.Protocol.GameObjectInfo gameObjectInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Protobuf.Protocol.CreatureInfo CreatureInfo {
-      get { return creatureInfo_; }
+    public global::Google.Protobuf.Protocol.GameObjectInfo GameObjectInfo {
+      get { return gameObjectInfo_; }
       set {
-        creatureInfo_ = value;
+        gameObjectInfo_ = value;
       }
     }
 
@@ -379,7 +379,7 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(CreatureInfo, other.CreatureInfo)) return false;
+      if (!object.Equals(GameObjectInfo, other.GameObjectInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -387,7 +387,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (creatureInfo_ != null) hash ^= CreatureInfo.GetHashCode();
+      if (gameObjectInfo_ != null) hash ^= GameObjectInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -406,9 +406,9 @@ namespace Google.Protobuf.Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (creatureInfo_ != null) {
+      if (gameObjectInfo_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(CreatureInfo);
+        output.WriteMessage(GameObjectInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -420,9 +420,9 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (creatureInfo_ != null) {
+      if (gameObjectInfo_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(CreatureInfo);
+        output.WriteMessage(GameObjectInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -434,8 +434,8 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (creatureInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreatureInfo);
+      if (gameObjectInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GameObjectInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -449,11 +449,11 @@ namespace Google.Protobuf.Protocol {
       if (other == null) {
         return;
       }
-      if (other.creatureInfo_ != null) {
-        if (creatureInfo_ == null) {
-          CreatureInfo = new global::Google.Protobuf.Protocol.CreatureInfo();
+      if (other.gameObjectInfo_ != null) {
+        if (gameObjectInfo_ == null) {
+          GameObjectInfo = new global::Google.Protobuf.Protocol.GameObjectInfo();
         }
-        CreatureInfo.MergeFrom(other.CreatureInfo);
+        GameObjectInfo.MergeFrom(other.GameObjectInfo);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -471,10 +471,10 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (creatureInfo_ == null) {
-              CreatureInfo = new global::Google.Protobuf.Protocol.CreatureInfo();
+            if (gameObjectInfo_ == null) {
+              GameObjectInfo = new global::Google.Protobuf.Protocol.GameObjectInfo();
             }
-            input.ReadMessage(CreatureInfo);
+            input.ReadMessage(GameObjectInfo);
             break;
           }
         }
@@ -493,10 +493,10 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            if (creatureInfo_ == null) {
-              CreatureInfo = new global::Google.Protobuf.Protocol.CreatureInfo();
+            if (gameObjectInfo_ == null) {
+              GameObjectInfo = new global::Google.Protobuf.Protocol.GameObjectInfo();
             }
-            input.ReadMessage(CreatureInfo);
+            input.ReadMessage(GameObjectInfo);
             break;
           }
         }
@@ -540,7 +540,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public S_Spawn(S_Spawn other) : this() {
-      creatureInfoList_ = other.creatureInfoList_.Clone();
+      gameObjectInfoList_ = other.gameObjectInfoList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -550,15 +550,15 @@ namespace Google.Protobuf.Protocol {
       return new S_Spawn(this);
     }
 
-    /// <summary>Field number for the "creatureInfoList" field.</summary>
-    public const int CreatureInfoListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Google.Protobuf.Protocol.CreatureInfo> _repeated_creatureInfoList_codec
-        = pb::FieldCodec.ForMessage(10, global::Google.Protobuf.Protocol.CreatureInfo.Parser);
-    private readonly pbc::RepeatedField<global::Google.Protobuf.Protocol.CreatureInfo> creatureInfoList_ = new pbc::RepeatedField<global::Google.Protobuf.Protocol.CreatureInfo>();
+    /// <summary>Field number for the "gameObjectInfoList" field.</summary>
+    public const int GameObjectInfoListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Google.Protobuf.Protocol.GameObjectInfo> _repeated_gameObjectInfoList_codec
+        = pb::FieldCodec.ForMessage(10, global::Google.Protobuf.Protocol.GameObjectInfo.Parser);
+    private readonly pbc::RepeatedField<global::Google.Protobuf.Protocol.GameObjectInfo> gameObjectInfoList_ = new pbc::RepeatedField<global::Google.Protobuf.Protocol.GameObjectInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::Google.Protobuf.Protocol.CreatureInfo> CreatureInfoList {
-      get { return creatureInfoList_; }
+    public pbc::RepeatedField<global::Google.Protobuf.Protocol.GameObjectInfo> GameObjectInfoList {
+      get { return gameObjectInfoList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -576,7 +576,7 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!creatureInfoList_.Equals(other.creatureInfoList_)) return false;
+      if(!gameObjectInfoList_.Equals(other.gameObjectInfoList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -584,7 +584,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= creatureInfoList_.GetHashCode();
+      hash ^= gameObjectInfoList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -603,7 +603,7 @@ namespace Google.Protobuf.Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      creatureInfoList_.WriteTo(output, _repeated_creatureInfoList_codec);
+      gameObjectInfoList_.WriteTo(output, _repeated_gameObjectInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -614,7 +614,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      creatureInfoList_.WriteTo(ref output, _repeated_creatureInfoList_codec);
+      gameObjectInfoList_.WriteTo(ref output, _repeated_gameObjectInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -625,7 +625,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += creatureInfoList_.CalculateSize(_repeated_creatureInfoList_codec);
+      size += gameObjectInfoList_.CalculateSize(_repeated_gameObjectInfoList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -638,7 +638,7 @@ namespace Google.Protobuf.Protocol {
       if (other == null) {
         return;
       }
-      creatureInfoList_.Add(other.creatureInfoList_);
+      gameObjectInfoList_.Add(other.gameObjectInfoList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -655,7 +655,7 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            creatureInfoList_.AddEntriesFrom(input, _repeated_creatureInfoList_codec);
+            gameObjectInfoList_.AddEntriesFrom(input, _repeated_gameObjectInfoList_codec);
             break;
           }
         }
@@ -674,7 +674,7 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            creatureInfoList_.AddEntriesFrom(ref input, _repeated_creatureInfoList_codec);
+            gameObjectInfoList_.AddEntriesFrom(ref input, _repeated_gameObjectInfoList_codec);
             break;
           }
         }
@@ -718,7 +718,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public S_Despawn(S_Despawn other) : this() {
-      creatureInfo_ = other.creatureInfo_ != null ? other.creatureInfo_.Clone() : null;
+      gameObjectInfo_ = other.gameObjectInfo_ != null ? other.gameObjectInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -728,15 +728,15 @@ namespace Google.Protobuf.Protocol {
       return new S_Despawn(this);
     }
 
-    /// <summary>Field number for the "creatureInfo" field.</summary>
-    public const int CreatureInfoFieldNumber = 1;
-    private global::Google.Protobuf.Protocol.CreatureInfo creatureInfo_;
+    /// <summary>Field number for the "gameObjectInfo" field.</summary>
+    public const int GameObjectInfoFieldNumber = 1;
+    private global::Google.Protobuf.Protocol.GameObjectInfo gameObjectInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Protobuf.Protocol.CreatureInfo CreatureInfo {
-      get { return creatureInfo_; }
+    public global::Google.Protobuf.Protocol.GameObjectInfo GameObjectInfo {
+      get { return gameObjectInfo_; }
       set {
-        creatureInfo_ = value;
+        gameObjectInfo_ = value;
       }
     }
 
@@ -755,7 +755,7 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(CreatureInfo, other.CreatureInfo)) return false;
+      if (!object.Equals(GameObjectInfo, other.GameObjectInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -763,7 +763,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (creatureInfo_ != null) hash ^= CreatureInfo.GetHashCode();
+      if (gameObjectInfo_ != null) hash ^= GameObjectInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -782,9 +782,9 @@ namespace Google.Protobuf.Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (creatureInfo_ != null) {
+      if (gameObjectInfo_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(CreatureInfo);
+        output.WriteMessage(GameObjectInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -796,9 +796,9 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (creatureInfo_ != null) {
+      if (gameObjectInfo_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(CreatureInfo);
+        output.WriteMessage(GameObjectInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -810,8 +810,8 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (creatureInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreatureInfo);
+      if (gameObjectInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GameObjectInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -825,11 +825,11 @@ namespace Google.Protobuf.Protocol {
       if (other == null) {
         return;
       }
-      if (other.creatureInfo_ != null) {
-        if (creatureInfo_ == null) {
-          CreatureInfo = new global::Google.Protobuf.Protocol.CreatureInfo();
+      if (other.gameObjectInfo_ != null) {
+        if (gameObjectInfo_ == null) {
+          GameObjectInfo = new global::Google.Protobuf.Protocol.GameObjectInfo();
         }
-        CreatureInfo.MergeFrom(other.CreatureInfo);
+        GameObjectInfo.MergeFrom(other.GameObjectInfo);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -847,10 +847,10 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (creatureInfo_ == null) {
-              CreatureInfo = new global::Google.Protobuf.Protocol.CreatureInfo();
+            if (gameObjectInfo_ == null) {
+              GameObjectInfo = new global::Google.Protobuf.Protocol.GameObjectInfo();
             }
-            input.ReadMessage(CreatureInfo);
+            input.ReadMessage(GameObjectInfo);
             break;
           }
         }
@@ -869,10 +869,10 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            if (creatureInfo_ == null) {
-              CreatureInfo = new global::Google.Protobuf.Protocol.CreatureInfo();
+            if (gameObjectInfo_ == null) {
+              GameObjectInfo = new global::Google.Protobuf.Protocol.GameObjectInfo();
             }
-            input.ReadMessage(CreatureInfo);
+            input.ReadMessage(GameObjectInfo);
             break;
           }
         }
@@ -1615,16 +1615,16 @@ namespace Google.Protobuf.Protocol {
 
   }
 
-  public sealed partial class CreatureInfo : pb::IMessage<CreatureInfo>
+  public sealed partial class GameObjectInfo : pb::IMessage<GameObjectInfo>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<CreatureInfo> _parser = new pb::MessageParser<CreatureInfo>(() => new CreatureInfo());
+    private static readonly pb::MessageParser<GameObjectInfo> _parser = new pb::MessageParser<GameObjectInfo>(() => new GameObjectInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<CreatureInfo> Parser { get { return _parser; } }
+    public static pb::MessageParser<GameObjectInfo> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1640,7 +1640,7 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public CreatureInfo() {
+    public GameObjectInfo() {
       OnConstruction();
     }
 
@@ -1648,8 +1648,8 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public CreatureInfo(CreatureInfo other) : this() {
-      creatureId_ = other.creatureId_;
+    public GameObjectInfo(GameObjectInfo other) : this() {
+      objectId_ = other.objectId_;
       statInfo_ = other.statInfo_ != null ? other.statInfo_.Clone() : null;
       skillInfo_ = other.skillInfo_ != null ? other.skillInfo_.Clone() : null;
       posInfo_ = other.posInfo_ != null ? other.posInfo_.Clone() : null;
@@ -1658,19 +1658,19 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public CreatureInfo Clone() {
-      return new CreatureInfo(this);
+    public GameObjectInfo Clone() {
+      return new GameObjectInfo(this);
     }
 
-    /// <summary>Field number for the "creatureId" field.</summary>
-    public const int CreatureIdFieldNumber = 1;
-    private int creatureId_;
+    /// <summary>Field number for the "ObjectId" field.</summary>
+    public const int ObjectIdFieldNumber = 1;
+    private int objectId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CreatureId {
-      get { return creatureId_; }
+    public int ObjectId {
+      get { return objectId_; }
       set {
-        creatureId_ = value;
+        objectId_ = value;
       }
     }
 
@@ -1713,19 +1713,19 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as CreatureInfo);
+      return Equals(other as GameObjectInfo);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(CreatureInfo other) {
+    public bool Equals(GameObjectInfo other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CreatureId != other.CreatureId) return false;
+      if (ObjectId != other.ObjectId) return false;
       if (!object.Equals(StatInfo, other.StatInfo)) return false;
       if (!object.Equals(SkillInfo, other.SkillInfo)) return false;
       if (!object.Equals(PosInfo, other.PosInfo)) return false;
@@ -1736,7 +1736,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CreatureId != 0) hash ^= CreatureId.GetHashCode();
+      if (ObjectId != 0) hash ^= ObjectId.GetHashCode();
       if (statInfo_ != null) hash ^= StatInfo.GetHashCode();
       if (skillInfo_ != null) hash ^= SkillInfo.GetHashCode();
       if (posInfo_ != null) hash ^= PosInfo.GetHashCode();
@@ -1758,9 +1758,9 @@ namespace Google.Protobuf.Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CreatureId != 0) {
+      if (ObjectId != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(CreatureId);
+        output.WriteInt32(ObjectId);
       }
       if (statInfo_ != null) {
         output.WriteRawTag(18);
@@ -1784,9 +1784,9 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CreatureId != 0) {
+      if (ObjectId != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(CreatureId);
+        output.WriteInt32(ObjectId);
       }
       if (statInfo_ != null) {
         output.WriteRawTag(18);
@@ -1810,8 +1810,8 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CreatureId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CreatureId);
+      if (ObjectId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ObjectId);
       }
       if (statInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StatInfo);
@@ -1830,12 +1830,12 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(CreatureInfo other) {
+    public void MergeFrom(GameObjectInfo other) {
       if (other == null) {
         return;
       }
-      if (other.CreatureId != 0) {
-        CreatureId = other.CreatureId;
+      if (other.ObjectId != 0) {
+        ObjectId = other.ObjectId;
       }
       if (other.statInfo_ != null) {
         if (statInfo_ == null) {
@@ -1871,7 +1871,7 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            CreatureId = input.ReadInt32();
+            ObjectId = input.ReadInt32();
             break;
           }
           case 18: {
@@ -1911,7 +1911,7 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            CreatureId = input.ReadInt32();
+            ObjectId = input.ReadInt32();
             break;
           }
           case 18: {

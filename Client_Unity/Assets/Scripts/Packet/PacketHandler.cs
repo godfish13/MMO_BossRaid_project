@@ -12,9 +12,9 @@ class PacketHandler
         S_EnterGame enterGamePacket = packet as S_EnterGame;
 
         Debug.Log("S_EnterGameHandler activated");
-        Debug.Log($"class : {enterGamePacket.CreatureInfo.StatInfo.Class} Entered Game");
+        Debug.Log($"class : {enterGamePacket.GameObjectInfo.StatInfo.Class} Entered Game");
 
-        Managers.objecMgr.Add(enterGamePacket.CreatureInfo, myCtrl: true);   
+        Managers.objecMgr.Add(enterGamePacket.GameObjectInfo, myCtrl: true);   
     }
 
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)
@@ -23,16 +23,16 @@ class PacketHandler
 
 
         Debug.Log("S_LeaveGamePacket activated");
-        Debug.Log(leaveGamePacket.CreatureInfo.CreatureId);
+        Debug.Log(leaveGamePacket.GameObjectInfo.ObjectId);
     }
 
     public static void S_SpawnHandler(PacketSession session, IMessage packet)   // 타 오브젝트들이 입장할때 받음
     {
         S_Spawn spawnPacket = packet as S_Spawn;
 
-        foreach (CreatureInfo creatureInfo in spawnPacket.CreatureInfoList)
+        foreach (GameObjectInfo gameObjectInfo in spawnPacket.GameObjectInfoList)
         {
-            Managers.objecMgr.Add(creatureInfo, false);
+            Managers.objecMgr.Add(gameObjectInfo, false);
         }
         Debug.Log("S_SpawnHandler activated");
     }

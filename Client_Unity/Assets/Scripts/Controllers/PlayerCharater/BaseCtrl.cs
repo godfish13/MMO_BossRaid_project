@@ -12,7 +12,7 @@ public class BaseCtrl : MonoBehaviour
     [SerializeField] private int _id;
     public int Id { get { return _id; } set { _id = value; } }
 
-    private bool PacketSenderFlag = false;  // PosInfo (State, transform X Y 의 값이 변하면 true)
+    [SerializeField] private bool PacketSenderFlag = false;  // PosInfo (State set, transform X Y 의 값이 변하면 true)
 
     private PositionInfo _positionInfo = new PositionInfo();
     public PositionInfo PosInfo             // State, X, Y
@@ -158,7 +158,6 @@ public class BaseCtrl : MonoBehaviour
 
         if (PacketSenderFlag && _packetCoolTime)    // PosInfo에 변화가 있고 PacketCoolTime on이면 송신
         {
-            Debug.Log("PacketSenderFlag!");
             PacketSenderFlag = false;
             C_MovePacketSend();
         }

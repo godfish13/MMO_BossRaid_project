@@ -18,37 +18,37 @@ public class ObjectMgr : MonoBehaviour
         return (GameObjectType)type;
     }
 
-    public void Add(CreatureInfo CreatureInfo, bool myCtrl = false) // MyCtrl : 내가 조종하는지 아닌지 체크
+    public void Add(GameObjectInfo gameObjectInfo, bool myCtrl = false) // MyCtrl : 내가 조종하는지 아닌지 체크
     {
-        GameObjectType type = GetGameObjectTypebyId(CreatureInfo.CreatureId);
+        GameObjectType type = GetGameObjectTypebyId(gameObjectInfo.ObjectId);
 
         if (type == GameObjectType.Player)
         {
             if (myCtrl == true)
             {
                 GameObject go = Managers.resourceMgr.Instantiate("Character/My_Human_Adventurer");
-                go.name = CreatureInfo.StatInfo.Class;
-                _players.Add(CreatureInfo.CreatureId, go);
+                go.name = gameObjectInfo.StatInfo.Class;
+                _players.Add(gameObjectInfo.ObjectId, go);
 
                 MyHumanCtrl = go.GetComponent<MyHumanCtrl>();
-                MyHumanCtrl.Id = CreatureInfo.CreatureId;
-                MyHumanCtrl.PosInfo = CreatureInfo.PosInfo;
-                MyHumanCtrl.Stat = CreatureInfo.StatInfo;
-                MyHumanCtrl.SkillData = CreatureInfo.SkillInfo;
+                MyHumanCtrl.Id = gameObjectInfo.ObjectId;
+                MyHumanCtrl.PosInfo = gameObjectInfo.PosInfo;
+                MyHumanCtrl.Stat = gameObjectInfo.StatInfo;
+                MyHumanCtrl.SkillData = gameObjectInfo.SkillInfo;
 
                 MyHumanCtrl.SyncPos();     // 서버상 위치와 유니티상 위치 동기화
             }
             else
             {
                 GameObject go = Managers.resourceMgr.Instantiate("Character/Human_Adventurer");
-                go.name = CreatureInfo.StatInfo.Class;
-                _players.Add(CreatureInfo.CreatureId, go);
+                go.name = gameObjectInfo.StatInfo.Class;
+                _players.Add(gameObjectInfo.ObjectId, go);
 
                 HumanCtrl hc = go.GetComponent<HumanCtrl>();
-                hc.Id = CreatureInfo.CreatureId;
-                hc.PosInfo = CreatureInfo.PosInfo;
-                hc.Stat = CreatureInfo.StatInfo;
-                hc.SkillData = CreatureInfo.SkillInfo;
+                hc.Id = gameObjectInfo.ObjectId;
+                hc.PosInfo = gameObjectInfo.PosInfo;
+                hc.Stat = gameObjectInfo.StatInfo;
+                hc.SkillData = gameObjectInfo.SkillInfo;
 
                 hc.SyncPos();        // 서버상 위치와 유니티상 위치 동기화
             }

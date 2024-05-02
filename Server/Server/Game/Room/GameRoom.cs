@@ -30,34 +30,34 @@ namespace Server.Game
             base.Flush();
         }
 
-        public void EnterGame(CreatureObject newCreature) 
+        public void EnterGame(GameObject newGameObject) 
         {
-            if (newCreature == null)
+            if (newGameObject == null)
             {
                 Console.WriteLine("ERROR) there is no newObject : newObject is null");
                 return;
             }
 
-            GameObjectType type = ObjectMgr.GetObjectTypebyId(newCreature.CreatureId);
+            GameObjectType type = ObjectMgr.GetObjectTypebyId(newGameObject.ObjectId);
             Console.WriteLine($"Type : {type} Entered to GameRoom({RoomId})");
 
             if (type == GameObjectType.Player)
             {
-                Player newPlayer = newCreature as Player;
-                _players.Add(newPlayer.CreatureId, newPlayer);
+                Player newPlayer = newGameObject as Player;
+                _players.Add(newPlayer.ObjectId, newPlayer);
                 newPlayer.MyRoom = this;
 
                 #region Player 입장 성공 시 입장 성공했다고 전송
                 S_EnterGame EnterPacket = new S_EnterGame();
-                EnterPacket.CreatureInfo = newPlayer.CreatureInfo;
-                Console.WriteLine($"Class : {EnterPacket.CreatureInfo.StatInfo} Enter Packet sended");
+                EnterPacket.GameObjectInfo = newPlayer.GameObjectInfo;
+                Console.WriteLine($"Class : {EnterPacket.GameObjectInfo.StatInfo} Enter Packet sended");
                 newPlayer.MySession.Send(EnterPacket);
 
                 S_Spawn SpawnOthersPacketToMe = new S_Spawn();    // 먼저 입장해있던 타 플레이어들 정보 전송          
                 foreach (Player p in _players.Values)
                 {
                     if (p != newPlayer)     // 자기자신 정보 제외
-                        SpawnOthersPacketToMe.CreatureInfoList.Add(p.CreatureInfo);                  
+                        SpawnOthersPacketToMe.GameObjectInfoList.Add(p.GameObjectInfo);                  
                 }
 
                 newPlayer.MySession.Send(SpawnOthersPacketToMe);
@@ -74,11 +74,11 @@ namespace Server.Game
 
             #region 미리 입장해있던 플레이어 모두에게 입장한 오브젝트 spawn시키라고 데이터 전송   
             S_Spawn SpawnPacketToOthers = new S_Spawn();
-            SpawnPacketToOthers.CreatureInfoList.Add(newCreature.CreatureInfo);
+            SpawnPacketToOthers.GameObjectInfoList.Add(newGameObject.GameObjectInfo);
 
             foreach (Player p in _players.Values)
             {
-                if (p.CreatureId != newCreature.CreatureId)       // 새로 입장한 자신 제외!
+                if (p.ObjectId != newGameObject.ObjectId)       // 새로 입장한 자신 제외!
                     p.MySession.Send(SpawnPacketToOthers);
             }
             #endregion

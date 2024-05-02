@@ -19,21 +19,21 @@ namespace Server.Game
         // [unused 1-bit] [Type 7-bit] [Id 24-bit]  //포트폴리오 제작 과정 수업 기록 2 - server연동 8)화살 파트 참고
         int _counter = 0;
 
-        public T Add<T>() where T : CreatureObject, new()     // 최상위 GameObject 일반화 ver. 비효율적으로 느껴져서 분화
+        public T Add<T>() where T : GameObject, new()     // 최상위 GameObject 일반화 ver. 비효율적으로 느껴져서 분화
         {
             T gameObject = new T();
 
             lock (_lock)
             {
-                gameObject.CreatureId = GenerateId(gameObject.ObjectType);
+                gameObject.ObjectId = GenerateId(gameObject.ObjectType);
 
                 if (gameObject.ObjectType == GameObjectType.Player)
                 {
-                    _players.Add(gameObject.CreatureId, gameObject as Player);
+                    _players.Add(gameObject.ObjectId, gameObject as Player);
                 }
                 else if (gameObject.ObjectType == GameObjectType.Monster)
                 {
-                    _monsters.Add(gameObject.CreatureId, gameObject as Monster);
+                    _monsters.Add(gameObject.ObjectId, gameObject as Monster);
                 }
                 else if (gameObject.ObjectType == GameObjectType.Projectile)
                 {

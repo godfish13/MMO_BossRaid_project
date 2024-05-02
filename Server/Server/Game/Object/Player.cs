@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Server.Game
 {
-    public class Player : CreatureObject
+    public class Player : GameObject
     {
         public Player()
         {
@@ -17,11 +17,11 @@ namespace Server.Game
 
             StatInfo _stat = null;                                  // StatJson으로 불러놓은 player정보 넣기
             DataMgr.StatDictionary.TryGetValue(key: StatInfo.ClassId, out _stat); 
-            CreatureInfo.StatInfo.MergeFrom(_stat);
+            GameObjectInfo.StatInfo.MergeFrom(_stat);
 
             SkillInfo _skill = null;
             DataMgr.SkillDictionary.TryGetValue(key: StatInfo.ClassId, out _skill);
-            CreatureInfo.SkillInfo.MergeFrom(_skill);
+            GameObjectInfo.SkillInfo.MergeFrom(_skill);
 
             PositionInfo _posInfo = new PositionInfo() { PosX = 0, PosY = 0 };
         }

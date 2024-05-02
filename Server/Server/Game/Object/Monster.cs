@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Server.Game
 {
-    public class Monster : CreatureObject
+    public class Monster : GameObject
     {
         public Monster()
         {
@@ -18,11 +18,11 @@ namespace Server.Game
 
             StatInfo _stat = null;                                 
             DataMgr.StatDictionary.TryGetValue(key: StatInfo.ClassId, out _stat);
-            CreatureInfo.StatInfo.MergeFrom(_stat);
+            GameObjectInfo.StatInfo.MergeFrom(_stat);
 
             SkillInfo _skill = null;
             DataMgr.SkillDictionary.TryGetValue(key: StatInfo.ClassId, out _skill);
-            CreatureInfo.SkillInfo.MergeFrom(_skill);
+            GameObjectInfo.SkillInfo.MergeFrom(_skill);
 
             PositionInfo _posInfo = new PositionInfo() { PosX = 0, PosY = 0 };
         }
