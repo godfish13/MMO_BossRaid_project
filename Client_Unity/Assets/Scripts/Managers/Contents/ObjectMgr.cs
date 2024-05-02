@@ -131,7 +131,7 @@ public class ObjectMgr : MonoBehaviour
         return go;
     }
 
-    public void Clear()
+    public void Clear()     // 현재는 DisConnect 방법이 강종뿐이니 별의미 없음 그래도 일단 둠
     {
         foreach (GameObject obj in _players.Values)
         {

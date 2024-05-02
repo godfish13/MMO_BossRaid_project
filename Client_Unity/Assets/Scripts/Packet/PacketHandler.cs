@@ -11,7 +11,6 @@ class PacketHandler
     public static void S_EnterGameHandler(PacketSession session, IMessage packet)   // 자신이 입장할때 받음
     {
         S_EnterGame enterGamePacket = packet as S_EnterGame;
-
         Debug.Log("S_EnterGameHandler activated");
         Debug.Log($"class : {enterGamePacket.GameObjectInfo.StatInfo.Class} Entered Game");
 
@@ -21,21 +20,21 @@ class PacketHandler
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)
     {
         S_LeaveGame leaveGamePacket = packet as S_LeaveGame;
-
-
         Debug.Log("S_LeaveGamePacket activated");
-        Debug.Log(leaveGamePacket.GameObjectInfo.ObjectId);
+        Debug.Log($"{leaveGamePacket.GameObjectInfo.ObjectId} leaved");
+
+        Managers.objectMgr.Clear();
     }
 
     public static void S_SpawnHandler(PacketSession session, IMessage packet)   // 타 오브젝트들이 입장할때 받음
     {
         S_Spawn spawnPacket = packet as S_Spawn;
+        Debug.Log("S_SpawnHandler activated");
 
         foreach (GameObjectInfo gameObjectInfo in spawnPacket.GameObjectInfoList)
         {
             Managers.objectMgr.Add(gameObjectInfo, false);
         }
-        Debug.Log("S_SpawnHandler activated");
     }
 
     public static void S_DespawnHandler(PacketSession session, IMessage packet)
@@ -43,6 +42,11 @@ class PacketHandler
         S_Despawn despawnPacket = packet as S_Despawn;
 
         Debug.Log("S_DespawnHandler activated");
+
+        foreach (int Id in despawnPacket.GameObjectIdlist)
+        {
+            Managers.objectMgr.Remove(Id);
+        }
     }
 
     public static void S_MoveHandler(PacketSession session, IMessage packet)

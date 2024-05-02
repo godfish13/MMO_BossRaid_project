@@ -47,9 +47,9 @@ namespace Server.Game
                 _players.Add(newPlayer.ObjectId, newPlayer);
                 newPlayer.MyRoom = this;
                 newPlayer.PositionInfo = new PositionInfo() { State = CreatureState.Idle, PosX = 0, PosY = 0, LocalScaleX = 1}; 
-                // 입장시킬 초기 위치 및 상태
+                // 입장시킬 초기 위치 및 상태 일단 하드코딩 플레이어 입장순서에 따른 위치 초기화 todo
 
-                #region Player 입장 성공 시 입장 성공했다고 전송
+                #region Player 입장 성공 시 입장 성공했다고 전송 -> Client에서 MyPlayer 생성
                 S_EnterGame EnterPacket = new S_EnterGame();
                 EnterPacket.GameObjectInfo = newPlayer.GameObjectInfo;
                 Console.WriteLine($"Id : {EnterPacket.GameObjectInfo.ObjectId} Enter Packet sended");
@@ -89,18 +89,51 @@ namespace Server.Game
 
         public void LeaveGame(int objectId)
         {
-            Player player = null;
-            if (_players.Remove(objectId, out player) == false)
-                return;
+            GameObjectType type = ObjectMgr.GetObjectTypebyId(objectId);
 
-            player.MyRoom = null;
-
-            #region player 퇴장 성공시 Client의 player 본인에게 데이터 전송
+            if (type == GameObjectType.Player)
             {
-                S_LeaveGame leavePacket = new S_LeaveGame();
-                player.MySession.Send(leavePacket);
+                Player player = null;
+                if (_players.Remove(objectId, out player) == false)
+                    return;
+
+                player.MyRoom = null;
+
+                #region player 퇴장 성공시 Client의 player 본인에게 데이터 전송
+                {
+                    S_LeaveGame leavePacket = new S_LeaveGame();
+                    player.MySession.Send(leavePacket);
+                }
+                #endregion
             }
-            #endregion
+            else if (type == GameObjectType.Monster)
+            {
+                Monster monster = null;
+                if (_monsters.Remove(objectId, out monster) == false)
+                    return;
+
+                monster.MyRoom = null;
+            }
+            else if (type == GameObjectType.Projectile)
+            {
+                Projectile projectile = null;
+                if (_projectiles.Remove(objectId, out projectile) == false)
+                    return;
+
+                projectile.MyRoom = null;
+            }
+
+            #region 타인한테 player가 퇴장했다고 데이터 전송
+            {
+                S_Despawn despawnPacket = new S_Despawn();
+                despawnPacket.GameObjectIdlist.Add(objectId);
+                foreach (Player player in _players.Values)
+                {
+                    if (player.GameObjectInfo.ObjectId != objectId)
+                        player.MySession.Send(despawnPacket);
+                }
+            }
+            #endregion 
         }
 
         public void HandleMove(Player player, C_Move movePacket)

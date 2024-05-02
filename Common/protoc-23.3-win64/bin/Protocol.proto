@@ -57,7 +57,7 @@ message S_Spawn
 
 message S_Despawn
 {
-	GameObjectInfo gameObjectInfo = 1;
+	repeated int32 gameObjectIdlist = 1;
 }
 
 message S_Move

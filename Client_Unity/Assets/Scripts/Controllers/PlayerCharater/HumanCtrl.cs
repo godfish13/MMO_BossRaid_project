@@ -29,10 +29,14 @@ public class HumanCtrl : BaseCtrl
 
     public void SyncPos()
     {
-        State = PositionInfo.State;
-        transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
-        transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
-        Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
+        // 변화 없을땐 쓸데없이 작동하지 않도록 조건 추가
+        if (State != PositionInfo.State || transform.position.x != PositionInfo.PosX || transform.position.y != PositionInfo.PosY || transform.localScale.x != PositionInfo.LocalScaleX)
+        {
+            State = PositionInfo.State;
+            transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
+            transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
+            Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
+        }
     }
 
     #region MainSkill
