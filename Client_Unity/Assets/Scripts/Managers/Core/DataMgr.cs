@@ -27,22 +27,3 @@ public class DataMgr
         return Newtonsoft.Json.JsonConvert.DeserializeObject<Loader>(textAsset.ToString());
     }
 }
-
-/* Legacy) DataModeling ¹æ½Ä
-public class DataMgr
-{
-    public Dictionary<int, Stat> SkillDictionary { get; private set; } = new Dictionary<int, Stat>();
-    public Dictionary<int, Skill> SkillDictionary { get; private set; } = new Dictionary<int, Skill>();
-
-    public void init()
-    {
-        StatDictionary = LoadJson<StatData, int, Stat>("SkillData").MakeDict();
-        SkillDictionary = LoadJson<SkillData, int, Skill>("SkillData").MakeDict();
-    }
-
-    Loader LoadJson<Loader, key, value>(string path) where Loader : ILoader<key, value>
-    {
-        TextAsset textAsset = Managers.resourceMgr.Load<TextAsset>($"Data/{path}");
-        return JsonUtility.FromJson<Loader>(textAsset.text);
-    }
-}*/

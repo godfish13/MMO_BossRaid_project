@@ -3,6 +3,7 @@ using Google.Protobuf.Protocol;
 using ServerCore;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 class PacketHandler
@@ -14,7 +15,7 @@ class PacketHandler
         Debug.Log("S_EnterGameHandler activated");
         Debug.Log($"class : {enterGamePacket.GameObjectInfo.StatInfo.Class} Entered Game");
 
-        Managers.objecMgr.Add(enterGamePacket.GameObjectInfo, myCtrl: true);   
+        Managers.objectMgr.Add(enterGamePacket.GameObjectInfo, myCtrl: true);   
     }
 
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)
@@ -32,7 +33,7 @@ class PacketHandler
 
         foreach (GameObjectInfo gameObjectInfo in spawnPacket.GameObjectInfoList)
         {
-            Managers.objecMgr.Add(gameObjectInfo, false);
+            Managers.objectMgr.Add(gameObjectInfo, false);
         }
         Debug.Log("S_SpawnHandler activated");
     }
@@ -48,6 +49,18 @@ class PacketHandler
     {
         S_Move movePacket = packet as S_Move;
 
-        Debug.Log("S_MoveHandler activated");
+        GameObject go = Managers.objectMgr.FindGameObjectbyId(movePacket.ObjectId);
+
+        if (go == null)
+            return;
+
+        if (Managers.objectMgr.MyHumanCtrl.GameObjectId == movePacket.ObjectId)  // 자신 PosInfo는 클라이언트상 정보를 따름       
+            return;
+                 
+        BaseCtrl baseCtrl = go.GetComponent<BaseCtrl>();
+        if (baseCtrl == null)
+            return;
+
+        baseCtrl.PositionInfo = movePacket.PositionInfo;
     }
 }

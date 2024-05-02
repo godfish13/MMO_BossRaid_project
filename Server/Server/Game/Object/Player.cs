@@ -13,7 +13,7 @@ namespace Server.Game
         public Player()
         {
             ObjectType = GameObjectType.Player;
-            ClassId = 0;                        // 일단 하드코딩...   // 따로 입력하는것 못넣을 시 Client쪽 Multi Build and Run Editor에서 1~4로 순서대로 넣자
+            ClassId = 0;                        // 따로 입력하는것 못넣을 시 Client쪽 Multi Build and Run Editor에서 1~4로 순서대로 넣자
 
             StatInfo _stat = null;                                  // StatJson으로 불러놓은 player정보 넣기
             DataMgr.StatDictionary.TryGetValue(key: StatInfo.ClassId, out _stat); 
@@ -23,7 +23,7 @@ namespace Server.Game
             DataMgr.SkillDictionary.TryGetValue(key: StatInfo.ClassId, out _skill);
             GameObjectInfo.SkillInfo.MergeFrom(_skill);
 
-            PositionInfo _posInfo = new PositionInfo() { PosX = 0, PosY = 0 };
+            PositionInfo _posInfo = new PositionInfo() { PosX = 0, PosY = 0, LocalScaleX = 1 };
         }
 
         public StatInfo StatInfo = new StatInfo();      // Json Data Loading용

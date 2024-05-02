@@ -6,17 +6,11 @@ using UnityEngine;
 
 public class ObjectMgr : MonoBehaviour
 {
-    public MyHumanCtrl MyHumanCtrl { get; set; }
+    public MyHumanCtrl MyHumanCtrl { get; set; }    // MyHumanCtrl은 접근하기 편하게 따로 빼둠
     Dictionary<int, GameObject> _players = new Dictionary<int, GameObject>();
     Dictionary<int, GameObject> _monsters = new Dictionary<int, GameObject>();
-    Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
+    Dictionary<int, GameObject> _projectiles = new Dictionary<int, GameObject>();
     // playerId, player
-
-    public static GameObjectType GetGameObjectTypebyId(int ObjectId)
-    {
-        int type = ObjectId >> 24 & 0x7F;
-        return (GameObjectType)type;
-    }
 
     public void Add(GameObjectInfo gameObjectInfo, bool myCtrl = false) // MyCtrl : 내가 조종하는지 아닌지 체크
     {
@@ -31,12 +25,10 @@ public class ObjectMgr : MonoBehaviour
                 _players.Add(gameObjectInfo.ObjectId, go);
 
                 MyHumanCtrl = go.GetComponent<MyHumanCtrl>();
-                MyHumanCtrl.Id = gameObjectInfo.ObjectId;
-                MyHumanCtrl.PosInfo = gameObjectInfo.PosInfo;
+                MyHumanCtrl.GameObjectId = gameObjectInfo.ObjectId;
+                MyHumanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
                 MyHumanCtrl.Stat = gameObjectInfo.StatInfo;
                 MyHumanCtrl.SkillData = gameObjectInfo.SkillInfo;
-
-                MyHumanCtrl.SyncPos();     // 서버상 위치와 유니티상 위치 동기화
             }
             else
             {
@@ -44,19 +36,29 @@ public class ObjectMgr : MonoBehaviour
                 go.name = gameObjectInfo.StatInfo.Class;
                 _players.Add(gameObjectInfo.ObjectId, go);
 
-                HumanCtrl hc = go.GetComponent<HumanCtrl>();
-                hc.Id = gameObjectInfo.ObjectId;
-                hc.PosInfo = gameObjectInfo.PosInfo;
-                hc.Stat = gameObjectInfo.StatInfo;
-                hc.SkillData = gameObjectInfo.SkillInfo;
+                HumanCtrl humanCtrl = go.GetComponent<HumanCtrl>();
+                humanCtrl.GameObjectId = gameObjectInfo.ObjectId;
+                humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+                humanCtrl.Stat = gameObjectInfo.StatInfo;
+                humanCtrl.SkillData = gameObjectInfo.SkillInfo;
 
-                hc.SyncPos();        // 서버상 위치와 유니티상 위치 동기화
+                humanCtrl.SyncPos();        // 서버상 위치와 유니티상 위치 동기화
             }
         }
         else if (type == GameObjectType.Monster)
         {
             // Todo
         }
+        else if (type == GameObjectType.Projectile)
+        {
+            // Todo
+        }
+    }
+
+    public GameObjectType GetGameObjectTypebyId(int ObjectId)
+    {
+        int type = ObjectId >> 24 & 0x7F;
+        return (GameObjectType)type;
     }
 
     public static int GetDecimalId(int id)
@@ -65,17 +67,32 @@ public class ObjectMgr : MonoBehaviour
         return DecimalId;
     }
 
-    public void Remove(int Id)
+    public void Remove(int id)
     {
-        GameObject go = FindGameObjectbyId(Id);
+        GameObject go = FindGameObjectbyId(id);
+
         if (go == null)
             return;
 
-        _objects.Remove(Id);
+        GameObjectType gameObjectType = Managers.objectMgr.GetGameObjectTypebyId(id);
+
+        if (gameObjectType == GameObjectType.Player)
+        {
+            _players.Remove(id);
+        }
+        else if (gameObjectType == GameObjectType.Monster)
+        {
+            _monsters.Remove(id);
+        }
+        else if (gameObjectType == GameObjectType.Projectile)
+        {
+            _projectiles.Remove(id);
+        }    
+        
         Managers.resourceMgr.Destroy(go);
     }
 
-    public GameObject FindGameObject(Func<GameObject, bool> condition)  // condition : go를 매개변수로, bool을 return하는 람다식
+    /*public GameObject FindGameObject(Func<GameObject, bool> condition)  // condition : go를 매개변수로, bool을 return하는 람다식
     {
         foreach (GameObject obj in _objects.Values)
         {
@@ -87,22 +104,50 @@ public class ObjectMgr : MonoBehaviour
                 return obj;
         }
         return null;
-    }
+    }*/
 
     public GameObject FindGameObjectbyId(int id)
     {
+        GameObjectType gameObjectType = Managers.objectMgr.GetGameObjectTypebyId(id);
+
         GameObject go = null;
-        _objects.TryGetValue(id, out go);
+
+        if (gameObjectType == GameObjectType.Player)
+        {
+            _players.TryGetValue(id, out go);
+        }
+        else if (gameObjectType == GameObjectType.Monster)
+        {
+            _monsters.TryGetValue(id, out go);
+        }
+        else if (gameObjectType == GameObjectType.Projectile)
+        {
+            _projectiles.TryGetValue(id, out go);
+        }      
+        
         return go;
     }
 
     public void Clear()
     {
-        foreach (GameObject obj in _objects.Values)
+        foreach (GameObject obj in _players.Values)
         {
             Managers.resourceMgr.Destroy(obj);
         }
-        _objects.Clear();
+        _players.Clear();
+
+        foreach (GameObject obj in _monsters.Values)
+        {
+            Managers.resourceMgr.Destroy(obj);
+        }
+        _monsters.Clear();
+
+        foreach (GameObject obj in _projectiles.Values)
+        {
+            Managers.resourceMgr.Destroy(obj);
+        }
+        _projectiles.Clear();
+
         MyHumanCtrl = null;
     }
 }

@@ -9,13 +9,13 @@ using UnityEngine;
 public class BaseCtrl : MonoBehaviour
 {
     #region for Server Connection
-    [SerializeField] private int _id;
-    public int Id { get { return _id; } set { _id = value; } }
+    [SerializeField] private int _gameObjectId;
+    public int GameObjectId { get { return _gameObjectId; } set { _gameObjectId = value; } }
 
     [SerializeField] private bool PacketSenderFlag = false;  // PosInfo (State set, transform X Y 의 값이 변하면 true)
 
     private PositionInfo _positionInfo = new PositionInfo();
-    public PositionInfo PosInfo             // State, X, Y
+    public PositionInfo PositionInfo             // State, X, Y, LocalScaleX
     {
         get { return _positionInfo; }
         set
@@ -26,25 +26,20 @@ public class BaseCtrl : MonoBehaviour
             _positionInfo.State = value.State; 
             _positionInfo.PosX = value.PosX;
             _positionInfo.PosY = value.PosY;
+            _positionInfo.LocalScaleX = value.LocalScaleX;
         }
-    }
-
-    public void SyncPos()
-    {
-        State = PosInfo.State;
-        transform.position = new Vector2(PosInfo.PosX, PosInfo.PosY);
-    }
+    } 
     #endregion
 
     SpriteRenderer _spriteRenderer;
     Animator _animator;
     protected Rigidbody2D _rigidbody;
-    private Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정
+    protected Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정
     
     public int ClassId = 0;
 
     [SerializeField] protected CreatureState _state;
-    public CreatureState State
+    public virtual CreatureState State
     {
         get { return _state; }
         set
@@ -53,9 +48,9 @@ public class BaseCtrl : MonoBehaviour
                 return;
 
             _state = value;
-            PosInfo.State = value;
-            PacketSenderFlag = true;
-            UpdateAnim();
+            PositionInfo.State = value;
+
+            UpdateAnim(); 
         }
     }
 
@@ -109,7 +104,12 @@ public class BaseCtrl : MonoBehaviour
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        
+
+        PositionInfo.State = State;
+        PositionInfo.PosX = transform.position.x;
+        PositionInfo.PosY = transform.position.y;
+        PositionInfo.LocalScaleX = transform.localScale.x;
+
         BindData(ClassId);
 
         UpdateAnim();
@@ -147,32 +147,6 @@ public class BaseCtrl : MonoBehaviour
     void FixedUpdate()  // Update에서 실행하면 가속도처리가 너무 빠름
     {
         UpdateCtrl();
-
-        #region Server 통신
-        if (PosInfo.PosX != transform.position.x || PosInfo.PosY != transform.position.y)   // 현재상태랑 달라졌을때만 Set
-        {
-            PosInfo.PosX = transform.position.x;
-            PosInfo.PosY = transform.position.y;
-            PacketSenderFlag = true;
-        }
-
-        if (PacketSenderFlag && _packetCoolTime)    // PosInfo에 변화가 있고 PacketCoolTime on이면 송신
-        {
-            PacketSenderFlag = false;
-            C_MovePacketSend();
-        }
-        #endregion
-    }
-
-    public void C_MovePacketSend()
-    {
-        C_Move movePacket = new C_Move();
-
-        movePacket.ObjectId = Id;
-        movePacket.PositionInfo = PosInfo;
-
-        Managers.networkMgr.Send(movePacket);
-        _coPacketCoolTimer = StartCoroutine("CopacketCoolTimer", 0.25f);    // 0.25초마다 패킷 송신 가능 1초에 4번
     }
 
     #region Animation
@@ -480,42 +454,7 @@ public class BaseCtrl : MonoBehaviour
         State = CreatureState.Tmp;     // State Change flag
         _coRollingCoolTimer = StartCoroutine("CoRollingCoolTimer", SkillData.JumpCoolTime + 1.0f);
     }
-    #endregion
-
-    #region isGround
-    private Collider2D _platformCollider;    // Platform에 착지하면 해당 플랫폼의 collider 기억, 이후 해당 콜라이더에서 떨어지면 점프중인걸로 판별
-
-    public void OnCollisionEnter2D(Collision2D collision)   // Platform에 닿았는지 체크
-    {
-        // OnCollision 발생 시
-        // 충돌 지점의 y 좌표가 플레이어 collider 아랫면(y 축의 최솟값)보다 작거나 같으면 바닥에 접촉했다고 판정
-        // 점프해서 움직이는데 플레이어 콜라이더 양옆이나 위쪽에 뭐가 닿았을 시 _isGrounded = true가 되는것 방지
-        if (collision.contacts.All((i) => (i.point.y <= _collider.bounds.min.y)))
-        {
-            _platformCollider = collision.collider;
-            _isGrounded = true;
-
-            if (State == CreatureState.Rolling) // 구르기 가속도 반동 초기화
-            {
-                velocity.x = transform.localScale.x * Stat.MaxSpeed;
-                _rigidbody.velocity = velocity;
-            }
-
-            if (Input.GetKey(KeyCode.X) == false && State != CreatureState.Subskill)    // 스킬들 사용중에는 Land모션 재생 x
-                State = CreatureState.Land; // State Change flag
-            //Debug.Log("Landed");
-            _coJumpCoolTimer = StartCoroutine("CoJumpCoolTimer", SkillData.JumpCoolTime);     // 착지 후 점프 0.1초 쿨타임 (애니메이션 꼬임 문제 방지)
-        }
-    }
-
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        if (_isGrounded && collision.collider == _platformCollider)
-        {
-            _isGrounded = false;
-        }
-    }
-    #endregion
+    #endregion  
 
     #region Skills
     protected virtual void MainSkill()
@@ -540,7 +479,7 @@ public class BaseCtrl : MonoBehaviour
     #region CoolTimes
     // Jump
     protected bool _jumpable = true;  // 점프가능여부(쿨타임) + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
-    private Coroutine _coJumpCoolTimer;
+    protected Coroutine _coJumpCoolTimer;
     IEnumerator CoJumpCoolTimer(float time)
     {
         _jumpable = false;
@@ -551,7 +490,7 @@ public class BaseCtrl : MonoBehaviour
 
     // Rolling
     protected bool _isRollingOn = true;  // 점프가능여부(쿨타임) + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
-    private Coroutine _coRollingCoolTimer;
+    protected Coroutine _coRollingCoolTimer;
     IEnumerator CoRollingCoolTimer(float time)
     {
         _isRollingOn = false;
@@ -569,17 +508,6 @@ public class BaseCtrl : MonoBehaviour
         yield return new WaitForSeconds(time);
         _isSubSkillOn = true;
         _coSubSkillCoolTimer = null;
-    }
-
-    // Server 통신
-    protected bool _packetCoolTime = true;
-    protected Coroutine _coPacketCoolTimer;
-    IEnumerator CopacketCoolTimer(float time)
-    {
-        _packetCoolTime = false;
-        yield return new WaitForSeconds(time);
-        _packetCoolTime = true;
-        _coPacketCoolTimer = null;
     }
     #endregion
 }

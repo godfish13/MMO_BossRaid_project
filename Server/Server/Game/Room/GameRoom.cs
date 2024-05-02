@@ -13,8 +13,8 @@ namespace Server.Game
         public int RoomId { get; set; }
 
         Dictionary<int, Player> _players = new Dictionary<int, Player>(); // 해당 룸에 접속중인 player들
-        //Dictionary<int, Monster> _monsters = new Dictionary<int, Monster>();
-        //Dictionary<int, Projectile> _projectiles = new Dictionary<int, Projectile>();
+        Dictionary<int, Monster> _monsters = new Dictionary<int, Monster>();
+        Dictionary<int, Projectile> _projectiles = new Dictionary<int, Projectile>();
 
         public Map Map { get; set; } = new Map();
 
@@ -50,7 +50,8 @@ namespace Server.Game
                 #region Player 입장 성공 시 입장 성공했다고 전송
                 S_EnterGame EnterPacket = new S_EnterGame();
                 EnterPacket.GameObjectInfo = newPlayer.GameObjectInfo;
-                Console.WriteLine($"Class : {EnterPacket.GameObjectInfo.StatInfo} Enter Packet sended");
+                Console.WriteLine($"Id : {EnterPacket.GameObjectInfo.ObjectId} Enter Packet sended");
+                //Console.WriteLine($"Class : {EnterPacket.GameObjectInfo.StatInfo} Enter Packet sended");
                 newPlayer.MySession.Send(EnterPacket);
 
                 S_Spawn SpawnOthersPacketToMe = new S_Spawn();    // 먼저 입장해있던 타 플레이어들 정보 전송          
@@ -98,6 +99,58 @@ namespace Server.Game
                 player.MySession.Send(leavePacket);
             }
             #endregion
+        }
+
+        public void HandleMove(Player player, C_Move movePacket)
+        {
+            if (player == null)
+                return;
+            GameObjectInfo gameObjectInfo = player.GameObjectInfo;
+
+            /* move 패킷 정상 검증 todo
+            PositionInfo movePositionInfo = movePacket.PositionInfo; 
+                       
+            if (movePositionInfo.PosX != gameObjectInfo.PositionInfo.PosX || movePositionInfo.PosY != gameObjectInfo.PositionInfo.PosY) // 현 좌표랑 목표좌표랑 다른지 체크
+            {
+                if (Map.MinX < movePositionInfo.PosX && movePositionInfo.PosX < Map.MaxX && Map.MinY < movePositionInfo.PosY && movePositionInfo.PosY < Map.MaxY)
+                {
+                    // if문 여러개 쓰기 귀찮아서 else쓰려고 위 조건 씀
+                    // 좌표값 이상하면 else문 실행
+                }
+                else
+                {
+                    Console.WriteLine("이상한 좌표값 강제이동 얍");
+                    movePositionInfo = Map.InBoundary(movePositionInfo);  // 맵범위 내 좌표로 강제이동   
+                }        
+            }*/
+
+            // 서버에 저장된 자신의 좌표 변경(이동)
+            gameObjectInfo.PositionInfo.State = movePacket.PositionInfo.State;
+            ApplyMove(player, movePacket.PositionInfo);
+
+            // 다른 플레이어들에게 자기위치 방송
+            S_Move broadMovePkt = new S_Move(); // 방송하려고 서버측에서 보내는 M 패킷
+            broadMovePkt.ObjectId = player.GameObjectInfo.ObjectId;   // 움직인 자신 Id 입력
+            broadMovePkt.PositionInfo = movePacket.PositionInfo;
+
+            BroadCast(broadMovePkt);
+        }
+
+        public void ApplyMove(Player player, PositionInfo movePositionInfo)
+        {
+            Player TargetPlayer;
+            if (_players.TryGetValue(player.GameObjectInfo.ObjectId, out TargetPlayer))
+            {              
+                TargetPlayer.GameObjectInfo.PositionInfo = movePositionInfo;
+            }
+        }
+
+        public void BroadCast(IMessage packet)
+        {
+            foreach (Player p in _players.Values)
+            {
+                p.MySession.Send(packet);
+            }
         }
     }
 }

@@ -10,37 +10,20 @@ namespace Server.Game
         public static ObjectMgr Instance { get; } = new ObjectMgr();
 
         object _lock = new object();
-        Dictionary<int, Player> _players = new Dictionary<int, Player>();
-        Dictionary<int, Monster> _monsters = new Dictionary<int, Monster>();
-        //Dictionary<int, Projectile> _objects = new Dictionary<int, GameObject>();
 
         // 플레이어 아이디 하나 딸랑 담기에 int는 너무 큼 그러므로 비트 분할해서 사용
         // int = 4 byte = 32 bit 이므로 나눠서 사용
         // [unused 1-bit] [Type 7-bit] [Id 24-bit]  //포트폴리오 제작 과정 수업 기록 2 - server연동 8)화살 파트 참고
         int _counter = 0;
 
-        public T Add<T>() where T : GameObject, new()     // 최상위 GameObject 일반화 ver. 비효율적으로 느껴져서 분화
+        public T Add<T>(GameRoom gameRoom) where T : GameObject, new()     // 최상위 GameObject 일반화 ver
         {
             T gameObject = new T();
-
-            lock (_lock)
+            lock (_lock) 
             {
-                gameObject.ObjectId = GenerateId(gameObject.ObjectType);
-
-                if (gameObject.ObjectType == GameObjectType.Player)
-                {
-                    _players.Add(gameObject.ObjectId, gameObject as Player);
-                }
-                else if (gameObject.ObjectType == GameObjectType.Monster)
-                {
-                    _monsters.Add(gameObject.ObjectId, gameObject as Monster);
-                }
-                else if (gameObject.ObjectType == GameObjectType.Projectile)
-                {
-                    // Todo
-                }
+                gameObject.ObjectId = GenerateId(gameObject.ObjectType);    // Object Id 생성
+                gameRoom.Push(gameRoom.EnterGame, gameObject);              // GameRoom에 입장시키기
             }
-
             return gameObject;
         }
 
@@ -64,38 +47,6 @@ namespace Server.Game
         {
             int DecimalId = (id) & 0xFFFFFF;    // 0000 0000 1111 1111 1111 1111 1111 1111
             return DecimalId;                   // 제일 앞 nonuse와 Type 부분 싹 날려서 10진수 숫자 get
-        }
-
-        public bool RemovePlayer(int objectId)
-        {
-            GameObjectType objectType = GetObjectTypebyId(objectId);
-
-            lock (_lock)
-            {
-                if (objectType == GameObjectType.Player)
-                {
-                    return _players.Remove(objectId);
-                }
-
-                return false;
-            }
-        }
-
-        public Player FindPlayer(int objectId)
-        {
-            GameObjectType objectType = GetObjectTypebyId(objectId);
-
-            lock (_lock)
-            {
-                if (objectType == GameObjectType.Player)
-                {
-                    Player player = null;
-                    if (_players.TryGetValue(objectId, out player))
-                        return player;
-                }
-
-                return null;
-            }
         }
     }
 }

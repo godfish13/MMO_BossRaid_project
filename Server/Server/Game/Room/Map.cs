@@ -29,5 +29,19 @@ namespace Server.Game
             MaxY = float.Parse(reader.ReadLine());    // ReadLine이 WriteLine처럼 한줄씩 읽고 넘겨줌
             MinY = float.Parse(reader.ReadLine());          
         }
+
+        public PositionInfo InBoundary(PositionInfo movePositionInfo)     // 간단한 MovePacket 유효성 검증
+        {
+            PositionInfo ClampPositionInfo = new PositionInfo();
+            float ClampX = Math.Clamp(movePositionInfo.PosX, MinX, MaxX);
+            float ClampY = Math.Clamp(movePositionInfo.PosY, MinY, MaxY);
+
+            ClampPositionInfo.State = movePositionInfo.State;
+            ClampPositionInfo.PosX = ClampX;
+            ClampPositionInfo.PosY = ClampY;
+            ClampPositionInfo.LocalScaleX = movePositionInfo.LocalScaleX;
+
+            return ClampPositionInfo;
+        }
     }
 }

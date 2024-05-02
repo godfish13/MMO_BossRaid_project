@@ -17,7 +17,7 @@ namespace Server.Game
             ObjectId = 0,
             StatInfo = new StatInfo(),
             SkillInfo = new SkillInfo(),
-            PosInfo = new PositionInfo() { PosX = 0, PosY = 0 }
+            PositionInfo = new PositionInfo() { PosX = 0, PosY = 0 }
         };
 
         public int ObjectId

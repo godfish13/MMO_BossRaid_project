@@ -30,12 +30,10 @@ namespace Server
         public override void OnConnected(EndPoint endPoint)
         {
             Console.WriteLine($"Client Session ({this.Sessionid}) OnConnected : {endPoint}");
-            myPlayer = ObjectMgr.Instance.Add<Player>();    // 플레이어 목록에 접속한 플레이어 넣고 자신이 대변하는 플레이어 기록
 
-            myPlayer.MySession = this;
-
-            GameRoom gameRoom = RoomMgr.Instance.Find(1);
-            gameRoom.Push(gameRoom.EnterGame, myPlayer);
+            GameRoom gameRoom = RoomMgr.Instance.Find(1);           // GameRoom 1번방만 하드코딩
+            myPlayer = ObjectMgr.Instance.Add<Player>(gameRoom);    // 접속한 플레이어 GameRoom에 입장시키고 
+            myPlayer.MySession = this;                              // 자신이 대변하는 플레이어 기록
         }
         
         public override void OnReceivePacket(ArraySegment<byte> buffer)
