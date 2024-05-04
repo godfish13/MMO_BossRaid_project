@@ -10,6 +10,10 @@ public class Define
         Human_ThrowBomb = 2,
         Elf_ArrowShot = 3,
         Elf_Knife = 4,
+        Furry_Slash = 5,
+        Furry_Guard = 6,
+        Lizard_FireBall = 7,
+        Lizaed_Heal = 8,
     }
 
     public enum Layer

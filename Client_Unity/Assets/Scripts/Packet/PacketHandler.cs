@@ -95,9 +95,9 @@ class PacketHandler
     {
         S_Skill skillPacket = packet as S_Skill;
 
-        GameObject go = Managers.objectMgr.FindGameObjectbyId(skillPacket.SkillUserId);
+        GameObject skillUser = Managers.objectMgr.FindGameObjectbyId(skillPacket.SkillUserId);
 
-        if (go == null) 
+        if (skillUser == null) 
             return;
 
     }

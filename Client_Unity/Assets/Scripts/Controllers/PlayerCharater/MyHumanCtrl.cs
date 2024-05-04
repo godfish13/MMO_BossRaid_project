@@ -328,7 +328,6 @@ public class MyHumanCtrl : HumanCtrl
         State = CreatureState.Tmp;  // State Change flag
         // AnimEvent : SubSkill 애니메이션 끝나기 전까지 상태변화 X
     }
-
     // Hit 판정 OnTriggerEnter2D는 BombCtrl에 존재
     #endregion
 

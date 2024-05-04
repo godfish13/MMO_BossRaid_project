@@ -105,6 +105,8 @@ namespace Server.Game
                 {
                     p.MySession.Send(SpawnProjectilePacket);
                 }
+
+                // 특정 플레이어가 접속 이전에 사용해둔 projectile 생성파트는 일단 접속전 미리 사용할일이 없도록 게임설계예정이므로 보류 
                 #endregion
             }
         }
@@ -183,12 +185,7 @@ namespace Server.Game
             if (player == null)
                 return;
 
-            // Todo 스킬 사용 가능 여부 체크
-
-            S_Skill broadSkillPacket = new S_Skill();
-            broadSkillPacket.SkillUserId = player.ObjectId;
-            broadSkillPacket.SkillId = skillPacket.SkillId;
-            BroadCast(broadSkillPacket);
+            // Todo 스킬 사용 가능 여부 체크       
 
             switch (skillPacket.SkillId)
             {
@@ -208,6 +205,11 @@ namespace Server.Game
                 case 4:             // Elf_Knife
                     break;
             }
+
+            //S_Skill broadSkillPacket = new S_Skill();
+            //broadSkillPacket.SkillUserId = player.ObjectId;
+            //broadSkillPacket.SkillId = skillPacket.SkillId;
+            //BroadCast(broadSkillPacket);
         }
 
         public void ApplyMove(GameObject gameObject, PositionInfo movePositionInfo)

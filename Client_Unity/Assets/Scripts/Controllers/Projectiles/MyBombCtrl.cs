@@ -40,7 +40,6 @@ internal class MyBombCtrl : BombCtrl
 
         if (State == CreatureState.Death)
         {
-            transform.localPosition = Vector3.zero;
             C_LeaveGame leavePacket = new C_LeaveGame();
             leavePacket.GameObjectId = GameObjectId;
             Managers.networkMgr.Send(leavePacket);      // Server의 Despawn 패킷을 받으면 packetHandler에서 Remove, destroy 해줌
