@@ -9,11 +9,14 @@ enum MsgId
 	S_ENTER_GAME = 0;
 	S_LEAVE_GAME = 1;
 	S_SPAWN = 2;
-	S_DESPAWN = 3;
-	S_MOVE = 4;
-	C_MOVE = 5;
-	C_SKILL = 6;
-	C_SELECT_CHARACTER = 7;
+	S_SPAWN_PROJECTILE = 3;
+	S_DESPAWN = 4;
+	S_MOVE = 5;
+	S_SKILL = 6;
+	C_LEAVE_GAME = 7;
+	C_MOVE = 8;
+	C_SKILL = 9;
+	C_SELECT_CHARACTER = 10;
 }
 
 enum CreatureState
@@ -30,6 +33,7 @@ enum CreatureState
 	SUBSKILL = 9;
 	DEATH = 10;
 	TMP = 11;
+	EXPLOSION = 12;
 }
 
 enum GameObjectType
@@ -55,6 +59,12 @@ message S_Spawn
 	repeated GameObjectInfo gameObjectInfoList = 1;
 }
 
+message S_SpawnProjectile
+{
+	GameObjectInfo gameObjectInfo = 1;
+	GameObjectInfo ownerInfo = 2;
+}
+
 message S_Despawn
 {
 	repeated int32 gameObjectIdlist = 1;
@@ -66,14 +76,31 @@ message S_Move
 	PositionInfo positionInfo = 2;
 }
 
+message S_Skill
+{
+	int32 skillUserId = 1;
+	int32 skillId = 2;
+}
+
+message C_LeaveGame
+{
+	int32 gameObjectId = 1;
+}
+
 message C_Move
 {
+	int32 gameObjectId = 1;
 	PositionInfo positionInfo = 2;
+}
+
+message C_MoveProjectile
+{
+	PositionInfo positionInfo = 1;
 }
 
 message C_Skill
 {
-
+	int32 skillId = 1;
 }
 
 message C_SelectCharacter

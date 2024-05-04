@@ -32,8 +32,9 @@ namespace Server
             Console.WriteLine($"Client Session ({this.Sessionid}) OnConnected : {endPoint}");
 
             GameRoom gameRoom = RoomMgr.Instance.Find(1);           // GameRoom 1번방만 하드코딩
-            myPlayer = ObjectMgr.Instance.Add<Player>(gameRoom);    // 접속한 플레이어 GameRoom에 입장시키고 
+            myPlayer = ObjectMgr.Instance.Add<Player>(gameRoom);    // 접속한 플레이어 생성 및 Id generate 후 기록
             myPlayer.MySession = this;                              // 자신이 대변하는 플레이어 기록
+            gameRoom.Push(gameRoom.EnterGame, myPlayer);            // GameRoom에 플레이어 입장
         }
         
         public override void OnReceivePacket(ArraySegment<byte> buffer)

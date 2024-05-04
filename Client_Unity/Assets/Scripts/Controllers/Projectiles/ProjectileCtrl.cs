@@ -5,22 +5,50 @@ using UnityEngine;
 
 public class ProjectileCtrl : MonoBehaviour
 {
-    public Transform ShooterTransform;      // 쏜 플레이어 transform, PlayerCtrl에서 projectile 생성할때 지정
+    #region for Server Connection
+    [SerializeField] private int _gameObjectId;
+    public int GameObjectId { get { return _gameObjectId; } set { _gameObjectId = value; } }
 
-    public void ShooterSet(Transform shooterTransform)
+    private PositionInfo _positionInfo = new PositionInfo();
+    public PositionInfo PositionInfo             // State, X, Y, LocalScaleX
     {
-        ShooterTransform = shooterTransform;
+        get { return _positionInfo; }
+        set
+        {
+            if (_positionInfo.Equals(value))    // positionInfo에 변화가 생길때만 Set
+                return;
+
+            _positionInfo.State = value.State;
+            _positionInfo.PosX = value.PosX;
+            _positionInfo.PosY = value.PosY;
+            _positionInfo.LocalScaleX = value.LocalScaleX;
+        }
+    }
+    #endregion
+
+    [SerializeField] protected CreatureState _state;
+    public virtual CreatureState State
+    {
+        get { return _state; }
+        set
+        {
+            if (_state == value)    // Set과 동시에 animation변경할것이므로 같은값으로 Set하려하면 return
+                return;
+
+            _state = value;
+            PositionInfo.State = value;
+
+            UpdateAnim();
+        }
     }
 
-    public CreatureState State = CreatureState.Idle;   
     protected Transform SpriteTransform;   
-    protected Rigidbody2D _rigidbody;
+    
     protected Animator _animator;
 
     protected virtual void Init()
     {
-        SpriteTransform = gameObject.GetComponentsInChildren<Transform>()[1];
-        _rigidbody = GetComponent<Rigidbody2D>();
+        SpriteTransform = gameObject.GetComponentsInChildren<Transform>()[1];       
         _animator = GetComponentInChildren<Animator>();
     }
 
@@ -31,10 +59,27 @@ public class ProjectileCtrl : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        Move(); 
 
-        // Todo 위치 동기화 패킷 송수신
     }
+
+    #region Server 통신
+    protected virtual void Update()
+    {
+        SyncPos();
+    }
+
+    public void SyncPos()
+    {
+        // 변화 없을땐 쓸데없이 작동하지 않도록 조건 추가
+        if (State != PositionInfo.State || transform.position.x != PositionInfo.PosX || transform.position.y != PositionInfo.PosY || transform.localScale.x != PositionInfo.LocalScaleX)
+        {
+            State = PositionInfo.State;
+            transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
+            transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
+            //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
+        }
+    }
+    #endregion
 
     protected virtual void UpdateAnim()
     {

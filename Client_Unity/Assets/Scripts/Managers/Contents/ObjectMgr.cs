@@ -10,9 +10,8 @@ public class ObjectMgr : MonoBehaviour
     Dictionary<int, GameObject> _players = new Dictionary<int, GameObject>();
     Dictionary<int, GameObject> _monsters = new Dictionary<int, GameObject>();
     Dictionary<int, GameObject> _projectiles = new Dictionary<int, GameObject>();
-    // playerId, player
 
-    public void Add(GameObjectInfo gameObjectInfo, bool myCtrl = false) // MyCtrl : 내가 조종하는지 아닌지 체크
+    public void AddCreature(GameObjectInfo gameObjectInfo, bool myCtrl = false) // MyCtrl : 내가 조종하는지 아닌지 체크
     {
         GameObjectType type = GetGameObjectTypebyId(gameObjectInfo.ObjectId);
 
@@ -51,11 +50,51 @@ public class ObjectMgr : MonoBehaviour
         else if (type == GameObjectType.Monster)
         {
             // Todo
-        }
-        else if (type == GameObjectType.Projectile)
+        }      
+    }
+
+    public void AddProjectile(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo) // MyCtrl : 내가 조종하는지 아닌지 체크
+    {
+        GameObjectType type = GetGameObjectTypebyId(gameObjectInfo.ObjectId);
+
+        if (type != GameObjectType.Projectile)
+            return;
+        
+        if (ownerObjectInfo.ObjectId == MyHumanCtrl.GameObjectId)
         {
-            // Todo
+            Debug.Log("My projectile added");
+            GameObject Bomb = Managers.resourceMgr.Instantiate("Projectiles/MyExplosive");
+            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.ObjectId;
+
+            GameObject skillUser;
+            if (_players.TryGetValue(ownerObjectInfo.ObjectId, out skillUser))
+            {
+                Bomb.transform.position = skillUser.transform.position + new Vector3(1.0f * skillUser.transform.localScale.x, 0.5f, 0);
+                Bomb.GetComponent<Rigidbody2D>().AddForce((Vector2.up + (Vector2.right * skillUser.transform.localScale.x * 2)).normalized * 400.0f);
+                _projectiles.Add(gameObjectInfo.ObjectId, Bomb);
+            }     
+            else
+            {
+                Debug.Log("Error) Cant find Skill Owner");
+            }
         }
+        else
+        {
+            Debug.Log("Others projectile added");
+            GameObject Bomb = Managers.resourceMgr.Instantiate("Projectiles/Explosive");
+            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.ObjectId;
+
+            GameObject skillUser;
+            if (_players.TryGetValue(ownerObjectInfo.ObjectId, out skillUser))
+            {
+                Bomb.transform.position = skillUser.transform.position + new Vector3(1.0f * skillUser.transform.localScale.x, 0.5f, 0);
+                _projectiles.Add(gameObjectInfo.ObjectId, Bomb);
+            }
+            else
+            {
+                Debug.Log("Error) Cant find Skill Owner");
+            }
+        }        
     }
 
     public GameObjectType GetGameObjectTypebyId(int ObjectId)
@@ -75,8 +114,11 @@ public class ObjectMgr : MonoBehaviour
         GameObject go = FindGameObjectbyId(id);
 
         if (go == null)
+        {
+            Debug.Log($"Can't find GameObject {id}");
             return;
-
+        }
+            
         GameObjectType gameObjectType = Managers.objectMgr.GetGameObjectTypebyId(id);
 
         if (gameObjectType == GameObjectType.Player)
@@ -94,20 +136,6 @@ public class ObjectMgr : MonoBehaviour
         
         Managers.resourceMgr.Destroy(go);
     }
-
-    /*public GameObject FindGameObject(Func<GameObject, bool> condition)  // condition : go를 매개변수로, bool을 return하는 람다식
-    {
-        foreach (GameObject obj in _objects.Values)
-        {
-            BaseCtrl bc = obj.GetComponent<BaseCtrl>();
-            if (bc == null)
-                continue;
-
-            if (condition.Invoke(obj))      // 람다식 condition이 true를 리턴한 obj가 있으면 해당 obj return
-                return obj;
-        }
-        return null;
-    }*/
 
     public GameObject FindGameObjectbyId(int id)
     {

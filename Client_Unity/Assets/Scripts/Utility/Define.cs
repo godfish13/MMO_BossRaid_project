@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Define
 {
+    public enum SkillId
+    {
+        Human_Slash = 1,
+        Human_ThrowBomb = 2,
+        Elf_ArrowShot = 3,
+        Elf_Knife = 4,
+    }
+
     public enum Layer
     {
         Platform = 6,

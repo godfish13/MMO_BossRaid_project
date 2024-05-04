@@ -12,8 +12,6 @@ public class BaseCtrl : MonoBehaviour
     [SerializeField] private int _gameObjectId;
     public int GameObjectId { get { return _gameObjectId; } set { _gameObjectId = value; } }
 
-    [SerializeField] private bool PacketSenderFlag = false;  // PosInfo (State set, transform X Y 의 값이 변하면 true)
-
     private PositionInfo _positionInfo = new PositionInfo();
     public PositionInfo PositionInfo             // State, X, Y, LocalScaleX
     {

@@ -14,6 +14,6 @@ public class BombAnimEventCtrl : MonoBehaviour
 
     public void AnimEvent_ExplosionFrameEnded()
     {
-        _bombCtrl.State = CreatureState.Death;
+        _bombCtrl.State = CreatureState.Death;  // State Change Flag
     }
 }

@@ -26,6 +26,15 @@ namespace Server.Game
 
         public void Update()
         {
+            foreach (Monster m in _monsters.Values)
+            {
+                //m.Update();
+            }
+
+            foreach (Projectile p in _projectiles.Values)
+            {
+                //p.Update();
+            }
 
             base.Flush();
         }
@@ -65,6 +74,17 @@ namespace Server.Game
 
                 newPlayer.MySession.Send(SpawnOthersPacketToMe);
                 #endregion
+
+                #region 미리 입장해있던 플레이어 모두에게 입장한 플레이어 spawn시키라고 데이터 전송   
+                S_Spawn SpawnPacketToOthers = new S_Spawn();
+                SpawnPacketToOthers.GameObjectInfoList.Add(newGameObject.GameObjectInfo);
+
+                foreach (Player p in _players.Values)
+                {
+                    if (p.ObjectId != newGameObject.ObjectId)       // 플레이어가 추가됐을 시, 새로 입장한 자신 제외! // monster나 projectile은 상관없는 조건
+                        p.MySession.Send(SpawnPacketToOthers);
+                }
+                #endregion
             }
             else if (type == GameObjectType.Monster)
             {
@@ -72,19 +92,21 @@ namespace Server.Game
             }
             else if (type == GameObjectType.Projectile)
             {
-                // Todo
-            }
+                Projectile newProjectile = newGameObject as Projectile;
+                _projectiles.Add(newProjectile.ObjectId, newProjectile);
+                newProjectile.MyRoom = this;
 
-            #region 미리 입장해있던 플레이어 모두에게 입장한 오브젝트 spawn시키라고 데이터 전송   
-            S_Spawn SpawnPacketToOthers = new S_Spawn();
-            SpawnPacketToOthers.GameObjectInfoList.Add(newGameObject.GameObjectInfo);
+                #region 플레이어들에게 Projectile spawn시키라고 데이터 전송   
+                S_SpawnProjectile SpawnProjectilePacket = new S_SpawnProjectile();
+                SpawnProjectilePacket.GameObjectInfo = newProjectile.GameObjectInfo;
+                SpawnProjectilePacket.OwnerInfo = newProjectile.Owner.GameObjectInfo;
 
-            foreach (Player p in _players.Values)
-            {
-                if (p.ObjectId != newGameObject.ObjectId)       // 새로 입장한 자신 제외!
-                    p.MySession.Send(SpawnPacketToOthers);
+                foreach (Player p in _players.Values)
+                {
+                    p.MySession.Send(SpawnProjectilePacket);
+                }
+                #endregion
             }
-            #endregion
         }
 
         public void LeaveGame(int objectId)
@@ -123,7 +145,7 @@ namespace Server.Game
                 projectile.MyRoom = null;
             }
 
-            #region 타인한테 player가 퇴장했다고 데이터 전송
+            #region 타인한테 Object가 퇴장했다고 데이터 전송
             {
                 S_Despawn despawnPacket = new S_Despawn();
                 despawnPacket.GameObjectIdlist.Add(objectId);
@@ -136,47 +158,77 @@ namespace Server.Game
             #endregion 
         }
 
-        public void HandleMove(Player player, C_Move movePacket)
+        public void HandleMove(GameObject gameObject, C_Move movePacket)
         {
-            if (player == null)
+            if (gameObject == null)
                 return;
-            GameObjectInfo gameObjectInfo = player.GameObjectInfo;
+            GameObjectInfo gameObjectInfo = gameObject.GameObjectInfo;
 
-            /* move 패킷 정상 검증 todo
-            PositionInfo movePositionInfo = movePacket.PositionInfo; 
-                       
-            if (movePositionInfo.PosX != gameObjectInfo.PositionInfo.PosX || movePositionInfo.PosY != gameObjectInfo.PositionInfo.PosY) // 현 좌표랑 목표좌표랑 다른지 체크
-            {
-                if (Map.MinX < movePositionInfo.PosX && movePositionInfo.PosX < Map.MaxX && Map.MinY < movePositionInfo.PosY && movePositionInfo.PosY < Map.MaxY)
-                {
-                    // if문 여러개 쓰기 귀찮아서 else쓰려고 위 조건 씀
-                    // 좌표값 이상하면 else문 실행
-                }
-                else
-                {
-                    Console.WriteLine("이상한 좌표값 강제이동 얍");
-                    movePositionInfo = Map.InBoundary(movePositionInfo);  // 맵범위 내 좌표로 강제이동   
-                }        
-            }*/
-
+            // move 패킷 정상 검증 todo
+            
             // 서버에 저장된 자신의 좌표 변경(이동)
             gameObjectInfo.PositionInfo.State = movePacket.PositionInfo.State;
-            ApplyMove(player, movePacket.PositionInfo);
+            ApplyMove(gameObject, movePacket.PositionInfo);
 
             // 다른 플레이어들에게 자기위치 방송
-            S_Move broadMovePkt = new S_Move(); // 방송하려고 서버측에서 보내는 M 패킷
-            broadMovePkt.ObjectId = player.GameObjectInfo.ObjectId;   // 움직인 자신 Id 입력
+            S_Move broadMovePkt = new S_Move(); // 방송하려고 서버측에서 보내는 Move 패킷
+            broadMovePkt.ObjectId = gameObject.GameObjectInfo.ObjectId;   // 움직인 자신 Id 입력
             broadMovePkt.PositionInfo = movePacket.PositionInfo;
 
             BroadCast(broadMovePkt);
         }
 
-        public void ApplyMove(Player player, PositionInfo movePositionInfo)
+        public void HandleSkill(Player player, C_Skill skillPacket) 
         {
-            Player TargetPlayer;
-            if (_players.TryGetValue(player.GameObjectInfo.ObjectId, out TargetPlayer))
-            {              
-                TargetPlayer.GameObjectInfo.PositionInfo = movePositionInfo;
+            if (player == null)
+                return;
+
+            // Todo 스킬 사용 가능 여부 체크
+
+            S_Skill broadSkillPacket = new S_Skill();
+            broadSkillPacket.SkillUserId = player.ObjectId;
+            broadSkillPacket.SkillId = skillPacket.SkillId;
+            BroadCast(broadSkillPacket);
+
+            switch (skillPacket.SkillId)
+            {
+                case 1:             // Human_Slash
+                    break;
+                case 2:             // Human_ThrowBomb
+                    {
+                        Projectile Bomb = ObjectMgr.Instance.Add<Projectile>(player.MyRoom);
+                        if (Bomb == null)
+                            return;
+                        Bomb.Owner = player;
+                        Push(EnterGame, Bomb);
+                    }
+                    break;
+                case 3:             // Elf_ArrowShot
+                    break;
+                case 4:             // Elf_Knife
+                    break;
+            }
+        }
+
+        public void ApplyMove(GameObject gameObject, PositionInfo movePositionInfo)
+        {
+            GameObjectType type = ObjectMgr.GetObjectTypebyId(gameObject.GameObjectInfo.ObjectId);
+
+            if (type == GameObjectType.Player)
+            {
+                Player TargetPlayer;
+                if (_players.TryGetValue(gameObject.GameObjectInfo.ObjectId, out TargetPlayer))
+                {
+                    TargetPlayer.GameObjectInfo.PositionInfo = movePositionInfo;
+                }
+            }
+            else if (type == GameObjectType.Projectile)
+            {
+                Projectile TargetProjectile;
+                if (_projectiles.TryGetValue(gameObject.GameObjectInfo.ObjectId, out TargetProjectile))
+                {
+                    TargetProjectile.GameObjectInfo.PositionInfo = movePositionInfo;
+                }
             }
         }
 
@@ -186,6 +238,32 @@ namespace Server.Game
             {
                 p.MySession.Send(packet);
             }
+        }
+
+        public GameObject FindGameObjectWithId(int gameObjectId)
+        {
+            GameObjectType type = ObjectMgr.GetObjectTypebyId(gameObjectId);
+
+            if(type == GameObjectType.Player)
+            {
+                Player TargerPlayer = null;
+                if (_players.TryGetValue(gameObjectId, out TargerPlayer))
+                    return TargerPlayer;
+            }
+            else if (type == GameObjectType.Monster)
+            {
+                Monster TargerMonster = null;
+                if (_monsters.TryGetValue(gameObjectId, out TargerMonster))
+                    return TargerMonster;
+            }
+            else if (type == GameObjectType.Projectile)
+            {
+                Projectile TargetProjectile = null;
+                if (_projectiles.TryGetValue(gameObjectId, out TargetProjectile))
+                    return TargetProjectile;
+            }
+
+            return null;
         }
     }
 }

@@ -14,7 +14,7 @@ class PacketHandler
         Debug.Log("S_EnterGameHandler activated");
         Debug.Log($"class : {enterGamePacket.GameObjectInfo.StatInfo.Class} Entered Game");
 
-        Managers.objectMgr.Add(enterGamePacket.GameObjectInfo, myCtrl: true);   
+        Managers.objectMgr.AddCreature(enterGamePacket.GameObjectInfo, myCtrl: true);   
     }
 
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)
@@ -33,15 +33,23 @@ class PacketHandler
 
         foreach (GameObjectInfo gameObjectInfo in spawnPacket.GameObjectInfoList)
         {
-            Managers.objectMgr.Add(gameObjectInfo, false);
+            Managers.objectMgr.AddCreature(gameObjectInfo, false);
         }
+    }
+
+    public static void S_SpawnProjectileHandler(PacketSession session, IMessage packet) // projectile object 입장용
+    {
+        S_SpawnProjectile spawnProjectilePacket = packet as S_SpawnProjectile;
+        Debug.Log($"S_SpawnProjectileHandler activated / owner : {spawnProjectilePacket.OwnerInfo.ObjectId}");
+    
+        Managers.objectMgr.AddProjectile(spawnProjectilePacket.GameObjectInfo, spawnProjectilePacket.OwnerInfo);       
     }
 
     public static void S_DespawnHandler(PacketSession session, IMessage packet)
     {
         S_Despawn despawnPacket = packet as S_Despawn;
 
-        Debug.Log("S_DespawnHandler activated");
+        Debug.Log($"S_DespawnHandler activated / remove {despawnPacket.GameObjectIdlist}");
 
         foreach (int Id in despawnPacket.GameObjectIdlist)
         {
@@ -54,17 +62,43 @@ class PacketHandler
         S_Move movePacket = packet as S_Move;
 
         GameObject go = Managers.objectMgr.FindGameObjectbyId(movePacket.ObjectId);
-
-        if (go == null)
+        if (go == null) 
             return;
 
-        if (Managers.objectMgr.MyHumanCtrl.GameObjectId == movePacket.ObjectId)  // 자신 PosInfo는 클라이언트상 정보를 따름       
-            return;
-                 
-        BaseCtrl baseCtrl = go.GetComponent<BaseCtrl>();
-        if (baseCtrl == null)
+        GameObjectType type = Managers.objectMgr.GetGameObjectTypebyId(movePacket.ObjectId);
+        if (type == GameObjectType.Player)
+        {
+            if (Managers.objectMgr.MyHumanCtrl.GameObjectId == movePacket.ObjectId)  // 자신 PosInfo는 클라이언트상 정보를 따름       
+                return;
+
+            BaseCtrl baseCtrl = go.GetComponent<BaseCtrl>();
+            if (baseCtrl == null)
+                return;
+
+            baseCtrl.PositionInfo = movePacket.PositionInfo;
+        }
+        else if (type == GameObjectType.Monster)
+        {
+
+        }
+        else if (type == GameObjectType.Projectile)
+        {
+            ProjectileCtrl projectileCtrl = go.GetComponent<ProjectileCtrl>();
+            if (projectileCtrl == null)
+                return;
+
+            projectileCtrl.PositionInfo = movePacket.PositionInfo;
+        }
+    }
+
+    public static void S_SkillHandler(PacketSession session, IMessage packet)
+    {
+        S_Skill skillPacket = packet as S_Skill;
+
+        GameObject go = Managers.objectMgr.FindGameObjectbyId(skillPacket.SkillUserId);
+
+        if (go == null) 
             return;
 
-        baseCtrl.PositionInfo = movePacket.PositionInfo;
     }
 }

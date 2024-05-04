@@ -7,10 +7,8 @@ using UnityEngine;
 public class MyHumanCtrl : HumanCtrl
 {
     protected BoxCollider2D SlashBox;   // Main Skill 판정범위 히트박스
-    private float BombThrowPower = 400.0f;
     private Collider2D _hitBoxCollider;     // 플레이어 피격판정 히트박스
-
-    protected bool PacketSendingFlag = false; // State 변화, position값이 일정수준 이상 변화시 true
+    
     public override CreatureState State
     {
         get { return _state; }
@@ -40,6 +38,8 @@ public class MyHumanCtrl : HumanCtrl
     }
 
     #region Server 통신
+    protected bool PacketSendingFlag = false; // State 변화, position값이 일정수준 이상 변화시 true
+
     protected override void Update()
     {
         if (Mathf.Abs(transform.position.x - PositionInfo.PosX) > 0.05f || Mathf.Abs(transform.position.y - PositionInfo.PosY) > 0.05f)
@@ -60,15 +60,17 @@ public class MyHumanCtrl : HumanCtrl
 
     private void C_MovePacketSend()
     {
-        C_Move movepacket = new C_Move();
-        movepacket.PositionInfo = new PositionInfo();
+        C_Move movePacket = new C_Move();
 
-        movepacket.PositionInfo.State = PositionInfo.State;
-        movepacket.PositionInfo.PosX = PositionInfo.PosX;
-        movepacket.PositionInfo.PosY = PositionInfo.PosY;
-        movepacket.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
+        movePacket.GameObjectId = GameObjectId;
 
-        Managers.networkMgr.Send(movepacket);
+        movePacket.PositionInfo = new PositionInfo();
+        movePacket.PositionInfo.State = PositionInfo.State;
+        movePacket.PositionInfo.PosX = PositionInfo.PosX;
+        movePacket.PositionInfo.PosY = PositionInfo.PosY;
+        movePacket.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
+
+        Managers.networkMgr.Send(movePacket);
     }
     #endregion
 
@@ -315,9 +317,10 @@ public class MyHumanCtrl : HumanCtrl
 
     private void ThrowBomb()
     {
-        GameObject Bomb = Managers.resourceMgr.Instantiate("Projectiles/Explosive");
-        Bomb.transform.position = transform.position + new Vector3(1.0f * transform.localScale.x, 0.5f, 0);
-        Bomb.GetComponent<Rigidbody2D>().AddForce((Vector2.up + (Vector2.right * transform.localScale.x * 2)).normalized * BombThrowPower);
+        //Debug.Log("Bomb Skill used");
+        C_Skill skillPacket = new C_Skill();
+        skillPacket.SkillId = (int)Define.SkillId.Human_ThrowBomb;
+        Managers.networkMgr.Send(skillPacket);      
     }
 
     protected override void AnimEvent_SubSkillFrameEnded()

@@ -64,7 +64,6 @@ public class PoolMgr
     }
     #endregion
 
-
     Dictionary<string, Pool> poolDictionary = new Dictionary<string, Pool>();
     Transform _root;
 

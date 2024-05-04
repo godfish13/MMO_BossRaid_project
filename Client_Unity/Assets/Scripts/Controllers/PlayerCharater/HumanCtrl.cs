@@ -35,7 +35,7 @@ public class HumanCtrl : BaseCtrl
             State = PositionInfo.State;
             transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
             transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
-            Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
+            //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
         }
     }
 
