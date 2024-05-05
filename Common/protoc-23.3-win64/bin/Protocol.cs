@@ -41,31 +41,45 @@ namespace Google.Protobuf.Protocol {
             "b2NvbC5Qb3NpdGlvbkluZm8iQAoQQ19Nb3ZlUHJvamVjdGlsZRIsCgxwb3Np",
             "dGlvbkluZm8YASABKAsyFi5Qcm90b2NvbC5Qb3NpdGlvbkluZm8iGgoHQ19T",
             "a2lsbBIPCgdza2lsbElkGAEgASgFIiQKEUNfU2VsZWN0Q2hhcmFjdGVyEg8K",
-            "B2NsYXNzSWQYASABKAUiZwoMUG9zaXRpb25JbmZvEiYKBVN0YXRlGAEgASgO",
-            "MhcuUHJvdG9jb2wuQ3JlYXR1cmVTdGF0ZRIMCgRwb3NYGAIgASgCEgwKBHBv",
-            "c1kYAyABKAISEwoLbG9jYWxTY2FsZVgYBCABKAIingEKDkdhbWVPYmplY3RJ",
-            "bmZvEhAKCE9iamVjdElkGAEgASgFEiQKCHN0YXRJbmZvGAIgASgLMhIuUHJv",
-            "dG9jb2wuU3RhdEluZm8SJgoJc2tpbGxJbmZvGAMgASgLMhMuUHJvdG9jb2wu",
-            "U2tpbGxJbmZvEiwKDHBvc2l0aW9uSW5mbxgEIAEoCzIWLlByb3RvY29sLlBv",
-            "c2l0aW9uSW5mbyJtCghTdGF0SW5mbxIPCgdjbGFzc0lkGAEgASgFEg0KBWNs",
-            "YXNzGAIgASgJEg0KBW1heEhwGAMgASgFEgoKAmhwGAQgASgFEhAKCG1heFNw",
-            "ZWVkGAUgASgCEhQKDGFjY2VsZXJhdGlvbhgGIAEoAiKyAQoJU2tpbGxJbmZv",
-            "Eg8KB2NsYXNzSWQYASABKAUSDQoFY2xhc3MYAiABKAkSEwoLc2tpbGxEYW1h",
-            "Z2UYAyABKAUSFQoNc2tpbGxDb29sVGltZRgEIAEoAhIWCg5zdWJTa2lsbERh",
-            "bWFnZRgFIAEoBRIYChBzdWJTa2lsbENvb2xUaW1lGAYgASgCEhEKCWp1bXBQ",
-            "b3dlchgHIAEoAhIUCgxqdW1wQ29vbFRpbWUYCCABKAIiTwoOUHJvamVjdGls",
-            "ZUluZm8SFAoMcHJvamVjdGlsZUlkGAEgASgFEicKB3Bvc0luZm8YAiABKAsy",
-            "Fi5Qcm90b2NvbC5Qb3NpdGlvbkluZm8quwEKBU1zZ0lkEhAKDFNfRU5URVJf",
-            "R0FNRRAAEhAKDFNfTEVBVkVfR0FNRRABEgsKB1NfU1BBV04QAhIWChJTX1NQ",
-            "QVdOX1BST0pFQ1RJTEUQAxINCglTX0RFU1BBV04QBBIKCgZTX01PVkUQBRIL",
-            "CgdTX1NLSUxMEAYSEAoMQ19MRUFWRV9HQU1FEAcSCgoGQ19NT1ZFEAgSCwoH",
-            "Q19TS0lMTBAJEhYKEkNfU0VMRUNUX0NIQVJBQ1RFUhAKKqABCg1DcmVhdHVy",
-            "ZVN0YXRlEggKBElETEUQABIHCgNSVU4QARIICgRKVU1QEAISCAoERkFMTBAD",
-            "EggKBExBTkQQBBIKCgZDUk9VQ0gQBRIJCgVDUkFXTBAGEgsKB1JPTExJTkcQ",
-            "BxIJCgVTS0lMTBAIEgwKCFNVQlNLSUxMEAkSCQoFREVBVEgQChIHCgNUTVAQ",
-            "CxINCglFWFBMT1NJT04QDCpDCg5HYW1lT2JqZWN0VHlwZRIICgROT05FEAAS",
-            "CgoGUExBWUVSEAESCwoHTU9OU1RFUhACEg4KClBST0pFQ1RJTEUQA0IbqgIY",
-            "R29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
+            "B2NsYXNzSWQYASABKAUiNgoPU19Nb25zdGVyVGFyZ2V0EhEKCW1vbnN0ZXJJ",
+            "ZBgBIAEoBRIQCgh0YXJnZXRJZBgCIAEoBSJnCgxQb3NpdGlvbkluZm8SJgoF",
+            "U3RhdGUYASABKA4yFy5Qcm90b2NvbC5DcmVhdHVyZVN0YXRlEgwKBHBvc1gY",
+            "AiABKAISDAoEcG9zWRgDIAEoAhITCgtsb2NhbFNjYWxlWBgEIAEoAiKeAQoO",
+            "R2FtZU9iamVjdEluZm8SEAoIT2JqZWN0SWQYASABKAUSJAoIc3RhdEluZm8Y",
+            "AiABKAsyEi5Qcm90b2NvbC5TdGF0SW5mbxImCglza2lsbEluZm8YAyABKAsy",
+            "Ey5Qcm90b2NvbC5Ta2lsbEluZm8SLAoMcG9zaXRpb25JbmZvGAQgASgLMhYu",
+            "UHJvdG9jb2wuUG9zaXRpb25JbmZvIm0KCFN0YXRJbmZvEg8KB2NsYXNzSWQY",
+            "ASABKAUSDQoFY2xhc3MYAiABKAkSDQoFbWF4SHAYAyABKAUSCgoCaHAYBCAB",
+            "KAUSEAoIbWF4U3BlZWQYBSABKAISFAoMYWNjZWxlcmF0aW9uGAYgASgCIugC",
+            "CglTa2lsbEluZm8SDwoHY2xhc3NJZBgBIAEoBRINCgVjbGFzcxgCIAEoCRIT",
+            "Cgtza2lsbERhbWFnZRgDIAEoBRIVCg1za2lsbENvb2xUaW1lGAQgASgCEhYK",
+            "DnN1YlNraWxsRGFtYWdlGAUgASgFEhgKEHN1YlNraWxsQ29vbFRpbWUYBiAB",
+            "KAISEQoJanVtcFBvd2VyGAcgASgCEhQKDGp1bXBDb29sVGltZRgIIAEoAhIS",
+            "CgpiaXRlRGFtYWdlGAkgASgFEhQKDGJpdGVDb29sVGltZRgKIAEoAhISCgpi",
+            "dXJuRGFtYWdlGAsgASgFEhQKDGJ1cm5Db29sVGltZRgMIAEoAhIWCg5maXJl",
+            "QmFsbERhbWFnZRgNIAEoBRIYChBmaXJlQmFsbENvb2xUaW1lGA4gASgCEhUK",
+            "DXRodW5kZXJEYW1hZ2UYDyABKAUSFwoPdGh1bmRlckNvb2xUaW1lGBAgASgC",
+            "IqQCCgtNb25zdGVySW5mbxIPCgdjbGFzc0lkGAEgASgFEg0KBWNsYXNzGAIg",
+            "ASgJEg0KBW1heEhwGAMgASgFEgoKAmhwGAQgASgFEhAKCG1heFNwZWVkGAUg",
+            "ASgCEhQKDGFjY2VsZXJhdGlvbhgGIAEoAhISCgpiaXRlRGFtYWdlGAcgASgF",
+            "EhQKDGJpdGVDb29sVGltZRgIIAEoAhISCgpidXJuRGFtYWdlGAkgASgFEhQK",
+            "DGJ1cm5Db29sVGltZRgKIAEoAhIVCg1maXJlQmFsbFBvd2VyGAsgASgCEhgK",
+            "EGZpcmVCYWxsQ29vbFRpbWUYDCABKAISFAoMdGh1bmRlclBvd2VyGA0gASgC",
+            "EhcKD3RodW5kZXJDb29sVGltZRgOIAEoAiJPCg5Qcm9qZWN0aWxlSW5mbxIU",
+            "Cgxwcm9qZWN0aWxlSWQYASABKAUSJwoHcG9zSW5mbxgCIAEoCzIWLlByb3Rv",
+            "Y29sLlBvc2l0aW9uSW5mbyrRAQoFTXNnSWQSEAoMU19FTlRFUl9HQU1FEAAS",
+            "EAoMU19MRUFWRV9HQU1FEAESCwoHU19TUEFXThACEhYKElNfU1BBV05fUFJP",
+            "SkVDVElMRRADEg0KCVNfREVTUEFXThAEEgoKBlNfTU9WRRAFEgsKB1NfU0tJ",
+            "TEwQBhIQCgxDX0xFQVZFX0dBTUUQBxIKCgZDX01PVkUQCBILCgdDX1NLSUxM",
+            "EAkSFgoSQ19TRUxFQ1RfQ0hBUkFDVEVSEAoSFAoQU19NT05TVEVSX1RBUkdF",
+            "VBALKtoBCg1DcmVhdHVyZVN0YXRlEggKBElETEUQABIHCgNSVU4QARIICgRK",
+            "VU1QEAISCAoERkFMTBADEggKBExBTkQQBBIKCgZDUk9VQ0gQBRIJCgVDUkFX",
+            "TBAGEgsKB1JPTExJTkcQBxIJCgVTS0lMTBAIEgwKCFNVQlNLSUxMEAkSCQoF",
+            "REVBVEgQChIHCgNUTVAQCxINCglFWFBMT1NJT04QDBIJCgVBV0FJVBANEggK",
+            "BEJJVEUQDhIICgRCVVJOEA8SDAoIRklSRUJBTEwQEBILCgdUSFVOREVSEBEq",
+            "QwoOR2FtZU9iamVjdFR5cGUSCAoETk9ORRAAEgoKBlBMQVlFUhABEgsKB01P",
+            "TlNURVIQAhIOCgpQUk9KRUNUSUxFEANCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Q",
+            "cm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -81,10 +95,12 @@ namespace Google.Protobuf.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_MoveProjectile), global::Google.Protobuf.Protocol.C_MoveProjectile.Parser, new[]{ "PositionInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Skill), global::Google.Protobuf.Protocol.C_Skill.Parser, new[]{ "SkillId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_SelectCharacter), global::Google.Protobuf.Protocol.C_SelectCharacter.Parser, new[]{ "ClassId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_MonsterTarget), global::Google.Protobuf.Protocol.S_MonsterTarget.Parser, new[]{ "MonsterId", "TargetId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PositionInfo), global::Google.Protobuf.Protocol.PositionInfo.Parser, new[]{ "State", "PosX", "PosY", "LocalScaleX" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.GameObjectInfo), global::Google.Protobuf.Protocol.GameObjectInfo.Parser, new[]{ "ObjectId", "StatInfo", "SkillInfo", "PositionInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.StatInfo), global::Google.Protobuf.Protocol.StatInfo.Parser, new[]{ "ClassId", "Class", "MaxHp", "Hp", "MaxSpeed", "Acceleration" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.SkillInfo), global::Google.Protobuf.Protocol.SkillInfo.Parser, new[]{ "ClassId", "Class", "SkillDamage", "SkillCoolTime", "SubSkillDamage", "SubSkillCoolTime", "JumpPower", "JumpCoolTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.SkillInfo), global::Google.Protobuf.Protocol.SkillInfo.Parser, new[]{ "ClassId", "Class", "SkillDamage", "SkillCoolTime", "SubSkillDamage", "SubSkillCoolTime", "JumpPower", "JumpCoolTime", "BiteDamage", "BiteCoolTime", "BurnDamage", "BurnCoolTime", "FireBallDamage", "FireBallCoolTime", "ThunderDamage", "ThunderCoolTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.MonsterInfo), global::Google.Protobuf.Protocol.MonsterInfo.Parser, new[]{ "ClassId", "Class", "MaxHp", "Hp", "MaxSpeed", "Acceleration", "BiteDamage", "BiteCoolTime", "BurnDamage", "BurnCoolTime", "FireBallPower", "FireBallCoolTime", "ThunderPower", "ThunderCoolTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ProjectileInfo), global::Google.Protobuf.Protocol.ProjectileInfo.Parser, new[]{ "ProjectileId", "PosInfo" }, null, null, null, null)
           }));
     }
@@ -104,6 +120,7 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("C_MOVE")] CMove = 8,
     [pbr::OriginalName("C_SKILL")] CSkill = 9,
     [pbr::OriginalName("C_SELECT_CHARACTER")] CSelectCharacter = 10,
+    [pbr::OriginalName("S_MONSTER_TARGET")] SMonsterTarget = 11,
   }
 
   public enum CreatureState {
@@ -120,6 +137,11 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("DEATH")] Death = 10,
     [pbr::OriginalName("TMP")] Tmp = 11,
     [pbr::OriginalName("EXPLOSION")] Explosion = 12,
+    [pbr::OriginalName("AWAIT")] Await = 13,
+    [pbr::OriginalName("BITE")] Bite = 14,
+    [pbr::OriginalName("BURN")] Burn = 15,
+    [pbr::OriginalName("FIREBALL")] Fireball = 16,
+    [pbr::OriginalName("THUNDER")] Thunder = 17,
   }
 
   public enum GameObjectType {
@@ -2591,6 +2613,232 @@ namespace Google.Protobuf.Protocol {
 
   }
 
+  public sealed partial class S_MonsterTarget : pb::IMessage<S_MonsterTarget>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<S_MonsterTarget> _parser = new pb::MessageParser<S_MonsterTarget>(() => new S_MonsterTarget());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<S_MonsterTarget> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public S_MonsterTarget() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public S_MonsterTarget(S_MonsterTarget other) : this() {
+      monsterId_ = other.monsterId_;
+      targetId_ = other.targetId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public S_MonsterTarget Clone() {
+      return new S_MonsterTarget(this);
+    }
+
+    /// <summary>Field number for the "monsterId" field.</summary>
+    public const int MonsterIdFieldNumber = 1;
+    private int monsterId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int MonsterId {
+      get { return monsterId_; }
+      set {
+        monsterId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "targetId" field.</summary>
+    public const int TargetIdFieldNumber = 2;
+    private int targetId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TargetId {
+      get { return targetId_; }
+      set {
+        targetId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as S_MonsterTarget);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(S_MonsterTarget other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MonsterId != other.MonsterId) return false;
+      if (TargetId != other.TargetId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MonsterId != 0) hash ^= MonsterId.GetHashCode();
+      if (TargetId != 0) hash ^= TargetId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (MonsterId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(MonsterId);
+      }
+      if (TargetId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(TargetId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MonsterId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(MonsterId);
+      }
+      if (TargetId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(TargetId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (MonsterId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MonsterId);
+      }
+      if (TargetId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TargetId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(S_MonsterTarget other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MonsterId != 0) {
+        MonsterId = other.MonsterId;
+      }
+      if (other.TargetId != 0) {
+        TargetId = other.TargetId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            MonsterId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            TargetId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            MonsterId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            TargetId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class PositionInfo : pb::IMessage<PositionInfo>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2605,7 +2853,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2905,7 +3153,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3232,7 +3480,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3606,7 +3854,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3634,6 +3882,14 @@ namespace Google.Protobuf.Protocol {
       subSkillCoolTime_ = other.subSkillCoolTime_;
       jumpPower_ = other.jumpPower_;
       jumpCoolTime_ = other.jumpCoolTime_;
+      biteDamage_ = other.biteDamage_;
+      biteCoolTime_ = other.biteCoolTime_;
+      burnDamage_ = other.burnDamage_;
+      burnCoolTime_ = other.burnCoolTime_;
+      fireBallDamage_ = other.fireBallDamage_;
+      fireBallCoolTime_ = other.fireBallCoolTime_;
+      thunderDamage_ = other.thunderDamage_;
+      thunderCoolTime_ = other.thunderCoolTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3739,6 +3995,102 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
+    /// <summary>Field number for the "biteDamage" field.</summary>
+    public const int BiteDamageFieldNumber = 9;
+    private int biteDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int BiteDamage {
+      get { return biteDamage_; }
+      set {
+        biteDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "biteCoolTime" field.</summary>
+    public const int BiteCoolTimeFieldNumber = 10;
+    private float biteCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float BiteCoolTime {
+      get { return biteCoolTime_; }
+      set {
+        biteCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "burnDamage" field.</summary>
+    public const int BurnDamageFieldNumber = 11;
+    private int burnDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int BurnDamage {
+      get { return burnDamage_; }
+      set {
+        burnDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "burnCoolTime" field.</summary>
+    public const int BurnCoolTimeFieldNumber = 12;
+    private float burnCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float BurnCoolTime {
+      get { return burnCoolTime_; }
+      set {
+        burnCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fireBallDamage" field.</summary>
+    public const int FireBallDamageFieldNumber = 13;
+    private int fireBallDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int FireBallDamage {
+      get { return fireBallDamage_; }
+      set {
+        fireBallDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fireBallCoolTime" field.</summary>
+    public const int FireBallCoolTimeFieldNumber = 14;
+    private float fireBallCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float FireBallCoolTime {
+      get { return fireBallCoolTime_; }
+      set {
+        fireBallCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "thunderDamage" field.</summary>
+    public const int ThunderDamageFieldNumber = 15;
+    private int thunderDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ThunderDamage {
+      get { return thunderDamage_; }
+      set {
+        thunderDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "thunderCoolTime" field.</summary>
+    public const int ThunderCoolTimeFieldNumber = 16;
+    private float thunderCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float ThunderCoolTime {
+      get { return thunderCoolTime_; }
+      set {
+        thunderCoolTime_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -3762,6 +4114,14 @@ namespace Google.Protobuf.Protocol {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubSkillCoolTime, other.SubSkillCoolTime)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(JumpPower, other.JumpPower)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(JumpCoolTime, other.JumpCoolTime)) return false;
+      if (BiteDamage != other.BiteDamage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BiteCoolTime, other.BiteCoolTime)) return false;
+      if (BurnDamage != other.BurnDamage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BurnCoolTime, other.BurnCoolTime)) return false;
+      if (FireBallDamage != other.FireBallDamage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FireBallCoolTime, other.FireBallCoolTime)) return false;
+      if (ThunderDamage != other.ThunderDamage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ThunderCoolTime, other.ThunderCoolTime)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3777,6 +4137,14 @@ namespace Google.Protobuf.Protocol {
       if (SubSkillCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubSkillCoolTime);
       if (JumpPower != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(JumpPower);
       if (JumpCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(JumpCoolTime);
+      if (BiteDamage != 0) hash ^= BiteDamage.GetHashCode();
+      if (BiteCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BiteCoolTime);
+      if (BurnDamage != 0) hash ^= BurnDamage.GetHashCode();
+      if (BurnCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BurnCoolTime);
+      if (FireBallDamage != 0) hash ^= FireBallDamage.GetHashCode();
+      if (FireBallCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FireBallCoolTime);
+      if (ThunderDamage != 0) hash ^= ThunderDamage.GetHashCode();
+      if (ThunderCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ThunderCoolTime);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3827,6 +4195,38 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(69);
         output.WriteFloat(JumpCoolTime);
       }
+      if (BiteDamage != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(BiteDamage);
+      }
+      if (BiteCoolTime != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(BiteCoolTime);
+      }
+      if (BurnDamage != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(BurnDamage);
+      }
+      if (BurnCoolTime != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(BurnCoolTime);
+      }
+      if (FireBallDamage != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(FireBallDamage);
+      }
+      if (FireBallCoolTime != 0F) {
+        output.WriteRawTag(117);
+        output.WriteFloat(FireBallCoolTime);
+      }
+      if (ThunderDamage != 0) {
+        output.WriteRawTag(120);
+        output.WriteInt32(ThunderDamage);
+      }
+      if (ThunderCoolTime != 0F) {
+        output.WriteRawTag(133, 1);
+        output.WriteFloat(ThunderCoolTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3869,6 +4269,38 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(69);
         output.WriteFloat(JumpCoolTime);
       }
+      if (BiteDamage != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(BiteDamage);
+      }
+      if (BiteCoolTime != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(BiteCoolTime);
+      }
+      if (BurnDamage != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(BurnDamage);
+      }
+      if (BurnCoolTime != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(BurnCoolTime);
+      }
+      if (FireBallDamage != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(FireBallDamage);
+      }
+      if (FireBallCoolTime != 0F) {
+        output.WriteRawTag(117);
+        output.WriteFloat(FireBallCoolTime);
+      }
+      if (ThunderDamage != 0) {
+        output.WriteRawTag(120);
+        output.WriteInt32(ThunderDamage);
+      }
+      if (ThunderCoolTime != 0F) {
+        output.WriteRawTag(133, 1);
+        output.WriteFloat(ThunderCoolTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3902,6 +4334,30 @@ namespace Google.Protobuf.Protocol {
       }
       if (JumpCoolTime != 0F) {
         size += 1 + 4;
+      }
+      if (BiteDamage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BiteDamage);
+      }
+      if (BiteCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (BurnDamage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BurnDamage);
+      }
+      if (BurnCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (FireBallDamage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FireBallDamage);
+      }
+      if (FireBallCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (ThunderDamage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ThunderDamage);
+      }
+      if (ThunderCoolTime != 0F) {
+        size += 2 + 4;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3938,6 +4394,30 @@ namespace Google.Protobuf.Protocol {
       }
       if (other.JumpCoolTime != 0F) {
         JumpCoolTime = other.JumpCoolTime;
+      }
+      if (other.BiteDamage != 0) {
+        BiteDamage = other.BiteDamage;
+      }
+      if (other.BiteCoolTime != 0F) {
+        BiteCoolTime = other.BiteCoolTime;
+      }
+      if (other.BurnDamage != 0) {
+        BurnDamage = other.BurnDamage;
+      }
+      if (other.BurnCoolTime != 0F) {
+        BurnCoolTime = other.BurnCoolTime;
+      }
+      if (other.FireBallDamage != 0) {
+        FireBallDamage = other.FireBallDamage;
+      }
+      if (other.FireBallCoolTime != 0F) {
+        FireBallCoolTime = other.FireBallCoolTime;
+      }
+      if (other.ThunderDamage != 0) {
+        ThunderDamage = other.ThunderDamage;
+      }
+      if (other.ThunderCoolTime != 0F) {
+        ThunderCoolTime = other.ThunderCoolTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3984,6 +4464,38 @@ namespace Google.Protobuf.Protocol {
           }
           case 69: {
             JumpCoolTime = input.ReadFloat();
+            break;
+          }
+          case 72: {
+            BiteDamage = input.ReadInt32();
+            break;
+          }
+          case 85: {
+            BiteCoolTime = input.ReadFloat();
+            break;
+          }
+          case 88: {
+            BurnDamage = input.ReadInt32();
+            break;
+          }
+          case 101: {
+            BurnCoolTime = input.ReadFloat();
+            break;
+          }
+          case 104: {
+            FireBallDamage = input.ReadInt32();
+            break;
+          }
+          case 117: {
+            FireBallCoolTime = input.ReadFloat();
+            break;
+          }
+          case 120: {
+            ThunderDamage = input.ReadInt32();
+            break;
+          }
+          case 133: {
+            ThunderCoolTime = input.ReadFloat();
             break;
           }
         }
@@ -4033,6 +4545,708 @@ namespace Google.Protobuf.Protocol {
             JumpCoolTime = input.ReadFloat();
             break;
           }
+          case 72: {
+            BiteDamage = input.ReadInt32();
+            break;
+          }
+          case 85: {
+            BiteCoolTime = input.ReadFloat();
+            break;
+          }
+          case 88: {
+            BurnDamage = input.ReadInt32();
+            break;
+          }
+          case 101: {
+            BurnCoolTime = input.ReadFloat();
+            break;
+          }
+          case 104: {
+            FireBallDamage = input.ReadInt32();
+            break;
+          }
+          case 117: {
+            FireBallCoolTime = input.ReadFloat();
+            break;
+          }
+          case 120: {
+            ThunderDamage = input.ReadInt32();
+            break;
+          }
+          case 133: {
+            ThunderCoolTime = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class MonsterInfo : pb::IMessage<MonsterInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MonsterInfo> _parser = new pb::MessageParser<MonsterInfo>(() => new MonsterInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MonsterInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[17]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MonsterInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MonsterInfo(MonsterInfo other) : this() {
+      classId_ = other.classId_;
+      class_ = other.class_;
+      maxHp_ = other.maxHp_;
+      hp_ = other.hp_;
+      maxSpeed_ = other.maxSpeed_;
+      acceleration_ = other.acceleration_;
+      biteDamage_ = other.biteDamage_;
+      biteCoolTime_ = other.biteCoolTime_;
+      burnDamage_ = other.burnDamage_;
+      burnCoolTime_ = other.burnCoolTime_;
+      fireBallPower_ = other.fireBallPower_;
+      fireBallCoolTime_ = other.fireBallCoolTime_;
+      thunderPower_ = other.thunderPower_;
+      thunderCoolTime_ = other.thunderCoolTime_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MonsterInfo Clone() {
+      return new MonsterInfo(this);
+    }
+
+    /// <summary>Field number for the "classId" field.</summary>
+    public const int ClassIdFieldNumber = 1;
+    private int classId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ClassId {
+      get { return classId_; }
+      set {
+        classId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "class" field.</summary>
+    public const int ClassFieldNumber = 2;
+    private string class_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Class {
+      get { return class_; }
+      set {
+        class_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "maxHp" field.</summary>
+    public const int MaxHpFieldNumber = 3;
+    private int maxHp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int MaxHp {
+      get { return maxHp_; }
+      set {
+        maxHp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "hp" field.</summary>
+    public const int HpFieldNumber = 4;
+    private int hp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Hp {
+      get { return hp_; }
+      set {
+        hp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "maxSpeed" field.</summary>
+    public const int MaxSpeedFieldNumber = 5;
+    private float maxSpeed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float MaxSpeed {
+      get { return maxSpeed_; }
+      set {
+        maxSpeed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "acceleration" field.</summary>
+    public const int AccelerationFieldNumber = 6;
+    private float acceleration_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Acceleration {
+      get { return acceleration_; }
+      set {
+        acceleration_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "biteDamage" field.</summary>
+    public const int BiteDamageFieldNumber = 7;
+    private int biteDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int BiteDamage {
+      get { return biteDamage_; }
+      set {
+        biteDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "biteCoolTime" field.</summary>
+    public const int BiteCoolTimeFieldNumber = 8;
+    private float biteCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float BiteCoolTime {
+      get { return biteCoolTime_; }
+      set {
+        biteCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "burnDamage" field.</summary>
+    public const int BurnDamageFieldNumber = 9;
+    private int burnDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int BurnDamage {
+      get { return burnDamage_; }
+      set {
+        burnDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "burnCoolTime" field.</summary>
+    public const int BurnCoolTimeFieldNumber = 10;
+    private float burnCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float BurnCoolTime {
+      get { return burnCoolTime_; }
+      set {
+        burnCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fireBallPower" field.</summary>
+    public const int FireBallPowerFieldNumber = 11;
+    private float fireBallPower_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float FireBallPower {
+      get { return fireBallPower_; }
+      set {
+        fireBallPower_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fireBallCoolTime" field.</summary>
+    public const int FireBallCoolTimeFieldNumber = 12;
+    private float fireBallCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float FireBallCoolTime {
+      get { return fireBallCoolTime_; }
+      set {
+        fireBallCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "thunderPower" field.</summary>
+    public const int ThunderPowerFieldNumber = 13;
+    private float thunderPower_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float ThunderPower {
+      get { return thunderPower_; }
+      set {
+        thunderPower_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "thunderCoolTime" field.</summary>
+    public const int ThunderCoolTimeFieldNumber = 14;
+    private float thunderCoolTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float ThunderCoolTime {
+      get { return thunderCoolTime_; }
+      set {
+        thunderCoolTime_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MonsterInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MonsterInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ClassId != other.ClassId) return false;
+      if (Class != other.Class) return false;
+      if (MaxHp != other.MaxHp) return false;
+      if (Hp != other.Hp) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxSpeed, other.MaxSpeed)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Acceleration, other.Acceleration)) return false;
+      if (BiteDamage != other.BiteDamage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BiteCoolTime, other.BiteCoolTime)) return false;
+      if (BurnDamage != other.BurnDamage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BurnCoolTime, other.BurnCoolTime)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FireBallPower, other.FireBallPower)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FireBallCoolTime, other.FireBallCoolTime)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ThunderPower, other.ThunderPower)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ThunderCoolTime, other.ThunderCoolTime)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ClassId != 0) hash ^= ClassId.GetHashCode();
+      if (Class.Length != 0) hash ^= Class.GetHashCode();
+      if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
+      if (Hp != 0) hash ^= Hp.GetHashCode();
+      if (MaxSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxSpeed);
+      if (Acceleration != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Acceleration);
+      if (BiteDamage != 0) hash ^= BiteDamage.GetHashCode();
+      if (BiteCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BiteCoolTime);
+      if (BurnDamage != 0) hash ^= BurnDamage.GetHashCode();
+      if (BurnCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BurnCoolTime);
+      if (FireBallPower != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FireBallPower);
+      if (FireBallCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FireBallCoolTime);
+      if (ThunderPower != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ThunderPower);
+      if (ThunderCoolTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ThunderCoolTime);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ClassId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(ClassId);
+      }
+      if (Class.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Class);
+      }
+      if (MaxHp != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(MaxHp);
+      }
+      if (Hp != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Hp);
+      }
+      if (MaxSpeed != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(MaxSpeed);
+      }
+      if (Acceleration != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(Acceleration);
+      }
+      if (BiteDamage != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(BiteDamage);
+      }
+      if (BiteCoolTime != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(BiteCoolTime);
+      }
+      if (BurnDamage != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(BurnDamage);
+      }
+      if (BurnCoolTime != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(BurnCoolTime);
+      }
+      if (FireBallPower != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(FireBallPower);
+      }
+      if (FireBallCoolTime != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(FireBallCoolTime);
+      }
+      if (ThunderPower != 0F) {
+        output.WriteRawTag(109);
+        output.WriteFloat(ThunderPower);
+      }
+      if (ThunderCoolTime != 0F) {
+        output.WriteRawTag(117);
+        output.WriteFloat(ThunderCoolTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ClassId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(ClassId);
+      }
+      if (Class.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Class);
+      }
+      if (MaxHp != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(MaxHp);
+      }
+      if (Hp != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Hp);
+      }
+      if (MaxSpeed != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(MaxSpeed);
+      }
+      if (Acceleration != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(Acceleration);
+      }
+      if (BiteDamage != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(BiteDamage);
+      }
+      if (BiteCoolTime != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(BiteCoolTime);
+      }
+      if (BurnDamage != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(BurnDamage);
+      }
+      if (BurnCoolTime != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(BurnCoolTime);
+      }
+      if (FireBallPower != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(FireBallPower);
+      }
+      if (FireBallCoolTime != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(FireBallCoolTime);
+      }
+      if (ThunderPower != 0F) {
+        output.WriteRawTag(109);
+        output.WriteFloat(ThunderPower);
+      }
+      if (ThunderCoolTime != 0F) {
+        output.WriteRawTag(117);
+        output.WriteFloat(ThunderCoolTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ClassId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ClassId);
+      }
+      if (Class.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Class);
+      }
+      if (MaxHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHp);
+      }
+      if (Hp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Hp);
+      }
+      if (MaxSpeed != 0F) {
+        size += 1 + 4;
+      }
+      if (Acceleration != 0F) {
+        size += 1 + 4;
+      }
+      if (BiteDamage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BiteDamage);
+      }
+      if (BiteCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (BurnDamage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BurnDamage);
+      }
+      if (BurnCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (FireBallPower != 0F) {
+        size += 1 + 4;
+      }
+      if (FireBallCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (ThunderPower != 0F) {
+        size += 1 + 4;
+      }
+      if (ThunderCoolTime != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MonsterInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ClassId != 0) {
+        ClassId = other.ClassId;
+      }
+      if (other.Class.Length != 0) {
+        Class = other.Class;
+      }
+      if (other.MaxHp != 0) {
+        MaxHp = other.MaxHp;
+      }
+      if (other.Hp != 0) {
+        Hp = other.Hp;
+      }
+      if (other.MaxSpeed != 0F) {
+        MaxSpeed = other.MaxSpeed;
+      }
+      if (other.Acceleration != 0F) {
+        Acceleration = other.Acceleration;
+      }
+      if (other.BiteDamage != 0) {
+        BiteDamage = other.BiteDamage;
+      }
+      if (other.BiteCoolTime != 0F) {
+        BiteCoolTime = other.BiteCoolTime;
+      }
+      if (other.BurnDamage != 0) {
+        BurnDamage = other.BurnDamage;
+      }
+      if (other.BurnCoolTime != 0F) {
+        BurnCoolTime = other.BurnCoolTime;
+      }
+      if (other.FireBallPower != 0F) {
+        FireBallPower = other.FireBallPower;
+      }
+      if (other.FireBallCoolTime != 0F) {
+        FireBallCoolTime = other.FireBallCoolTime;
+      }
+      if (other.ThunderPower != 0F) {
+        ThunderPower = other.ThunderPower;
+      }
+      if (other.ThunderCoolTime != 0F) {
+        ThunderCoolTime = other.ThunderCoolTime;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            ClassId = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Class = input.ReadString();
+            break;
+          }
+          case 24: {
+            MaxHp = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            Hp = input.ReadInt32();
+            break;
+          }
+          case 45: {
+            MaxSpeed = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            Acceleration = input.ReadFloat();
+            break;
+          }
+          case 56: {
+            BiteDamage = input.ReadInt32();
+            break;
+          }
+          case 69: {
+            BiteCoolTime = input.ReadFloat();
+            break;
+          }
+          case 72: {
+            BurnDamage = input.ReadInt32();
+            break;
+          }
+          case 85: {
+            BurnCoolTime = input.ReadFloat();
+            break;
+          }
+          case 93: {
+            FireBallPower = input.ReadFloat();
+            break;
+          }
+          case 101: {
+            FireBallCoolTime = input.ReadFloat();
+            break;
+          }
+          case 109: {
+            ThunderPower = input.ReadFloat();
+            break;
+          }
+          case 117: {
+            ThunderCoolTime = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            ClassId = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Class = input.ReadString();
+            break;
+          }
+          case 24: {
+            MaxHp = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            Hp = input.ReadInt32();
+            break;
+          }
+          case 45: {
+            MaxSpeed = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            Acceleration = input.ReadFloat();
+            break;
+          }
+          case 56: {
+            BiteDamage = input.ReadInt32();
+            break;
+          }
+          case 69: {
+            BiteCoolTime = input.ReadFloat();
+            break;
+          }
+          case 72: {
+            BurnDamage = input.ReadInt32();
+            break;
+          }
+          case 85: {
+            BurnCoolTime = input.ReadFloat();
+            break;
+          }
+          case 93: {
+            FireBallPower = input.ReadFloat();
+            break;
+          }
+          case 101: {
+            FireBallCoolTime = input.ReadFloat();
+            break;
+          }
+          case 109: {
+            ThunderPower = input.ReadFloat();
+            break;
+          }
+          case 117: {
+            ThunderCoolTime = input.ReadFloat();
+            break;
+          }
         }
       }
     }
@@ -4054,7 +5268,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

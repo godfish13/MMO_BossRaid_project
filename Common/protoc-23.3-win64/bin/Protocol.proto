@@ -17,6 +17,7 @@ enum MsgId
 	C_MOVE = 8;
 	C_SKILL = 9;
 	C_SELECT_CHARACTER = 10;
+	S_MONSTER_TARGET = 11;
 }
 
 enum CreatureState
@@ -34,6 +35,11 @@ enum CreatureState
 	DEATH = 10;
 	TMP = 11;
 	EXPLOSION = 12;
+	AWAIT = 13;
+	BITE = 14;
+	BURN = 15;
+	FIREBALL = 16;
+	THUNDER = 17;
 }
 
 enum GameObjectType
@@ -108,6 +114,12 @@ message C_SelectCharacter
 	int32 classId = 1;
 }
 
+message S_MonsterTarget
+{
+	int32 monsterId = 1;
+	int32 targetId = 2;
+}
+
 message PositionInfo
 {
 	CreatureState State = 1;
@@ -144,6 +156,32 @@ message SkillInfo
 	float subSkillCoolTime = 6;
 	float jumpPower = 7;
 	float jumpCoolTime = 8;
+	int32 biteDamage = 9;
+	float biteCoolTime = 10;
+	int32 burnDamage = 11;
+	float burnCoolTime = 12;
+	int32 fireBallDamage = 13;
+	float fireBallCoolTime = 14;
+	int32 thunderDamage = 15;
+	float thunderCoolTime = 16;
+}
+
+message MonsterInfo
+{
+	int32 classId = 1;
+	string class = 2;
+	int32 maxHp = 3;
+	int32 hp = 4;
+	float maxSpeed = 5;
+	float acceleration = 6;
+	int32 biteDamage = 7;
+	float biteCoolTime = 8;
+	int32 burnDamage = 9;
+	float burnCoolTime = 10;
+	float fireBallPower = 11;
+	float fireBallCoolTime = 12;
+	float thunderPower = 13;
+	float thunderCoolTime = 14;
 }
 
 message ProjectileInfo

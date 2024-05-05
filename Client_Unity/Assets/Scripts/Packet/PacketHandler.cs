@@ -101,4 +101,17 @@ class PacketHandler
             return;
 
     }
+
+    public static void S_MonsterTargetHandler(PacketSession session, IMessage packet)
+    {
+        S_MonsterTarget targetPacket = packet as S_MonsterTarget;
+
+        GameObject monster = Managers.objectMgr.FindGameObjectbyId(targetPacket.MonsterId);
+        GameObject target = Managers.objectMgr.FindGameObjectbyId(targetPacket.TargetId);
+
+        if (target == null)
+            return;
+
+        monster.GetComponent<MonsterCtrl>().targetSetting(target);
+    }
 }

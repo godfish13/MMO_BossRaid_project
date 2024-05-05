@@ -334,7 +334,7 @@ public class MyHumanCtrl : HumanCtrl
     #region Rolling
     protected void Rolling()
     {
-        velocity.x = transform.localScale.x * Stat.MaxSpeed * 3;
+        velocity.x = transform.localScale.x * StatData.MaxSpeed * 3;
         _rigidbody.velocity = velocity;
     }
 
@@ -351,12 +351,12 @@ public class MyHumanCtrl : HumanCtrl
 
         if (_input.y == -1) // 구르기 끝나면 속도 상태에 맞춰 초기화(감속)
         {
-            velocity.x = transform.localScale.x * Stat.MaxSpeed * 0.3f;
+            velocity.x = transform.localScale.x * StatData.MaxSpeed * 0.3f;
             _rigidbody.velocity = velocity;
         }
         else
         {
-            velocity.x = transform.localScale.x * Stat.MaxSpeed;
+            velocity.x = transform.localScale.x * StatData.MaxSpeed;
             _rigidbody.velocity = velocity;
         }
 
@@ -379,7 +379,7 @@ public class MyHumanCtrl : HumanCtrl
 
             if (State == CreatureState.Rolling) // 구르기 가속도 반동 초기화
             {
-                velocity.x = transform.localScale.x * Stat.MaxSpeed;
+                velocity.x = transform.localScale.x * StatData.MaxSpeed;
                 _rigidbody.velocity = velocity;
             }
 

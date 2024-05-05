@@ -53,7 +53,7 @@ public class BaseCtrl : MonoBehaviour
     }
 
     StatInfo _statInfo = new StatInfo();
-    public StatInfo Stat
+    public StatInfo StatData
     {
         get { return _statInfo; }
         set
@@ -103,33 +103,7 @@ public class BaseCtrl : MonoBehaviour
 
         transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
 
-        BindData(ClassId);
-
         UpdateAnim();
-    }
-
-    protected void BindData(int ClassId)    // Json파일 데이터 Stat과 Skill에 연결 // 기본 Human, 하위 클래스에서 ClassId 변경
-    {
-        StatInfo HumanStatData = null;
-        SkillInfo HumanSkillData = null;
-
-        if (Managers.dataMgr.StatDictionary.TryGetValue(ClassId, out HumanStatData))
-        {
-            Stat.ClassId = HumanStatData.ClassId;
-            Stat.Class = HumanStatData.Class;
-            Stat.Hp = HumanStatData.Hp;
-            Stat.MaxSpeed = HumanStatData.MaxSpeed;
-            Stat.Acceleration = HumanStatData.Acceleration;
-        }
-        if (Managers.dataMgr.SkillDictionary.TryGetValue(ClassId, out HumanSkillData))
-        {
-            SkillData.SkillDamage = HumanSkillData.SkillDamage;
-            SkillData.SkillCoolTime = HumanSkillData.SkillCoolTime;
-            SkillData.SubSkillDamage = HumanSkillData.SubSkillDamage;
-            SkillData.SubSkillCoolTime = HumanSkillData.SubSkillCoolTime;
-            SkillData.JumpPower = HumanSkillData.JumpPower;
-            SkillData.JumpCoolTime = HumanSkillData.JumpCoolTime;
-        }
     }
 
     void Start()
@@ -246,7 +220,7 @@ public class BaseCtrl : MonoBehaviour
             if (_isGrounded == false)
                 State = CreatureState.Fall;     // State Change flag
 
-            velocity.x = Mathf.MoveTowards(velocity.x, 0, Stat.Acceleration * 10 * Time.fixedDeltaTime);
+            velocity.x = Mathf.MoveTowards(velocity.x, 0, StatData.Acceleration * 10 * Time.fixedDeltaTime);
             // rg의 x속도 가속도*2로 0까지 감속
 
             if (_isGrounded && _input.y == -1)
@@ -259,12 +233,12 @@ public class BaseCtrl : MonoBehaviour
                 if (_input.y == -1) // 기어다니고 있으면 이동속도 하락
                 {
                     State = CreatureState.Crawl;    // State Change flag
-                    velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed * 0.3f, Stat.Acceleration * Time.fixedDeltaTime);
+                    velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * StatData.MaxSpeed * 0.3f, StatData.Acceleration * Time.fixedDeltaTime);
                 }
                 else
                 {
                     State = CreatureState.Run;      // State Change flag
-                    velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed, Stat.Acceleration * Time.fixedDeltaTime);
+                    velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * StatData.MaxSpeed, StatData.Acceleration * Time.fixedDeltaTime);
                     // MoveTowards : rg의 x속도, 최대 _MaxSpeed까지, 시간당 가속도만큼 가속
                 }
             }
@@ -272,7 +246,7 @@ public class BaseCtrl : MonoBehaviour
             {
                 if (_isSkill == false)      // 점프 중 스킬쓰고 애니메이션이 끝난 이후 쭉 떨어지는 경우
                     State = CreatureState.Fall; // State Change flag
-                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed, Stat.Acceleration * 0.5f * Time.fixedDeltaTime);
+                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * StatData.MaxSpeed, StatData.Acceleration * 0.5f * Time.fixedDeltaTime);
                 // 체공중일 시 가속도 절반
             }
         }
@@ -286,19 +260,19 @@ public class BaseCtrl : MonoBehaviour
 
         if (_input.x == 0)   // 좌우 입력 없을 시 브레이크
         {
-            velocity.x = Mathf.MoveTowards(velocity.x, 0, Stat.Acceleration * 2 * Time.fixedDeltaTime);
+            velocity.x = Mathf.MoveTowards(velocity.x, 0, StatData.Acceleration * 2 * Time.fixedDeltaTime);
             // rg의 x속도 가속도*3만큼 0까지 감속
         }
         else  // 입력 있을 시 가속
         {
             if (_isGrounded && _jumpable)    // 점프 후 착지시 잠깐 가속 무시
             {
-                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed * 0.5f, Stat.Acceleration * 0.5f * Time.fixedDeltaTime);
+                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * StatData.MaxSpeed * 0.5f, StatData.Acceleration * 0.5f * Time.fixedDeltaTime);
                 // 스킬 사용중 이동속도 절반
             }
             else
             {
-                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * Stat.MaxSpeed * 0.5f, Stat.Acceleration * 0.5f * Time.fixedDeltaTime);
+                velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * StatData.MaxSpeed * 0.5f, StatData.Acceleration * 0.5f * Time.fixedDeltaTime);
                 // 스킬쓰며 체공중일 시 이동속도 절반
             }
         }
@@ -310,7 +284,7 @@ public class BaseCtrl : MonoBehaviour
     {
         if (State == CreatureState.Subskill && _isGrounded)
         {
-            velocity.x = Mathf.MoveTowards(velocity.x, 0, Stat.Acceleration * Time.fixedDeltaTime);
+            velocity.x = Mathf.MoveTowards(velocity.x, 0, StatData.Acceleration * Time.fixedDeltaTime);
             _rigidbody.velocity = velocity;
         }
         // rg의 x속도 가속도*2로 0까지 감속
@@ -368,7 +342,7 @@ public class BaseCtrl : MonoBehaviour
     #region Rolling
     protected void Rolling()
     {
-        velocity.x = transform.localScale.x * Stat.MaxSpeed * 3;
+        velocity.x = transform.localScale.x * StatData.MaxSpeed * 3;
         _rigidbody.velocity = velocity;
     }
 

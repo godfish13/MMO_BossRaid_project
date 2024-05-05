@@ -22,13 +22,20 @@ namespace Server.Game
         {
             Map.LoadMap(mapName);
             Console.WriteLine($"{Map.MapName} : X({Map.MinX} ~ {Map.MaxX}), Y({Map.MinY} ~ {Map.MaxY})");
+
+            // tmp monster init
+            Monster monster = ObjectMgr.Instance.Add<Monster>();
+            monster.MonsterName = monster.StatInfo.Class;
+            monster.PositionInfo.PosX = -3.0f;
+            monster.PositionInfo.PosY = 0;
+            Push(EnterGame, monster);
         }
 
         public void Update()
         {
             foreach (Monster m in _monsters.Values)
             {
-                //m.Update();
+                m.Update();
             }
 
             foreach (Projectile p in _projectiles.Values)
@@ -55,7 +62,7 @@ namespace Server.Game
                 Player newPlayer = newGameObject as Player;
                 _players.Add(newPlayer.ObjectId, newPlayer);
                 newPlayer.MyRoom = this;
-                newPlayer.PositionInfo = new PositionInfo() { State = CreatureState.Idle, PosX = 0, PosY = 0, LocalScaleX = 1}; 
+                newPlayer.PositionInfo = new PositionInfo() { State = CreatureState.Idle, PosX = 3, PosY = 0, LocalScaleX = 1}; 
                 // 입장시킬 초기 위치 및 상태 일단 하드코딩 플레이어 입장순서에 따른 위치 초기화 todo
 
                 #region Player 입장 성공 시 입장 성공했다고 전송 -> Client에서 MyPlayer 생성
@@ -64,7 +71,9 @@ namespace Server.Game
                 Console.WriteLine($"Id : {EnterPacket.GameObjectInfo.ObjectId} Enter Packet sended");
                 //Console.WriteLine($"Class : {EnterPacket.GameObjectInfo.StatInfo} Enter Packet sended");
                 newPlayer.MySession.Send(EnterPacket);
+                #endregion
 
+                #region Player가 입장하기 전 미리 GameRoom에 입장해있던 존재들 Spawn Packet 전송
                 S_Spawn SpawnOthersPacketToMe = new S_Spawn();    // 먼저 입장해있던 타 플레이어들 정보 전송          
                 foreach (Player p in _players.Values)
                 {
@@ -72,23 +81,29 @@ namespace Server.Game
                         SpawnOthersPacketToMe.GameObjectInfoList.Add(p.GameObjectInfo);                  
                 }
 
+                foreach (Monster m in _monsters.Values)         // 먼저 입장해있던 몬스터 정보 전송
+                    SpawnOthersPacketToMe.GameObjectInfoList.Add(m.GameObjectInfo);
+
                 newPlayer.MySession.Send(SpawnOthersPacketToMe);
                 #endregion
 
                 #region 미리 입장해있던 플레이어 모두에게 입장한 플레이어 spawn시키라고 데이터 전송   
                 S_Spawn SpawnPacketToOthers = new S_Spawn();
-                SpawnPacketToOthers.GameObjectInfoList.Add(newGameObject.GameObjectInfo);
+                SpawnPacketToOthers.GameObjectInfoList.Add(newPlayer.GameObjectInfo);
 
                 foreach (Player p in _players.Values)
                 {
-                    if (p.ObjectId != newGameObject.ObjectId)       // 플레이어가 추가됐을 시, 새로 입장한 자신 제외! // monster나 projectile은 상관없는 조건
+                    if (p.ObjectId != newPlayer.ObjectId) 
                         p.MySession.Send(SpawnPacketToOthers);
                 }
                 #endregion
             }
             else if (type == GameObjectType.Monster)
             {
-                // Todo
+                Monster newMonster = newGameObject as Monster;
+                _monsters.Add(newMonster.ObjectId, newMonster);
+                newMonster.MyRoom = this;
+                ApplyMove(newMonster, newMonster.PositionInfo);
             }
             else if (type == GameObjectType.Projectile)
             {
@@ -193,7 +208,7 @@ namespace Server.Game
                     break;
                 case 2:             // Human_ThrowBomb
                     {
-                        Projectile Bomb = ObjectMgr.Instance.Add<Projectile>(player.MyRoom);
+                        Projectile Bomb = ObjectMgr.Instance.Add<Projectile>();
                         if (Bomb == null)
                             return;
                         Bomb.Owner = player;
@@ -222,6 +237,14 @@ namespace Server.Game
                 if (_players.TryGetValue(gameObject.GameObjectInfo.ObjectId, out TargetPlayer))
                 {
                     TargetPlayer.GameObjectInfo.PositionInfo = movePositionInfo;
+                }
+            }
+            else if (type == GameObjectType.Monster)
+            {
+                Monster TargetMonster;
+                if (_monsters.TryGetValue(gameObject.GameObjectInfo.ObjectId, out TargetMonster))
+                {
+                    TargetMonster.GameObjectInfo.PositionInfo = movePositionInfo;
                 }
             }
             else if (type == GameObjectType.Projectile)
@@ -265,6 +288,16 @@ namespace Server.Game
                     return TargetProjectile;
             }
 
+            return null;
+        }
+
+        public Player FindPlayer(Func<GameObject, bool> condition)  // 원시적으로 플레이어 전부 탐색, condition에 맞는 player return
+        {
+            foreach (Player p in _players.Values)
+            {
+                if (condition.Invoke(p))
+                    return p;
+            }
             return null;
         }
     }

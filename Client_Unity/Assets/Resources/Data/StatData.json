@@ -37,8 +37,8 @@
       "Class": "Dragon",
       "MaxHp": "100",
       "Hp": "100",
-      "MaxSpeed": "8",
-      "Acceleration": "40"
+      "MaxSpeed": "1",
+      "Acceleration": "10"
     }
   ]
 }

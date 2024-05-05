@@ -16,7 +16,7 @@ namespace Server.Game
         // [unused 1-bit] [Type 7-bit] [Id 24-bit]  //포트폴리오 제작 과정 수업 기록 2 - server연동 8)화살 파트 참고
         int _counter = 0;
 
-        public T Add<T>(GameRoom gameRoom) where T : GameObject, new()     // 최상위 GameObject 일반화 ver, 오브젝트 생성 및 Id 부여
+        public T Add<T>() where T : GameObject, new()     // 최상위 GameObject 일반화 ver, 오브젝트 생성 및 Id 부여
         {
             T gameObject = new T();
             lock (_lock) 

@@ -14,10 +14,9 @@ namespace Server.Game
         public GameObjectType ObjectType { get; protected set; } = GameObjectType.None;
         public GameObjectInfo GameObjectInfo { get; set; } = new GameObjectInfo()
         {
-            ObjectId = 0,
             StatInfo = new StatInfo(),
             SkillInfo = new SkillInfo(),
-            PositionInfo = new PositionInfo() { PosX = 0, PosY = 0 }
+            PositionInfo = new PositionInfo()
         };
 
         public int ObjectId
@@ -26,10 +25,28 @@ namespace Server.Game
             set { GameObjectInfo.ObjectId = value; }
         }
 
+        public StatInfo StatInfo
+        {
+            get { return GameObjectInfo.StatInfo; }
+            set { GameObjectInfo.StatInfo = value; }
+        }
+
+        public SkillInfo SkillInfo
+        {
+            get { return GameObjectInfo.SkillInfo; }
+            set { GameObjectInfo.SkillInfo = value; }
+        }
+
         public PositionInfo PositionInfo
         {
             get { return GameObjectInfo.PositionInfo; }
             set { GameObjectInfo.PositionInfo = value; }
+        }
+
+        public CreatureState State
+        {
+            get { return GameObjectInfo.PositionInfo.State; }
+            set { GameObjectInfo.PositionInfo.State = value; }
         }
     }
 }

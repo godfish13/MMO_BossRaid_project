@@ -16,16 +16,15 @@ namespace Server.Game
             ClassId = 0;                        // 따로 입력하는것 못넣을 시 Client쪽 Multi Build and Run Editor에서 1~4로 순서대로 넣자
 
             StatInfo _stat = null;                                  // StatJson으로 불러놓은 player정보 넣기
-            DataMgr.StatDictionary.TryGetValue(key: StatInfo.ClassId, out _stat); 
-            GameObjectInfo.StatInfo.MergeFrom(_stat);
+            DataMgr.StatDictionary.TryGetValue(key: ClassId, out _stat); 
+            StatInfo.MergeFrom(_stat);
 
             SkillInfo _skill = null;
-            DataMgr.SkillDictionary.TryGetValue(key: StatInfo.ClassId, out _skill);
-            GameObjectInfo.SkillInfo.MergeFrom(_skill);
+            DataMgr.SkillDictionary.TryGetValue(key: ClassId, out _skill);
+            SkillInfo.MergeFrom(_skill);
         }
 
-        public StatInfo StatInfo = new StatInfo();      // Json Data Loading용
-        public SkillInfo SkillInfo = new SkillInfo();
+        // PositionInfo => GameRoom.EnterGame에서 초기화
 
         public int ClassId
         {
@@ -43,7 +42,7 @@ namespace Server.Game
         public int MaxHp
         {
             get { return StatInfo.MaxHp; }
-            set { StatInfo.MaxHp = value; }
+            set {   StatInfo.MaxHp = value; }
         }
 
         public int Hp

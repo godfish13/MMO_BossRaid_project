@@ -1,0 +1,25 @@
+{
+  "MonsterStat": [
+    {
+      "ClassId": "10",
+      "Class": "Dragon",
+      "MaxHp": "100",
+      "Hp": "100",
+      "MaxSpeed": "2",
+      "Acceleration": "40"
+    }
+  ],
+  "MonsterSkill": [
+    {
+      "ClassId": "10",
+      "BiteDamage": "10",
+      "BiteCoolTime": "2.0",
+      "BurnDamage": "20",
+      "BurnCoolTime": "6.0",
+      "FireBallPower": "30.0",
+      "FireBallCoolTime": "10.0",
+      "ThunderDamage": "50.0",
+      "ThunderCoolTime": "20.0"
+    }
+  ]
+}
