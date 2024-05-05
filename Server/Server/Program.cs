@@ -10,12 +10,12 @@ namespace Server
         static Listener _listener = new Listener();
         static List<System.Timers.Timer> _timers = new List<System.Timers.Timer>(); // Timer들 관리하기위해 들고있기
 
-        static void TickRoom(GameRoom room, int tick = 100)
+        static void TickRoom(GameRoom room, int tick = 100) // ms 단위, 100 == 0.1초
         {
             var timer = new System.Timers.Timer();
             timer.Interval = tick;  // 실행 간격
             timer.Elapsed += (s, e) => { room.Update(); };  // 실행 간격마다 실행시키고 싶은 이벤트 등록
-                                                            // s, e는 각각 sender(이벤트 발생시킨 객체, 보통 Timer자신)
+                                                            // s, e는 각각 sender(이벤트 발생시킨 객체, 보통 Timer자신) / 여기서는 사용 안함
                                                             // e는 이벤트와 관련된 정보가 담겨짐, 예를들어 e.SignalTime으로 타이머 만료된 시간 정보 획득 가능 (GPT 답변, word에 옮겨둠 참고)
             timer.AutoReset = true; // 리셋해주기
             timer.Enabled = true;   // 타이머 실행

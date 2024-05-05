@@ -28,8 +28,8 @@ public class MonsterCtrl : MonoBehaviour
 
     SpriteRenderer _spriteRenderer;
     Animator _animator;
-    protected Rigidbody2D _rigidbody;
-    protected Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정
+    //protected Rigidbody2D _rigidbody;
+    //protected Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정
 
     public int ClassId = 10;
 
@@ -92,7 +92,9 @@ public class MonsterCtrl : MonoBehaviour
         //_collider = GetComponent<Collider2D>();
         //_rigidbody = GetComponent<Rigidbody2D>();
 
+        State = PositionInfo.State;
         transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
+        transform.localScale = new Vector2(-1, 1);
 
         UpdateAnim();
     }
@@ -100,6 +102,23 @@ public class MonsterCtrl : MonoBehaviour
     void Start()
     {
         Init();
+    }
+
+    void Update()
+    {
+        SyncPos();
+    }
+
+    public void SyncPos()
+    {
+        // 변화 없을땐 쓸데없이 작동하지 않도록 조건 추가
+        if (State != PositionInfo.State || transform.position.x != PositionInfo.PosX || transform.position.y != PositionInfo.PosY || transform.localScale.x != PositionInfo.LocalScaleX)
+        {
+            State = PositionInfo.State;
+            transform.position = new Vector2(PositionInfo.PosX, transform.position.y);
+            transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
+            //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
+        }
     }
 
     #region Animation
@@ -139,8 +158,10 @@ public class MonsterCtrl : MonoBehaviour
     // Server에서 연산 및 작동
     #endregion
 
+    #region Server AI 연동
     public void targetSetting(GameObject target)
     {
         //Target = target;
     }
+    #endregion
 }

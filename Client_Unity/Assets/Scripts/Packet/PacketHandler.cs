@@ -79,7 +79,11 @@ class PacketHandler
         }
         else if (type == GameObjectType.Monster)
         {
+            MonsterCtrl monsterCtrl = go.GetComponent<MonsterCtrl>();
+            if (monsterCtrl == null)
+                return;
 
+            monsterCtrl.PositionInfo = movePacket.PositionInfo;
         }
         else if (type == GameObjectType.Projectile)
         {

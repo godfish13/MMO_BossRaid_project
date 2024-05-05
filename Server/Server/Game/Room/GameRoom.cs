@@ -12,7 +12,7 @@ namespace Server.Game
     {
         public int RoomId { get; set; }
 
-        Dictionary<int, Player> _players = new Dictionary<int, Player>(); // 해당 룸에 접속중인 player들
+        public Dictionary<int, Player> _players = new Dictionary<int, Player>(); // 해당 룸에 접속중인 player들
         Dictionary<int, Monster> _monsters = new Dictionary<int, Monster>();
         Dictionary<int, Projectile> _projectiles = new Dictionary<int, Projectile>();
 
@@ -26,9 +26,11 @@ namespace Server.Game
             // tmp monster init
             Monster monster = ObjectMgr.Instance.Add<Monster>();
             monster.MonsterName = monster.StatInfo.Class;
-            monster.PositionInfo.PosX = -3.0f;
+            monster.PositionInfo.PosX = 0;
             monster.PositionInfo.PosY = 0;
+            monster.PositionInfo.LocalScaleX = -1;
             Push(EnterGame, monster);
+            Console.WriteLine($"{monster.Class} : {monster.State} ({monster.PositionInfo.PosX}, {monster.PositionInfo.PosY})");
         }
 
         public void Update()
@@ -55,14 +57,14 @@ namespace Server.Game
             }
 
             GameObjectType type = ObjectMgr.GetObjectTypebyId(newGameObject.ObjectId);
-            Console.WriteLine($"Type : {type} Entered to GameRoom({RoomId})");
+            //Console.WriteLine($"Type : {type} Entered to GameRoom({RoomId})");
 
             if (type == GameObjectType.Player)
             {
                 Player newPlayer = newGameObject as Player;
                 _players.Add(newPlayer.ObjectId, newPlayer);
                 newPlayer.MyRoom = this;
-                newPlayer.PositionInfo = new PositionInfo() { State = CreatureState.Idle, PosX = 3, PosY = 0, LocalScaleX = 1}; 
+                newPlayer.PositionInfo = new PositionInfo() { State = CreatureState.Idle, PosX = -15, PosY = 6.5f, LocalScaleX = 1}; 
                 // 입장시킬 초기 위치 및 상태 일단 하드코딩 플레이어 입장순서에 따른 위치 초기화 todo
 
                 #region Player 입장 성공 시 입장 성공했다고 전송 -> Client에서 MyPlayer 생성
@@ -103,7 +105,6 @@ namespace Server.Game
                 Monster newMonster = newGameObject as Monster;
                 _monsters.Add(newMonster.ObjectId, newMonster);
                 newMonster.MyRoom = this;
-                ApplyMove(newMonster, newMonster.PositionInfo);
             }
             else if (type == GameObjectType.Projectile)
             {
@@ -291,7 +292,30 @@ namespace Server.Game
             return null;
         }
 
-        public Player FindPlayer(Func<GameObject, bool> condition)  // 원시적으로 플레이어 전부 탐색, condition에 맞는 player return
+        #region MonsterAI requirement
+        public void DistanceCalculater(int monsterObjectId)     // 몬스터와 player간 x 거리 저장
+        {
+            Monster monster = null;
+            if (_monsters.TryGetValue(monsterObjectId, out monster) == false)
+            {
+                Console.WriteLine("there is no Monster in Server");
+                return;
+            }
+               
+            if (_players.Count == 0)
+            {
+                Console.WriteLine("there is no Player in Server");
+                return;
+            }
+                
+            foreach (Player p in _players.Values)
+            {
+                p.DistanceBetweenMonster = Math.Abs(p.PositionInfo.PosX - monster.PositionInfo.PosX);    // 연산효율을 위해 X값만 따짐
+                //Console.WriteLine($"player {p.ObjectId} / monster {monster.ObjectId} distance : {p.DistanceBetweenMonster}");
+            }
+        }
+
+        public Player FindPlayer(Func<Player, bool> condition)  // 원시적으로 플레이어 전부 탐색, condition에 맞는 player return
         {
             foreach (Player p in _players.Values)
             {
@@ -300,5 +324,6 @@ namespace Server.Game
             }
             return null;
         }
+        #endregion
     }
 }

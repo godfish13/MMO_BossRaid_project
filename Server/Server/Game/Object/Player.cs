@@ -101,5 +101,9 @@ namespace Server.Game
             set { SkillInfo.JumpCoolTime = value; }
         }
         #endregion
+
+        #region Monster AI requirement
+        public float DistanceBetweenMonster{ get; set; }     // 몬스터와 player 사이의 x 거리
+        #endregion
     }
 }

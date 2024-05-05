@@ -108,13 +108,14 @@ namespace Server.Game
         #region Monster Ai
         // FSM 방식 AI
         public void Update()
-        {           
+        {
             switch (State)
             {
                 case CreatureState.Await:
                     UpdateAwait();
                     break;
                 case CreatureState.Idle:
+                    UpdateIdle();
                     break;
                 case CreatureState.Run:
                     break;
@@ -131,21 +132,57 @@ namespace Server.Game
             }
         }
 
-        Player _target; // 일단은 참조값으로 들고있기 / target 찾으면 해당 플레이어의 id를 대신 갖고있는거도 괜춘할듯
+        long _nextTick = 0;
+        private bool BehaveCountTimer(long tickCycle)   // 기본 tick 측정 타이머 // 1ms기준이므로 tickCycle 1000 = 1초
+        {
+            if (_nextTick > Environment.TickCount64)
+                return false;
+            _nextTick = Environment.TickCount64 + tickCycle; 
 
-        int _searchDist = 10;
-        long _nextSearchTick = 0;   // 탐색 주기 틱
-        protected virtual void UpdateAwait()
-        {          
-            if (_nextSearchTick > Environment.TickCount64)  // 1초에 한번 작동
+            MyRoom.DistanceCalculater(ObjectId);
+
+            return true;
+        }
+
+        float _enCounterRange = 10.0f;
+        private void UpdateAwait()
+        {
+            if (BehaveCountTimer(1000) == false)
                 return;
-            _nextSearchTick = Environment.TickCount64 + 1000;   // 1ms기준이므로 1000 = 1초
 
-            Console.WriteLine($"monster PositionInfo : {PositionInfo.PosX}, {PositionInfo.PosY}");
+            if (MyRoom._players.Count == 0) 
+                return;
+
+            foreach (Player p in MyRoom._players.Values)
+            {
+                if (p.DistanceBetweenMonster < _enCounterRange)
+                {
+                    State = CreatureState.Idle;
+
+                    S_Move movePacket = new S_Move();
+                    movePacket.PositionInfo = new PositionInfo();
+
+                    movePacket.ObjectId = ObjectId;
+                    movePacket.PositionInfo.State = State;
+                    movePacket.PositionInfo.LocalScaleX = -1;
+                    MyRoom.BroadCast(movePacket);
+                }
+            }
+            Console.WriteLine("Monster is awaiting");
+        }
+
+        int _targetID; // 일단은 참조값으로 들고있기 / target 찾으면 해당 플레이어의 id를 대신 갖고있는거도 괜춘할듯
+
+        int _searchDist = 15;
+        protected virtual void UpdateIdle()
+        {
+            if (BehaveCountTimer(1000) == false)
+                return;
+
+            //Console.WriteLine($"monster PositionInfo : {PositionInfo.PosX}, {PositionInfo.PosY}");
             Player target = MyRoom.FindPlayer(p =>
             {
-                float DistancePlayerMonster = Math.Abs(p.PositionInfo.PosX - PositionInfo.PosX);
-                return DistancePlayerMonster < _searchDist;
+                return p.DistanceBetweenMonster < _searchDist;
             });
 
             if (target == null)
@@ -153,9 +190,9 @@ namespace Server.Game
                 Console.WriteLine($"Monster Cant Find target");
                 return;
             }
-                
-            _target = target;
-            Console.WriteLine($"Monster target setted : {_target.ObjectId}");
+
+            _targetID = target.ObjectId;
+            Console.WriteLine($"Monster target : {_targetID}");
 
             //S_MonsterTarget targetPacket = new S_MonsterTarget();
             //targetPacket.MonsterId = ObjectId;
