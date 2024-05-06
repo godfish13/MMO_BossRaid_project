@@ -8,6 +8,7 @@ public class UIMgr
 
     Stack<UI_PopUp> _PopUpStack = new Stack<UI_PopUp>();
     UI_Scene _sceneUI = null;
+    Dictionary<string, UI_Scene> UI_SceneDict = new Dictionary<string, UI_Scene>();
 
     public GameObject Root      // Ui들 하나로 묶어둘 뿌리 부모클래스
     {
@@ -35,7 +36,6 @@ public class UIMgr
         {
             canvas.sortingOrder = 0;   // sort요청을 안한건 PopUp과 관련없는 UI이므로 sort관련 변화 x
         }
-            
     }
 
     public T MakeSubItem<T>(Transform parent, string name = null) where T : UI_Base
@@ -53,7 +53,7 @@ public class UIMgr
 
     public T ShowSceneUI<T>(string name = null) where T : UI_Scene
     {
-        if (string.IsNullOrEmpty(name))      // 이름 지정 안하고 그냥 사용하면 T 팝업시킴
+        if (string.IsNullOrEmpty(name))      // 이름 지정 안하고 그냥 사용하면 T 전부 팝업시킴
             name = typeof(T).Name;
 
         GameObject go = Managers.resourceMgr.Instantiate($"UI/Scene/{name}");
@@ -62,12 +62,21 @@ public class UIMgr
 
         go.transform.SetParent(Root.transform);
 
+        UI_SceneDict.Add(name, SceneUI);
+
         return SceneUI;
+    }
+
+    public UI_Scene GetSceneUi(string name)
+    {
+        if (UI_SceneDict.TryGetValue(name, out UI_Scene go))
+            return go;
+        else return null;
     }
 
     public T ShowPopUpUI<T>(string name = null) where T : UI_PopUp
     {
-        if(string.IsNullOrEmpty(name))      // 이름 지정 안하고 그냥 사용하면 T 팝업시킴
+        if(string.IsNullOrEmpty(name))      // 이름 지정 안하고 그냥 사용하면 T 전부 팝업시킴
             name = typeof(T).Name;
 
         GameObject go = Managers.resourceMgr.Instantiate($"UI/PopUp/{name}");

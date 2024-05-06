@@ -8,7 +8,7 @@ public class InGameScene : BaseScene
     {
         base.init();
         SceneType = Define.Scene.InGame;
-        //Managers.resourceMgr.Instantiate("TestCube");
+        Managers.sceneMgrEx.SetResolution(880, 480);
     }
 
     public override void Clear()

@@ -34,7 +34,7 @@ public class MyHumanCtrl : HumanCtrl
 
     private void LateUpdate()
     {
-        Camera.main.transform.position = new Vector3(transform.position.x, 3.7f, -7);
+        Camera.main.transform.position = new Vector3(transform.position.x, 3.2f, -8);
     }
 
     #region Server 통신
@@ -300,11 +300,15 @@ public class MyHumanCtrl : HumanCtrl
         SlashEffect.Stop();
     }
 
+    float x = 1.0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //_rigidbody.AddForce(new Vector3(transform.localScale.x * -ReBoundOffset, 0));
         Debug.Log("Hitted!");
 
+        //tmp 데미지 판정
+        x -= 0.1f;
+        Managers.UIMgr.GetSceneUi("UI_MonsterHpbar").GetComponent<UI_MonsterHpbar>().HpbarChange(x);
         // Todo Skill Packet Send
     }
     #endregion

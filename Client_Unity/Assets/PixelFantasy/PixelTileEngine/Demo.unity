@@ -283,7 +283,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.PixelEnvironments.LevelBuilder, Assembly-CSharp
         m_MethodName: LoadTileset
         m_Mode: 3
@@ -387,21 +387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 257960090}
-        m_TargetAssemblyTypeName: Assets.PixelEnvironments.Scripts.Inventory, Assembly-CSharp
-        m_MethodName: SwitchTab
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &110132058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,7 +557,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.PixelEnvironments.LevelBuilder, Assembly-CSharp
         m_MethodName: LoadTileset
         m_Mode: 3
@@ -802,7 +787,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
           Assembly-CSharp
         m_MethodName: OpenURL
@@ -1068,94 +1053,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf480094d0534faca8dad10f95492509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpriteCollection: {fileID: 11400000, guid: 768b897ac4414966ba08d5c42f59fdcd, type: 2}
-  LevelBuilder: {fileID: 1765853009}
-  Grid: {fileID: 818671287}
-  InventoryItem: {fileID: 7648379963497301732, guid: 18d3788c2c0f415f90eab509e9627bc2, type: 3}
---- !u!1 &299218353
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 299218354}
-  - component: {fileID: 299218355}
-  m_Layer: 0
-  m_Name: Cursor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &299218354
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299218353}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1765853010}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &299218355
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299218353}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1000
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &330276674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,7 +1141,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
           Assembly-CSharp
         m_MethodName: EnableLayer
@@ -1559,22 +1456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1765853009}
-        m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
-          Assembly-CSharp
-        m_MethodName: SwitchLayer
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &432014934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2421,104 +2302,6 @@ Transform:
   m_Father: {fileID: 1664182624}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &717964027
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 717964028}
-  - component: {fileID: 717964030}
-  - component: {fileID: 717964029}
-  m_Layer: 0
-  m_Name: Humus
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &717964028
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717964027}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1765853010}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &717964029
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717964027}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
---- !u!212 &717964030
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717964027}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -899301296532475703, guid: e2efe24a7f784fd78204519bb87d90b4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &747399874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,22 +2356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1765853009}
-        m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
-          Assembly-CSharp
-        m_MethodName: SwitchLayer
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &747399877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2807,7 +2574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53c53914b4c486397a88883a8440d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelBuilder: {fileID: 1765853009}
 --- !u!114 &803822429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2930,7 +2696,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.PixelEnvironments.LevelBuilder, Assembly-CSharp
         m_MethodName: SwitchCover
         m_Mode: 1
@@ -3391,7 +3157,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.PixelEnvironments.LevelBuilder, Assembly-CSharp
         m_MethodName: SaveLevel
         m_Mode: 1
@@ -3544,7 +3310,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &953445653
 GameObject:
@@ -3756,21 +3522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 257960090}
-        m_TargetAssemblyTypeName: Assets.PixelEnvironments.Scripts.Inventory, Assembly-CSharp
-        m_MethodName: SwitchTab
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &961512601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4139,7 +3890,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
           Assembly-CSharp
         m_MethodName: EnableLayer
@@ -4714,7 +4465,7 @@ RectTransform:
   - {fileID: 1204845009}
   - {fileID: 1541864131}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4865,21 +4616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 257960090}
-        m_TargetAssemblyTypeName: Assets.PixelEnvironments.Scripts.Inventory, Assembly-CSharp
-        m_MethodName: SwitchTab
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1208137302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5229,7 +4965,6 @@ GameObject:
   - component: {fileID: 1303400424}
   - component: {fileID: 1303400422}
   - component: {fileID: 1303400423}
-  - component: {fileID: 1303400425}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -5303,19 +5038,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1303400425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303400421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254fed2772f57624e93d7ad797776235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 20
 --- !u!1 &1329919685
 GameObject:
   m_ObjectHideFlags: 0
@@ -5496,7 +5218,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
           Assembly-CSharp
         m_MethodName: ExportSprite
@@ -5631,7 +5353,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
           Assembly-CSharp
         m_MethodName: OpenURL
@@ -5682,90 +5404,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391893643}
   m_CullTransparentMesh: 1
---- !u!1 &1395024901
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1395024902}
-  - component: {fileID: 1395024903}
-  m_Layer: 0
-  m_Name: GrassA
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1395024902
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1395024901}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1765853010}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1395024903
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1395024901}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: -5027509340213622084, guid: 22148f359b75408590cf7c83c07086d6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1420441223
 GameObject:
   m_ObjectHideFlags: 0
@@ -5850,7 +5488,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.PixelEnvironments.LevelBuilder, Assembly-CSharp
         m_MethodName: SaveTexture
         m_Mode: 1
@@ -6205,8 +5843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159faed4a2874693ab38f4847d2be94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanvasGroup: {fileID: 1541864137}
-  Message: {fileID: 501309857}
 --- !u!225 &1541864137
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6353,21 +5989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 257960090}
-        m_TargetAssemblyTypeName: Assets.PixelEnvironments.Scripts.Inventory, Assembly-CSharp
-        m_MethodName: SwitchTab
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1554336299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6538,7 +6159,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
           Assembly-CSharp
         m_MethodName: OpenURL
@@ -6868,7 +6489,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
           Assembly-CSharp
         m_MethodName: EnableLayer
@@ -7127,56 +6748,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761435073}
   m_CullTransparentMesh: 1
---- !u!1 &1765853008
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1765853010}
-  - component: {fileID: 1765853009}
-  m_Layer: 0
-  m_Name: LevelBuilder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1765853009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765853008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fc973b0d92348b7b61f91d651896814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Parent: {fileID: 1765853010}
-  SpriteCollection: {fileID: 11400000, guid: 768b897ac4414966ba08d5c42f59fdcd, type: 2}
-  Cursor: {fileID: 299218355}
---- !u!4 &1765853010
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765853008}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 717964028}
-  - {fileID: 1395024902}
-  - {fileID: 299218354}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1777483334
 GameObject:
   m_ObjectHideFlags: 0
@@ -7458,22 +7029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1765853009}
-        m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
-          Assembly-CSharp
-        m_MethodName: SwitchLayer
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1870517599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7710,22 +7265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1765853009}
-        m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
-          Assembly-CSharp
-        m_MethodName: SwitchLayer
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1874764168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8046,7 +7585,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.PixelEnvironments.LevelBuilder, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 1
@@ -8184,7 +7723,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765853009}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.TileEnginePixelEdition.Scripts.LevelBuilder,
           Assembly-CSharp
         m_MethodName: EnableLayer

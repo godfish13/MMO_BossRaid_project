@@ -1,7 +1,9 @@
 using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class MonsterCtrl : MonoBehaviour
 {
@@ -96,6 +98,8 @@ public class MonsterCtrl : MonoBehaviour
         transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
         transform.localScale = new Vector2(-1, 1);
 
+        _isHpbarOn = false;
+
         UpdateAnim();
     }
 
@@ -104,9 +108,15 @@ public class MonsterCtrl : MonoBehaviour
         Init();
     }
 
+    private bool _isHpbarOn;
     void Update()
     {
         SyncPos();
+        if (State != CreatureState.Await && _isHpbarOn == false)
+        {
+            Managers.UIMgr.ShowSceneUI<UI_MonsterHpbar>("UI_MonsterHpbar");
+            _isHpbarOn = true;
+        }
     }
 
     public void SyncPos()
@@ -115,6 +125,7 @@ public class MonsterCtrl : MonoBehaviour
         if (State != PositionInfo.State || transform.position.x != PositionInfo.PosX || transform.position.y != PositionInfo.PosY || transform.localScale.x != PositionInfo.LocalScaleX)
         {
             State = PositionInfo.State;
+            
             transform.position = new Vector2(PositionInfo.PosX, transform.position.y);
             transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
             //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
@@ -163,5 +174,7 @@ public class MonsterCtrl : MonoBehaviour
     {
         //Target = target;
     }
+
+    
     #endregion
 }

@@ -33,6 +33,9 @@ public class HumanCtrl : BaseCtrl
         if (State != PositionInfo.State || transform.position.x != PositionInfo.PosX || transform.position.y != PositionInfo.PosY || transform.localScale.x != PositionInfo.LocalScaleX)
         {
             State = PositionInfo.State;
+
+            //transform.position = Vector2.MoveTowards(transform.position, new Vector2(PositionInfo.PosX, PositionInfo.PosY), StatData.MaxSpeed * Time.deltaTime);
+            // MoveToward 방식은 동기화 시간이 너무 느림 그냥 position을 바로 옮겨주는 걸로
             transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
             transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
             //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
