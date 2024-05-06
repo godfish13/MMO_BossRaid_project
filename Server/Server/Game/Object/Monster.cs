@@ -29,7 +29,7 @@ namespace Server.Game
             PositionInfo = new PositionInfo() { State = CreatureState.Await, PosX = 0, PosY = 0 };  // 플레이어 enCounter 전 대기모드
         }    
 
-        #region Skill Property
+        #region SkillData Property
         public int BiteDamage
         {
             get { return SkillInfo.BiteDamage; }
@@ -174,7 +174,6 @@ namespace Server.Game
             //targetPacket.TargetId = _target.ObjectId;
             //MySession.Send(targetPacket);
         }
-
         #endregion
     }
 }

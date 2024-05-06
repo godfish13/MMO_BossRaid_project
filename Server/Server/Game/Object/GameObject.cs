@@ -38,7 +38,7 @@ namespace Server.Game
             set { GameObjectInfo.SkillInfo = value; }
         }
 
-        #region StatData property
+        #region StatData Property
         public int ClassId
         {
             get { return StatInfo.ClassId; }

@@ -26,7 +26,7 @@ namespace Server.Game
             // PositionInfo => GameRoom.EnterGame에서 초기화
         }
 
-        #region Skill Property
+        #region SkillData Property
         public int SkillDamage
         {
             get { return SkillInfo.SkillDamage; }
