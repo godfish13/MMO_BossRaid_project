@@ -18,90 +18,64 @@ namespace Server.Game
             ObjectType = GameObjectType.Monster;
             ClassId = 10;                        // 일단 하드코딩...   10 == Dragon
 
-            StatInfo _stat = null;                                 
+            StatInfo _stat = null;                                  // Json으로 불러놓은 Monster Data 넣기
             DataMgr.StatDictionary.TryGetValue(key: ClassId, out _stat);
-            GameObjectInfo.StatInfo.MergeFrom(_stat);
+            StatInfo.MergeFrom(_stat);
 
             SkillInfo _skill = null;
             DataMgr.SkillDictionary.TryGetValue(key: ClassId, out _skill);
-            GameObjectInfo.SkillInfo.MergeFrom(_skill);
+            SkillInfo.MergeFrom(_skill);
 
             PositionInfo = new PositionInfo() { State = CreatureState.Await, PosX = 0, PosY = 0 };  // 플레이어 enCounter 전 대기모드
+        }    
+
+        #region Skill Property
+        public int BiteDamage
+        {
+            get { return SkillInfo.BiteDamage; }
+            set { SkillInfo.BiteDamage = value; }
         }
 
-        public int ClassId
+        public float BiteCoolTime
         {
-            get { return StatInfo.ClassId; }
-            set { StatInfo.ClassId = value; }
+            get { return SkillInfo.BiteCoolTime; }
+            set { SkillInfo.BiteCoolTime = value; }
         }
 
-        public string Class
+        public int BurnDamage
         {
-            get { return StatInfo.Class; }
-            set { StatInfo.Class = value; }
+            get { return SkillInfo.BurnDamage; }
+            set { SkillInfo.BurnDamage = value; }
         }
 
-        #region Stat
-        public int MaxHp
+        public float BurnCoolTime
         {
-            get { return StatInfo.MaxHp; }
-            set { StatInfo.MaxHp = value; }
+            get { return SkillInfo.BurnCoolTime; }
+            set { SkillInfo.BurnCoolTime = value; }
         }
 
-        public int Hp
+        public int FireBallDamage
         {
-            get { return StatInfo.Hp; }
-            set { StatInfo.Hp = value; }
+            get { return SkillInfo.FireBallDamage; }
+            set { SkillInfo.FireBallDamage = value; }
         }
 
-        public float MaxSpeed
+        public float FireBallCoolTime
         {
-            get { return StatInfo.MaxSpeed; }
-            set { StatInfo.MaxSpeed = value; }
+            get { return SkillInfo.FireBallCoolTime; }
+            set { SkillInfo.FireBallCoolTime = value; }
         }
 
-        public float Acceleration
+        public int ThunderDamage
         {
-            get { return StatInfo.Acceleration; }
-            set { StatInfo.Acceleration = value; }
-        }
-        #endregion
-
-        #region Skill
-        public int SkillDamage
-        {
-            get { return SkillInfo.SkillDamage; }
-            set { SkillInfo.SkillDamage = value; }
+            get { return SkillInfo.ThunderDamage; }
+            set { SkillInfo.ThunderDamage = value; }
         }
 
-        public float SkillCoolTime
+        public float ThunderCoolTime
         {
-            get { return SkillInfo.SkillCoolTime; }
-            set { SkillInfo.SkillCoolTime = value; }
-        }
-
-        public int SubSkillDamage
-        {
-            get { return SkillInfo.SubSkillDamage; }
-            set { SkillInfo.SubSkillDamage = value; }
-        }
-
-        public float SubSkillCoolTime
-        {
-            get { return SkillInfo.SubSkillCoolTime; }
-            set { SkillInfo.SubSkillCoolTime = value; }
-        }
-
-        public float JumpPower
-        {
-            get { return SkillInfo.JumpPower; }
-            set { SkillInfo.JumpPower = value; }
-        }
-
-        public float JumpCoolTime
-        {
-            get { return SkillInfo.JumpCoolTime; }
-            set { SkillInfo.JumpCoolTime = value; }
+            get { return SkillInfo.ThunderCoolTime; }
+            set { SkillInfo.ThunderCoolTime = value; }
         }
         #endregion
 
@@ -168,7 +142,8 @@ namespace Server.Game
                     MyRoom.BroadCast(movePacket);
                 }
             }
-            Console.WriteLine("Monster is awaiting");
+            Console.WriteLine($"{StatInfo.Class} is awaiting");
+            Console.WriteLine($"{Hp}");
         }
 
         int _targetID; // 일단은 참조값으로 들고있기 / target 찾으면 해당 플레이어의 id를 대신 갖고있는거도 괜춘할듯

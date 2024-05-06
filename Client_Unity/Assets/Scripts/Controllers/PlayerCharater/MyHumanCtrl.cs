@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MyHumanCtrl : HumanCtrl
 {
@@ -300,15 +301,13 @@ public class MyHumanCtrl : HumanCtrl
         SlashEffect.Stop();
     }
 
-    float x = 1.0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //_rigidbody.AddForce(new Vector3(transform.localScale.x * -ReBoundOffset, 0));
         Debug.Log("Hitted!");
 
         //tmp 데미지 판정
-        x -= 0.1f;
-        Managers.UIMgr.GetSceneUi("UI_MonsterHpbar").GetComponent<UI_MonsterHpbar>().HpbarChange(x);
+        //Managers.UIMgr.GetSceneUi("UI_MonsterHpbar").GetComponent<UI_MonsterHpbar>().HpbarChange(x);
         // Todo Skill Packet Send
     }
     #endregion
@@ -338,8 +337,8 @@ public class MyHumanCtrl : HumanCtrl
     #region Rolling
     protected void Rolling()
     {
-        velocity.x = transform.localScale.x * StatData.MaxSpeed * 3;
-        _rigidbody.velocity = velocity;
+        _velocity.x = transform.localScale.x * StatData.MaxSpeed * 3;
+        _rigidbody.velocity = _velocity;
     }
 
     protected override void AnimEvent_RollingStart()   // 구르기 중 무적
@@ -355,13 +354,13 @@ public class MyHumanCtrl : HumanCtrl
 
         if (_input.y == -1) // 구르기 끝나면 속도 상태에 맞춰 초기화(감속)
         {
-            velocity.x = transform.localScale.x * StatData.MaxSpeed * 0.3f;
-            _rigidbody.velocity = velocity;
+            _velocity.x = transform.localScale.x * StatData.MaxSpeed * 0.3f;
+            _rigidbody.velocity = _velocity;
         }
         else
         {
-            velocity.x = transform.localScale.x * StatData.MaxSpeed;
-            _rigidbody.velocity = velocity;
+            _velocity.x = transform.localScale.x * StatData.MaxSpeed;
+            _rigidbody.velocity = _velocity;
         }
 
         State = CreatureState.Tmp;     // State Change flag 
@@ -383,8 +382,8 @@ public class MyHumanCtrl : HumanCtrl
 
             if (State == CreatureState.Rolling) // 구르기 가속도 반동 초기화
             {
-                velocity.x = transform.localScale.x * StatData.MaxSpeed;
-                _rigidbody.velocity = velocity;
+                _velocity.x = transform.localScale.x * StatData.MaxSpeed;
+                _rigidbody.velocity = _velocity;
             }
 
             if (Input.GetKey(KeyCode.X) == false && State != CreatureState.Subskill)    // 스킬들 사용중에는 Land모션 재생 x

@@ -112,6 +112,7 @@ public class MonsterCtrl : MonoBehaviour
     void Update()
     {
         SyncPos();
+
         if (State != CreatureState.Await && _isHpbarOn == false)
         {
             Managers.UIMgr.ShowSceneUI<UI_MonsterHpbar>("UI_MonsterHpbar");

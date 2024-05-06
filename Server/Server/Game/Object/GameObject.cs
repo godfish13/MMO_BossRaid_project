@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Server;
+using Server.Data;
 
 namespace Server.Game
 {
@@ -16,7 +17,7 @@ namespace Server.Game
         {
             StatInfo = new StatInfo(),
             SkillInfo = new SkillInfo(),
-            PositionInfo = new PositionInfo()
+            PositionInfo = new PositionInfo()          
         };
 
         public int ObjectId
@@ -36,6 +37,44 @@ namespace Server.Game
             get { return GameObjectInfo.SkillInfo; }
             set { GameObjectInfo.SkillInfo = value; }
         }
+
+        #region StatData property
+        public int ClassId
+        {
+            get { return StatInfo.ClassId; }
+            set { StatInfo.ClassId = value; }
+        }
+
+        public string Class
+        {
+            get { return StatInfo.Class; }
+            set { StatInfo.Class = value; }
+        }
+
+        public int MaxHp
+        {
+            get { return StatInfo.MaxHp; }
+            set { StatInfo.MaxHp = value; }
+        }
+
+        public int Hp
+        {
+            get { return StatInfo.Hp; }
+            set { StatInfo.Hp = value; }
+        }
+
+        public float MaxSpeed
+        {
+            get { return StatInfo.MaxSpeed; }
+            set { StatInfo.MaxSpeed = value; }
+        }
+
+        public float Acceleration
+        {
+            get { return StatInfo.Acceleration; }
+            set { StatInfo.Acceleration = value; }
+        }
+        #endregion
 
         public PositionInfo PositionInfo
         {
