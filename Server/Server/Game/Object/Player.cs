@@ -65,7 +65,8 @@ namespace Server.Game
         #endregion
 
         #region Monster AI requirement
-        public float DistanceBetweenMonster{ get; set; }     // 몬스터와 player 사이의 x 거리
+        public float DistanceBetweenMonster { get; set; }     // 몬스터와 player 사이의 x 거리
+        public int Aggravation { get; set; }  // 몬스터와의 거리에 따라 가지는 어그로 수치
         #endregion
     }
 }

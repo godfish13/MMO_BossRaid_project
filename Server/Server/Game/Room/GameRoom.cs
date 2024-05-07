@@ -343,12 +343,39 @@ namespace Server.Game
                 Console.WriteLine("there is no Player in Server");
                 return;
             }
-                
+
+            float AllDistanceSum = 0;
             foreach (Player p in _players.Values)
             {
-                p.DistanceBetweenMonster = Math.Abs(p.PositionInfo.PosX - monster.PositionInfo.PosX);    // 연산효율을 위해 X값만 따짐
+                // 연산효율을 위해 X값만 따짐, packet으로 보내는 x단위 0.05f
+                p.DistanceBetweenMonster = Math.Abs(p.PositionInfo.PosX - monster.PositionInfo.PosX);    
+                AllDistanceSum += p.DistanceBetweenMonster;
                 //Console.WriteLine($"player {p.ObjectId} / monster {monster.ObjectId} distance : {p.DistanceBetweenMonster}");
             }
+
+            foreach (Player p in _players.Values)
+            {
+                p.Aggravation = (int)(AllDistanceSum / p.DistanceBetweenMonster * 100);  // 가까울수록 Aggravation 수치 up
+                //Console.WriteLine($"{p.GameObjectId} aggro : {p.Aggravation}");
+            }
+        }
+
+        public Player SetTarget()
+        {
+            if (_players.Count == 0)
+                return null;
+
+            Player target = new Player();
+            Random rand = new Random();
+
+            foreach (Player p in _players.Values)
+            {                
+                int randomNumber = rand.Next(500);  // 난수값 적당히 추가해줘서 무조건 가깝다고 target되지 않게 조정
+                p.Aggravation += randomNumber;
+                Console.WriteLine($"{p.GameObjectId} aggro : {p.Aggravation}");
+            }
+
+            return target;
         }
 
         public Player FindPlayer(Func<Player, bool> condition)  // 원시적으로 플레이어 전부 탐색, condition에 맞는 player return

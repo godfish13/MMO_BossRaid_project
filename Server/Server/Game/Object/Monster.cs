@@ -113,7 +113,7 @@ namespace Server.Game
                 return false;
             _nextTick = Environment.TickCount64 + tickCycle; 
 
-            MyRoom.DistanceCalculater(GameObjectId);
+            MyRoom.DistanceCalculater(GameObjectId);    // 1사이클마다 플레이어들과의 거리계산, Aggravation 수치 입력
 
             return true;
         }
@@ -150,8 +150,14 @@ namespace Server.Game
         int _searchDist = 15;
         protected virtual void UpdateIdle()
         {
+            // 1. TickCycle마다 각 플레이어와 몬스터 간 거리측정, 자신의 거리 / 전체 거리합 = basic Aggravation
+            // 2. 0~99 난수 생성 후 basic Aggravation에 합쳐서 가장 높은 Aggravation을 지닌 플레이어가 target
+            // 3. target이 근접공격 범위면 Bite, Burn, Thunder 중 1 사용, 범위 밖이면 FireBall(target의 y범위가 일정수치 이하) or Thunder
+            // 4. 각 패턴 후딜레이 기다린 후 반복
             if (BehaveCountTimer(1000) == false)
                 return;
+
+            MyRoom.SetTarget();
 
             //Console.WriteLine($"monster PositionInfo : {PositionInfo.PosX}, {PositionInfo.PosY}");
             Player target = MyRoom.FindPlayer(p =>

@@ -9,6 +9,7 @@ public class MyHumanCtrl : HumanCtrl
 {
     protected BoxCollider2D SlashBox;   // Main Skill 판정범위 히트박스
     
+
     public override CreatureState State     // 패킷 보내는 부분 존재하므로 override
     {
         get { return _state; }
@@ -28,6 +29,8 @@ public class MyHumanCtrl : HumanCtrl
     protected override void Init()
     {        
         SlashBox = GetComponentsInChildren<BoxCollider2D>()[2];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
+        _hitBoxCollider = GetComponentsInChildren<Collider2D>()[1]; // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
+
         base.Init();
 
         _myHpbar = Managers.UIMgr.ShowSceneUI<UI_MyHpbar>("UI_MyHpbar");    // 클래스에 따라 다르게 고를 예정이므로 일단 My에서 Init

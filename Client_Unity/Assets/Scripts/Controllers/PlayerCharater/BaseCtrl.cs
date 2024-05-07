@@ -32,8 +32,8 @@ public class BaseCtrl : MonoBehaviour
     SpriteRenderer _spriteRenderer;
     Animator _animator;
     protected Rigidbody2D _rigidbody;
-    protected Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정
-    private Collider2D _hitBoxCollider;     // 플레이어 피격판정 히트박스
+    protected Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정    
+    protected Collider2D _hitBoxCollider;     // 플레이어 피격판정 HitBox
 
     public int ClassId = 0;
 
@@ -120,8 +120,7 @@ public class BaseCtrl : MonoBehaviour
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _hitBoxCollider = GetComponentsInChildren<Collider2D>()[1];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
-
+        
         transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
 
         UpdateAnim();
@@ -405,11 +404,17 @@ public class BaseCtrl : MonoBehaviour
 
     protected void AnimEvent_RollingStart()   // 구르기 중 무적
     {
+        if (_hitBoxCollider == null)    // HumanCtrl에는 없으므로 return
+            return;
+
         _hitBoxCollider.enabled = false;
     }
 
     protected void AnimEvent_RollingEnded()
     {
+        if (_hitBoxCollider == null)
+            return;
+
         _hitBoxCollider.enabled = true;
 
         if (_input.y == -1) // 구르기 끝나면 속도 상태에 맞춰 초기화(감속)
