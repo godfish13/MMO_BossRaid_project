@@ -21,7 +21,7 @@ namespace Server.Game
             T gameObject = new T();
             lock (_lock) 
             {
-                gameObject.ObjectId = GenerateId(gameObject.ObjectType);    // Object Id 생성
+                gameObject.GameObjectId = GenerateId(gameObject.ObjectType);    // Object Id 생성
             }
             return gameObject;
         }

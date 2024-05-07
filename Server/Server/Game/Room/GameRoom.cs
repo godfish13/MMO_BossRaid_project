@@ -30,7 +30,6 @@ namespace Server.Game
             monster.PositionInfo.PosY = 0;
             monster.PositionInfo.LocalScaleX = -1;
             Push(EnterGame, monster);
-            Console.WriteLine($"{monster.Class} : {monster.State} ({monster.PositionInfo.PosX}, {monster.PositionInfo.PosY})");
         }
 
         public void Update()
@@ -56,13 +55,13 @@ namespace Server.Game
                 return;
             }
 
-            GameObjectType type = ObjectMgr.GetObjectTypebyId(newGameObject.ObjectId);
+            GameObjectType type = ObjectMgr.GetObjectTypebyId(newGameObject.GameObjectId);
             //Console.WriteLine($"Type : {type} Entered to GameRoom({RoomId})");
 
             if (type == GameObjectType.Player)
             {
                 Player newPlayer = newGameObject as Player;
-                _players.Add(newPlayer.ObjectId, newPlayer);
+                _players.Add(newPlayer.GameObjectId, newPlayer);
                 newPlayer.MyRoom = this;
                 newPlayer.PositionInfo = new PositionInfo() { State = CreatureState.Idle, PosX = -15, PosY = 6.5f, LocalScaleX = 1}; 
                 // 입장시킬 초기 위치 및 상태 일단 하드코딩 플레이어 입장순서에 따른 위치 초기화 todo
@@ -70,7 +69,7 @@ namespace Server.Game
                 #region Player 입장 성공 시 입장 성공했다고 전송 -> Client에서 MyPlayer 생성
                 S_EnterGame EnterPacket = new S_EnterGame();
                 EnterPacket.GameObjectInfo = newPlayer.GameObjectInfo;
-                Console.WriteLine($"Id : {EnterPacket.GameObjectInfo.ObjectId} Enter Packet sended");
+                Console.WriteLine($"Id : {EnterPacket.GameObjectInfo.GameObjectId} Enter Packet sended");
                 //Console.WriteLine($"Class : {EnterPacket.GameObjectInfo.StatInfo} Enter Packet sended");
                 newPlayer.MySession.Send(EnterPacket);
                 #endregion
@@ -95,7 +94,7 @@ namespace Server.Game
 
                 foreach (Player p in _players.Values)
                 {
-                    if (p.ObjectId != newPlayer.ObjectId) 
+                    if (p.GameObjectId != newPlayer.GameObjectId) 
                         p.MySession.Send(SpawnPacketToOthers);
                 }
                 #endregion
@@ -103,13 +102,13 @@ namespace Server.Game
             else if (type == GameObjectType.Monster)
             {
                 Monster newMonster = newGameObject as Monster;
-                _monsters.Add(newMonster.ObjectId, newMonster);
+                _monsters.Add(newMonster.GameObjectId, newMonster);
                 newMonster.MyRoom = this;
             }
             else if (type == GameObjectType.Projectile)
             {
                 Projectile newProjectile = newGameObject as Projectile;
-                _projectiles.Add(newProjectile.ObjectId, newProjectile);
+                _projectiles.Add(newProjectile.GameObjectId, newProjectile);
                 newProjectile.MyRoom = this;
 
                 #region 플레이어들에게 Projectile spawn시키라고 데이터 전송   
@@ -169,7 +168,7 @@ namespace Server.Game
                 despawnPacket.GameObjectIdlist.Add(objectId);
                 foreach (Player player in _players.Values)
                 {
-                    if (player.GameObjectInfo.ObjectId != objectId)
+                    if (player.GameObjectInfo.GameObjectId != objectId)
                         player.MySession.Send(despawnPacket);
                 }
             }
@@ -190,13 +189,13 @@ namespace Server.Game
 
             // 다른 플레이어들에게 자기위치 방송
             S_Move broadMovePkt = new S_Move(); // 방송하려고 서버측에서 보내는 Move 패킷
-            broadMovePkt.ObjectId = gameObject.GameObjectInfo.ObjectId;   // 움직인 자신 Id 입력
+            broadMovePkt.GameObjectId = gameObject.GameObjectInfo.GameObjectId;   // 움직인 자신 Id 입력
             broadMovePkt.PositionInfo = movePacket.PositionInfo;
 
             BroadCast(broadMovePkt);
         }
 
-        public void HandleSkill(Player player, C_Skill skillPacket) 
+        public void HandleSkill(Player player, C_Skill skillPacket)     // 스킬 사용 판정만, Hp 변동은 아래 HandleHp 에서
         {
             if (player == null)
                 return;
@@ -205,9 +204,9 @@ namespace Server.Game
 
             switch (skillPacket.SkillId)
             {
-                case 1:             // Human_Slash
+                case (int)Define.SkillId.Human_Slash:             // Human_Slash
                     break;
-                case 2:             // Human_ThrowBomb
+                case (int)Define.SkillId.Human_ThrowBomb:             // Human_ThrowBomb
                     {
                         Projectile Bomb = ObjectMgr.Instance.Add<Projectile>();
                         if (Bomb == null)
@@ -216,9 +215,11 @@ namespace Server.Game
                         Push(EnterGame, Bomb);
                     }
                     break;
-                case 3:             // Elf_ArrowShot
+                case (int)Define.SkillId.Elf_ArrowShot:             // Elf_ArrowShot
                     break;
-                case 4:             // Elf_Knife
+                case (int)Define.SkillId.Elf_Knife:             // Elf_Knife
+                    break;
+                case (int)Define.SkillId.Furry_Slash:             // Furry_Slash
                     break;
             }
 
@@ -228,14 +229,49 @@ namespace Server.Game
             //BroadCast(broadSkillPacket);
         }
 
+        public void HandleHp(Player player, C_Hpdelta hpdeltaPacket)
+        {
+            if (player == null)
+                return;  
+
+            switch (hpdeltaPacket.SkillId)
+            {
+                case (int)Define.SkillId.Human_Slash:             // Human_Slash
+                    {
+                        Console.WriteLine($"hitted {hpdeltaPacket.HittedGameObjectId} by Human_Slash");
+                        _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
+                        Monster.Hp -= player.SkillDamage;
+                    }
+                    break;
+                case (int)Define.SkillId.Human_ThrowBomb:             // Human_ThrowBomb
+                    {
+                        Console.WriteLine($"hitted {hpdeltaPacket.HittedGameObjectId} by Human_ThrowBomb");
+                        _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
+                        Monster.Hp -= player.SubSkillDamage;
+                    }
+                    break;
+                case (int)Define.SkillId.Elf_ArrowShot:             // Elf_ArrowShot
+                    break;
+                case (int)Define.SkillId.Elf_Knife:             // Elf_Knife
+                    break;
+                case (int)Define.SkillId.Furry_Slash:             // Furry_Slash
+                    break;
+                case (int)Define.SkillId.Dragon_Bite:             // Dragon_Bite    // 플레이어 체력 깎아주기
+                    {
+                        //player.Hp -= _monsters.
+                    }
+                    break;
+            }
+        }
+
         public void ApplyMove(GameObject gameObject, PositionInfo movePositionInfo)
         {
-            GameObjectType type = ObjectMgr.GetObjectTypebyId(gameObject.GameObjectInfo.ObjectId);
+            GameObjectType type = ObjectMgr.GetObjectTypebyId(gameObject.GameObjectInfo.GameObjectId);
 
             if (type == GameObjectType.Player)
             {
                 Player TargetPlayer;
-                if (_players.TryGetValue(gameObject.GameObjectInfo.ObjectId, out TargetPlayer))
+                if (_players.TryGetValue(gameObject.GameObjectInfo.GameObjectId, out TargetPlayer))
                 {
                     TargetPlayer.GameObjectInfo.PositionInfo = movePositionInfo;
                 }
@@ -243,7 +279,7 @@ namespace Server.Game
             else if (type == GameObjectType.Monster)
             {
                 Monster TargetMonster;
-                if (_monsters.TryGetValue(gameObject.GameObjectInfo.ObjectId, out TargetMonster))
+                if (_monsters.TryGetValue(gameObject.GameObjectInfo.GameObjectId, out TargetMonster))
                 {
                     TargetMonster.GameObjectInfo.PositionInfo = movePositionInfo;
                 }
@@ -251,7 +287,7 @@ namespace Server.Game
             else if (type == GameObjectType.Projectile)
             {
                 Projectile TargetProjectile;
-                if (_projectiles.TryGetValue(gameObject.GameObjectInfo.ObjectId, out TargetProjectile))
+                if (_projectiles.TryGetValue(gameObject.GameObjectInfo.GameObjectId, out TargetProjectile))
                 {
                     TargetProjectile.GameObjectInfo.PositionInfo = movePositionInfo;
                 }

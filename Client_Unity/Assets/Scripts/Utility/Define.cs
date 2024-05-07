@@ -19,6 +19,8 @@ public class Define
     public enum Layer
     {
         Platform = 6,
+        Player = 8,
+        Monster = 11,
     }
 
     public enum Scene

@@ -14,7 +14,7 @@ public class ObjectMgr : MonoBehaviour
 
     public void AddCreature(GameObjectInfo gameObjectInfo, bool myCtrl = false) // MyCtrl : 내가 조종하는지 아닌지 체크
     {
-        GameObjectType type = GetGameObjectTypebyId(gameObjectInfo.ObjectId);
+        GameObjectType type = GetGameObjectTypebyId(gameObjectInfo.GameObjectId);
 
         if (type == GameObjectType.Player)
         {
@@ -22,11 +22,11 @@ public class ObjectMgr : MonoBehaviour
             {
                 GameObject go = Managers.resourceMgr.Instantiate("Character/My_Human_Adventurer");
                 go.name = gameObjectInfo.StatInfo.Class;
-                _players.Add(gameObjectInfo.ObjectId, go);
+                _players.Add(gameObjectInfo.GameObjectId, go);
 
                 MyHumanCtrl = go.GetComponent<MyHumanCtrl>();
                 MyHumanCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
-                MyHumanCtrl.GameObjectId = gameObjectInfo.ObjectId;
+                MyHumanCtrl.GameObjectId = gameObjectInfo.GameObjectId;
                 MyHumanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
                 MyHumanCtrl.StatData = gameObjectInfo.StatInfo;
                 MyHumanCtrl.SkillData = gameObjectInfo.SkillInfo;
@@ -37,11 +37,11 @@ public class ObjectMgr : MonoBehaviour
             {
                 GameObject go = Managers.resourceMgr.Instantiate("Character/Human_Adventurer");
                 go.name = gameObjectInfo.StatInfo.Class;
-                _players.Add(gameObjectInfo.ObjectId, go);
+                _players.Add(gameObjectInfo.GameObjectId, go);
 
                 HumanCtrl humanCtrl = go.GetComponent<HumanCtrl>();
                 humanCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
-                humanCtrl.GameObjectId = gameObjectInfo.ObjectId;
+                humanCtrl.GameObjectId = gameObjectInfo.GameObjectId;
                 humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
                 humanCtrl.StatData = gameObjectInfo.StatInfo;
                 humanCtrl.SkillData = gameObjectInfo.SkillInfo;
@@ -54,10 +54,10 @@ public class ObjectMgr : MonoBehaviour
         {
             GameObject go = Managers.resourceMgr.Instantiate("Monster/Dragon");
             go.name = gameObjectInfo.StatInfo.Class;
-            _monsters.Add(gameObjectInfo.ObjectId, go);
+            _monsters.Add(gameObjectInfo.GameObjectId, go);
 
             MonsterCtrl = go.GetComponent<MonsterCtrl>();
-            MonsterCtrl.GameObjectId = gameObjectInfo.ObjectId;
+            MonsterCtrl.GameObjectId = gameObjectInfo.GameObjectId;
             MonsterCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
             MonsterCtrl.PositionInfo = gameObjectInfo.PositionInfo;
             MonsterCtrl.StatData = gameObjectInfo.StatInfo;
@@ -67,23 +67,24 @@ public class ObjectMgr : MonoBehaviour
 
     public void AddProjectile(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo) // MyCtrl : 내가 조종하는지 아닌지 체크
     {
-        GameObjectType type = GetGameObjectTypebyId(gameObjectInfo.ObjectId);
+        GameObjectType type = GetGameObjectTypebyId(gameObjectInfo.GameObjectId);
 
         if (type != GameObjectType.Projectile)
             return;
         
-        if (ownerObjectInfo.ObjectId == MyHumanCtrl.GameObjectId)
+        if (ownerObjectInfo.GameObjectId == MyHumanCtrl.GameObjectId)
         {
             Debug.Log("My projectile added");
             GameObject Bomb = Managers.resourceMgr.Instantiate("Projectiles/Human/MyExplosive");
-            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.ObjectId;
+            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
 
+            //1.0f * skillUser.transform.localScale.x
             GameObject skillUser;
-            if (_players.TryGetValue(ownerObjectInfo.ObjectId, out skillUser))
+            if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
             {
-                Bomb.transform.position = skillUser.transform.position + new Vector3(1.0f * skillUser.transform.localScale.x, 0.5f, 0);
+                Bomb.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
                 Bomb.GetComponent<Rigidbody2D>().AddForce((Vector2.up + (Vector2.right * skillUser.transform.localScale.x * 2)).normalized * 400.0f);
-                _projectiles.Add(gameObjectInfo.ObjectId, Bomb);
+                _projectiles.Add(gameObjectInfo.GameObjectId, Bomb);
             }     
             else
             {
@@ -94,13 +95,13 @@ public class ObjectMgr : MonoBehaviour
         {
             Debug.Log("Others projectile added");
             GameObject Bomb = Managers.resourceMgr.Instantiate("Projectiles/Human/Explosive");
-            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.ObjectId;
+            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
 
             GameObject skillUser;
-            if (_players.TryGetValue(ownerObjectInfo.ObjectId, out skillUser))
+            if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
             {
-                Bomb.transform.position = skillUser.transform.position + new Vector3(1.0f * skillUser.transform.localScale.x, 0.5f, 0);
-                _projectiles.Add(gameObjectInfo.ObjectId, Bomb);
+                Bomb.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
+                _projectiles.Add(gameObjectInfo.GameObjectId, Bomb);
             }
             else
             {

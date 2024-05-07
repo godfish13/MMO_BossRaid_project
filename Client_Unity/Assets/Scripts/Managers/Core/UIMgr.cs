@@ -8,7 +8,6 @@ public class UIMgr
 
     Stack<UI_PopUp> _PopUpStack = new Stack<UI_PopUp>();
     UI_Scene _sceneUI = null;
-    Dictionary<string, UI_Scene> UI_SceneDict = new Dictionary<string, UI_Scene>();
 
     public GameObject Root      // Ui들 하나로 묶어둘 뿌리 부모클래스
     {
@@ -62,16 +61,7 @@ public class UIMgr
 
         go.transform.SetParent(Root.transform);
 
-        UI_SceneDict.Add(name, SceneUI);
-
         return SceneUI;
-    }
-
-    public UI_Scene GetSceneUi(string name)
-    {
-        if (UI_SceneDict.TryGetValue(name, out UI_Scene go))
-            return go;
-        else return null;
     }
 
     public T ShowPopUpUI<T>(string name = null) where T : UI_PopUp

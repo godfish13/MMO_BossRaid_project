@@ -113,7 +113,7 @@ namespace Server.Game
                 return false;
             _nextTick = Environment.TickCount64 + tickCycle; 
 
-            MyRoom.DistanceCalculater(ObjectId);
+            MyRoom.DistanceCalculater(GameObjectId);
 
             return true;
         }
@@ -136,14 +136,13 @@ namespace Server.Game
                     S_Move movePacket = new S_Move();
                     movePacket.PositionInfo = new PositionInfo();
 
-                    movePacket.ObjectId = ObjectId;
+                    movePacket.GameObjectId = GameObjectId;
                     movePacket.PositionInfo.State = State;
                     movePacket.PositionInfo.LocalScaleX = -1;
                     MyRoom.BroadCast(movePacket);
                 }
             }
             Console.WriteLine($"{StatInfo.Class} is awaiting");
-            Console.WriteLine($"{Hp}");
         }
 
         int _targetID; // 일단은 참조값으로 들고있기 / target 찾으면 해당 플레이어의 id를 대신 갖고있는거도 괜춘할듯
@@ -166,7 +165,7 @@ namespace Server.Game
                 return;
             }
 
-            _targetID = target.ObjectId;
+            _targetID = target.GameObjectId;
             Console.WriteLine($"Monster target : {_targetID}");
 
             //S_MonsterTarget targetPacket = new S_MonsterTarget();

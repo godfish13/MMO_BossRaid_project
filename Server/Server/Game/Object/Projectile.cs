@@ -16,6 +16,5 @@ namespace Server.Game
         }
 
         public GameObject Owner { get; set; }
-  
     }   
 }

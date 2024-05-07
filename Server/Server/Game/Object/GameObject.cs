@@ -20,10 +20,10 @@ namespace Server.Game
             PositionInfo = new PositionInfo()          
         };
 
-        public int ObjectId
+        public int GameObjectId
         {
-            get { return GameObjectInfo.ObjectId; }
-            set { GameObjectInfo.ObjectId = value; }
+            get { return GameObjectInfo.GameObjectId; }
+            set { GameObjectInfo.GameObjectId = value; }
         }
 
         public StatInfo StatInfo
@@ -57,10 +57,17 @@ namespace Server.Game
             set { StatInfo.MaxHp = value; }
         }
 
-        public int Hp
+        public int Hp       // Hp Set (변동)시 S_Hpdelta 패킷 broadCast
         {
             get { return StatInfo.Hp; }
-            set { StatInfo.Hp = value; }
+            set 
+            {
+                StatInfo.Hp = value;
+                S_Hpdelta hpdeltaPacket = new S_Hpdelta();
+                hpdeltaPacket.GameObjectId = GameObjectId;
+                hpdeltaPacket.ChangedHp = value;
+                MyRoom.BroadCast(hpdeltaPacket);
+            }
         }
 
         public float MaxSpeed

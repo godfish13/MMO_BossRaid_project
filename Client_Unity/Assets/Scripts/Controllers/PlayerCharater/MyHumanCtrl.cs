@@ -8,9 +8,8 @@ using UnityEngine.UI;
 public class MyHumanCtrl : HumanCtrl
 {
     protected BoxCollider2D SlashBox;   // Main Skill 판정범위 히트박스
-    private Collider2D _hitBoxCollider;     // 플레이어 피격판정 히트박스
     
-    public override CreatureState State
+    public override CreatureState State     // 패킷 보내는 부분 존재하므로 override
     {
         get { return _state; }
         set
@@ -29,8 +28,9 @@ public class MyHumanCtrl : HumanCtrl
     protected override void Init()
     {        
         SlashBox = GetComponentsInChildren<BoxCollider2D>()[2];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
-        _hitBoxCollider = GetComponentsInChildren<Collider2D>()[1];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
         base.Init();
+
+        _myHpbar = Managers.UIMgr.ShowSceneUI<UI_MyHpbar>("UI_MyHpbar");    // 클래스에 따라 다르게 고를 예정이므로 일단 My에서 Init
     }
 
     private void LateUpdate()
@@ -280,7 +280,7 @@ public class MyHumanCtrl : HumanCtrl
     }
     #endregion
 
-    #region MainSkill
+    #region MainSkill       
     protected override void AnimEvent_MainSkillSlashOn()
     {
         SlashBox.enabled = true;
@@ -300,15 +300,14 @@ public class MyHumanCtrl : HumanCtrl
 
         SlashEffect.Stop();
     }
-
+  
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //_rigidbody.AddForce(new Vector3(transform.localScale.x * -ReBoundOffset, 0));
         Debug.Log("Hitted!");
 
-        //tmp 데미지 판정
-        //Managers.UIMgr.GetSceneUi("UI_MonsterHpbar").GetComponent<UI_MonsterHpbar>().HpbarChange(x);
-        // Todo Skill Packet Send
+        // Hpdelta Packet Send
+        SendHpdeltaPacket(collision, MonsterLayerMask, (int)Define.SkillId.Human_Slash);
     }
     #endregion
 
@@ -332,39 +331,6 @@ public class MyHumanCtrl : HumanCtrl
         // AnimEvent : SubSkill 애니메이션 끝나기 전까지 상태변화 X
     }
     // Hit 판정 OnTriggerEnter2D는 BombCtrl에 존재
-    #endregion
-
-    #region Rolling
-    protected void Rolling()
-    {
-        _velocity.x = transform.localScale.x * StatData.MaxSpeed * 3;
-        _rigidbody.velocity = _velocity;
-    }
-
-    protected override void AnimEvent_RollingStart()   // 구르기 중 무적
-    {
-        _hitBoxCollider.enabled = false;
-    }
-
-    protected override void AnimEvent_RollingEnded()
-    {
-        base.AnimEvent_RollingEnded();
-
-        _hitBoxCollider.enabled = true;
-
-        if (_input.y == -1) // 구르기 끝나면 속도 상태에 맞춰 초기화(감속)
-        {
-            _velocity.x = transform.localScale.x * StatData.MaxSpeed * 0.3f;
-            _rigidbody.velocity = _velocity;
-        }
-        else
-        {
-            _velocity.x = transform.localScale.x * StatData.MaxSpeed;
-            _rigidbody.velocity = _velocity;
-        }
-
-        State = CreatureState.Tmp;     // State Change flag 
-    }
     #endregion
 
     #region isGround

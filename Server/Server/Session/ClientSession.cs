@@ -49,7 +49,7 @@ namespace Server
             SessionManager.instance.Remove(this);
 
             GameRoom gameRoom = RoomMgr.Instance.Find(1);
-            gameRoom.Push(gameRoom.LeaveGame, myPlayer.ObjectId);
+            gameRoom.Push(gameRoom.LeaveGame, myPlayer.GameObjectId);
 
             Console.WriteLine($"OnDisConnected ({this.Sessionid}) : {endPoint}");
         }

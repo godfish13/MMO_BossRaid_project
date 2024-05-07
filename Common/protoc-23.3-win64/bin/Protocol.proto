@@ -13,11 +13,13 @@ enum MsgId
 	S_DESPAWN = 4;
 	S_MOVE = 5;
 	S_SKILL = 6;
-	C_LEAVE_GAME = 7;
-	C_MOVE = 8;
-	C_SKILL = 9;
-	C_SELECT_CHARACTER = 10;
-	S_MONSTER_TARGET = 11;
+	S_HPDELTA = 7;
+	S_MONSTER_TARGET = 8;
+	C_LEAVE_GAME = 9;
+	C_MOVE = 10;
+	C_SKILL = 11;
+	C_SELECT_CHARACTER = 12;
+	C_HPDELTA = 13;
 }
 
 enum CreatureState
@@ -78,7 +80,7 @@ message S_Despawn
 
 message S_Move
 {
-	int32 objectId = 1;
+	int32 gameObjectId = 1;
 	PositionInfo positionInfo = 2;
 }
 
@@ -86,6 +88,18 @@ message S_Skill
 {
 	int32 skillUserId = 1;
 	int32 skillId = 2;
+}
+
+message S_Hpdelta
+{
+	int32 gameObjectId = 1;
+	int32 changedHp = 2;
+}
+
+message S_MonsterTarget
+{
+	int32 monsterId = 1;
+	int32 targetId = 2;
 }
 
 message C_LeaveGame
@@ -114,10 +128,10 @@ message C_SelectCharacter
 	int32 classId = 1;
 }
 
-message S_MonsterTarget
+message C_Hpdelta
 {
-	int32 monsterId = 1;
-	int32 targetId = 2;
+	int32 hittedGameObjectId = 1;
+	int32 skillId = 2;
 }
 
 message PositionInfo
@@ -130,7 +144,7 @@ message PositionInfo
 
 message GameObjectInfo
 {
-	int32 ObjectId = 1;
+	int32 gameObjectId = 1;
 	StatInfo statInfo = 2;
 	SkillInfo skillInfo = 3;
 	PositionInfo positionInfo = 4;

@@ -31,7 +31,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.CSkill, MakePacket<C_Skill>);
 		_handler.Add((ushort)MsgId.CSkill, PacketHandler.C_SkillHandler);		
 		_onRecv.Add((ushort)MsgId.CSelectCharacter, MakePacket<C_SelectCharacter>);
-		_handler.Add((ushort)MsgId.CSelectCharacter, PacketHandler.C_SelectCharacterHandler);
+		_handler.Add((ushort)MsgId.CSelectCharacter, PacketHandler.C_SelectCharacterHandler);		
+		_onRecv.Add((ushort)MsgId.CHpdelta, MakePacket<C_Hpdelta>);
+		_handler.Add((ushort)MsgId.CHpdelta, PacketHandler.C_HpdeltaHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

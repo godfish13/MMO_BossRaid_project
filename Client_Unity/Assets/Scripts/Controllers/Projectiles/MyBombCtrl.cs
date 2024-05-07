@@ -93,6 +93,9 @@ internal class MyBombCtrl : BombCtrl
         C_MovePacketSend();                   // Explosion State로 변화시키라고 1회 통신
         _rigidbody.velocity = new Vector2(0, 0);
         _rigidbody.gravityScale = 0;
+
+        // Hpdelta Packet Send
+        SendHpdeltaPacket(collision, MonsterLayerMask, (int)Define.SkillId.Human_ThrowBomb);
     }
 }
 

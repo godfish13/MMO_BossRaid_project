@@ -21,7 +21,7 @@ class PacketHandler
     {
         S_LeaveGame leaveGamePacket = packet as S_LeaveGame;
         Debug.Log("S_LeaveGamePacket activated");
-        Debug.Log($"{leaveGamePacket.GameObjectInfo.ObjectId} leaved");
+        Debug.Log($"{leaveGamePacket.GameObjectInfo.GameObjectId} leaved");
 
         Managers.objectMgr.Clear();
     }
@@ -40,7 +40,7 @@ class PacketHandler
     public static void S_SpawnProjectileHandler(PacketSession session, IMessage packet) // projectile object 입장용
     {
         S_SpawnProjectile spawnProjectilePacket = packet as S_SpawnProjectile;
-        Debug.Log($"S_SpawnProjectileHandler activated / owner : {spawnProjectilePacket.OwnerInfo.ObjectId}");
+        Debug.Log($"S_SpawnProjectileHandler activated / owner : {spawnProjectilePacket.OwnerInfo.GameObjectId}");
     
         Managers.objectMgr.AddProjectile(spawnProjectilePacket.GameObjectInfo, spawnProjectilePacket.OwnerInfo);       
     }
@@ -61,14 +61,14 @@ class PacketHandler
     {
         S_Move movePacket = packet as S_Move;
 
-        GameObject go = Managers.objectMgr.FindGameObjectbyId(movePacket.ObjectId);
+        GameObject go = Managers.objectMgr.FindGameObjectbyId(movePacket.GameObjectId);
         if (go == null) 
             return;
 
-        GameObjectType type = Managers.objectMgr.GetGameObjectTypebyId(movePacket.ObjectId);
+        GameObjectType type = Managers.objectMgr.GetGameObjectTypebyId(movePacket.GameObjectId);
         if (type == GameObjectType.Player)
         {
-            if (Managers.objectMgr.MyHumanCtrl.GameObjectId == movePacket.ObjectId)  // 자신 PosInfo는 클라이언트상 정보를 따름       
+            if (Managers.objectMgr.MyHumanCtrl.GameObjectId == movePacket.GameObjectId)  // 자신 PosInfo는 클라이언트상 정보를 따름       
                 return;
 
             BaseCtrl baseCtrl = go.GetComponent<BaseCtrl>();
@@ -117,5 +117,23 @@ class PacketHandler
             return;
 
         monster.GetComponent<MonsterCtrl>().targetSetting(target);
+    }
+
+    public static void S_HpdeltaHandler(PacketSession session, IMessage packet)
+    {
+        S_Hpdelta hpdeltaPacket = packet as S_Hpdelta;
+
+        Debug.Log($"{hpdeltaPacket.GameObjectId} hp : {hpdeltaPacket.ChangedHp}");
+        GameObjectType type = Managers.objectMgr.GetGameObjectTypebyId(hpdeltaPacket.GameObjectId);
+
+        if (type == GameObjectType.Player)
+        {
+            // Todo
+        }
+        else if (type == GameObjectType.Monster)
+        {
+            GameObject monster = Managers.objectMgr.FindGameObjectbyId(hpdeltaPacket.GameObjectId);
+            monster.GetComponent<MonsterCtrl>().Hp = hpdeltaPacket.ChangedHp;
+        }
     }
 }

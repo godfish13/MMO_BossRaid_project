@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ProjectileCtrl : MonoBehaviour
 {
+    // Move, Jump 등 불필요한 부분 덜어내기 위해 baseCtrl 상속 X
+
     #region for Server Connection
     [SerializeField] private int _gameObjectId;
     public int GameObjectId { get { return _gameObjectId; } set { _gameObjectId = value; } }
@@ -77,6 +79,20 @@ public class ProjectileCtrl : MonoBehaviour
             transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
             transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
             //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
+        }
+    }
+
+    protected LayerMask PlayerLayerMask = (int)Define.Layer.Player;
+    protected LayerMask MonsterLayerMask = (int)Define.Layer.Monster;
+
+    protected void SendHpdeltaPacket(Collider2D collision, LayerMask layerMask, int SkillId)
+    {
+        if (collision.gameObject.layer == layerMask) // Collision의 Layer가 Monster아니면 무시
+        {
+            C_Hpdelta hpdeltaPacket = new C_Hpdelta();
+            hpdeltaPacket.HittedGameObjectId = collision.GetComponent<MonsterCtrl>().GameObjectId;
+            hpdeltaPacket.SkillId = SkillId;
+            Managers.networkMgr.Send(hpdeltaPacket);
         }
     }
     #endregion

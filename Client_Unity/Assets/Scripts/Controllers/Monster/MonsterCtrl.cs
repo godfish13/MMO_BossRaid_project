@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class MonsterCtrl : MonoBehaviour
 {
@@ -87,6 +86,24 @@ public class MonsterCtrl : MonoBehaviour
         }
     }
 
+    UI_MonsterHpbar _monsterHpbar;
+
+    public int MaxHp 
+    {
+        get { return StatData.MaxHp; }
+        set { StatData.MaxHp = value; }
+    }
+
+    public int Hp   // Hp 변동 시 Ui 표시 수치 변경
+    {
+        get { return StatData.Hp; }
+        set 
+        { 
+            StatData.Hp = value;
+            _monsterHpbar.HpbarChange((float)Hp / (float)MaxHp);
+        }
+    }
+
     protected virtual void Init()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -108,6 +125,7 @@ public class MonsterCtrl : MonoBehaviour
         Init();
     }
 
+    #region Server 통신
     private bool _isHpbarOn;
     void Update()
     {
@@ -115,8 +133,8 @@ public class MonsterCtrl : MonoBehaviour
 
         if (State != CreatureState.Await && _isHpbarOn == false)
         {
-            Managers.UIMgr.ShowSceneUI<UI_MonsterHpbar>("UI_MonsterHpbar");
             _isHpbarOn = true;
+            _monsterHpbar = Managers.UIMgr.ShowSceneUI<UI_MonsterHpbar>("UI_MonsterHpbar");
         }
     }
 
@@ -132,6 +150,18 @@ public class MonsterCtrl : MonoBehaviour
             //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
         }
     }
+
+    protected void SendHpdeltaPacket(Collider2D collision, LayerMask layerMask, int skillId)   // 플레이어가 닿으면 보내기
+    {
+        if (collision.gameObject.layer == layerMask) // Collision의 Layer가 Monster아니면 무시
+        {
+            C_Hpdelta hpdeltaPacket = new C_Hpdelta();
+            hpdeltaPacket.HittedGameObjectId = collision.GetComponent<MonsterCtrl>().GameObjectId;
+            hpdeltaPacket.SkillId = skillId;
+            Managers.networkMgr.Send(hpdeltaPacket);
+        }
+    }
+    #endregion
 
     #region Animation
     protected void UpdateAnim()
@@ -175,7 +205,7 @@ public class MonsterCtrl : MonoBehaviour
     {
         //Target = target;
     }
+    #endregion
 
     
-    #endregion
 }

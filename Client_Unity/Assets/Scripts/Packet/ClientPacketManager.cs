@@ -38,6 +38,8 @@ class PacketManager
 		_handler.Add((ushort)MsgId.SMove, PacketHandler.S_MoveHandler);		
 		_onRecv.Add((ushort)MsgId.SSkill, MakePacket<S_Skill>);
 		_handler.Add((ushort)MsgId.SSkill, PacketHandler.S_SkillHandler);		
+		_onRecv.Add((ushort)MsgId.SHpdelta, MakePacket<S_Hpdelta>);
+		_handler.Add((ushort)MsgId.SHpdelta, PacketHandler.S_HpdeltaHandler);		
 		_onRecv.Add((ushort)MsgId.SMonsterTarget, MakePacket<S_MonsterTarget>);
 		_handler.Add((ushort)MsgId.SMonsterTarget, PacketHandler.S_MonsterTargetHandler);
 	}

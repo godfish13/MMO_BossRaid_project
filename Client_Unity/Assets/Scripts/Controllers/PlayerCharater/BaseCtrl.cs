@@ -33,7 +33,8 @@ public class BaseCtrl : MonoBehaviour
     Animator _animator;
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정
-    
+    private Collider2D _hitBoxCollider;     // 플레이어 피격판정 히트박스
+
     public int ClassId = 0;
 
     [SerializeField] protected CreatureState _state;
@@ -88,6 +89,25 @@ public class BaseCtrl : MonoBehaviour
         }
     }
 
+    // Stat 프로퍼티
+    protected UI_MyHpbar _myHpbar;
+
+    public int MaxHp
+    {
+        get { return StatData.MaxHp; }
+        set { StatData.MaxHp = value; }
+    }
+
+    public int Hp   // Hp 변동 시 Ui 표시 수치 변경
+    {
+        get { return StatData.Hp; }
+        set
+        {
+            StatData.Hp = value;
+            _myHpbar.HpbarChange((float)Hp / (float)MaxHp);
+        }
+    }
+
     [SerializeField] protected Vector2 _input = new Vector2();    // 화살표 키입력
     protected Vector2 _velocity;                  // 가속도에따른 속력
     float Gravity = 70.0f;        // 중력 가속도
@@ -100,6 +120,7 @@ public class BaseCtrl : MonoBehaviour
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _hitBoxCollider = GetComponentsInChildren<Collider2D>()[1];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
 
         transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
 
@@ -111,7 +132,7 @@ public class BaseCtrl : MonoBehaviour
         Init();
     }
 
-    #region server 통신 - 위치 동기화
+    #region server 통신
     protected virtual void Update()
     {
         SyncPos();
@@ -129,6 +150,20 @@ public class BaseCtrl : MonoBehaviour
             transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
             transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
             //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
+        }
+    }
+
+    protected LayerMask PlayerLayerMask = (int)Define.Layer.Player;
+    protected LayerMask MonsterLayerMask = (int)Define.Layer.Monster;
+
+    protected void SendHpdeltaPacket(Collider2D collision, LayerMask layerMask, int skillId)
+    {
+        if (collision.gameObject.layer == layerMask) // Collision의 Layer가 Monster아니면 무시
+        {
+            C_Hpdelta hpdeltaPacket = new C_Hpdelta();
+            hpdeltaPacket.HittedGameObjectId = collision.GetComponent<MonsterCtrl>().GameObjectId;
+            hpdeltaPacket.SkillId = skillId;
+            Managers.networkMgr.Send(hpdeltaPacket);
         }
     }
     #endregion
@@ -368,19 +403,33 @@ public class BaseCtrl : MonoBehaviour
         _rigidbody.velocity = _velocity;
     }
 
-    protected virtual void AnimEvent_RollingStart()   // 구르기 중 무적
+    protected void AnimEvent_RollingStart()   // 구르기 중 무적
     {
-        
+        _hitBoxCollider.enabled = false;
     }
 
-    protected virtual void AnimEvent_RollingEnded()
+    protected void AnimEvent_RollingEnded()
     {
+        _hitBoxCollider.enabled = true;
+
+        if (_input.y == -1) // 구르기 끝나면 속도 상태에 맞춰 초기화(감속)
+        {
+            _velocity.x = transform.localScale.x * StatData.MaxSpeed * 0.3f;
+            _rigidbody.velocity = _velocity;
+        }
+        else
+        {
+            _velocity.x = transform.localScale.x * StatData.MaxSpeed;
+            _rigidbody.velocity = _velocity;
+        }
+
         State = CreatureState.Tmp;     // State Change flag
         _coRollingCoolTimer = StartCoroutine("CoRollingCoolTimer", SkillData.JumpCoolTime + 1.0f);
     }
     #endregion  
 
     #region Skills
+    // SkillId / 1: HumanSlash / 2: HumanBomb / 3: Elf ArrowShot / 4: Elf Knife / 5: Furry Slash
     protected virtual void MainSkill()
     {
         // Class 별 개별구현
@@ -390,7 +439,7 @@ public class BaseCtrl : MonoBehaviour
         }
     }
 
-    protected virtual void SubSkill()
+    protected virtual void SubSkill()   
     {
         // Class 별 개별구현
         if (Input.GetKey(KeyCode.A))

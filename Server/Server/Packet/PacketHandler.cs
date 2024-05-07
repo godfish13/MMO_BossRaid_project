@@ -21,11 +21,11 @@ class PacketHandler
         if (player == null)             // 이를 방지하기 위해 player로 한번 꺼내고 null체크하면 다른 스레드에서 myPlayer을 건들더라도  
             return;                     // player는 그대로 남아있으므로 비교적 안전해짐
 
-        GameRoom Room = player.MyRoom;  // player랑 마찬가지
-        if (Room == null)               // 얘는 GameRoom.LeaveGame에서 실제로 null로 밀어주기도 함으로 더위험함!! 더 주의해야하는부분
+        GameRoom myRoom = player.MyRoom;  // player랑 마찬가지
+        if (myRoom == null)               // 얘는 GameRoom.LeaveGame에서 실제로 null로 밀어주기도 함으로 더위험함!! 더 주의해야하는부분
             return;
 
-        Room.Push(Room.LeaveGame, leavePacket.GameObjectId);
+        myRoom.Push(myRoom.LeaveGame, leavePacket.GameObjectId);
     }
 
     public static void C_MoveHandler(PacketSession session, IMessage packet)
@@ -85,11 +85,27 @@ class PacketHandler
         if (player == null)             // 이를 방지하기 위해 player로 한번 꺼내고 null체크하면 다른 스레드에서 myPlayer을 건들더라도  
             return;                     // player는 그대로 남아있으므로 비교적 안전해짐
 
-        GameRoom Room = player.MyRoom;  // player랑 마찬가지
-        if (Room == null)               // 얘는 GameRoom.LeaveGame에서 실제로 null로 밀어주기도 함으로 더위험함!! 더 주의해야하는부분
+        GameRoom myRoom = player.MyRoom;  // player랑 마찬가지
+        if (myRoom == null)               // 얘는 GameRoom.LeaveGame에서 실제로 null로 밀어주기도 함으로 더위험함!! 더 주의해야하는부분
             return;
 
-        Room.Push(Room.HandleSkill, player, skillPacket);
+        myRoom.Push(myRoom.HandleSkill, player, skillPacket);
+    }
+
+    public static void C_HpdeltaHandler(PacketSession session, IMessage packet)
+    {
+        C_Hpdelta hpdeltaPacket = packet as C_Hpdelta;
+        ClientSession clientSession = session as ClientSession;
+
+        Player player = clientSession.myPlayer;     // clientSession.myPlayer == null 체크는 멀티스레드 환경 상 제대로 작동안할 가능성이 존재함
+        if (player == null)             // 이를 방지하기 위해 player로 한번 꺼내고 null체크하면 다른 스레드에서 myPlayer을 건들더라도  
+            return;                     // player는 그대로 남아있으므로 비교적 안전해짐
+
+        GameRoom myRoom = player.MyRoom;  // player랑 마찬가지
+        if (myRoom == null)               // 얘는 GameRoom.LeaveGame에서 실제로 null로 밀어주기도 함으로 더위험함!! 더 주의해야하는부분
+            return;
+
+        myRoom.Push(myRoom.HandleHp, player, hpdeltaPacket);
     }
 
     public static void C_SelectCharacterHandler(PacketSession session, IMessage packet)
