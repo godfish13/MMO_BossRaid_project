@@ -21,5 +21,15 @@ public class Define
         Dragon_FireBall = 13,
         Dragon_Thunder = 14,
     }
+
+    public enum ProjectileType
+    {
+        Human_Bomb = 1,
+        Elf_Arrow = 2,
+        Lizard_FireBall = 3,
+        Lizaed_Heal = 4,
+        DragonFireball = 5,
+        DragonThunder = 6,
+    }
 }
 

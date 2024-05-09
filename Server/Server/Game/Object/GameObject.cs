@@ -17,6 +17,7 @@ namespace Server.Game
         {
             StatInfo = new StatInfo(),
             SkillInfo = new SkillInfo(),
+            MonsterSkillInfo = new MonsterSkillInfo(),
             PositionInfo = new PositionInfo()          
         };
 
@@ -30,12 +31,6 @@ namespace Server.Game
         {
             get { return GameObjectInfo.StatInfo; }
             set { GameObjectInfo.StatInfo = value; }
-        }
-
-        public SkillInfo SkillInfo
-        {
-            get { return GameObjectInfo.SkillInfo; }
-            set { GameObjectInfo.SkillInfo = value; }
         }
 
         #region StatData Property

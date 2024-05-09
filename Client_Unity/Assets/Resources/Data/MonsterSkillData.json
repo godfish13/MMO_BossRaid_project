@@ -1,0 +1,20 @@
+{
+  "MonsterSkills": [
+    {
+      "ClassId": "10",
+      "Class": "Dragon",
+      "BiteDamage": "10",
+      "BiteDelay": "800",
+      "BiteCoolTime": "100",
+      "BurnDamage": "20",
+      "BurnDelay": "1000",
+      "BurnCoolTime": "900",
+      "FireBallDamage": "30",
+      "FireBallDelay": "1000",
+      "FireBallCoolTime": "1000",
+      "ThunderDamage": "50",
+      "ThunderDelay": "2500",
+      "ThunderCoolTime": "1000"
+    }
+  ]
+}

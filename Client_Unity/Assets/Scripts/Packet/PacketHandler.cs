@@ -41,7 +41,7 @@ class PacketHandler
     {
         S_SpawnProjectile spawnProjectilePacket = packet as S_SpawnProjectile;
         Debug.Log($"S_SpawnProjectileHandler activated / owner : {spawnProjectilePacket.OwnerInfo.GameObjectId}");
-    
+        Debug.Log($"{spawnProjectilePacket.GameObjectInfo.GameObjectId}, {spawnProjectilePacket.GameObjectInfo.ProjectileType}");
         Managers.objectMgr.AddProjectile(spawnProjectilePacket.GameObjectInfo, spawnProjectilePacket.OwnerInfo);       
     }
 

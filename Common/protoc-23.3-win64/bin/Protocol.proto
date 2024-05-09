@@ -147,7 +147,9 @@ message GameObjectInfo
 	int32 gameObjectId = 1;
 	StatInfo statInfo = 2;
 	SkillInfo skillInfo = 3;
-	PositionInfo positionInfo = 4;
+	MonsterSkillInfo monsterSkillInfo = 4;
+	PositionInfo positionInfo = 5;
+	int32 projectileType = 6;
 }
 
 message StatInfo
@@ -170,14 +172,24 @@ message SkillInfo
 	float subSkillCoolTime = 6;
 	float jumpPower = 7;
 	float jumpCoolTime = 8;
-	int32 biteDamage = 9;
-	float biteCoolTime = 10;
-	int32 burnDamage = 11;
-	float burnCoolTime = 12;
-	int32 fireBallDamage = 13;
-	float fireBallCoolTime = 14;
-	int32 thunderDamage = 15;
-	float thunderCoolTime = 16;
+}
+
+message MonsterSkillInfo
+{
+	int32 classId = 1;
+	string class = 2;
+	int32 biteDamage = 3;
+	int32 biteDelay = 4;
+	int32 biteCoolTime = 5;
+	int32 burnDamage = 6;
+	int32 burnDelay = 7;
+	int32 burnCoolTime = 8;
+	int32 fireBallDamage = 9;
+	int32 fireBallDelay = 10;
+	int32 fireBallCoolTime = 11;
+	int32 thunderDamage = 12;
+	int32 thunderDelay = 13;
+	int32 thunderCoolTime = 24;
 }
 
 message MonsterInfo
@@ -196,10 +208,4 @@ message MonsterInfo
 	float fireBallCoolTime = 12;
 	float thunderPower = 13;
 	float thunderCoolTime = 14;
-}
-
-message ProjectileInfo
-{
-	int32 projectileId = 1;
-	PositionInfo posInfo = 2;
 }

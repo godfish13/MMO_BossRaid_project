@@ -1241,6 +1241,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9204116397208595780, guid: 0a4ead9b6d10c9b43ac1aee616e5bd01, type: 3}
   m_PrefabInstance: {fileID: 1374290611}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1516911983
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510298, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510299, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_Name
+      value: DragonFireball
+      objectReference: {fileID: 0}
+    - target: {fileID: 111864529561510299, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 849aca627c3332d40b38a07bb9f3e407, type: 3}
 --- !u!1001 &1579525657
 PrefabInstance:
   m_ObjectHideFlags: 0

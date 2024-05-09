@@ -1,10 +1,14 @@
-﻿using Google.Protobuf.Protocol;
+﻿using Google.Protobuf;
+using Google.Protobuf.Protocol;
 using Server.Data;
 using Server.Game;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Numerics;
 using System.Text;
+using System.Threading;
 using System.Timers;
 
 namespace Server.Game
@@ -22,60 +26,92 @@ namespace Server.Game
             DataMgr.StatDictionary.TryGetValue(key: ClassId, out _stat);
             StatInfo.MergeFrom(_stat);
 
-            SkillInfo _skill = null;
-            DataMgr.SkillDictionary.TryGetValue(key: ClassId, out _skill);
-            SkillInfo.MergeFrom(_skill);
+            MonsterSkillInfo _monsterSkill = null;
+            DataMgr.MonsterSkillDictionary.TryGetValue(key: ClassId, out _monsterSkill);
+            MonsterSkillInfo.MergeFrom(_monsterSkill);
 
             PositionInfo = new PositionInfo() { State = CreatureState.Await, PosX = 0, PosY = 0 };  // 플레이어 enCounter 전 대기모드
-        }    
+        }
+
+        Player _targetPlayer;
+
+        public MonsterSkillInfo MonsterSkillInfo
+        {
+            get { return GameObjectInfo.MonsterSkillInfo; }
+            set { GameObjectInfo.MonsterSkillInfo = value; }
+        }
 
         #region SkillData Property
         public int BiteDamage
         {
-            get { return SkillInfo.BiteDamage; }
-            set { SkillInfo.BiteDamage = value; }
+            get { return MonsterSkillInfo.BiteDamage; }
+            set { MonsterSkillInfo.BiteDamage = value; }
         }
 
-        public float BiteCoolTime
+        public int BiteDelay
         {
-            get { return SkillInfo.BiteCoolTime; }
-            set { SkillInfo.BiteCoolTime = value; }
+            get { return MonsterSkillInfo.BiteDelay; }
+            set { MonsterSkillInfo.BiteDelay = value; }
+        }
+
+        public int BiteCoolTime
+        {
+            get { return MonsterSkillInfo.BiteCoolTime; }
+            set { MonsterSkillInfo.BiteCoolTime = value; }
         }
 
         public int BurnDamage
         {
-            get { return SkillInfo.BurnDamage; }
-            set { SkillInfo.BurnDamage = value; }
+            get { return MonsterSkillInfo.BurnDamage; }
+            set { MonsterSkillInfo.BurnDamage = value; }
         }
 
-        public float BurnCoolTime
+        public int BurnDelay
         {
-            get { return SkillInfo.BurnCoolTime; }
-            set { SkillInfo.BurnCoolTime = value; }
+            get { return MonsterSkillInfo.BurnDelay; }
+            set { MonsterSkillInfo.BurnDelay = value; }
+        }
+
+        public int BurnCoolTime
+        {
+            get { return MonsterSkillInfo.BurnCoolTime; }
+            set { MonsterSkillInfo.BurnCoolTime = value; }
         }
 
         public int FireBallDamage
         {
-            get { return SkillInfo.FireBallDamage; }
-            set { SkillInfo.FireBallDamage = value; }
+            get { return MonsterSkillInfo.FireBallDamage; }
+            set { MonsterSkillInfo.FireBallDamage = value; }
         }
 
-        public float FireBallCoolTime
+        public int FireBallDelay
         {
-            get { return SkillInfo.FireBallCoolTime; }
-            set { SkillInfo.FireBallCoolTime = value; }
+            get { return MonsterSkillInfo.FireBallDelay; }
+            set { MonsterSkillInfo.FireBallDelay = value; }
+        }
+
+        public int FireBallCoolTime
+        {
+            get { return MonsterSkillInfo.FireBallCoolTime; }
+            set { MonsterSkillInfo.FireBallCoolTime = value; }
         }
 
         public int ThunderDamage
         {
-            get { return SkillInfo.ThunderDamage; }
-            set { SkillInfo.ThunderDamage = value; }
+            get { return MonsterSkillInfo.ThunderDamage; }
+            set { MonsterSkillInfo.ThunderDamage = value; }
         }
 
-        public float ThunderCoolTime
+        public int ThunderDelay
         {
-            get { return SkillInfo.ThunderCoolTime; }
-            set { SkillInfo.ThunderCoolTime = value; }
+            get { return MonsterSkillInfo.ThunderDelay; }
+            set { MonsterSkillInfo.ThunderDelay = value; }
+        }
+
+        public int ThunderCoolTime
+        {
+            get { return MonsterSkillInfo.ThunderCoolTime; }
+            set { MonsterSkillInfo.ThunderCoolTime = value; }
         }
         #endregion
 
@@ -114,7 +150,7 @@ namespace Server.Game
             }
         }
 
-        long _nextTick = 0; // Update로 반복실행중인 AI이므로 Timer대신 Environment.TickCount64로 계산
+        long _nextTick = 0; // Update로 반복실행중인 AI이므로 Timer대신 Environment.TickCount64로 계산(Timer 사용 시 Update주기마다 실행되는걸 따져줘야하므로 귀찮음)
         private bool BehaveCountTimer(long tickCycle)   // 기본 tick 측정 타이머 // 1ms기준이므로 tickCycle 1000 = 1초
         {
             if (_nextTick > Environment.TickCount64)
@@ -123,8 +159,6 @@ namespace Server.Game
             _nextTick = Environment.TickCount64 + tickCycle;
             return true;
         }
-
-        bool Flag = false;
 
         float _enCounterRange = 10.0f;
         private void UpdateAwait()
@@ -155,7 +189,6 @@ namespace Server.Game
             Console.WriteLine($"{StatInfo.Class} is awaiting");
         }
 
-        Player _targetPlayer;
         protected virtual void UpdateIdle()
         {
             // 1. TickCycle마다 각 플레이어와 몬스터 간 거리측정, 자신의 거리 / 전체 거리합 = basic Aggravation
@@ -172,7 +205,7 @@ namespace Server.Game
                 return;
             }
 
-            Console.WriteLine($"Monster target : {_targetPlayer.GameObjectId}");
+            //Console.WriteLine($"Monster target : {_targetPlayer.GameObjectId}");
             S_Move movePacket = new S_Move();
             movePacket.PositionInfo = new PositionInfo();
             movePacket.GameObjectId = GameObjectId;
@@ -191,20 +224,37 @@ namespace Server.Game
                 _patternRandom = rand.Next(100);
 
                 if (_patternRandom < 60)
-                    State = CreatureState.Bite;
+                {
+                    _nextTick = Environment.TickCount64 + BiteDelay;  // State 변경되자마자 UpdateBite 내 1회 실행되는것을 방지하기 위해 미리 한번 늘려줌
+                    State = CreatureState.Bite;                       // 즉 ~~Delay : State 유지 시간과 같음
+                }
                 else if (_patternRandom < 85)
+                {
+                    _nextTick = Environment.TickCount64 + BurnDelay;
                     State = CreatureState.Burn;
+                }
                 else
+                {
+                    _nextTick = Environment.TickCount64 + ThunderDelay;
                     State = CreatureState.Thunder;
+                }
             }
             else
             {
                 _patternRandom = rand.Next(100);
 
-                if (_patternRandom < 70)
+                if (_patternRandom < 70 && _targetPlayer.PositionInfo.PosY < 3.0)
+                {
+                    _spawnProjectileOnce = true;
+                    _nextTick = Environment.TickCount64 + FireBallDelay;
                     State = CreatureState.Fireball;
+                }
                 else
+                {
+                    _spawnProjectileOnce = true;
+                    _nextTick = Environment.TickCount64 + ThunderDelay;
                     State = CreatureState.Thunder;
+                }
             }
 
             movePacket.PositionInfo = PositionInfo;
@@ -213,7 +263,7 @@ namespace Server.Game
 
         private void UpdateBite()
         {
-            if (BehaveCountTimer(5000) == false)
+            if (BehaveCountTimer(BiteCoolTime) == false)     // 패턴 종료 후 딜레이(Idle 상태) 유지 시간
                 return;
 
             State = CreatureState.Idle;
@@ -227,7 +277,7 @@ namespace Server.Game
 
         private void UpdateBurn()
         {
-            if (BehaveCountTimer(900) == false)
+            if (BehaveCountTimer(BurnCoolTime) == false)
                 return;
 
             State = CreatureState.Idle;
@@ -239,9 +289,22 @@ namespace Server.Game
             MyRoom.BroadCast(movePacket);
         }
 
+        private bool _spawnProjectileOnce = true;
         private void UpdateFireball()
         {
-            if (BehaveCountTimer(2000) == false)
+            if (_spawnProjectileOnce)
+            {
+                Projectile Fireball = ObjectMgr.Instance.Add<Projectile>();
+                if (Fireball == null)
+                    return;
+                Fireball.Owner = this;
+                Fireball.ProjectileType = (int)Define.ProjectileType.DragonFireball;
+
+                MyRoom.EnterGame(Fireball);
+                _spawnProjectileOnce = false;
+            }
+
+            if (BehaveCountTimer(FireBallCoolTime) == false)
                 return;
 
             State = CreatureState.Idle;
@@ -255,7 +318,23 @@ namespace Server.Game
 
         private void UpdateThunder()
         {
-            if (BehaveCountTimer(2000) == false)
+            if (_spawnProjectileOnce)
+            {
+                Projectile Fireball = ObjectMgr.Instance.Add<Projectile>();
+                if (Fireball == null)
+                    return;
+                Fireball.Owner = this;
+                Fireball.ProjectileType = (int)Define.ProjectileType.DragonFireball;
+
+                S_SpawnProjectile SpawnProjectilePacket = new S_SpawnProjectile();
+                SpawnProjectilePacket.GameObjectInfo = Fireball.GameObjectInfo;
+                SpawnProjectilePacket.OwnerInfo = Fireball.Owner.GameObjectInfo;
+
+                MyRoom.EnterGame(Fireball);
+                _spawnProjectileOnce = false;
+            }
+
+            if (BehaveCountTimer(ThunderCoolTime) == false)
                 return;
 
             State = CreatureState.Idle;

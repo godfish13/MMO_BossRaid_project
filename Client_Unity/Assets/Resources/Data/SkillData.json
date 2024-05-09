@@ -44,13 +44,17 @@
       "ClassId": "10",
       "Class": "Dragon",
       "BiteDamage": "10",
-      "BiteCoolTime": "2.0",
+      "BiteDelay": "800",
+      "BiteCoolTime": "100",
       "BurnDamage": "20",
-      "BurnCoolTime": "6.0",
+      "BurnDelay": "1000",
+      "BurnCoolTime": "900",
       "FireBallDamage": "30",
-      "FireBallCoolTime": "10.0",
+      "FireBallDelay": "1000",
+      "FireBallCoolTime": "1000",
       "ThunderDamage": "50",
-      "ThunderCoolTime": "20.0"
+      "ThunderDelay": "2500",
+      "ThunderCoolTime": "3000"
     }
   ]
 }

@@ -66,6 +66,7 @@ public class DragonCtrl : MonsterCtrl
         _BiteBox.transform.localPosition = new Vector2(0, 0);    // 위치 복귀
     }
 
+    // 근접 불뿜기
     protected void AnimEvent_BurnHitBoxOn()
     {
         _BurnBox.enabled = true;
@@ -73,7 +74,6 @@ public class DragonCtrl : MonsterCtrl
         _BurnBox.transform.localPosition = new Vector2(0, 0);    // 위치 복귀
     }
 
-    // 근접 불뿜기
     protected void AnimEvent_BurnSizeUp()
     {
         _BurnBox.offset = new Vector2(-2, 1.1f);    // 커져라!
@@ -82,7 +82,7 @@ public class DragonCtrl : MonsterCtrl
         _BurnBox.transform.localPosition = new Vector2(0, 0);    // 위치 복귀
     }
 
-    protected void AnimEvent_BurnFrameEnded()
+    protected void AnimEvent_BurnHitBoxOFF()
     {
         _BurnBox.offset = new Vector2(-1.9f, 1.1f); // 원래 크기로 복구
         _BurnBox.size = new Vector2(2, 2.2f);

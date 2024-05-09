@@ -36,4 +36,20 @@ namespace Server.Data
         }
     }
     #endregion
+
+    #region MonsterSkill
+    [Serializable]
+    public class MonsterSkillData : ILoader<int, MonsterSkillInfo>
+    {
+        public List<MonsterSkillInfo> MonsterSkills = new List<MonsterSkillInfo>();     // !!!!!!중요!!!!!! JSON파일에서 받아오려는 list와 이름이 꼭!!! 같아야함
+
+        public Dictionary<int, MonsterSkillInfo> MakeDict()
+        {
+            Dictionary<int, MonsterSkillInfo> dict = new Dictionary<int, MonsterSkillInfo>();
+            foreach (MonsterSkillInfo MonsterSkillInfo in MonsterSkills)
+                dict.Add(MonsterSkillInfo.ClassId, MonsterSkillInfo);
+            return dict;
+        }
+    }
+    #endregion
 }

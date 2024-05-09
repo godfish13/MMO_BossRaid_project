@@ -109,11 +109,14 @@ namespace Server.Game
             {
                 Projectile newProjectile = newGameObject as Projectile;
                 _projectiles.Add(newProjectile.GameObjectId, newProjectile);
+                
                 newProjectile.MyRoom = this;
 
                 #region 플레이어들에게 Projectile spawn시키라고 데이터 전송   
                 S_SpawnProjectile SpawnProjectilePacket = new S_SpawnProjectile();
-                SpawnProjectilePacket.GameObjectInfo = newProjectile.GameObjectInfo;
+                SpawnProjectilePacket.GameObjectInfo = new GameObjectInfo();
+                SpawnProjectilePacket.GameObjectInfo.GameObjectId = newProjectile.GameObjectId;
+                SpawnProjectilePacket.GameObjectInfo.ProjectileType = newProjectile.ProjectileType;
                 SpawnProjectilePacket.OwnerInfo = newProjectile.Owner.GameObjectInfo;
 
                 foreach (Player p in _players.Values)
@@ -212,6 +215,7 @@ namespace Server.Game
                         if (Bomb == null)
                             return;
                         Bomb.Owner = player;
+                        Bomb.ProjectileType = (int)Define.ProjectileType.Human_Bomb;
                         Push(EnterGame, Bomb);
                     }
                     break;
@@ -222,11 +226,6 @@ namespace Server.Game
                 case (int)Define.SkillId.Furry_Slash:             // Furry_Slash
                     break;
             }
-
-            //S_Skill broadSkillPacket = new S_Skill();
-            //broadSkillPacket.SkillUserId = player.ObjectId;
-            //broadSkillPacket.SkillId = skillPacket.SkillId;
-            //BroadCast(broadSkillPacket);
         }
 
         public void HandleHp(Player player, C_Hpdelta hpdeltaPacket)

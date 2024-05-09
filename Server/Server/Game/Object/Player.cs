@@ -27,6 +27,12 @@ namespace Server.Game
             // PositionInfo => GameRoom.EnterGame에서 초기화
         }
 
+        public SkillInfo SkillInfo
+        {
+            get { return GameObjectInfo.SkillInfo; }
+            set { GameObjectInfo.SkillInfo = value; }
+        }
+
         #region SkillData Property
         public int SkillDamage
         {

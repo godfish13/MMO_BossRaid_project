@@ -15,11 +15,13 @@ namespace Server.Data
     {
         public static Dictionary<int, StatInfo> StatDictionary { get; private set; } = new Dictionary<int, StatInfo>();
         public static Dictionary<int, SkillInfo> SkillDictionary { get; private set; } = new Dictionary<int, SkillInfo>();
+        public static Dictionary<int, MonsterSkillInfo> MonsterSkillDictionary { get; private set; } = new Dictionary<int, MonsterSkillInfo>();
 
         public static void LoadData()
         {
             StatDictionary = LoadJson<StatData, int, StatInfo>("StatData").MakeDict();
             SkillDictionary = LoadJson<SkillData, int, SkillInfo>("SkillData").MakeDict();
+            MonsterSkillDictionary = LoadJson<MonsterSkillData, int, MonsterSkillInfo>("MonsterSkillData").MakeDict();
         }
 
         static Loader LoadJson<Loader, key, value>(string path) where Loader : ILoader<key, value>

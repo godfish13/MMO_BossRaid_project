@@ -16,6 +16,16 @@ public class Define
         Lizaed_Heal = 8,
     }
 
+    public enum ProjectileType
+    {
+        Human_Bomb = 1,
+        Elf_Arrow = 2,
+        Lizard_FireBall = 3,
+        Lizaed_Heal = 4,
+        DragonFireball = 5,
+        DragonThunder = 6,
+    }
+
     public enum Layer
     {
         Platform = 6,

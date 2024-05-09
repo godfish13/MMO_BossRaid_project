@@ -71,21 +71,40 @@ public class ObjectMgr : MonoBehaviour
 
         if (type != GameObjectType.Projectile)
             return;
+
+        Debug.Log($"Type : {gameObjectInfo.ProjectileType}");
+        switch (gameObjectInfo.ProjectileType)
+        {
+            case (int)Define.ProjectileType.Human_Bomb:
+                BombGenerator(gameObjectInfo, ownerObjectInfo, "Explosive");
+                break;
+            case (int)Define.ProjectileType.Elf_Arrow:
+                break;
+            case (int)Define.ProjectileType.DragonFireball:
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "DragonFireball");
+                break;
+            case (int)Define.ProjectileType.DragonThunder:
+                break;
+        }
+    }
+
+    // AddForce 활용하는 case Bomb
+    public void BombGenerator(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo, string projectilePrefabName)
+    {
         
         if (ownerObjectInfo.GameObjectId == MyHumanCtrl.GameObjectId)
         {
             Debug.Log("My projectile added");
-            GameObject Bomb = Managers.resourceMgr.Instantiate("Projectiles/Human/MyExplosive");
+            GameObject Bomb = Managers.resourceMgr.Instantiate($"Projectiles/My{projectilePrefabName}");
             Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
 
-            //1.0f * skillUser.transform.localScale.x
             GameObject skillUser;
             if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
             {
                 Bomb.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
                 Bomb.GetComponent<Rigidbody2D>().AddForce((Vector2.up + (Vector2.right * skillUser.transform.localScale.x * 2)).normalized * 400.0f);
                 _projectiles.Add(gameObjectInfo.GameObjectId, Bomb);
-            }     
+            }
             else
             {
                 Debug.Log("Error) Cant find Skill Owner");
@@ -94,7 +113,7 @@ public class ObjectMgr : MonoBehaviour
         else
         {
             Debug.Log("Others projectile added");
-            GameObject Bomb = Managers.resourceMgr.Instantiate("Projectiles/Human/Explosive");
+            GameObject Bomb = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
             Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
 
             GameObject skillUser;
@@ -107,7 +126,45 @@ public class ObjectMgr : MonoBehaviour
             {
                 Debug.Log("Error) Cant find Skill Owner");
             }
-        }        
+        }
+    }
+
+    public void ProjectileGenerator(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo, string projectilePrefabName)
+    {
+        if (ownerObjectInfo.GameObjectId == MyHumanCtrl.GameObjectId)
+        {
+            Debug.Log("My projectile added");
+            GameObject Bomb = Managers.resourceMgr.Instantiate($"Projectiles/My{projectilePrefabName}");
+            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
+
+            GameObject skillUser;
+            if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
+            {
+                Bomb.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
+                _projectiles.Add(gameObjectInfo.GameObjectId, Bomb);
+            }
+            else
+            {
+                Debug.Log("Error) Cant find Skill Owner");
+            }
+        }
+        else
+        {
+            Debug.Log("Others projectile added");
+            GameObject Bomb = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
+            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
+
+            GameObject skillUser;
+            if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
+            {
+                Bomb.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
+                _projectiles.Add(gameObjectInfo.GameObjectId, Bomb);
+            }
+            else
+            {
+                Debug.Log("Error) Cant find Skill Owner");
+            }
+        }
     }
 
     public GameObjectType GetGameObjectTypebyId(int ObjectId)
