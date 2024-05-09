@@ -29,7 +29,7 @@ namespace Server.Game
             long tick = 100;   // speed = 10으로 설정해줬으므로 == 0.01
             _nextMoveTick = Environment.TickCount64 + tick;     // 0.01초당 1칸씩 움직이도록 속도 조정
 
-            PositionInfo.PosX += Owner.PositionInfo.LocalScaleX * 0.5f;
+            PositionInfo.PosX += PositionInfo.LocalScaleX * 0.5f;
 
             S_Move movePacket = new S_Move();
             movePacket.PositionInfo = new PositionInfo();
@@ -37,7 +37,7 @@ namespace Server.Game
             movePacket.PositionInfo.State = CreatureState.Idle;
             movePacket.PositionInfo.PosX = PositionInfo.PosX;
             movePacket.PositionInfo.PosY = PositionInfo.PosY;
-            movePacket.PositionInfo.LocalScaleX = Owner.PositionInfo.LocalScaleX;
+            movePacket.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
            
             MyRoom.BroadCast(movePacket);
 

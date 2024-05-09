@@ -252,8 +252,7 @@ namespace Server.Game
                 if (_patternRandom < 100 && _targetPlayer.PositionInfo.PosY < 3.0)
                 {
                     _spawnProjectileOnce = true;
-                    //_nextTick = Environment.TickCount64 + FireBallDelay;
-                    _nextTick = Environment.TickCount64 + FireBallInstantiateTimingOffset;
+                    _nextTick = Environment.TickCount64 + FireBallInstantiateTimingOffset;  // State변경된 후 투사체 생성까지 걸리는 시간
                     State = CreatureState.Fireball;
                 }
                 else
@@ -299,7 +298,7 @@ namespace Server.Game
         private bool _spawnProjectileOnce = true;
         private void UpdateFireball()
         {
-            if (_spawnProjectileOnce == true)
+            if (_spawnProjectileOnce == true)   // 투사체 1회만 생성
             {
                 if (BehaveCountTimer(FireBallCoolTime) == true)
                 {
@@ -309,15 +308,17 @@ namespace Server.Game
                     Fireball.Owner = this;
                     Fireball.ProjectileType = (int)Define.ProjectileType.DragonFireball;
                     Fireball.GameObjectInfo.PositionInfo.PosX = 3.0f * PositionInfo.LocalScaleX;
+                    Fireball.GameObjectInfo.PositionInfo.PosY = 0;
+                    Fireball.GameObjectInfo.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
 
                     MyRoom.EnterGame(Fireball);
                     _spawnProjectileOnce = false;
 
-                    _nextTick = Environment.TickCount64 + FireBallDelay;
+                    _nextTick = Environment.TickCount64 + FireBallDelay;    // FireBallState 유지
                 }
             }
 
-            if (BehaveCountTimer(FireBallCoolTime) == false)
+            if (BehaveCountTimer(FireBallCoolTime) == false)    // FireBall 후딜레이
                 return;
 
             State = CreatureState.Idle;
