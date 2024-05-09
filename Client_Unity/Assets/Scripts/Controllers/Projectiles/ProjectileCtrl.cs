@@ -1,7 +1,9 @@
 using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ProjectileCtrl : MonoBehaviour
 {
@@ -67,19 +69,22 @@ public class ProjectileCtrl : MonoBehaviour
     #region Server 통신
     protected virtual void Update()
     {
-        Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.LocalScaleX}");
+        //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.LocalScaleX}");
         SyncPos();
     }
 
+    float speed = 5.0f;     // Server 상 tick = 100, 이동량 = 0.5f 이므로 0.1초당 0.5f이동 즉 1초당 5f 이동 그에 맞춰줌
     public void SyncPos()
     {
         // 변화 없을땐 쓸데없이 작동하지 않도록 조건 추가
         if (State != PositionInfo.State || transform.position.x != PositionInfo.PosX || transform.position.y != PositionInfo.PosY || transform.localScale.x != PositionInfo.LocalScaleX)
         {
             State = PositionInfo.State;
-            transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
+            //transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(PositionInfo.PosX, PositionInfo.PosY), Time.deltaTime * speed);
             transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
             //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
+
         }
     }
 

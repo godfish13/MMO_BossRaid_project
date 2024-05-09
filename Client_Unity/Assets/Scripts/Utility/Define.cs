@@ -23,7 +23,8 @@ public class Define
         Lizard_FireBall = 3,
         Lizaed_Heal = 4,
         DragonFireball = 5,
-        DragonThunder = 6,
+        DragonFireballExplosion = 6,
+        DragonThunder = 7,
     }
 
     public enum Layer

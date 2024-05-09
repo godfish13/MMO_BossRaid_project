@@ -20,8 +20,19 @@ namespace Server.Game
         public GameObject Owner { get; set; }
         public int ProjectileType {  get; set; }
 
-        long _nextMoveTick = 0;
+        protected long _nextMoveTick = 0;
+
         public virtual void Update()
+        {
+            switch (State)
+            {
+                case CreatureState.Idle:
+                    UpdateIdle();
+                    break;
+            }
+        }
+
+        public virtual void UpdateIdle()
         {
             if (_nextMoveTick >= Environment.TickCount64)   // TickCount64 : millisecond 기준
                 return;
@@ -43,7 +54,6 @@ namespace Server.Game
 
             
             // 피격 판정은 Client의 HitBox로 
-
         }
     }   
 }

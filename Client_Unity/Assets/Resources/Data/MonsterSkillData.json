@@ -13,6 +13,7 @@
       "FireBallDelay": "1000",
       "FireBallCoolTime": "1000",
       "FireBallInstantiateTimingOffset": "500",
+      "FireBallSpeed": "0.5",
       "ThunderDamage": "50",
       "ThunderDelay": "2500",
       "ThunderCoolTime": "1000"

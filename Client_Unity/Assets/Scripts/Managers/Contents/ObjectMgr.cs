@@ -72,7 +72,6 @@ public class ObjectMgr : MonoBehaviour
         if (type != GameObjectType.Projectile)
             return;
 
-        Debug.Log($"Type : {gameObjectInfo.ProjectileType}");
         switch (gameObjectInfo.ProjectileType)
         {
             case (int)Define.ProjectileType.Human_Bomb:
@@ -83,6 +82,9 @@ public class ObjectMgr : MonoBehaviour
             case (int)Define.ProjectileType.DragonFireball:
                 ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "DragonFireball");
                 break;
+            case (int)Define.ProjectileType.DragonFireballExplosion:
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "DragonFireballExplosion");
+                break;
             case (int)Define.ProjectileType.DragonThunder:
                 break;
         }
@@ -91,7 +93,6 @@ public class ObjectMgr : MonoBehaviour
     // AddForce 활용하는 case Bomb
     public void BombGenerator(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo, string projectilePrefabName)
     {
-        
         if (ownerObjectInfo.GameObjectId == MyHumanCtrl.GameObjectId)
         {
             Debug.Log("My projectile added");
@@ -180,6 +181,17 @@ public class ObjectMgr : MonoBehaviour
             {
                 Projectile.transform.localScale = skillUser.transform.localScale;
                 Projectile.transform.position = skillUser.transform.position + new Vector3(skillUser.transform.localScale.x * 2.3f, 0, 0);
+                _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
+            }
+        }
+        else if (type == GameObjectType.Projectile)
+        {
+            GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
+
+            GameObject skillUser;
+            if (_projectiles.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
+            {
+                Projectile.transform.position = skillUser.transform.position;
                 _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
             }
         }

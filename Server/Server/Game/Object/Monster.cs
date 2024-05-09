@@ -78,28 +78,28 @@ namespace Server.Game
             set { MonsterSkillInfo.BurnCoolTime = value; }
         }
 
-        public int FireBallDamage
+        public int FireballDamage
         {
-            get { return MonsterSkillInfo.FireBallDamage; }
-            set { MonsterSkillInfo.FireBallDamage = value; }
+            get { return MonsterSkillInfo.FireballDamage; }
+            set { MonsterSkillInfo.FireballDamage = value; }
         }
 
-        public int FireBallDelay
+        public int FireballDelay
         {
-            get { return MonsterSkillInfo.FireBallDelay; }
-            set { MonsterSkillInfo.FireBallDelay = value; }
+            get { return MonsterSkillInfo.FireballDelay; }
+            set { MonsterSkillInfo.FireballDelay = value; }
         }
 
-        public int FireBallCoolTime
+        public int FireballCoolTime
         {
-            get { return MonsterSkillInfo.FireBallCoolTime; }
-            set { MonsterSkillInfo.FireBallCoolTime = value; }
+            get { return MonsterSkillInfo.FireballCoolTime; }
+            set { MonsterSkillInfo.FireballCoolTime = value; }
         }
 
         public int FireBallInstantiateTimingOffset
         {
-            get { return MonsterSkillInfo.FireBallInstantiateTimingOffset; }
-            set { MonsterSkillInfo.FireBallInstantiateTimingOffset = value; }
+            get { return MonsterSkillInfo.FireballInstantiateTimingOffset; }
+            set { MonsterSkillInfo.FireballInstantiateTimingOffset = value; }
         }
 
         public int ThunderDamage
@@ -300,9 +300,9 @@ namespace Server.Game
         {
             if (_spawnProjectileOnce == true)   // 투사체 1회만 생성
             {
-                if (BehaveCountTimer(FireBallCoolTime) == true)
+                if (BehaveCountTimer(FireballCoolTime) == true)
                 {
-                    Projectile Fireball = ObjectMgr.Instance.Add<Projectile>();
+                    DragonFireball Fireball = ObjectMgr.Instance.Add<DragonFireball>();
                     if (Fireball == null)
                         return;
                     Fireball.Owner = this;
@@ -314,11 +314,11 @@ namespace Server.Game
                     MyRoom.EnterGame(Fireball);
                     _spawnProjectileOnce = false;
 
-                    _nextTick = Environment.TickCount64 + FireBallDelay;    // FireBallState 유지
+                    _nextTick = Environment.TickCount64 + FireballDelay;    // FireBallState 유지
                 }
             }
 
-            if (BehaveCountTimer(FireBallCoolTime) == false)    // FireBall 후딜레이
+            if (BehaveCountTimer(FireballCoolTime) == false)    // FireBall 후딜레이
                 return;
 
             State = CreatureState.Idle;
