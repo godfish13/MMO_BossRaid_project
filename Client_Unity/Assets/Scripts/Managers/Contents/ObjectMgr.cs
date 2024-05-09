@@ -179,7 +179,7 @@ public class ObjectMgr : MonoBehaviour
             if (_monsters.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
             {
                 Projectile.transform.localScale = skillUser.transform.localScale;
-                Projectile.transform.position = skillUser.transform.position + new Vector3(3.0f, 0.5f, 0);
+                Projectile.transform.position = skillUser.transform.position + new Vector3(skillUser.transform.localScale.x * 2.3f, 0, 0);
                 _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
             }
         }

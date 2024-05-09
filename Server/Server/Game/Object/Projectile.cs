@@ -42,7 +42,7 @@ namespace Server.Game
             MyRoom.BroadCast(movePacket);
 
             
-            //피격 판정 todo
+            // 피격 판정은 Client의 HitBox로 
 
         }
     }   

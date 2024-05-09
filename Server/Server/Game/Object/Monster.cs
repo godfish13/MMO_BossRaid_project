@@ -307,7 +307,7 @@ namespace Server.Game
                         return;
                     Fireball.Owner = this;
                     Fireball.ProjectileType = (int)Define.ProjectileType.DragonFireball;
-                    Fireball.GameObjectInfo.PositionInfo.PosX = 3.0f * PositionInfo.LocalScaleX;
+                    Fireball.GameObjectInfo.PositionInfo.PosX = 2.3f * PositionInfo.LocalScaleX;
                     Fireball.GameObjectInfo.PositionInfo.PosY = 0;
                     Fireball.GameObjectInfo.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
 
