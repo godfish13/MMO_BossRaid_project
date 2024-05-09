@@ -41,7 +41,7 @@ namespace Server.Game
 
             foreach (Projectile p in _projectiles.Values)
             {
-                //p.Update();
+                p.Update();
             }
 
             base.Flush();
@@ -211,7 +211,7 @@ namespace Server.Game
                     break;
                 case (int)Define.SkillId.Human_ThrowBomb:             // Human_ThrowBomb
                     {
-                        Projectile Bomb = ObjectMgr.Instance.Add<Projectile>();
+                        Bomb Bomb = ObjectMgr.Instance.Add<Bomb>();
                         if (Bomb == null)
                             return;
                         Bomb.Owner = player;

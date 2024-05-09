@@ -7,5 +7,6 @@ public class DragonFireballCtrl : ProjectileCtrl
     protected override void Update()
     {
         base.Update();
+
     }
 }

@@ -131,38 +131,56 @@ public class ObjectMgr : MonoBehaviour
 
     public void ProjectileGenerator(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo, string projectilePrefabName)
     {
-        if (ownerObjectInfo.GameObjectId == MyHumanCtrl.GameObjectId)
-        {
-            Debug.Log("My projectile added");
-            GameObject Bomb = Managers.resourceMgr.Instantiate($"Projectiles/My{projectilePrefabName}");
-            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
+        GameObjectType type = GetGameObjectTypebyId(ownerObjectInfo.GameObjectId);
 
-            GameObject skillUser;
-            if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
+        if (type == GameObjectType.Player) 
+        {
+            if (ownerObjectInfo.GameObjectId == MyHumanCtrl.GameObjectId)
             {
-                Bomb.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
-                _projectiles.Add(gameObjectInfo.GameObjectId, Bomb);
+                Debug.Log("My projectile added");
+                GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/My{projectilePrefabName}");
+                Projectile.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
+
+                GameObject skillUser;
+                if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
+                {
+                    Projectile.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
+                    _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
+                }
+                else
+                {
+                    Debug.Log("Error) Cant find Skill Owner");
+                }
             }
             else
             {
-                Debug.Log("Error) Cant find Skill Owner");
+                Debug.Log("Others projectile added");
+                GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
+                Projectile.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
+
+                GameObject skillUser;
+                if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
+                {
+                    Projectile.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
+                    _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
+                }
+                else
+                {
+                    Debug.Log("Error) Cant find Skill Owner");
+                }
             }
         }
-        else
+        else if (type == GameObjectType.Monster)
         {
-            Debug.Log("Others projectile added");
-            GameObject Bomb = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
-            Bomb.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
+            GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
+            Projectile.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
 
             GameObject skillUser;
-            if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
+            if (_monsters.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
             {
-                Bomb.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
-                _projectiles.Add(gameObjectInfo.GameObjectId, Bomb);
-            }
-            else
-            {
-                Debug.Log("Error) Cant find Skill Owner");
+                Projectile.transform.localScale = skillUser.transform.localScale;
+                Projectile.transform.position = skillUser.transform.position + new Vector3(3.0f, 0.5f, 0);
+                _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
             }
         }
     }

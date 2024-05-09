@@ -96,6 +96,12 @@ namespace Server.Game
             set { MonsterSkillInfo.FireBallCoolTime = value; }
         }
 
+        public int FireBallInstantiateTimingOffset
+        {
+            get { return MonsterSkillInfo.FireBallInstantiateTimingOffset; }
+            set { MonsterSkillInfo.FireBallInstantiateTimingOffset = value; }
+        }
+
         public int ThunderDamage
         {
             get { return MonsterSkillInfo.ThunderDamage; }
@@ -243,10 +249,11 @@ namespace Server.Game
             {
                 _patternRandom = rand.Next(100);
 
-                if (_patternRandom < 70 && _targetPlayer.PositionInfo.PosY < 3.0)
+                if (_patternRandom < 100 && _targetPlayer.PositionInfo.PosY < 3.0)
                 {
                     _spawnProjectileOnce = true;
-                    _nextTick = Environment.TickCount64 + FireBallDelay;
+                    //_nextTick = Environment.TickCount64 + FireBallDelay;
+                    _nextTick = Environment.TickCount64 + FireBallInstantiateTimingOffset;
                     State = CreatureState.Fireball;
                 }
                 else
@@ -292,16 +299,22 @@ namespace Server.Game
         private bool _spawnProjectileOnce = true;
         private void UpdateFireball()
         {
-            if (_spawnProjectileOnce)
+            if (_spawnProjectileOnce == true)
             {
-                Projectile Fireball = ObjectMgr.Instance.Add<Projectile>();
-                if (Fireball == null)
-                    return;
-                Fireball.Owner = this;
-                Fireball.ProjectileType = (int)Define.ProjectileType.DragonFireball;
+                if (BehaveCountTimer(FireBallCoolTime) == true)
+                {
+                    Projectile Fireball = ObjectMgr.Instance.Add<Projectile>();
+                    if (Fireball == null)
+                        return;
+                    Fireball.Owner = this;
+                    Fireball.ProjectileType = (int)Define.ProjectileType.DragonFireball;
+                    Fireball.GameObjectInfo.PositionInfo.PosX = 3.0f * PositionInfo.LocalScaleX;
 
-                MyRoom.EnterGame(Fireball);
-                _spawnProjectileOnce = false;
+                    MyRoom.EnterGame(Fireball);
+                    _spawnProjectileOnce = false;
+
+                    _nextTick = Environment.TickCount64 + FireBallDelay;
+                }
             }
 
             if (BehaveCountTimer(FireBallCoolTime) == false)
@@ -320,18 +333,7 @@ namespace Server.Game
         {
             if (_spawnProjectileOnce)
             {
-                Projectile Fireball = ObjectMgr.Instance.Add<Projectile>();
-                if (Fireball == null)
-                    return;
-                Fireball.Owner = this;
-                Fireball.ProjectileType = (int)Define.ProjectileType.DragonFireball;
-
-                S_SpawnProjectile SpawnProjectilePacket = new S_SpawnProjectile();
-                SpawnProjectilePacket.GameObjectInfo = Fireball.GameObjectInfo;
-                SpawnProjectilePacket.OwnerInfo = Fireball.Owner.GameObjectInfo;
-
-                MyRoom.EnterGame(Fireball);
-                _spawnProjectileOnce = false;
+                
             }
 
             if (BehaveCountTimer(ThunderCoolTime) == false)

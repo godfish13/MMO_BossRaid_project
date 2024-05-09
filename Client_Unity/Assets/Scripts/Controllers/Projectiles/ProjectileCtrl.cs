@@ -67,6 +67,7 @@ public class ProjectileCtrl : MonoBehaviour
     #region Server Ελ½Ε
     protected virtual void Update()
     {
+        Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.LocalScaleX}");
         SyncPos();
     }
 

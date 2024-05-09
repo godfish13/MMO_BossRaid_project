@@ -40,8 +40,8 @@ class PacketHandler
     public static void S_SpawnProjectileHandler(PacketSession session, IMessage packet) // projectile object 입장용
     {
         S_SpawnProjectile spawnProjectilePacket = packet as S_SpawnProjectile;
-        Debug.Log($"S_SpawnProjectileHandler activated / owner : {spawnProjectilePacket.OwnerInfo.GameObjectId}");
-        Debug.Log($"{spawnProjectilePacket.GameObjectInfo.GameObjectId}, {spawnProjectilePacket.GameObjectInfo.ProjectileType}");
+        //Debug.Log($"S_SpawnProjectileHandler activated / owner : {spawnProjectilePacket.OwnerInfo.GameObjectId}");
+        //Debug.Log($"{spawnProjectilePacket.GameObjectInfo.GameObjectId}, {spawnProjectilePacket.GameObjectInfo.ProjectileType}");
         Managers.objectMgr.AddProjectile(spawnProjectilePacket.GameObjectInfo, spawnProjectilePacket.OwnerInfo);       
     }
 
