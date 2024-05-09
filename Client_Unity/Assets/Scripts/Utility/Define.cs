@@ -21,6 +21,7 @@ public class Define
         Platform = 6,
         Player = 8,
         Monster = 11,
+        MonsterSkill = 12,
     }
 
     public enum Scene

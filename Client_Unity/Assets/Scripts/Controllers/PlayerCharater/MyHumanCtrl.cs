@@ -306,11 +306,13 @@ public class MyHumanCtrl : HumanCtrl
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //_rigidbody.AddForce(new Vector3(transform.localScale.x * -ReBoundOffset, 0));
-        Debug.Log("Hitted!");
+        if (collision.gameObject.layer == MonsterLayerMask)
+        {
+            Debug.Log("Slash Hitted!");
+        }
 
         // Hpdelta Packet Send
-        SendHpdeltaPacket(collision, MonsterLayerMask, (int)Define.SkillId.Human_Slash);
+        SendMonsterHpdeltaPacket(collision, MonsterLayerMask, (int)Define.SkillId.Human_Slash);
     }
     #endregion
 

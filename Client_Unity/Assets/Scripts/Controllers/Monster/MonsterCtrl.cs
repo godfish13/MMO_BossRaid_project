@@ -27,8 +27,8 @@ public class MonsterCtrl : MonoBehaviour
     }
     #endregion
 
-    SpriteRenderer _spriteRenderer;
-    Animator _animator;
+    protected SpriteRenderer _spriteRenderer;
+    protected Animator _animator;
     //protected Rigidbody2D _rigidbody;
     //protected Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정
 
@@ -164,7 +164,7 @@ public class MonsterCtrl : MonoBehaviour
     #endregion
 
     #region Animation
-    protected void UpdateAnim()
+    protected virtual void UpdateAnim()
     {
         if (_animator == null || _spriteRenderer == null)   // 각각이 아직 초기화 안된상태면 return
             return;
@@ -183,15 +183,6 @@ public class MonsterCtrl : MonoBehaviour
             case CreatureState.Death:
                 _animator.Play("DEATH");
                 break;
-            case CreatureState.Burn:
-                _animator.Play("BURN");
-                break;
-            case CreatureState.Fireball:
-                _animator.Play("FIREBALL");
-                break;
-            case CreatureState.Thunder:
-                _animator.Play("THUNDER");
-                break;
         }
     }
     #endregion
@@ -199,13 +190,4 @@ public class MonsterCtrl : MonoBehaviour
     #region UpdateCtrl series 
     // Server에서 연산 및 작동
     #endregion
-
-    #region Server AI 연동
-    public void targetSetting(GameObject target)
-    {
-        //Target = target;
-    }
-    #endregion
-
-    
 }

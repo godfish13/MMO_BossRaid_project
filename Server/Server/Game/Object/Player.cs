@@ -23,6 +23,7 @@ namespace Server.Game
             DataMgr.SkillDictionary.TryGetValue(key: ClassId, out _skill);
             SkillInfo.MergeFrom(_skill);
 
+            Aggravation = 0;
             // PositionInfo => GameRoom.EnterGame에서 초기화
         }
 

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Timers;
 
 namespace Server.Game
 {
@@ -83,6 +83,9 @@ namespace Server.Game
         // FSM 방식 AI
         public void Update()
         {
+            if (Hp <= 0)
+                State = CreatureState.Death;
+
             switch (State)
             {
                 case CreatureState.Await:
@@ -94,35 +97,42 @@ namespace Server.Game
                 case CreatureState.Run:
                     break;
                 case CreatureState.Bite:
+                    UpdateBite();
                     break;
                 case CreatureState.Burn:
+                    UpdateBurn();
                     break;
                 case CreatureState.Fireball:
+                    UpdateFireball();
                     break;
                 case CreatureState.Thunder:
+                    UpdateThunder();
                     break;
                 case CreatureState.Death:
+                    UpdateDeath();
                     break;
             }
         }
 
-        long _nextTick = 0;
+        long _nextTick = 0; // Update로 반복실행중인 AI이므로 Timer대신 Environment.TickCount64로 계산
         private bool BehaveCountTimer(long tickCycle)   // 기본 tick 측정 타이머 // 1ms기준이므로 tickCycle 1000 = 1초
         {
             if (_nextTick > Environment.TickCount64)
                 return false;
-            _nextTick = Environment.TickCount64 + tickCycle; 
 
-            MyRoom.DistanceCalculater(GameObjectId);    // 1사이클마다 플레이어들과의 거리계산, Aggravation 수치 입력
-
+            _nextTick = Environment.TickCount64 + tickCycle;
             return true;
         }
+
+        bool Flag = false;
 
         float _enCounterRange = 10.0f;
         private void UpdateAwait()
         {
             if (BehaveCountTimer(1000) == false)
                 return;
+
+            _targetPlayer = MyRoom.SetTarget(GameObjectId);     // players 거리측정을 위해 실행
 
             if (MyRoom._players.Count == 0) 
                 return;
@@ -145,9 +155,7 @@ namespace Server.Game
             Console.WriteLine($"{StatInfo.Class} is awaiting");
         }
 
-        int _targetID; // 일단은 참조값으로 들고있기 / target 찾으면 해당 플레이어의 id를 대신 갖고있는거도 괜춘할듯
-
-        int _searchDist = 15;
+        Player _targetPlayer;
         protected virtual void UpdateIdle()
         {
             // 1. TickCycle마다 각 플레이어와 몬스터 간 거리측정, 자신의 거리 / 전체 거리합 = basic Aggravation
@@ -157,27 +165,115 @@ namespace Server.Game
             if (BehaveCountTimer(1000) == false)
                 return;
 
-            MyRoom.SetTarget();
-
-            //Console.WriteLine($"monster PositionInfo : {PositionInfo.PosX}, {PositionInfo.PosY}");
-            Player target = MyRoom.FindPlayer(p =>
-            {
-                return p.DistanceBetweenMonster < _searchDist;
-            });
-
-            if (target == null)
+            _targetPlayer = MyRoom.SetTarget(GameObjectId);
+            if (_targetPlayer == null)
             {
                 Console.WriteLine($"Monster Cant Find target");
                 return;
             }
 
-            _targetID = target.GameObjectId;
-            Console.WriteLine($"Monster target : {_targetID}");
+            Console.WriteLine($"Monster target : {_targetPlayer.GameObjectId}");
+            S_Move movePacket = new S_Move();
+            movePacket.PositionInfo = new PositionInfo();
+            movePacket.GameObjectId = GameObjectId;
 
-            //S_MonsterTarget targetPacket = new S_MonsterTarget();
-            //targetPacket.MonsterId = ObjectId;
-            //targetPacket.TargetId = _target.ObjectId;
-            //MySession.Send(targetPacket);
+            // target 플레이어쪽 바라보기
+            if (_targetPlayer.PositionInfo.PosX < PositionInfo.PosX)
+                PositionInfo.LocalScaleX = -1;
+            else
+                PositionInfo.LocalScaleX = 1;
+
+            Random rand = new Random();
+            int _patternRandom;             // 확률 범위 Json으로 뺄까?
+
+            if (_targetPlayer.DistanceBetweenMonster < 4.0f)    // 근접 공격 범위
+            {
+                _patternRandom = rand.Next(100);
+
+                if (_patternRandom < 60)
+                    State = CreatureState.Bite;
+                else if (_patternRandom < 85)
+                    State = CreatureState.Burn;
+                else
+                    State = CreatureState.Thunder;
+            }
+            else
+            {
+                _patternRandom = rand.Next(100);
+
+                if (_patternRandom < 70)
+                    State = CreatureState.Fireball;
+                else
+                    State = CreatureState.Thunder;
+            }
+
+            movePacket.PositionInfo = PositionInfo;
+            MyRoom.BroadCast(movePacket);
+        }
+
+        private void UpdateBite()
+        {
+            if (BehaveCountTimer(5000) == false)
+                return;
+
+            State = CreatureState.Idle;
+
+            S_Move movePacket = new S_Move();
+            movePacket.PositionInfo = PositionInfo;
+            movePacket.GameObjectId = GameObjectId;
+            movePacket.PositionInfo.State = State;
+            MyRoom.BroadCast(movePacket);
+        }
+
+        private void UpdateBurn()
+        {
+            if (BehaveCountTimer(900) == false)
+                return;
+
+            State = CreatureState.Idle;
+
+            S_Move movePacket = new S_Move();
+            movePacket.PositionInfo = PositionInfo;
+            movePacket.GameObjectId = GameObjectId;
+            movePacket.PositionInfo.State = State;
+            MyRoom.BroadCast(movePacket);
+        }
+
+        private void UpdateFireball()
+        {
+            if (BehaveCountTimer(2000) == false)
+                return;
+
+            State = CreatureState.Idle;
+
+            S_Move movePacket = new S_Move();
+            movePacket.PositionInfo = PositionInfo;
+            movePacket.GameObjectId = GameObjectId;
+            movePacket.PositionInfo.State = State;
+            MyRoom.BroadCast(movePacket);
+        }
+
+        private void UpdateThunder()
+        {
+            if (BehaveCountTimer(2000) == false)
+                return;
+
+            State = CreatureState.Idle;
+
+            S_Move movePacket = new S_Move();
+            movePacket.PositionInfo = PositionInfo;
+            movePacket.GameObjectId = GameObjectId;
+            movePacket.PositionInfo.State = State;
+            MyRoom.BroadCast(movePacket);
+        }
+
+        private void UpdateDeath()
+        {
+            S_Move movePacket = new S_Move();
+            movePacket.PositionInfo = PositionInfo;
+            movePacket.GameObjectId = GameObjectId;
+            movePacket.PositionInfo.State = State;
+            MyRoom.BroadCast(movePacket);
         }
         #endregion
     }

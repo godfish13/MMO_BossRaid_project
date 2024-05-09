@@ -32,7 +32,7 @@ namespace Server
 
             // GameRoom 생성 및 update
             GameRoom currentRoom = RoomMgr.Instance.Add("HighMountain");
-            TickRoom(currentRoom, 10);  // 50ms 딜레이 주면서 currentRoom.Update 실행
+            TickRoom(currentRoom, 10);  // 10ms 딜레이 주면서 currentRoom.Update 실행
             Console.WriteLine($"Current Room : {RoomMgr.Instance.Find(1).RoomId}");
 
             // DNS (Domain Name System) : 주소 이름으로 IP 찾는 방식

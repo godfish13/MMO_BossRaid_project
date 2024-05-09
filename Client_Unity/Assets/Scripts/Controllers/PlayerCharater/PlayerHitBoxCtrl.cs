@@ -1,3 +1,4 @@
+using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class PlayerHitBoxCtrl : MonoBehaviour
     // 각종 피격판정 및 패킷 보내기
     protected LayerMask PlayerLayerMask = (int)Define.Layer.Player;
     protected LayerMask MonsterLayerMask = (int)Define.Layer.Monster;
+    protected LayerMask MonsterSkillLayerMask = (int)Define.Layer.MonsterSkill;
 
     protected void OnCollisionEnter2D(Collision2D collision)  // 몬스터랑 부딪힘
     {
@@ -19,5 +21,18 @@ public class PlayerHitBoxCtrl : MonoBehaviour
 
         // Hpdelta Packet Send
         //SendHpdeltaPacket(collision, "Monster", (int)Define.SkillId.Human_Slash);
+    }
+
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == MonsterSkillLayerMask)
+        {
+            Debug.Log("아야 맞음!!");
+        }
+    }
+
+    protected void SendPlayerHpdeltaPacket(Collider2D collision, LayerMask layerMask, int skillId)
+    {
+        
     }
 }

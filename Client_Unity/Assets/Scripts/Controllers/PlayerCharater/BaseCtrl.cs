@@ -155,9 +155,9 @@ public class BaseCtrl : MonoBehaviour
     protected LayerMask PlayerLayerMask = (int)Define.Layer.Player;
     protected LayerMask MonsterLayerMask = (int)Define.Layer.Monster;
 
-    protected void SendHpdeltaPacket(Collider2D collision, LayerMask layerMask, int skillId)
+    protected void SendMonsterHpdeltaPacket(Collider2D collision, LayerMask layerMask, int skillId)
     {
-        if (collision.gameObject.layer == layerMask) // Collision의 Layer가 Monster아니면 무시
+        if (collision.gameObject.layer == layerMask) // Collision의 Layer가 지정한 타입 아니면 무시
         {
             C_Hpdelta hpdeltaPacket = new C_Hpdelta();
             hpdeltaPacket.HittedGameObjectId = collision.GetComponent<MonsterCtrl>().GameObjectId;

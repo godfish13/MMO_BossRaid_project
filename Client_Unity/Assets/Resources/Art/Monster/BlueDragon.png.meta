@@ -3,7 +3,7 @@ guid: 14b2825abdc4d434693b305b3774c64a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -850,9 +849,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 127
+        y: 128
         width: 128
-        height: 128
+        height: 127
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1003,46 +1002,46 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 1071925984
-      Attack_1: -845476358
-      Attack_2: 2009228482
-      Attack_3: 590074039
-      Attack_4: -1708985022
       Attack_5: -1479297190
-      Burn_0: -17514963
-      Burn_1: 1110528672
-      Burn_2: -265684251
-      Burn_3: -1041255580
-      Burn_4: 1188342725
-      Burn_5: 2085800660
-      Death_0: 1297146405
-      Death_1: -1074240218
-      Death_2: -1904038070
-      Death_3: -958000844
-      Death_4: 1318854042
-      Death_5: 1448594100
-      Fire_0: 870851061
-      Fire_1: 2041340130
-      Fire_2: 1326509612
-      Fire_3: 1798496547
-      Fire_4: -473751976
-      Fire_5: -447831967
-      Idle_0: 4723107735738678597
-      Idle_1: -7385789195546760866
-      Idle_2: 3234629978573100161
-      Idle_3: 6373048116405451881
-      Projectile_0: -341134305
-      Projectile_1: 1710350945
-      Ready_0: -2978808618200810919
       Ready_1: 7683567802946276634
-      Ready_2: 4149154237482698375
-      Ready_3: -7736129105856362428
-      Run_0: 1856677538
-      Run_1: -1905163377
       Run_2: -1963957374
-      Run_3: 1965609826
+      Fire_1: 2041340130
+      Burn_4: 1188342725
+      Death_1: -1074240218
+      Idle_1: -7385789195546760866
+      Death_5: 1448594100
+      Projectile_1: 1710350945
+      Ready_3: -7736129105856362428
+      Attack_0: 1071925984
+      Burn_3: -1041255580
+      Death_0: 1297146405
+      Idle_3: 6373048116405451881
+      Death_4: 1318854042
+      Fire_2: 1326509612
+      Burn_2: -265684251
+      Idle_0: 4723107735738678597
+      Death_2: -1904038070
+      Projectile_0: -341134305
+      Ready_0: -2978808618200810919
+      Burn_1: 1110528672
+      Run_1: -1905163377
+      Attack_4: -1708985022
+      Fire_3: 1798496547
+      Fire_5: -447831967
+      Ready_2: 4149154237482698375
+      Fire_4: -473751976
+      Attack_2: 2009228482
+      Attack_1: -845476358
+      Burn_5: 2085800660
+      Attack_3: 590074039
+      Fire_0: 870851061
+      Idle_2: 3234629978573100161
       Run_4: 1998491554
+      Run_0: 1856677538
+      Run_3: 1965609826
+      Burn_0: -17514963
       Run_5: -1062428018
+      Death_3: -958000844
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

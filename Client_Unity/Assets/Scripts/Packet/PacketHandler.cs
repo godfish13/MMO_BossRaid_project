@@ -116,7 +116,7 @@ class PacketHandler
         if (target == null)
             return;
 
-        monster.GetComponent<MonsterCtrl>().targetSetting(target);
+        //monster.GetComponent<MonsterCtrl>().targetSetting(target);
     }
 
     public static void S_HpdeltaHandler(PacketSession session, IMessage packet)

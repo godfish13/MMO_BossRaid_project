@@ -329,53 +329,42 @@ namespace Server.Game
         }
 
         #region MonsterAI requirement
-        public void DistanceCalculater(int monsterObjectId)     // 몬스터와 player간 x 거리 저장
+        public Player SetTarget(int monsterObjectId)     // 몬스터의 타겟 연산
         {
             Monster monster = null;
             if (_monsters.TryGetValue(monsterObjectId, out monster) == false)
             {
                 Console.WriteLine("there is no Monster in Server");
-                return;
+                return null;
             }
                
             if (_players.Count == 0)
             {
                 Console.WriteLine("there is no Player in Server");
-                return;
-            }
-
-            float AllDistanceSum = 0;
-            foreach (Player p in _players.Values)
-            {
-                // 연산효율을 위해 X값만 따짐, packet으로 보내는 x단위 0.05f
-                p.DistanceBetweenMonster = Math.Abs(p.PositionInfo.PosX - monster.PositionInfo.PosX);    
-                AllDistanceSum += p.DistanceBetweenMonster;
-                //Console.WriteLine($"player {p.ObjectId} / monster {monster.ObjectId} distance : {p.DistanceBetweenMonster}");
-            }
-
-            foreach (Player p in _players.Values)
-            {
-                p.Aggravation = (int)(AllDistanceSum / p.DistanceBetweenMonster * 100);  // 가까울수록 Aggravation 수치 up
-                //Console.WriteLine($"{p.GameObjectId} aggro : {p.Aggravation}");
-            }
-        }
-
-        public Player SetTarget()
-        {
-            if (_players.Count == 0)
                 return null;
-
-            Player target = new Player();
-            Random rand = new Random();
-
-            foreach (Player p in _players.Values)
-            {                
-                int randomNumber = rand.Next(500);  // 난수값 적당히 추가해줘서 무조건 가깝다고 target되지 않게 조정
-                p.Aggravation += randomNumber;
-                Console.WriteLine($"{p.GameObjectId} aggro : {p.Aggravation}");
             }
 
-            return target;
+            Player TargetPlayer = new Player();
+            foreach (Player p in _players.Values)
+            {
+                // 각 플레이어와 거리 계산 연산효율을 위해 X값만 따짐, packet으로 보내는 x단위 0.05f
+                p.DistanceBetweenMonster = Math.Abs(p.PositionInfo.PosX - monster.PositionInfo.PosX);
+                //Console.WriteLine($"{p.GameObjectId} : dist : {p.DistanceBetweenMonster}");
+
+                // 가까울수록 Aggravation 수치 up
+                p.Aggravation = (int)(100 / p.DistanceBetweenMonster);
+                //Console.WriteLine($"{p.GameObjectId} : Aggro : {p.Aggravation}");
+
+                // 난수값 적당히 추가해줘서 무조건 가깝다고 target되지 않게 조정
+                Random rand = new Random();
+                int randomNumber = rand.Next(_players.Count * 20);
+                p.Aggravation += randomNumber;
+                //Console.WriteLine($"{p.GameObjectId} : RandAggro : {p.Aggravation}");
+
+                if (p.Aggravation > TargetPlayer.Aggravation)
+                    TargetPlayer = p;
+            }
+            return TargetPlayer;
         }
 
         public Player FindPlayer(Func<Player, bool> condition)  // 원시적으로 플레이어 전부 탐색, condition에 맞는 player return

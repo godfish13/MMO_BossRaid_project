@@ -38,7 +38,8 @@
       "MaxHp": "1000",
       "Hp": "1000",
       "MaxSpeed": "1",
-      "Acceleration": "10"
+      "Acceleration": "10",
+      "AggroRandomValue" : "100"
     }
   ]
 }
