@@ -9,9 +9,6 @@ namespace Server.Game
 {
     public class DragonFireballExplosion : Projectile
     {
-        public override void UpdateDeath()
-        {
-            base.UpdateDeath();
-        }
+        // 따로 작동 없음 이름만 가시성있게
     }
 }

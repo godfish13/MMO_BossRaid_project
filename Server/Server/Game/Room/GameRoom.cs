@@ -126,8 +126,6 @@ namespace Server.Game
 
                 // 특정 플레이어가 접속 이전에 사용해둔 projectile 생성파트는 일단 접속전 미리 사용할일이 없도록 게임설계예정이므로 보류 
                 #endregion
-
-                Console.WriteLine($"p enter : {newGameObject.GameObjectId} enter, {_projectiles.Count}");
             }
         }
 
@@ -178,7 +176,6 @@ namespace Server.Game
                 }
             }
             #endregion 
-            Console.WriteLine($"p {gameObjectId} leave : {_projectiles.Count}");
         }
 
         public void HandleMove(GameObject gameObject, C_Move movePacket)

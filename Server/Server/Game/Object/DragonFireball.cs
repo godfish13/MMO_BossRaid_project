@@ -17,19 +17,6 @@ namespace Server.Game
             Speed = _monsterSkill.FireballSpeed;
         }
 
-        public override void Update()
-        {
-            switch (State)
-            {
-                case CreatureState.Idle:
-                    UpdateIdle();
-                    break;
-                case CreatureState.Death:
-                    UpdateDeath();
-                    break;
-            }
-        }
-
         public override void UpdateIdle()
         {
             if (_nextMoveTick >= Environment.TickCount64)   // TickCount64 : millisecond 기준

@@ -10,16 +10,6 @@ public class DragonFireballCtrl : DragonPattern
         PatternId = (int)Define.ProjectileType.DragonFireball;
     }
 
-    protected override void Init()
-    {
-        base.Init();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
-
     private void C_MovePacketSend()
     {
         C_Move movePacket = new C_Move();
@@ -40,6 +30,6 @@ public class DragonFireballCtrl : DragonPattern
         base.OnTriggerEnter2D(collision);   // damage 판정, Packet Send는 base에서
 
         State = CreatureState.Death;      // State Change Flag
-        C_MovePacketSend();                   // Explosion State로 변화시키라고 1회 통신
+        C_MovePacketSend();                   // Death State로 변화시키라고 1회 통신
     }
 }

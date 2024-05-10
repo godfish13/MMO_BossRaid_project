@@ -27,7 +27,7 @@ public class DragonThunder : DragonPattern
 
     protected override void Update()
     {
-        if (_sendPacketOnce && particleSystem.isStopped && particleSystem.isPaused == false)   // 낙뢰 이펙트 종료되면 destroy
+        if (_sendPacketOnce && particleSystem.isStopped && particleSystem.isPaused == false)   // 낙뢰 이펙트 종료되면 Death
         {
             _sendPacketOnce = false;    // DespawnPacket 도착 전에 종료되면 패킷 송신 그만하도록
             State = CreatureState.Death;
