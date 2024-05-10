@@ -255,15 +255,24 @@ namespace Server.Game
             {
                 _patternRandom = rand.Next(100);
 
-                if (_patternRandom < BiteFrequency)
+                if (_targetPlayer.PositionInfo.PosY < 3.0f)
                 {
-                    _nextTick = Environment.TickCount64 + BiteDelay;  // State 변경되자마자 UpdateBite 내 1회 실행되는것을 방지하기 위해 미리 한번 늘려줌
-                    State = CreatureState.Bite;                       
-                }
-                else if (_patternRandom < BurnFrequency)
-                {
-                    _nextTick = Environment.TickCount64 + BurnDelay;
-                    State = CreatureState.Burn;
+                    if (_patternRandom < BiteFrequency)
+                    {
+                        _nextTick = Environment.TickCount64 + BiteDelay;  // State 변경되자마자 UpdateBite 내 1회 실행되는것을 방지하기 위해 미리 한번 늘려줌
+                        State = CreatureState.Bite;
+                    }
+                    else if (_patternRandom < BiteFrequency + BurnFrequency)
+                    {
+                        _nextTick = Environment.TickCount64 + BurnDelay;
+                        State = CreatureState.Burn;
+                    }
+                    else
+                    {
+                        _spawnProjectileOnce = true;
+                        _nextTick = Environment.TickCount64 + ThunderDelay;
+                        State = CreatureState.Thunder;
+                    }
                 }
                 else
                 {

@@ -31,6 +31,9 @@ namespace Server.Game
                 case CreatureState.Idle:
                     UpdateIdle();
                     break;
+                case CreatureState.Death:
+                    UpdateDeath();
+                    break;
             }
         }
 
@@ -56,6 +59,11 @@ namespace Server.Game
 
             
             // 피격 판정은 Client의 HitBox로 
+        }
+
+        public virtual void UpdateDeath()
+        {
+            MyRoom.LeaveGame(GameObjectId);
         }
     }   
 }

@@ -39,7 +39,7 @@ public class DragonFireballCtrl : DragonPattern
     {
         base.OnTriggerEnter2D(collision);   // damage 판정, Packet Send는 base에서
 
-        State = CreatureState.Explosion;      // State Change Flag
+        State = CreatureState.Death;      // State Change Flag
         C_MovePacketSend();                   // Explosion State로 변화시키라고 1회 통신
     }
 }

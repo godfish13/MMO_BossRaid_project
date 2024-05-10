@@ -72,7 +72,7 @@ public class ProjectileCtrl : MonoBehaviour
         SyncPos();
     }
 
-    float speed = 5.0f;     // Server 상 tick = 100, 이동량 = 0.5f 이므로 0.1초당 0.5f이동 즉 1초당 5f 이동 그에 맞춰줌
+    float speed = 5.0f;     // Server 상 projectile update tick * 1tick당 이동량 // 각 파생 class에서 조절 기본값 5
     public void SyncPos()
     {
         // 변화 없을땐 쓸데없이 작동하지 않도록 조건 추가

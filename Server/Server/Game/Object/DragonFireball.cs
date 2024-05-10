@@ -24,8 +24,8 @@ namespace Server.Game
                 case CreatureState.Idle:
                     UpdateIdle();
                     break;
-                case CreatureState.Explosion:
-                    UpdateExplosion();
+                case CreatureState.Death:
+                    UpdateDeath();
                     break;
             }
         }
@@ -53,10 +53,10 @@ namespace Server.Game
             // 피격 판정은 Client의 HitBox로 
         }
 
-        public void UpdateExplosion()
+        public override void UpdateDeath()
         {
             //Console.WriteLine("Explosion");
-            Projectile ExplosionEffect = ObjectMgr.Instance.Add<Projectile>();
+            Projectile ExplosionEffect = ObjectMgr.Instance.Add<DragonFireballExplosion>();
             ExplosionEffect.ProjectileType = (int)Define.ProjectileType.DragonFireballExplosion;
             ExplosionEffect.GameObjectInfo.PositionInfo.PosX = PositionInfo.PosX;
             ExplosionEffect.GameObjectInfo.PositionInfo.PosY = 0.3f;

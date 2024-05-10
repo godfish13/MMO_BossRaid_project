@@ -10,12 +10,6 @@ namespace Server.Game
 {
     public class DragonThunder : Projectile
     {
-        public DragonThunder()
-        {
-            MonsterSkillInfo _monsterSkill = null;
-            DataMgr.MonsterSkillDictionary.TryGetValue(key: 10, out _monsterSkill);
-        }
-
         public override void Update()
         {
             switch (State)
@@ -23,15 +17,20 @@ namespace Server.Game
                 case CreatureState.Idle:
                     UpdateIdle();
                     break;
+                case CreatureState.Death:
+                    UpdateDeath();
+                    break;
             }
         }
 
         public override void UpdateIdle()
         {
-
-
-            // 피격 판정은 Client의 HitBox로 
+            // 이동 없음
         }
 
+        public override void UpdateDeath()
+        {
+            base.UpdateDeath();
+        }
     }
 }

@@ -139,7 +139,7 @@ public class ObjectMgr : MonoBehaviour
         {
             if (ownerObjectInfo.GameObjectId == MyHumanCtrl.GameObjectId)
             {
-                Debug.Log("My projectile added");
+                //Debug.Log("My projectile added");
                 GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/My{projectilePrefabName}");
                 Projectile.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
 
@@ -197,6 +197,7 @@ public class ObjectMgr : MonoBehaviour
         else if (type == GameObjectType.Projectile)
         {
             GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
+            Projectile.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
 
             GameObject skillUser;
             if (_projectiles.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))

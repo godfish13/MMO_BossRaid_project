@@ -126,17 +126,19 @@ namespace Server.Game
 
                 // 특정 플레이어가 접속 이전에 사용해둔 projectile 생성파트는 일단 접속전 미리 사용할일이 없도록 게임설계예정이므로 보류 
                 #endregion
+
+                Console.WriteLine($"p enter : {newGameObject.GameObjectId} enter, {_projectiles.Count}");
             }
         }
 
-        public void LeaveGame(int objectId)
+        public void LeaveGame(int gameObjectId)
         {
-            GameObjectType type = ObjectMgr.GetObjectTypebyId(objectId);
+            GameObjectType type = ObjectMgr.GetObjectTypebyId(gameObjectId);
 
             if (type == GameObjectType.Player)
             {
                 Player player = null;
-                if (_players.Remove(objectId, out player) == false)
+                if (_players.Remove(gameObjectId, out player) == false)
                     return;
 
                 player.MyRoom = null;
@@ -151,7 +153,7 @@ namespace Server.Game
             else if (type == GameObjectType.Monster)
             {
                 Monster monster = null;
-                if (_monsters.Remove(objectId, out monster) == false)
+                if (_monsters.Remove(gameObjectId, out monster) == false)
                     return;
 
                 monster.MyRoom = null;
@@ -159,7 +161,7 @@ namespace Server.Game
             else if (type == GameObjectType.Projectile)
             {
                 Projectile projectile = null;
-                if (_projectiles.Remove(objectId, out projectile) == false)
+                if (_projectiles.Remove(gameObjectId, out projectile) == false)
                     return;
 
                 projectile.MyRoom = null;
@@ -168,14 +170,15 @@ namespace Server.Game
             #region 타인한테 Object가 퇴장했다고 데이터 전송
             {
                 S_Despawn despawnPacket = new S_Despawn();
-                despawnPacket.GameObjectIdlist.Add(objectId);
+                despawnPacket.GameObjectIdlist.Add(gameObjectId);
                 foreach (Player player in _players.Values)
                 {
-                    if (player.GameObjectInfo.GameObjectId != objectId)
+                    if (player.GameObjectInfo.GameObjectId != gameObjectId)
                         player.MySession.Send(despawnPacket);
                 }
             }
             #endregion 
+            Console.WriteLine($"p {gameObjectId} leave : {_projectiles.Count}");
         }
 
         public void HandleMove(GameObject gameObject, C_Move movePacket)

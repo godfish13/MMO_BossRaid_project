@@ -1,24 +1,41 @@
+using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragonFireballExplosionCtrl : MonoBehaviour
+public class DragonFireballExplosionCtrl : DragonPattern
 {
     private ParticleSystem particleSystem;
+    private bool _sendPacketOnce;
 
-    void Start()
+    protected override void Init()
     {
-        // 파티클 시스템 컴포넌트 가져오기
         particleSystem = GetComponent<ParticleSystem>();
+        _sendPacketOnce = true;
     }
 
-    void Update()
+    protected override void Update()    // 파티클 시스템 종료 시 Death State packet 하나 송신
     {
-        // 파티클 시스템이 종료되었는지 확인
-        if (particleSystem.isStopped && !particleSystem.isPaused)
+        if (_sendPacketOnce && particleSystem.isStopped && particleSystem.isPaused == false)   // 낙뢰 이펙트 종료되면 destroy
         {
-            // 파티클 시스템이 종료되면 해당 GameObject 파괴
-            Destroy(gameObject);
+            _sendPacketOnce = false;    // DespawnPacket 도착 전에 종료되면 패킷 송신 그만하도록
+            State = CreatureState.Death;
+            C_MovePacketSend();
         }
+    }
+
+    private void C_MovePacketSend()
+    {
+        C_Move movePacket = new C_Move();
+
+        movePacket.GameObjectId = GameObjectId;
+
+        movePacket.PositionInfo = new PositionInfo();
+        movePacket.PositionInfo.State = PositionInfo.State;
+        movePacket.PositionInfo.PosX = PositionInfo.PosX;
+        movePacket.PositionInfo.PosY = PositionInfo.PosY;
+        movePacket.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
+
+        Managers.networkMgr.Send(movePacket);
     }
 }
