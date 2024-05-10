@@ -7,7 +7,7 @@ public class DragonFireballCtrl : DragonPattern
 {
     private void Awake()
     {
-        PatternId = 7;
+        PatternId = (int)Define.ProjectileType.DragonFireball;
     }
 
     protected override void Init()

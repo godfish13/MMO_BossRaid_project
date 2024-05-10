@@ -10,7 +10,7 @@ public class DragonThunder : DragonPattern
 
     private void Awake()
     {
-        PatternId = 8;
+        PatternId = (int)Define.ProjectileType.DragonThunder;
     }
 
     void Start()
