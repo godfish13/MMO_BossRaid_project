@@ -33,6 +33,7 @@ public class Define
         Player = 8,
         Monster = 11,
         MonsterSkill = 12,
+        MonsterProjectile = 13,
     }
 
     public enum Scene

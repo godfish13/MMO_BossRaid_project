@@ -181,17 +181,21 @@ message MonsterSkillInfo
 	int32 biteDamage = 3;
 	int32 biteDelay = 4;
 	int32 biteCoolTime = 5;
-	int32 burnDamage = 6;
-	int32 burnDelay = 7;
-	int32 burnCoolTime = 8;
-	int32 fireballDamage = 9;
-	int32 fireballDelay = 10;
-	int32 fireballCoolTime = 11;
-	int32 fireballInstantiateTimingOffset = 12;
-	float FireBallSpeed = 13;
-	int32 thunderDamage = 14;
-	int32 thunderDelay = 15;
-	int32 thunderCoolTime = 16;
+	int32 biteFrequency = 6;
+	int32 burnDamage = 7;
+	int32 burnDelay = 8;
+	int32 burnCoolTime = 9;
+	int32 burnFrequency = 10;
+	int32 fireballDamage = 11;
+	int32 fireballDelay = 12;
+	int32 fireballCoolTime = 13;
+	int32 fireballInstantiateTimingOffset = 14;
+	float fireballSpeed = 15;
+	int32 fireballFrequency = 16;
+	int32 thunderDamage = 17;
+	int32 thunderDelay = 18;
+	int32 thunderCoolTime = 19;
+	int32 thunderFrequency = 20;
 }
 
 message MonsterInfo

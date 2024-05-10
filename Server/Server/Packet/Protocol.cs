@@ -59,35 +59,37 @@ namespace Google.Protobuf.Protocol {
             "BRINCgVjbGFzcxgCIAEoCRITCgtza2lsbERhbWFnZRgDIAEoBRIVCg1za2ls",
             "bENvb2xUaW1lGAQgASgCEhYKDnN1YlNraWxsRGFtYWdlGAUgASgFEhgKEHN1",
             "YlNraWxsQ29vbFRpbWUYBiABKAISEQoJanVtcFBvd2VyGAcgASgCEhQKDGp1",
-            "bXBDb29sVGltZRgIIAEoAiL7AgoQTW9uc3RlclNraWxsSW5mbxIPCgdjbGFz",
+            "bXBDb29sVGltZRgIIAEoAiLeAwoQTW9uc3RlclNraWxsSW5mbxIPCgdjbGFz",
             "c0lkGAEgASgFEg0KBWNsYXNzGAIgASgJEhIKCmJpdGVEYW1hZ2UYAyABKAUS",
-            "EQoJYml0ZURlbGF5GAQgASgFEhQKDGJpdGVDb29sVGltZRgFIAEoBRISCgpi",
-            "dXJuRGFtYWdlGAYgASgFEhEKCWJ1cm5EZWxheRgHIAEoBRIUCgxidXJuQ29v",
-            "bFRpbWUYCCABKAUSFgoOZmlyZWJhbGxEYW1hZ2UYCSABKAUSFQoNZmlyZWJh",
-            "bGxEZWxheRgKIAEoBRIYChBmaXJlYmFsbENvb2xUaW1lGAsgASgFEicKH2Zp",
-            "cmViYWxsSW5zdGFudGlhdGVUaW1pbmdPZmZzZXQYDCABKAUSFQoNRmlyZUJh",
-            "bGxTcGVlZBgNIAEoAhIVCg10aHVuZGVyRGFtYWdlGA4gASgFEhQKDHRodW5k",
-            "ZXJEZWxheRgPIAEoBRIXCg90aHVuZGVyQ29vbFRpbWUYECABKAUipAIKC01v",
-            "bnN0ZXJJbmZvEg8KB2NsYXNzSWQYASABKAUSDQoFY2xhc3MYAiABKAkSDQoF",
-            "bWF4SHAYAyABKAUSCgoCaHAYBCABKAUSEAoIbWF4U3BlZWQYBSABKAISFAoM",
-            "YWNjZWxlcmF0aW9uGAYgASgCEhIKCmJpdGVEYW1hZ2UYByABKAUSFAoMYml0",
-            "ZUNvb2xUaW1lGAggASgCEhIKCmJ1cm5EYW1hZ2UYCSABKAUSFAoMYnVybkNv",
-            "b2xUaW1lGAogASgCEhUKDWZpcmVCYWxsUG93ZXIYCyABKAISGAoQZmlyZUJh",
-            "bGxDb29sVGltZRgMIAEoAhIUCgx0aHVuZGVyUG93ZXIYDSABKAISFwoPdGh1",
-            "bmRlckNvb2xUaW1lGA4gASgCKu8BCgVNc2dJZBIQCgxTX0VOVEVSX0dBTUUQ",
-            "ABIQCgxTX0xFQVZFX0dBTUUQARILCgdTX1NQQVdOEAISFgoSU19TUEFXTl9Q",
-            "Uk9KRUNUSUxFEAMSDQoJU19ERVNQQVdOEAQSCgoGU19NT1ZFEAUSCwoHU19T",
-            "S0lMTBAGEg0KCVNfSFBERUxUQRAHEhQKEFNfTU9OU1RFUl9UQVJHRVQQCBIQ",
-            "CgxDX0xFQVZFX0dBTUUQCRIKCgZDX01PVkUQChILCgdDX1NLSUxMEAsSFgoS",
-            "Q19TRUxFQ1RfQ0hBUkFDVEVSEAwSDQoJQ19IUERFTFRBEA0q2gEKDUNyZWF0",
-            "dXJlU3RhdGUSCAoESURMRRAAEgcKA1JVThABEggKBEpVTVAQAhIICgRGQUxM",
-            "EAMSCAoETEFORBAEEgoKBkNST1VDSBAFEgkKBUNSQVdMEAYSCwoHUk9MTElO",
-            "RxAHEgkKBVNLSUxMEAgSDAoIU1VCU0tJTEwQCRIJCgVERUFUSBAKEgcKA1RN",
-            "UBALEg0KCUVYUExPU0lPThAMEgkKBUFXQUlUEA0SCAoEQklURRAOEggKBEJV",
-            "Uk4QDxIMCghGSVJFQkFMTBAQEgsKB1RIVU5ERVIQESpDCg5HYW1lT2JqZWN0",
-            "VHlwZRIICgROT05FEAASCgoGUExBWUVSEAESCwoHTU9OU1RFUhACEg4KClBS",
-            "T0pFQ1RJTEUQA0IbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90",
-            "bzM="));
+            "EQoJYml0ZURlbGF5GAQgASgFEhQKDGJpdGVDb29sVGltZRgFIAEoBRIVCg1i",
+            "aXRlRnJlcXVlbmN5GAYgASgFEhIKCmJ1cm5EYW1hZ2UYByABKAUSEQoJYnVy",
+            "bkRlbGF5GAggASgFEhQKDGJ1cm5Db29sVGltZRgJIAEoBRIVCg1idXJuRnJl",
+            "cXVlbmN5GAogASgFEhYKDmZpcmViYWxsRGFtYWdlGAsgASgFEhUKDWZpcmVi",
+            "YWxsRGVsYXkYDCABKAUSGAoQZmlyZWJhbGxDb29sVGltZRgNIAEoBRInCh9m",
+            "aXJlYmFsbEluc3RhbnRpYXRlVGltaW5nT2Zmc2V0GA4gASgFEhUKDWZpcmVi",
+            "YWxsU3BlZWQYDyABKAISGQoRZmlyZWJhbGxGcmVxdWVuY3kYECABKAUSFQoN",
+            "dGh1bmRlckRhbWFnZRgRIAEoBRIUCgx0aHVuZGVyRGVsYXkYEiABKAUSFwoP",
+            "dGh1bmRlckNvb2xUaW1lGBMgASgFEhgKEHRodW5kZXJGcmVxdWVuY3kYFCAB",
+            "KAUipAIKC01vbnN0ZXJJbmZvEg8KB2NsYXNzSWQYASABKAUSDQoFY2xhc3MY",
+            "AiABKAkSDQoFbWF4SHAYAyABKAUSCgoCaHAYBCABKAUSEAoIbWF4U3BlZWQY",
+            "BSABKAISFAoMYWNjZWxlcmF0aW9uGAYgASgCEhIKCmJpdGVEYW1hZ2UYByAB",
+            "KAUSFAoMYml0ZUNvb2xUaW1lGAggASgCEhIKCmJ1cm5EYW1hZ2UYCSABKAUS",
+            "FAoMYnVybkNvb2xUaW1lGAogASgCEhUKDWZpcmVCYWxsUG93ZXIYCyABKAIS",
+            "GAoQZmlyZUJhbGxDb29sVGltZRgMIAEoAhIUCgx0aHVuZGVyUG93ZXIYDSAB",
+            "KAISFwoPdGh1bmRlckNvb2xUaW1lGA4gASgCKu8BCgVNc2dJZBIQCgxTX0VO",
+            "VEVSX0dBTUUQABIQCgxTX0xFQVZFX0dBTUUQARILCgdTX1NQQVdOEAISFgoS",
+            "U19TUEFXTl9QUk9KRUNUSUxFEAMSDQoJU19ERVNQQVdOEAQSCgoGU19NT1ZF",
+            "EAUSCwoHU19TS0lMTBAGEg0KCVNfSFBERUxUQRAHEhQKEFNfTU9OU1RFUl9U",
+            "QVJHRVQQCBIQCgxDX0xFQVZFX0dBTUUQCRIKCgZDX01PVkUQChILCgdDX1NL",
+            "SUxMEAsSFgoSQ19TRUxFQ1RfQ0hBUkFDVEVSEAwSDQoJQ19IUERFTFRBEA0q",
+            "2gEKDUNyZWF0dXJlU3RhdGUSCAoESURMRRAAEgcKA1JVThABEggKBEpVTVAQ",
+            "AhIICgRGQUxMEAMSCAoETEFORBAEEgoKBkNST1VDSBAFEgkKBUNSQVdMEAYS",
+            "CwoHUk9MTElORxAHEgkKBVNLSUxMEAgSDAoIU1VCU0tJTEwQCRIJCgVERUFU",
+            "SBAKEgcKA1RNUBALEg0KCUVYUExPU0lPThAMEgkKBUFXQUlUEA0SCAoEQklU",
+            "RRAOEggKBEJVUk4QDxIMCghGSVJFQkFMTBAQEgsKB1RIVU5ERVIQESpDCg5H",
+            "YW1lT2JqZWN0VHlwZRIICgROT05FEAASCgoGUExBWUVSEAESCwoHTU9OU1RF",
+            "UhACEg4KClBST0pFQ1RJTEUQA0IbqgIYR29vZ2xlLlByb3RvYnVmLlByb3Rv",
+            "Y29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -110,7 +112,7 @@ namespace Google.Protobuf.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.GameObjectInfo), global::Google.Protobuf.Protocol.GameObjectInfo.Parser, new[]{ "GameObjectId", "StatInfo", "SkillInfo", "MonsterSkillInfo", "PositionInfo", "ProjectileType" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.StatInfo), global::Google.Protobuf.Protocol.StatInfo.Parser, new[]{ "ClassId", "Class", "MaxHp", "Hp", "MaxSpeed", "Acceleration" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.SkillInfo), global::Google.Protobuf.Protocol.SkillInfo.Parser, new[]{ "ClassId", "Class", "SkillDamage", "SkillCoolTime", "SubSkillDamage", "SubSkillCoolTime", "JumpPower", "JumpCoolTime" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.MonsterSkillInfo), global::Google.Protobuf.Protocol.MonsterSkillInfo.Parser, new[]{ "ClassId", "Class", "BiteDamage", "BiteDelay", "BiteCoolTime", "BurnDamage", "BurnDelay", "BurnCoolTime", "FireballDamage", "FireballDelay", "FireballCoolTime", "FireballInstantiateTimingOffset", "FireBallSpeed", "ThunderDamage", "ThunderDelay", "ThunderCoolTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.MonsterSkillInfo), global::Google.Protobuf.Protocol.MonsterSkillInfo.Parser, new[]{ "ClassId", "Class", "BiteDamage", "BiteDelay", "BiteCoolTime", "BiteFrequency", "BurnDamage", "BurnDelay", "BurnCoolTime", "BurnFrequency", "FireballDamage", "FireballDelay", "FireballCoolTime", "FireballInstantiateTimingOffset", "FireballSpeed", "FireballFrequency", "ThunderDamage", "ThunderDelay", "ThunderCoolTime", "ThunderFrequency" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.MonsterInfo), global::Google.Protobuf.Protocol.MonsterInfo.Parser, new[]{ "ClassId", "Class", "MaxHp", "Hp", "MaxSpeed", "Acceleration", "BiteDamage", "BiteCoolTime", "BurnDamage", "BurnCoolTime", "FireBallPower", "FireBallCoolTime", "ThunderPower", "ThunderCoolTime" }, null, null, null, null)
           }));
     }
@@ -4874,17 +4876,21 @@ namespace Google.Protobuf.Protocol {
       biteDamage_ = other.biteDamage_;
       biteDelay_ = other.biteDelay_;
       biteCoolTime_ = other.biteCoolTime_;
+      biteFrequency_ = other.biteFrequency_;
       burnDamage_ = other.burnDamage_;
       burnDelay_ = other.burnDelay_;
       burnCoolTime_ = other.burnCoolTime_;
+      burnFrequency_ = other.burnFrequency_;
       fireballDamage_ = other.fireballDamage_;
       fireballDelay_ = other.fireballDelay_;
       fireballCoolTime_ = other.fireballCoolTime_;
       fireballInstantiateTimingOffset_ = other.fireballInstantiateTimingOffset_;
-      fireBallSpeed_ = other.fireBallSpeed_;
+      fireballSpeed_ = other.fireballSpeed_;
+      fireballFrequency_ = other.fireballFrequency_;
       thunderDamage_ = other.thunderDamage_;
       thunderDelay_ = other.thunderDelay_;
       thunderCoolTime_ = other.thunderCoolTime_;
+      thunderFrequency_ = other.thunderFrequency_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4954,8 +4960,20 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
+    /// <summary>Field number for the "biteFrequency" field.</summary>
+    public const int BiteFrequencyFieldNumber = 6;
+    private int biteFrequency_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int BiteFrequency {
+      get { return biteFrequency_; }
+      set {
+        biteFrequency_ = value;
+      }
+    }
+
     /// <summary>Field number for the "burnDamage" field.</summary>
-    public const int BurnDamageFieldNumber = 6;
+    public const int BurnDamageFieldNumber = 7;
     private int burnDamage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4967,7 +4985,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "burnDelay" field.</summary>
-    public const int BurnDelayFieldNumber = 7;
+    public const int BurnDelayFieldNumber = 8;
     private int burnDelay_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4979,7 +4997,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "burnCoolTime" field.</summary>
-    public const int BurnCoolTimeFieldNumber = 8;
+    public const int BurnCoolTimeFieldNumber = 9;
     private int burnCoolTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4990,8 +5008,20 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
+    /// <summary>Field number for the "burnFrequency" field.</summary>
+    public const int BurnFrequencyFieldNumber = 10;
+    private int burnFrequency_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int BurnFrequency {
+      get { return burnFrequency_; }
+      set {
+        burnFrequency_ = value;
+      }
+    }
+
     /// <summary>Field number for the "fireballDamage" field.</summary>
-    public const int FireballDamageFieldNumber = 9;
+    public const int FireballDamageFieldNumber = 11;
     private int fireballDamage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5003,7 +5033,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "fireballDelay" field.</summary>
-    public const int FireballDelayFieldNumber = 10;
+    public const int FireballDelayFieldNumber = 12;
     private int fireballDelay_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5015,7 +5045,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "fireballCoolTime" field.</summary>
-    public const int FireballCoolTimeFieldNumber = 11;
+    public const int FireballCoolTimeFieldNumber = 13;
     private int fireballCoolTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5027,7 +5057,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "fireballInstantiateTimingOffset" field.</summary>
-    public const int FireballInstantiateTimingOffsetFieldNumber = 12;
+    public const int FireballInstantiateTimingOffsetFieldNumber = 14;
     private int fireballInstantiateTimingOffset_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5038,20 +5068,32 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "FireBallSpeed" field.</summary>
-    public const int FireBallSpeedFieldNumber = 13;
-    private float fireBallSpeed_;
+    /// <summary>Field number for the "fireballSpeed" field.</summary>
+    public const int FireballSpeedFieldNumber = 15;
+    private float fireballSpeed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float FireBallSpeed {
-      get { return fireBallSpeed_; }
+    public float FireballSpeed {
+      get { return fireballSpeed_; }
       set {
-        fireBallSpeed_ = value;
+        fireballSpeed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fireballFrequency" field.</summary>
+    public const int FireballFrequencyFieldNumber = 16;
+    private int fireballFrequency_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int FireballFrequency {
+      get { return fireballFrequency_; }
+      set {
+        fireballFrequency_ = value;
       }
     }
 
     /// <summary>Field number for the "thunderDamage" field.</summary>
-    public const int ThunderDamageFieldNumber = 14;
+    public const int ThunderDamageFieldNumber = 17;
     private int thunderDamage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5063,7 +5105,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "thunderDelay" field.</summary>
-    public const int ThunderDelayFieldNumber = 15;
+    public const int ThunderDelayFieldNumber = 18;
     private int thunderDelay_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5075,7 +5117,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "thunderCoolTime" field.</summary>
-    public const int ThunderCoolTimeFieldNumber = 16;
+    public const int ThunderCoolTimeFieldNumber = 19;
     private int thunderCoolTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5083,6 +5125,18 @@ namespace Google.Protobuf.Protocol {
       get { return thunderCoolTime_; }
       set {
         thunderCoolTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "thunderFrequency" field.</summary>
+    public const int ThunderFrequencyFieldNumber = 20;
+    private int thunderFrequency_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ThunderFrequency {
+      get { return thunderFrequency_; }
+      set {
+        thunderFrequency_ = value;
       }
     }
 
@@ -5106,17 +5160,21 @@ namespace Google.Protobuf.Protocol {
       if (BiteDamage != other.BiteDamage) return false;
       if (BiteDelay != other.BiteDelay) return false;
       if (BiteCoolTime != other.BiteCoolTime) return false;
+      if (BiteFrequency != other.BiteFrequency) return false;
       if (BurnDamage != other.BurnDamage) return false;
       if (BurnDelay != other.BurnDelay) return false;
       if (BurnCoolTime != other.BurnCoolTime) return false;
+      if (BurnFrequency != other.BurnFrequency) return false;
       if (FireballDamage != other.FireballDamage) return false;
       if (FireballDelay != other.FireballDelay) return false;
       if (FireballCoolTime != other.FireballCoolTime) return false;
       if (FireballInstantiateTimingOffset != other.FireballInstantiateTimingOffset) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FireBallSpeed, other.FireBallSpeed)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FireballSpeed, other.FireballSpeed)) return false;
+      if (FireballFrequency != other.FireballFrequency) return false;
       if (ThunderDamage != other.ThunderDamage) return false;
       if (ThunderDelay != other.ThunderDelay) return false;
       if (ThunderCoolTime != other.ThunderCoolTime) return false;
+      if (ThunderFrequency != other.ThunderFrequency) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5129,17 +5187,21 @@ namespace Google.Protobuf.Protocol {
       if (BiteDamage != 0) hash ^= BiteDamage.GetHashCode();
       if (BiteDelay != 0) hash ^= BiteDelay.GetHashCode();
       if (BiteCoolTime != 0) hash ^= BiteCoolTime.GetHashCode();
+      if (BiteFrequency != 0) hash ^= BiteFrequency.GetHashCode();
       if (BurnDamage != 0) hash ^= BurnDamage.GetHashCode();
       if (BurnDelay != 0) hash ^= BurnDelay.GetHashCode();
       if (BurnCoolTime != 0) hash ^= BurnCoolTime.GetHashCode();
+      if (BurnFrequency != 0) hash ^= BurnFrequency.GetHashCode();
       if (FireballDamage != 0) hash ^= FireballDamage.GetHashCode();
       if (FireballDelay != 0) hash ^= FireballDelay.GetHashCode();
       if (FireballCoolTime != 0) hash ^= FireballCoolTime.GetHashCode();
       if (FireballInstantiateTimingOffset != 0) hash ^= FireballInstantiateTimingOffset.GetHashCode();
-      if (FireBallSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FireBallSpeed);
+      if (FireballSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FireballSpeed);
+      if (FireballFrequency != 0) hash ^= FireballFrequency.GetHashCode();
       if (ThunderDamage != 0) hash ^= ThunderDamage.GetHashCode();
       if (ThunderDelay != 0) hash ^= ThunderDelay.GetHashCode();
       if (ThunderCoolTime != 0) hash ^= ThunderCoolTime.GetHashCode();
+      if (ThunderFrequency != 0) hash ^= ThunderFrequency.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5178,49 +5240,65 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(40);
         output.WriteInt32(BiteCoolTime);
       }
-      if (BurnDamage != 0) {
+      if (BiteFrequency != 0) {
         output.WriteRawTag(48);
+        output.WriteInt32(BiteFrequency);
+      }
+      if (BurnDamage != 0) {
+        output.WriteRawTag(56);
         output.WriteInt32(BurnDamage);
       }
       if (BurnDelay != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteInt32(BurnDelay);
       }
       if (BurnCoolTime != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteInt32(BurnCoolTime);
       }
+      if (BurnFrequency != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(BurnFrequency);
+      }
       if (FireballDamage != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteInt32(FireballDamage);
       }
       if (FireballDelay != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(96);
         output.WriteInt32(FireballDelay);
       }
       if (FireballCoolTime != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(104);
         output.WriteInt32(FireballCoolTime);
       }
       if (FireballInstantiateTimingOffset != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(112);
         output.WriteInt32(FireballInstantiateTimingOffset);
       }
-      if (FireBallSpeed != 0F) {
-        output.WriteRawTag(109);
-        output.WriteFloat(FireBallSpeed);
+      if (FireballSpeed != 0F) {
+        output.WriteRawTag(125);
+        output.WriteFloat(FireballSpeed);
+      }
+      if (FireballFrequency != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt32(FireballFrequency);
       }
       if (ThunderDamage != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(136, 1);
         output.WriteInt32(ThunderDamage);
       }
       if (ThunderDelay != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(144, 1);
         output.WriteInt32(ThunderDelay);
       }
       if (ThunderCoolTime != 0) {
-        output.WriteRawTag(128, 1);
+        output.WriteRawTag(152, 1);
         output.WriteInt32(ThunderCoolTime);
+      }
+      if (ThunderFrequency != 0) {
+        output.WriteRawTag(160, 1);
+        output.WriteInt32(ThunderFrequency);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -5252,49 +5330,65 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(40);
         output.WriteInt32(BiteCoolTime);
       }
-      if (BurnDamage != 0) {
+      if (BiteFrequency != 0) {
         output.WriteRawTag(48);
+        output.WriteInt32(BiteFrequency);
+      }
+      if (BurnDamage != 0) {
+        output.WriteRawTag(56);
         output.WriteInt32(BurnDamage);
       }
       if (BurnDelay != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteInt32(BurnDelay);
       }
       if (BurnCoolTime != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteInt32(BurnCoolTime);
       }
+      if (BurnFrequency != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(BurnFrequency);
+      }
       if (FireballDamage != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteInt32(FireballDamage);
       }
       if (FireballDelay != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(96);
         output.WriteInt32(FireballDelay);
       }
       if (FireballCoolTime != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(104);
         output.WriteInt32(FireballCoolTime);
       }
       if (FireballInstantiateTimingOffset != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(112);
         output.WriteInt32(FireballInstantiateTimingOffset);
       }
-      if (FireBallSpeed != 0F) {
-        output.WriteRawTag(109);
-        output.WriteFloat(FireBallSpeed);
+      if (FireballSpeed != 0F) {
+        output.WriteRawTag(125);
+        output.WriteFloat(FireballSpeed);
+      }
+      if (FireballFrequency != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt32(FireballFrequency);
       }
       if (ThunderDamage != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(136, 1);
         output.WriteInt32(ThunderDamage);
       }
       if (ThunderDelay != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(144, 1);
         output.WriteInt32(ThunderDelay);
       }
       if (ThunderCoolTime != 0) {
-        output.WriteRawTag(128, 1);
+        output.WriteRawTag(152, 1);
         output.WriteInt32(ThunderCoolTime);
+      }
+      if (ThunderFrequency != 0) {
+        output.WriteRawTag(160, 1);
+        output.WriteInt32(ThunderFrequency);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -5321,6 +5415,9 @@ namespace Google.Protobuf.Protocol {
       if (BiteCoolTime != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(BiteCoolTime);
       }
+      if (BiteFrequency != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BiteFrequency);
+      }
       if (BurnDamage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(BurnDamage);
       }
@@ -5329,6 +5426,9 @@ namespace Google.Protobuf.Protocol {
       }
       if (BurnCoolTime != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(BurnCoolTime);
+      }
+      if (BurnFrequency != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BurnFrequency);
       }
       if (FireballDamage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(FireballDamage);
@@ -5342,17 +5442,23 @@ namespace Google.Protobuf.Protocol {
       if (FireballInstantiateTimingOffset != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(FireballInstantiateTimingOffset);
       }
-      if (FireBallSpeed != 0F) {
+      if (FireballSpeed != 0F) {
         size += 1 + 4;
       }
+      if (FireballFrequency != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(FireballFrequency);
+      }
       if (ThunderDamage != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ThunderDamage);
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(ThunderDamage);
       }
       if (ThunderDelay != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ThunderDelay);
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(ThunderDelay);
       }
       if (ThunderCoolTime != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(ThunderCoolTime);
+      }
+      if (ThunderFrequency != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(ThunderFrequency);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5381,6 +5487,9 @@ namespace Google.Protobuf.Protocol {
       if (other.BiteCoolTime != 0) {
         BiteCoolTime = other.BiteCoolTime;
       }
+      if (other.BiteFrequency != 0) {
+        BiteFrequency = other.BiteFrequency;
+      }
       if (other.BurnDamage != 0) {
         BurnDamage = other.BurnDamage;
       }
@@ -5389,6 +5498,9 @@ namespace Google.Protobuf.Protocol {
       }
       if (other.BurnCoolTime != 0) {
         BurnCoolTime = other.BurnCoolTime;
+      }
+      if (other.BurnFrequency != 0) {
+        BurnFrequency = other.BurnFrequency;
       }
       if (other.FireballDamage != 0) {
         FireballDamage = other.FireballDamage;
@@ -5402,8 +5514,11 @@ namespace Google.Protobuf.Protocol {
       if (other.FireballInstantiateTimingOffset != 0) {
         FireballInstantiateTimingOffset = other.FireballInstantiateTimingOffset;
       }
-      if (other.FireBallSpeed != 0F) {
-        FireBallSpeed = other.FireBallSpeed;
+      if (other.FireballSpeed != 0F) {
+        FireballSpeed = other.FireballSpeed;
+      }
+      if (other.FireballFrequency != 0) {
+        FireballFrequency = other.FireballFrequency;
       }
       if (other.ThunderDamage != 0) {
         ThunderDamage = other.ThunderDamage;
@@ -5413,6 +5528,9 @@ namespace Google.Protobuf.Protocol {
       }
       if (other.ThunderCoolTime != 0) {
         ThunderCoolTime = other.ThunderCoolTime;
+      }
+      if (other.ThunderFrequency != 0) {
+        ThunderFrequency = other.ThunderFrequency;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -5450,47 +5568,63 @@ namespace Google.Protobuf.Protocol {
             break;
           }
           case 48: {
-            BurnDamage = input.ReadInt32();
+            BiteFrequency = input.ReadInt32();
             break;
           }
           case 56: {
-            BurnDelay = input.ReadInt32();
+            BurnDamage = input.ReadInt32();
             break;
           }
           case 64: {
-            BurnCoolTime = input.ReadInt32();
+            BurnDelay = input.ReadInt32();
             break;
           }
           case 72: {
-            FireballDamage = input.ReadInt32();
+            BurnCoolTime = input.ReadInt32();
             break;
           }
           case 80: {
-            FireballDelay = input.ReadInt32();
+            BurnFrequency = input.ReadInt32();
             break;
           }
           case 88: {
-            FireballCoolTime = input.ReadInt32();
+            FireballDamage = input.ReadInt32();
             break;
           }
           case 96: {
-            FireballInstantiateTimingOffset = input.ReadInt32();
+            FireballDelay = input.ReadInt32();
             break;
           }
-          case 109: {
-            FireBallSpeed = input.ReadFloat();
+          case 104: {
+            FireballCoolTime = input.ReadInt32();
             break;
           }
           case 112: {
-            ThunderDamage = input.ReadInt32();
+            FireballInstantiateTimingOffset = input.ReadInt32();
             break;
           }
-          case 120: {
-            ThunderDelay = input.ReadInt32();
+          case 125: {
+            FireballSpeed = input.ReadFloat();
             break;
           }
           case 128: {
+            FireballFrequency = input.ReadInt32();
+            break;
+          }
+          case 136: {
+            ThunderDamage = input.ReadInt32();
+            break;
+          }
+          case 144: {
+            ThunderDelay = input.ReadInt32();
+            break;
+          }
+          case 152: {
             ThunderCoolTime = input.ReadInt32();
+            break;
+          }
+          case 160: {
+            ThunderFrequency = input.ReadInt32();
             break;
           }
         }
@@ -5529,47 +5663,63 @@ namespace Google.Protobuf.Protocol {
             break;
           }
           case 48: {
-            BurnDamage = input.ReadInt32();
+            BiteFrequency = input.ReadInt32();
             break;
           }
           case 56: {
-            BurnDelay = input.ReadInt32();
+            BurnDamage = input.ReadInt32();
             break;
           }
           case 64: {
-            BurnCoolTime = input.ReadInt32();
+            BurnDelay = input.ReadInt32();
             break;
           }
           case 72: {
-            FireballDamage = input.ReadInt32();
+            BurnCoolTime = input.ReadInt32();
             break;
           }
           case 80: {
-            FireballDelay = input.ReadInt32();
+            BurnFrequency = input.ReadInt32();
             break;
           }
           case 88: {
-            FireballCoolTime = input.ReadInt32();
+            FireballDamage = input.ReadInt32();
             break;
           }
           case 96: {
-            FireballInstantiateTimingOffset = input.ReadInt32();
+            FireballDelay = input.ReadInt32();
             break;
           }
-          case 109: {
-            FireBallSpeed = input.ReadFloat();
+          case 104: {
+            FireballCoolTime = input.ReadInt32();
             break;
           }
           case 112: {
-            ThunderDamage = input.ReadInt32();
+            FireballInstantiateTimingOffset = input.ReadInt32();
             break;
           }
-          case 120: {
-            ThunderDelay = input.ReadInt32();
+          case 125: {
+            FireballSpeed = input.ReadFloat();
             break;
           }
           case 128: {
+            FireballFrequency = input.ReadInt32();
+            break;
+          }
+          case 136: {
+            ThunderDamage = input.ReadInt32();
+            break;
+          }
+          case 144: {
+            ThunderDelay = input.ReadInt32();
+            break;
+          }
+          case 152: {
             ThunderCoolTime = input.ReadInt32();
+            break;
+          }
+          case 160: {
+            ThunderFrequency = input.ReadInt32();
             break;
           }
         }

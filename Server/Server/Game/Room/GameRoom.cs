@@ -114,7 +114,7 @@ namespace Server.Game
 
                 #region 플레이어들에게 Projectile spawn시키라고 데이터 전송   
                 S_SpawnProjectile SpawnProjectilePacket = new S_SpawnProjectile();
-                SpawnProjectilePacket.GameObjectInfo = new GameObjectInfo();
+                SpawnProjectilePacket.GameObjectInfo = newProjectile.GameObjectInfo;
                 SpawnProjectilePacket.GameObjectInfo.GameObjectId = newProjectile.GameObjectId;
                 SpawnProjectilePacket.GameObjectInfo.ProjectileType = newProjectile.ProjectileType;
                 SpawnProjectilePacket.OwnerInfo = newProjectile.Owner.GameObjectInfo;

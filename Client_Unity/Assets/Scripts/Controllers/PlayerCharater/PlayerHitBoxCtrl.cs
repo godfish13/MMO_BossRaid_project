@@ -9,6 +9,7 @@ public class PlayerHitBoxCtrl : MonoBehaviour
     protected LayerMask PlayerLayerMask = (int)Define.Layer.Player;
     protected LayerMask MonsterLayerMask = (int)Define.Layer.Monster;
     protected LayerMask MonsterSkillLayerMask = (int)Define.Layer.MonsterSkill;
+    protected LayerMask MonsterProjectileLayerMask = (int)Define.Layer.MonsterProjectile;
 
     protected void OnCollisionEnter2D(Collision2D collision)  // ¸ó½ºÅÍ¶û ºÎµúÈû
     {
@@ -25,7 +26,7 @@ public class PlayerHitBoxCtrl : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == MonsterSkillLayerMask)
+        if (collision.gameObject.layer == MonsterSkillLayerMask || collision.gameObject.layer == MonsterProjectileLayerMask)
         {
             Debug.Log("¾Æ¾ß ¸ÂÀ½!!");
         }

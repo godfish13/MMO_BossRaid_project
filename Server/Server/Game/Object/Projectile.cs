@@ -15,10 +15,12 @@ namespace Server.Game
             ObjectType = GameObjectType.Projectile;
             PositionInfo = new PositionInfo();
             PositionInfo.LocalScaleX = 1;
+            Speed = 0.1f;
         }
 
         public GameObject Owner { get; set; }
         public int ProjectileType {  get; set; }
+        public float Speed { get; set; }
 
         protected long _nextMoveTick = 0;
 
@@ -40,7 +42,7 @@ namespace Server.Game
             long tick = 100;   // speed = 10으로 설정해줬으므로 == 0.01
             _nextMoveTick = Environment.TickCount64 + tick;     // 0.01초당 1칸씩 움직이도록 속도 조정
 
-            PositionInfo.PosX += PositionInfo.LocalScaleX * 0.5f;
+            PositionInfo.PosX += PositionInfo.LocalScaleX * Speed;
 
             S_Move movePacket = new S_Move();
             movePacket.PositionInfo = new PositionInfo();

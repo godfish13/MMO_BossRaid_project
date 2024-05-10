@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf.Protocol;
+using Server.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,13 @@ namespace Server.Game
 {
     public class DragonFireball : Projectile
     {
+        public DragonFireball()
+        {
+            MonsterSkillInfo _monsterSkill = null;
+            DataMgr.MonsterSkillDictionary.TryGetValue(key: 10, out _monsterSkill);
+            Speed = _monsterSkill.FireballSpeed;
+        }
+
         public override void Update()
         {
             switch (State)
@@ -30,7 +38,7 @@ namespace Server.Game
             long tick = 100;
             _nextMoveTick = Environment.TickCount64 + tick;     // 0.1초당 움직임
 
-            PositionInfo.PosX += PositionInfo.LocalScaleX * 0.5f;
+            PositionInfo.PosX += PositionInfo.LocalScaleX * Speed;
 
             S_Move movePacket = new S_Move();
             movePacket.PositionInfo = new PositionInfo();
@@ -51,7 +59,7 @@ namespace Server.Game
             Projectile ExplosionEffect = ObjectMgr.Instance.Add<Projectile>();
             ExplosionEffect.ProjectileType = (int)Define.ProjectileType.DragonFireballExplosion;
             ExplosionEffect.GameObjectInfo.PositionInfo.PosX = PositionInfo.PosX;
-            ExplosionEffect.GameObjectInfo.PositionInfo.PosY = 0;
+            ExplosionEffect.GameObjectInfo.PositionInfo.PosY = 0.3f;
             ExplosionEffect.GameObjectInfo.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
             ExplosionEffect.Owner = this;
 

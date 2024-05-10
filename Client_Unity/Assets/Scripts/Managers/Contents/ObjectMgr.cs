@@ -86,6 +86,7 @@ public class ObjectMgr : MonoBehaviour
                 ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "DragonFireballExplosion");
                 break;
             case (int)Define.ProjectileType.DragonThunder:
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "DragonThunder");
                 break;
         }
     }
@@ -179,9 +180,18 @@ public class ObjectMgr : MonoBehaviour
             GameObject skillUser;
             if (_monsters.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
             {
-                Projectile.transform.localScale = skillUser.transform.localScale;
-                Projectile.transform.position = skillUser.transform.position + new Vector3(skillUser.transform.localScale.x * 2.3f, 0, 0);
-                _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
+                if (projectilePrefabName == "DragonFireball")
+                {
+                    Projectile.transform.localScale = skillUser.transform.localScale;
+                    Projectile.transform.position = skillUser.transform.position + new Vector3(skillUser.transform.localScale.x * 2.3f, 0, 0);
+                    _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
+                }
+                else if (projectilePrefabName == "DragonThunder")
+                {
+                    Projectile.transform.localScale = skillUser.transform.localScale;
+                    Projectile.transform.position = new Vector3(gameObjectInfo.PositionInfo.PosX, gameObjectInfo.PositionInfo.PosY, 0);
+                    _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
+                }
             }
         }
         else if (type == GameObjectType.Projectile)
@@ -191,7 +201,7 @@ public class ObjectMgr : MonoBehaviour
             GameObject skillUser;
             if (_projectiles.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
             {
-                Projectile.transform.position = skillUser.transform.position;
+                Projectile.transform.position = new Vector2(skillUser.transform.position.x, skillUser.transform.position.y + 0.5f);
                 _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
             }
         }

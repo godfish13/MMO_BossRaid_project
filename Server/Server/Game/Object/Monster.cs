@@ -60,6 +60,12 @@ namespace Server.Game
             set { MonsterSkillInfo.BiteCoolTime = value; }
         }
 
+        public int BiteFrequency
+        {
+            get { return MonsterSkillInfo.BiteFrequency; }
+            set { MonsterSkillInfo.BiteFrequency = value; }
+        }
+
         public int BurnDamage
         {
             get { return MonsterSkillInfo.BurnDamage; }
@@ -76,6 +82,12 @@ namespace Server.Game
         {
             get { return MonsterSkillInfo.BurnCoolTime; }
             set { MonsterSkillInfo.BurnCoolTime = value; }
+        }
+
+        public int BurnFrequency
+        {
+            get { return MonsterSkillInfo.BurnFrequency; }
+            set { MonsterSkillInfo.BurnFrequency = value; }
         }
 
         public int FireballDamage
@@ -96,10 +108,16 @@ namespace Server.Game
             set { MonsterSkillInfo.FireballCoolTime = value; }
         }
 
-        public int FireBallInstantiateTimingOffset
+        public int FireballInstantiateTimingOffset
         {
             get { return MonsterSkillInfo.FireballInstantiateTimingOffset; }
             set { MonsterSkillInfo.FireballInstantiateTimingOffset = value; }
+        }
+
+        public int FireballFrequency
+        {
+            get { return MonsterSkillInfo.FireballFrequency; }
+            set { MonsterSkillInfo.FireballFrequency = value; }
         }
 
         public int ThunderDamage
@@ -118,6 +136,12 @@ namespace Server.Game
         {
             get { return MonsterSkillInfo.ThunderCoolTime; }
             set { MonsterSkillInfo.ThunderCoolTime = value; }
+        }
+
+        public int ThunderFrequency
+        {
+            get { return MonsterSkillInfo.ThunderFrequency; }
+            set { MonsterSkillInfo.ThunderFrequency = value; }
         }
         #endregion
 
@@ -229,12 +253,12 @@ namespace Server.Game
             {
                 _patternRandom = rand.Next(100);
 
-                if (_patternRandom < 60)
+                if (_patternRandom < BiteFrequency)
                 {
                     _nextTick = Environment.TickCount64 + BiteDelay;  // State 변경되자마자 UpdateBite 내 1회 실행되는것을 방지하기 위해 미리 한번 늘려줌
                     State = CreatureState.Bite;                       // 즉 ~~Delay : State 유지 시간과 같음
                 }
-                else if (_patternRandom < 85)
+                else if (_patternRandom < BurnFrequency)
                 {
                     _nextTick = Environment.TickCount64 + BurnDelay;
                     State = CreatureState.Burn;
@@ -249,10 +273,10 @@ namespace Server.Game
             {
                 _patternRandom = rand.Next(100);
 
-                if (_patternRandom < 100 && _targetPlayer.PositionInfo.PosY < 3.0)
+                if (_patternRandom < FireballFrequency && _targetPlayer.PositionInfo.PosY < 3.0)
                 {
                     _spawnProjectileOnce = true;
-                    _nextTick = Environment.TickCount64 + FireBallInstantiateTimingOffset;  // State변경된 후 투사체 생성까지 걸리는 시간
+                    _nextTick = Environment.TickCount64 + FireballInstantiateTimingOffset;  // State변경된 후 투사체 생성까지 걸리는 시간
                     State = CreatureState.Fireball;
                 }
                 else
@@ -334,7 +358,22 @@ namespace Server.Game
         {
             if (_spawnProjectileOnce)
             {
-                
+                foreach (Player p in MyRoom._players.Values)
+                {
+                    DragonThunder Thunder = ObjectMgr.Instance.Add<DragonThunder>();
+                    if (Thunder == null)
+                        return;
+                    Thunder.Owner = this;
+                    Thunder.ProjectileType = (int)Define.ProjectileType.DragonThunder;
+                    Thunder.GameObjectInfo.PositionInfo.PosX = p.PositionInfo.PosX;
+                    Thunder.GameObjectInfo.PositionInfo.PosY = p.PositionInfo.PosY;
+                    Thunder.GameObjectInfo.PositionInfo.LocalScaleX = 1;
+
+                    MyRoom.EnterGame(Thunder);
+                }
+
+                _spawnProjectileOnce = false;
+                _nextTick = Environment.TickCount64 + FireballDelay;    // ThunderState 유지
             }
 
             if (BehaveCountTimer(ThunderCoolTime) == false)
