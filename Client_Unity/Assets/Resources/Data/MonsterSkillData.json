@@ -8,18 +8,18 @@
       "BiteCoolTime": "100",
       "BiteFrequency": "45",
       "BurnDamage": "20",
-      "BurnDelay": "1000",
-      "BurnCoolTime": "900",
+      "BurnDelay": "900",
+      "BurnCoolTime": "100",
       "BurnFrequency": "85",
       "FireballDamage": "30",
       "FireballDelay": "1000",
-      "FireballCoolTime": "1000",
+      "FireballCoolTime": "500",
       "FireballInstantiateTimingOffset": "500",
       "FireballSpeed": "0.5",
-      "FireballFrequency": "0",
+      "FireballFrequency": "70",
       "ThunderDamage": "50",
       "ThunderDelay": "2500",
-      "ThunderCoolTime": "1000",
+      "ThunderCoolTime": "500",
       "ThunderFrequency": "30"
     }
   ]

@@ -3,8 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragonFireballCtrl : ProjectileCtrl
+public class DragonFireballCtrl : DragonPattern
 {
+    private void Awake()
+    {
+        PatternId = 7;
+    }
+
     protected override void Init()
     {
         base.Init();

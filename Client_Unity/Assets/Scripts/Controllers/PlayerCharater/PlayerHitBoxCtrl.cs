@@ -26,9 +26,11 @@ public class PlayerHitBoxCtrl : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == MonsterSkillLayerMask || collision.gameObject.layer == MonsterProjectileLayerMask)
+        if (collision.gameObject.layer == MonsterSkillLayerMask)
         {
             Debug.Log("아야 맞음!!");
+            Debug.Log($"pattern : {collision.gameObject.GetComponent<DragonPattern>().PatternId}");
+            
         }
     }
 

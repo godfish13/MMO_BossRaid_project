@@ -21,10 +21,12 @@ public class Define
         Human_Bomb = 1,
         Elf_Arrow = 2,
         Lizard_FireBall = 3,
-        Lizaed_Heal = 4,
-        DragonFireball = 5,
-        DragonFireballExplosion = 6,
-        DragonThunder = 7,
+        Lizard_Heal = 4,
+        DragonBite = 5,
+        DragonBurn = 6,
+        DragonFireball = 7,
+        DragonFireballExplosion = 8,
+        DragonThunder = 9,
     }
 
     public enum Layer

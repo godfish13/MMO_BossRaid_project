@@ -264,7 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 167112823}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 338027968}
-  m_Layer: 0
+  - component: {fileID: 338027969}
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,6 +466,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &338027969
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338027967}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &411989750
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 411989751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +538,7 @@ GameObject:
   - component: {fileID: 623183181}
   - component: {fileID: 623183182}
   - component: {fileID: 623183183}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DownCloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +842,7 @@ GameObject:
   - component: {fileID: 1054855818}
   - component: {fileID: 1054855819}
   - component: {fileID: 1054855820}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UpperCloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -979,7 +1001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1184846642}
   - component: {fileID: 1184846643}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1597,7 +1619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1820861136}
   - component: {fileID: 1820861137}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FarMountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1774,7 +1796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1837161221}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WallBoundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1871,7 +1893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1911747324}
   - component: {fileID: 1911747325}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CloseMountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5056176777440051963}
   - component: {fileID: 1730196561344640066}
   - component: {fileID: 6779346097566558085}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: DragonThunder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2733247010544334549, guid: 367a2daf4ddf9644d9f21b1dd6943a99, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2733247010544334550, guid: 367a2daf4ddf9644d9f21b1dd6943a99, type: 3}
       propertyPath: m_RootOrder
@@ -246,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5973003749616979980, guid: ab4f465da0b41194f8c112c1f64ab410, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab4f465da0b41194f8c112c1f64ab410, type: 3}

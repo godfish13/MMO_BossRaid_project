@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5699312532328926222}
   - component: {fileID: 5699312532328926221}
+  - component: {fileID: 6692369928665589116}
   m_Layer: 12
   m_Name: Dragon_BiteBox
   m_TagString: Untagged
@@ -58,6 +59,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3.3}
   m_EdgeRadius: 0
+--- !u!114 &6692369928665589116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699312532328926223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d1a870f4519864f8381af43113f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObjectId: 0
+  _state: 0
 --- !u!1 &6867562600317178624
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,6 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 168718031158250903}
   - component: {fileID: 7374819266806640916}
+  - component: {fileID: 5532305682700477384}
   m_Layer: 12
   m_Name: Dragon_BurnBox
   m_TagString: Untagged
@@ -116,6 +132,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.2}
   m_EdgeRadius: 0
+--- !u!114 &5532305682700477384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867562600317178624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545716a58f2bb7b469a1e12de0be5cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObjectId: 0
+  _state: 0
 --- !u!1 &8310625715094574708
 GameObject:
   m_ObjectHideFlags: 0

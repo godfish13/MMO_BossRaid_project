@@ -247,8 +247,10 @@ namespace Server.Game
                 PositionInfo.LocalScaleX = 1;
 
             Random rand = new Random();
-            int _patternRandom;             // 확률 범위 Json으로 뺄까?
+            int _patternRandom;             
 
+            // ~~Delay : State 유지 시간
+            // ~~CoolTime : 패턴 종료 후 Idle 유지시간
             if (_targetPlayer.DistanceBetweenMonster < 4.0f)    // 근접 공격 범위
             {
                 _patternRandom = rand.Next(100);
@@ -256,7 +258,7 @@ namespace Server.Game
                 if (_patternRandom < BiteFrequency)
                 {
                     _nextTick = Environment.TickCount64 + BiteDelay;  // State 변경되자마자 UpdateBite 내 1회 실행되는것을 방지하기 위해 미리 한번 늘려줌
-                    State = CreatureState.Bite;                       // 즉 ~~Delay : State 유지 시간과 같음
+                    State = CreatureState.Bite;                       
                 }
                 else if (_patternRandom < BurnFrequency)
                 {
@@ -265,6 +267,7 @@ namespace Server.Game
                 }
                 else
                 {
+                    _spawnProjectileOnce = true;
                     _nextTick = Environment.TickCount64 + ThunderDelay;
                     State = CreatureState.Thunder;
                 }
@@ -324,7 +327,7 @@ namespace Server.Game
         {
             if (_spawnProjectileOnce == true)   // 투사체 1회만 생성
             {
-                if (BehaveCountTimer(FireballCoolTime) == true)
+                if (BehaveCountTimer(FireballCoolTime) == true)     // Fireball 투사체 브레스 모션에 맞춰 생성하기 위해 한번 돌려줌
                 {
                     DragonFireball Fireball = ObjectMgr.Instance.Add<DragonFireball>();
                     if (Fireball == null)
@@ -338,7 +341,7 @@ namespace Server.Game
                     MyRoom.EnterGame(Fireball);
                     _spawnProjectileOnce = false;
 
-                    _nextTick = Environment.TickCount64 + FireballDelay;    // FireBallState 유지
+                    _nextTick = Environment.TickCount64 + FireballDelay;    // FireballState 유지
                 }
             }
 
@@ -373,7 +376,7 @@ namespace Server.Game
                 }
 
                 _spawnProjectileOnce = false;
-                _nextTick = Environment.TickCount64 + FireballDelay;    // ThunderState 유지
+                _nextTick = Environment.TickCount64 + ThunderDelay;    // ThunderState 유지
             }
 
             if (BehaveCountTimer(ThunderCoolTime) == false)
