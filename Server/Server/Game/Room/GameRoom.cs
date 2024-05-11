@@ -245,31 +245,32 @@ namespace Server.Game
             {
                 case (int)Define.SkillId.Human_Slash:      
                     {
-                        //Console.WriteLine($"hitted {hpdeltaPacket.HittedGameObjectId} by Human_Slash");
                         _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
                         Monster.Hp -= player.SkillDamage;
                     }
                     break;
                 case (int)Define.SkillId.Human_ThrowBomb:      
                     {
-                        //Console.WriteLine($"hitted {hpdeltaPacket.HittedGameObjectId} by Human_ThrowBomb");
                         _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
                         Monster.Hp -= player.SubSkillDamage;
                     }
                     break;
                 case (int)Define.SkillId.Elf_ArrowShot:    
                     {
-
+                        _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
+                        Monster.Hp -= player.SkillDamage;
                     }
                     break;
                 case (int)Define.SkillId.Elf_Knife:      
                     {
-
+                        _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
+                        Monster.Hp -= player.SubSkillDamage;
                     }
                     break;
                 case (int)Define.SkillId.Furry_Slash:
                     {
-
+                        _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
+                        Monster.Hp -= player.SkillDamage;
                     }
                     break;
                 case (int)Define.SkillId.Dragon_Bite:            

@@ -21,13 +21,15 @@ public class NetworkMgr
         string host = Dns.GetHostName();
         IPHostEntry ipHost = Dns.GetHostEntry(host);
         IPAddress ipAddr = ipHost.AddressList[0];
-        IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
 
+        ///////////////////////////////////////////
+        ///외부 IP ServerConnect용 IPAddress 영역///
+        ///////////////////////////////////////////
+
+        IPEndPoint endPoint = new IPEndPoint(ipAddr, 7185);
         Connector connector = new Connector();
-
-        connector.Connect(endPoint,
-            () => { return _session; },
-            1);
+        
+        connector.Connect(endPoint, () => { return _session; }, 1);
     }
 
     public void Update()

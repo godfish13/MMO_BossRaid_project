@@ -13,22 +13,16 @@ public class PlayerHitBoxCtrl : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D collision)  // ¸ó½ºÅÍ¶û ºÎµúÈû
     {
-        // Todo
-        //_rigidbody.AddForce(new Vector3(transform.localScale.x * -ReBoundOffset, 0));
         if (collision.gameObject.layer == MonsterLayerMask)
         {
             Debug.Log("MonsterÀÇ ¸öÅë¹ÚÄ¡±â!");
         }
-
-        // Hpdelta Packet Send
-        //SendHpdeltaPacket(collision, "Monster", (int)Define.SkillId.Human_Slash);
     }
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == MonsterSkillLayerMask || collision.gameObject.layer == MonsterProjectileLayerMask)
         {
-            //Debug.Log($"pattern : {collision.gameObject.GetComponent<DragonPattern>().PatternId}");
             SendPlayerHpdeltaPacket(collision, collision.gameObject.GetComponent<DragonPattern>().PatternId);
         }
     }
