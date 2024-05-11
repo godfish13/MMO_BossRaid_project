@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1825900951593488387}
   - component: {fileID: 1825900951593488385}
   - component: {fileID: 1825900951593488390}
-  - component: {fileID: 5401311393730534868}
+  - component: {fileID: -6826487249994972632}
   m_Layer: 8
   m_Name: My_Furry_Knight
   m_TagString: Untagged
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 4723107735738678597, guid: 138daec0b7f3764408be7707020b26e4, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: a57468ed70eeaf8488f5a093b19176f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 1825900951593488396}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61e391b8508c5a745bb6fb8c97bd06d2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 347072a57a1f3d6429308992df0870dd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -158,7 +158,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5401311393730534868
+--- !u!114 &-6826487249994972632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1825900951593488396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecdbc5130ba96d4db1c7557b1cb65cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 06c6fa77a57c0da41935373d3546dbe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectId: 0
@@ -175,6 +175,7 @@ MonoBehaviour:
   _state: 0
   _input: {x: 0, y: 0}
   _isGrounded: 1
+  UI_Number: 0
 --- !u!1 &1825900952188821661
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,15 +260,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5304945838115232306, guid: 89fdb3101c52fd145b9cc7486ef73458, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5304945838115232306, guid: 89fdb3101c52fd145b9cc7486ef73458, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.20000003
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 5304945838115232306, guid: 89fdb3101c52fd145b9cc7486ef73458, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.506
+      value: 0.277
       objectReference: {fileID: 0}
     - target: {fileID: 5304945838115232306, guid: 89fdb3101c52fd145b9cc7486ef73458, type: 3}
       propertyPath: m_LocalPosition.y
@@ -331,7 +332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5304945838115232307, guid: 89fdb3101c52fd145b9cc7486ef73458, type: 3}
       propertyPath: InitialModule.startRotation.scalar
-      value: 1.012291
+      value: 0.837758
       objectReference: {fileID: 0}
     - target: {fileID: 5304945838115232308, guid: 89fdb3101c52fd145b9cc7486ef73458, type: 3}
       propertyPath: m_SortingOrder
@@ -369,7 +370,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7055056160673082932, guid: 9835830a47182c248918272b4c24aa4e, type: 3}
       propertyPath: m_Name
-      value: Human_SlashBox
+      value: Furry_SlashBox
       objectReference: {fileID: 0}
     - target: {fileID: 7055056160673082932, guid: 9835830a47182c248918272b4c24aa4e, type: 3}
       propertyPath: m_IsActive
@@ -421,11 +422,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7055056160673082934, guid: 9835830a47182c248918272b4c24aa4e, type: 3}
       propertyPath: m_Size.x
-      value: 1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 7055056160673082934, guid: 9835830a47182c248918272b4c24aa4e, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055056160673082934, guid: 9835830a47182c248918272b4c24aa4e, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.96
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9835830a47182c248918272b4c24aa4e, type: 3}

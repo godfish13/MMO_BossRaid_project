@@ -73,18 +73,17 @@ public class ProjectileCtrl : MonoBehaviour
         SyncPos();
     }
 
-    float speed = 5.0f;     // Server 상 projectile update tick * 1tick당 이동량 // 각 파생 class에서 조절 기본값 5
+    public float Speed { get; set; } = 1.0f;     // Server 상 projectile update tick(1000 == 1초) * 1tick당 이동량(Speed) // 각 파생 class에서 조절 기본값 1
+                            // ex. DragonFireball : Server에서 1000틱당 5이동 => Speed = 5
     public void SyncPos()
     {
         // 변화 없을땐 쓸데없이 작동하지 않도록 조건 추가
         if (State != PositionInfo.State || transform.position.x != PositionInfo.PosX || transform.position.y != PositionInfo.PosY || transform.localScale.x != PositionInfo.LocalScaleX)
         {
             State = PositionInfo.State;
-            //transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(PositionInfo.PosX, PositionInfo.PosY), Time.deltaTime * speed);
+            // Server에서 관리되는 투사체는 MoveTowards를 통해 이동
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(PositionInfo.PosX, PositionInfo.PosY), Time.deltaTime * Speed);
             transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
-            //Debug.Log($"{GameObjectId} : {PositionInfo.PosX}, {PositionInfo.PosY}, {PositionInfo.LocalScaleX}");
-
         }
     }
 

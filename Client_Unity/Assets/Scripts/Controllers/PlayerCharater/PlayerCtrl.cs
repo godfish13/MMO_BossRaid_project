@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class HumanCtrl : BaseCtrl 
+public class PlayerCtrl : BaseCtrl 
 {
     protected ParticleSystem SlashEffect;
     public int UI_Number;
@@ -48,22 +48,28 @@ public class HumanCtrl : BaseCtrl
     #region MainSkill
     protected virtual void AnimEvent_MainSkillSlashOn()
     {
-        SlashEffect.Play();
+        if (ClassId == 0 || ClassId == 2)   // Human Furry 평타 이펙트
+            SlashEffect.Play();
     }
 
     protected virtual void AnimEvent_MainSkillFrameEnded()
     {
-        SlashEffect.Stop();
+        if (ClassId == 0 || ClassId == 2)
+            SlashEffect.Stop();
     }
     #endregion
 
     #region SubSkill      
-    protected virtual void AnimEvent_SubSkillThrowBomb()
+    protected virtual void AnimEvent_SubSkill()
     {
+        if (ClassId == 1)           // Elf 나이프 찌르기 이펙트
+            SlashEffect.Play();
     }
 
     protected virtual void AnimEvent_SubSkillFrameEnded()
     {
+        if (ClassId == 1)
+            SlashEffect.Stop();
     }
     // Hit 판정 OnTriggerEnter2D는 BombCtrl에 존재
     #endregion

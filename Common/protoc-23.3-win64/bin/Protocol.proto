@@ -71,6 +71,7 @@ message S_SpawnProjectile
 {
 	GameObjectInfo gameObjectInfo = 1;
 	GameObjectInfo ownerInfo = 2;
+	float speed = 4;
 }
 
 message S_Despawn

@@ -1111,6 +1111,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Elf_Arrow
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 393
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 288899311024f744f974f8db3c04fec3
+      internalID: 1160374531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1136,6 +1157,7 @@ TextureImporter:
       Jab_0: 1137805138824052146
       Jump_0: 7460046300004610927
       Crawl_0: 4612047012486592167
+      Elf_Arrow: 1160374531
       Fire_0: 1098286324429101383
       Run_3: 5304202850863732263
       Push_1: 8092220566306130611

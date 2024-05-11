@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MyHumanCtrl : HumanCtrl
+public class MyHumanCtrl : MyPlayerBaseCtrl
 {
     protected BoxCollider2D _slashBox;   // Main Skill 판정범위 히트박스
     
@@ -268,7 +268,7 @@ public class MyHumanCtrl : HumanCtrl
             _input.y = 0;
 
         if (_input.x == 0 && _input.y == 0 && _isGrounded && _jumpable && State != CreatureState.Skill && State != CreatureState.Rolling)
-            State = CreatureState.Idle;     // State Change flag
+            State = CreatureState.Idle;   
     }
 
     // Roll Input
@@ -277,7 +277,7 @@ public class MyHumanCtrl : HumanCtrl
         // 구르기 입력
         if (_isGrounded && _isRollingOn && Input.GetKey(KeyCode.Z))
         {
-            State = CreatureState.Rolling;  // State Change flag
+            State = CreatureState.Rolling;
         }
     }
 
@@ -288,14 +288,14 @@ public class MyHumanCtrl : HumanCtrl
         {
             if (_isSkill == false)
                 _isSkill = true;
-            State = CreatureState.Skill;    // State Change flag
+            State = CreatureState.Skill;   
 
             // Skill Packet Send Todo
         }
         else
         {
             if (State == CreatureState.Skill && _isSkill == false)
-                State = CreatureState.Tmp;   // State Change flag
+                State = CreatureState.Tmp;  
 
             // Tmp Packet Send Todo
         }
@@ -307,7 +307,7 @@ public class MyHumanCtrl : HumanCtrl
         if (_isSubSkillOn && Input.GetKey(KeyCode.A)) // 한번 사용시 쿨타임동안 스킬사용불가
         {
             _coSubSkillCoolTimer = StartCoroutine("CoSubSkillCoolTimer", SkillData.SubSkillCoolTime);
-            State = CreatureState.Subskill;     // State Change flag
+            State = CreatureState.Subskill;    
 
             // Skill Packet Send Todo
         }
@@ -348,7 +348,7 @@ public class MyHumanCtrl : HumanCtrl
     #endregion
 
     #region SubSkill      
-    protected override void AnimEvent_SubSkillThrowBomb()
+    protected override void AnimEvent_SubSkill()
     {
         ThrowBomb();
     }
@@ -363,7 +363,7 @@ public class MyHumanCtrl : HumanCtrl
 
     protected override void AnimEvent_SubSkillFrameEnded()
     {
-        State = CreatureState.Tmp;  // State Change flag
+        State = CreatureState.Tmp;  
         // AnimEvent : SubSkill 애니메이션 끝나기 전까지 상태변화 X
     }
     // Hit 판정 OnTriggerEnter2D는 BombCtrl에 존재
@@ -389,7 +389,7 @@ public class MyHumanCtrl : HumanCtrl
             }
 
             if (Input.GetKey(KeyCode.X) == false && State != CreatureState.Subskill)    // 스킬들 사용중에는 Land모션 재생 x
-                State = CreatureState.Land; // State Change flag
+                State = CreatureState.Land; 
             //Debug.Log("Landed");
             _coJumpCoolTimer = StartCoroutine("CoJumpCoolTimer", SkillData.JumpCoolTime);     // 착지 후 점프 0.1초 쿨타임 (애니메이션 꼬임 문제 방지)
         }

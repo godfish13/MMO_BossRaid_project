@@ -275,13 +275,13 @@ public class BaseCtrl : MonoBehaviour
         if (_input.x == 0)   // 좌우 입력 없을 시 브레이크
         {
             if (_isGrounded == false)
-                State = CreatureState.Fall;     // State Change flag
+                State = CreatureState.Fall;    
 
             _velocity.x = Mathf.MoveTowards(_velocity.x, 0, StatData.Acceleration * 10 * Time.fixedDeltaTime);
             // rg의 x속도 가속도*2로 0까지 감속
 
             if (_isGrounded && _input.y == -1)
-                State = CreatureState.Crouch;   // State Change flag
+                State = CreatureState.Crouch;   
         }
         else  // 입력 있을 시 가속
         {
@@ -289,12 +289,12 @@ public class BaseCtrl : MonoBehaviour
             {
                 if (_input.y == -1) // 기어다니고 있으면 이동속도 하락
                 {
-                    State = CreatureState.Crawl;    // State Change flag
+                    State = CreatureState.Crawl;   
                     _velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * StatData.MaxSpeed * 0.3f, StatData.Acceleration * Time.fixedDeltaTime);
                 }
                 else
                 {
-                    State = CreatureState.Run;      // State Change flag
+                    State = CreatureState.Run;    
                     _velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * StatData.MaxSpeed, StatData.Acceleration * Time.fixedDeltaTime);
                     // MoveTowards : rg의 x속도, 최대 _MaxSpeed까지, 시간당 가속도만큼 가속
                 }
@@ -302,7 +302,7 @@ public class BaseCtrl : MonoBehaviour
             else if (_isGrounded == false)
             {
                 if (_isSkill == false)      // 점프 중 스킬쓰고 애니메이션이 끝난 이후 쭉 떨어지는 경우
-                    State = CreatureState.Fall; // State Change flag
+                    State = CreatureState.Fall; 
                 _velocity.x = Mathf.MoveTowards(_rigidbody.velocity.x, _input.x * StatData.MaxSpeed, StatData.Acceleration * 0.5f * Time.fixedDeltaTime);
                 // 체공중일 시 가속도 절반
             }
@@ -337,6 +337,16 @@ public class BaseCtrl : MonoBehaviour
         _rigidbody.velocity = _velocity;   // 현재 속도 조절
     }
 
+    protected void BrakeIfSkill()  // SubSkill 사용중이면 좌우이동 정지
+    {
+        if (State == CreatureState.Skill && _isGrounded)
+        {
+            _velocity.x = Mathf.MoveTowards(_velocity.x, 0, StatData.Acceleration * Time.fixedDeltaTime);
+            _rigidbody.velocity = _velocity;
+        }
+        // rg의 x속도 가속도*2로 0까지 감속
+    }
+
     protected void BrakeIfSubSkill()  // SubSkill 사용중이면 좌우이동 정지
     {
         if (State == CreatureState.Subskill && _isGrounded)
@@ -357,7 +367,7 @@ public class BaseCtrl : MonoBehaviour
             {
                 _isGrounded = false;
 
-                State = CreatureState.Jump;     // State Change flag
+                State = CreatureState.Jump;   
 
                 _rigidbody.AddForce(Vector2.up * SkillData.JumpPower);
                 // AnimEvent : 점프 애니메이션 재생후 바로 체공애니메이션으로 변경
@@ -391,19 +401,19 @@ public class BaseCtrl : MonoBehaviour
 
     protected void AnimEvent_ChangeState2Fall()
     {
-        State = CreatureState.Fall;     // State Change flag
+        State = CreatureState.Fall;   
         // AnimEvent : 점프 애니메이션 재생후 바로 체공애니메이션으로 변경
     }
     #endregion
 
     #region Rolling
-    protected void Rolling()
+    protected virtual void Rolling()
     {
         _velocity.x = transform.localScale.x * StatData.MaxSpeed * 3;
         _rigidbody.velocity = _velocity;
     }
 
-    protected void AnimEvent_RollingStart()   // 구르기 중 무적
+    protected virtual void AnimEvent_RollingStart()   // 구르기 중 무적
     {
         if (_hitBoxCollider == null)    // HumanCtrl에는 없으므로 return
             return;
@@ -411,7 +421,7 @@ public class BaseCtrl : MonoBehaviour
         _hitBoxCollider.enabled = false;
     }
 
-    protected void AnimEvent_RollingEnded()
+    protected virtual void AnimEvent_RollingEnded()
     {
         if (_hitBoxCollider == null)
             return;
@@ -429,7 +439,7 @@ public class BaseCtrl : MonoBehaviour
             _rigidbody.velocity = _velocity;
         }
 
-        State = CreatureState.Tmp;     // State Change flag
+        State = CreatureState.Tmp;    
         _coRollingCoolTimer = StartCoroutine("CoRollingCoolTimer", SkillData.JumpCoolTime + 1.0f);
     }
     #endregion  

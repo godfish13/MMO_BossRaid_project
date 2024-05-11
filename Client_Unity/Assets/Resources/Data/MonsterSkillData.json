@@ -15,7 +15,7 @@
       "FireballDelay": "1000",
       "FireballCoolTime": "500",
       "FireballInstantiateTimingOffset": "500",
-      "FireballSpeed": "0.5",
+      "FireballSpeed": "5",
       "FireballFrequency": "70",
       "ThunderDamage": "40",
       "ThunderDelay": "2500",

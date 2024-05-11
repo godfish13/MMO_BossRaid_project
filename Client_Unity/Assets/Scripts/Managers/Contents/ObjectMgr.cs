@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class ObjectMgr : MonoBehaviour
 {
-    public MyHumanCtrl MyHumanCtrl { get; set; }    // MyHumanCtrl은 접근하기 편하게 따로 빼둠
+    public MyPlayerBaseCtrl MyPlayerBaseCtrl { get; set; }  // MyHumanCtrl은 접근하기 편하게 따로 빼둠
+
     public MonsterCtrl MonsterCtrl { get; set; }
     Dictionary<int, GameObject> _players = new Dictionary<int, GameObject>();
     Dictionary<int, GameObject> _monsters = new Dictionary<int, GameObject>();
@@ -50,39 +51,78 @@ public class ObjectMgr : MonoBehaviour
     {
         if (myCtrl == true)
         {
-            GameObject go = Managers.resourceMgr.Instantiate($"Character/My_{className}");
-            _players.Add(gameObjectInfo.GameObjectId, go);
+            switch (className)
+            {
+                case "Human_Adventurer":
+                    {
+                        GameObject go = Managers.resourceMgr.Instantiate($"Character/My_{className}");
+                        _players.Add(gameObjectInfo.GameObjectId, go);
 
-            MyHumanCtrl = go.GetComponent<MyHumanCtrl>();
-            MyHumanCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
-            MyHumanCtrl.GameObjectId = gameObjectInfo.GameObjectId;
-            MyHumanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
-            MyHumanCtrl.StatData = gameObjectInfo.StatInfo;
-            MyHumanCtrl.SkillData = gameObjectInfo.SkillInfo;
-            go.name = MyHumanCtrl.StatData.Class;
+                        MyPlayerBaseCtrl = go.GetComponent<MyPlayerBaseCtrl>();
+                        MyPlayerBaseCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
+                        MyPlayerBaseCtrl.GameObjectId = gameObjectInfo.GameObjectId;
+                        MyPlayerBaseCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+                        MyPlayerBaseCtrl.StatData = gameObjectInfo.StatInfo;
+                        MyPlayerBaseCtrl.SkillData = gameObjectInfo.SkillInfo;
+                        go.name = MyPlayerBaseCtrl.StatData.Class;
 
-            MyHumanCtrl.SyncPos();  // 서버상 위치와 유니티상 위치 동기화
+                        MyPlayerBaseCtrl.SyncPos();  // 서버상 위치와 유니티상 위치 동기화
+                    }
+                    break;
+                case "Elf_Archer":
+                    {
+                        GameObject go = Managers.resourceMgr.Instantiate($"Character/My_{className}");
+                        _players.Add(gameObjectInfo.GameObjectId, go);
+
+                        MyPlayerBaseCtrl = go.GetComponent<MyPlayerBaseCtrl>();
+                        MyPlayerBaseCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
+                        MyPlayerBaseCtrl.GameObjectId = gameObjectInfo.GameObjectId;
+                        MyPlayerBaseCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+                        MyPlayerBaseCtrl.StatData = gameObjectInfo.StatInfo;
+                        MyPlayerBaseCtrl.SkillData = gameObjectInfo.SkillInfo;
+                        go.name = MyPlayerBaseCtrl.StatData.Class;
+
+                        MyPlayerBaseCtrl.SyncPos();  // 서버상 위치와 유니티상 위치 동기화
+                    }
+                    break;
+                case "Furry_Knight":
+                    {
+                        GameObject go = Managers.resourceMgr.Instantiate($"Character/My_{className}");
+                        _players.Add(gameObjectInfo.GameObjectId, go);
+
+                        MyPlayerBaseCtrl = go.GetComponent<MyPlayerBaseCtrl>();
+                        MyPlayerBaseCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
+                        MyPlayerBaseCtrl.GameObjectId = gameObjectInfo.GameObjectId;
+                        MyPlayerBaseCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+                        MyPlayerBaseCtrl.StatData = gameObjectInfo.StatInfo;
+                        MyPlayerBaseCtrl.SkillData = gameObjectInfo.SkillInfo;
+                        go.name = MyPlayerBaseCtrl.StatData.Class;
+
+                        MyPlayerBaseCtrl.SyncPos();  // 서버상 위치와 유니티상 위치 동기화
+                    }
+                    break;
+            }
         }
         else
         {
             GameObject go = Managers.resourceMgr.Instantiate($"Character/{className}");
             _players.Add(gameObjectInfo.GameObjectId, go);
 
-            HumanCtrl humanCtrl = go.GetComponent<HumanCtrl>();
-            humanCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
-            humanCtrl.GameObjectId = gameObjectInfo.GameObjectId;
-            humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
-            humanCtrl.StatData = gameObjectInfo.StatInfo;
-            humanCtrl.SkillData = gameObjectInfo.SkillInfo;
-            humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
-            humanCtrl.UI_Number = _players.Count - 1;
-            go.name = humanCtrl.StatData.Class;
+            PlayerCtrl playerCtrl = go.GetComponent<PlayerCtrl>();
+            playerCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
+            playerCtrl.GameObjectId = gameObjectInfo.GameObjectId;
+            playerCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+            playerCtrl.StatData = gameObjectInfo.StatInfo;
+            playerCtrl.SkillData = gameObjectInfo.SkillInfo;
+            playerCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+            playerCtrl.UI_Number = _players.Count - 1;
+            go.name = playerCtrl.StatData.Class;
 
-            humanCtrl.SyncPos();        // 서버상 위치와 유니티상 위치 동기화
+            playerCtrl.SyncPos();        // 서버상 위치와 유니티상 위치 동기화
         }
     }
 
-    public void AddProjectile(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo) // MyCtrl : 내가 조종하는지 아닌지 체크
+    public void AddProjectile(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo, float speed) // MyCtrl : 내가 조종하는지 아닌지 체크
     {
         GameObjectType type = GetGameObjectTypebyId(gameObjectInfo.GameObjectId);
 
@@ -92,18 +132,22 @@ public class ObjectMgr : MonoBehaviour
         switch (gameObjectInfo.ProjectileType)
         {
             case (int)Define.ProjectileType.Human_Bomb:
-                BombGenerator(gameObjectInfo, ownerObjectInfo, "Explosive");
+                BombGenerator(gameObjectInfo, ownerObjectInfo, "Human_Explosive");
                 break;
             case (int)Define.ProjectileType.Elf_Arrow:
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Elf_Arrow", speed);
+                break;
+            case (int)Define.ProjectileType.Elf_ArrowHit:
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Elf_ArrowHit", speed);
                 break;
             case (int)Define.ProjectileType.Dragon_Fireball:
-                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Dragon_Fireball");
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Dragon_Fireball", speed);
                 break;
             case (int)Define.ProjectileType.Dragon_FireballExplosion:
-                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Dragon_FireballExplosion");
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Dragon_FireballExplosion", speed);
                 break;
             case (int)Define.ProjectileType.Dragon_Thunder:
-                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Dragon_Thunder");
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Dragon_Thunder", speed);
                 break;
         }
     }
@@ -111,7 +155,7 @@ public class ObjectMgr : MonoBehaviour
     // AddForce 활용하는 case Bomb
     public void BombGenerator(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo, string projectilePrefabName)
     {
-        if (ownerObjectInfo.GameObjectId == MyHumanCtrl.GameObjectId)
+        if (ownerObjectInfo.GameObjectId == MyPlayerBaseCtrl.GameObjectId)
         {
             Debug.Log("My projectile added");
             GameObject Bomb = Managers.resourceMgr.Instantiate($"Projectiles/My{projectilePrefabName}");
@@ -148,22 +192,23 @@ public class ObjectMgr : MonoBehaviour
         }
     }
 
-    public void ProjectileGenerator(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo, string projectilePrefabName)
+    public void ProjectileGenerator(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo, string projectilePrefabName, float speed)
     {
         GameObjectType type = GetGameObjectTypebyId(ownerObjectInfo.GameObjectId);
 
         if (type == GameObjectType.Player) 
         {
-            if (ownerObjectInfo.GameObjectId == MyHumanCtrl.GameObjectId)
+            if (ownerObjectInfo.GameObjectId == MyPlayerBaseCtrl.GameObjectId)
             {
                 //Debug.Log("My projectile added");
                 GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/My{projectilePrefabName}");
                 Projectile.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
+                Projectile.GetComponent<ProjectileCtrl>().Speed = speed;
 
                 GameObject skillUser;
                 if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
                 {
-                    Projectile.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
+                    Projectile.transform.position = skillUser.transform.position;
                     _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
                 }
                 else
@@ -176,11 +221,12 @@ public class ObjectMgr : MonoBehaviour
                 //Debug.Log("Others projectile added");
                 GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
                 Projectile.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
+                Projectile.GetComponent<ProjectileCtrl>().Speed = speed;
 
                 GameObject skillUser;
                 if (_players.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
                 {
-                    Projectile.transform.position = skillUser.transform.position + new Vector3(0, 0.5f, 0);
+                    Projectile.transform.position = skillUser.transform.position;
                     _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
                 }
                 else
@@ -193,6 +239,7 @@ public class ObjectMgr : MonoBehaviour
         {
             GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
             Projectile.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
+            Projectile.GetComponent<ProjectileCtrl>().Speed = speed;
 
             GameObject skillUser;
             if (_monsters.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
@@ -309,6 +356,6 @@ public class ObjectMgr : MonoBehaviour
         }
         _projectiles.Clear();
 
-        MyHumanCtrl = null;
+        MyPlayerBaseCtrl = null;
     }
 }

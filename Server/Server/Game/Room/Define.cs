@@ -26,8 +26,9 @@ public class Define
     {
         Human_Bomb = 1,
         Elf_Arrow = 2,
-        Lizard_FireBall = 3,
-        Lizaed_Heal = 4,
+        Elf_ArrowHit = 3,
+        Lizard_FireBall = 4,
+        Lizaed_Heal = 5,
         Dragon_Bite = 11,
         Dragon_Burn = 12,
         Dragon_Fireball = 13,

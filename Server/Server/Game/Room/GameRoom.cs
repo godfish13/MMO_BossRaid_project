@@ -126,6 +126,7 @@ namespace Server.Game
                 SpawnProjectilePacket.GameObjectInfo.GameObjectId = newProjectile.GameObjectId;
                 SpawnProjectilePacket.GameObjectInfo.ProjectileType = newProjectile.ProjectileType;
                 SpawnProjectilePacket.OwnerInfo = newProjectile.Owner.GameObjectInfo;
+                SpawnProjectilePacket.Speed = newProjectile.Speed;
 
                 foreach (Player p in _players.Values)
                 {
@@ -228,6 +229,17 @@ namespace Server.Game
                     }
                     break;
                 case (int)Define.SkillId.Elf_ArrowShot:             // Elf_ArrowShot
+                    {
+                        ElfArrow elfArrow = ObjectMgr.Instance.Add<ElfArrow>();
+                        if (elfArrow == null)
+                            return;
+                        elfArrow.Owner = player;
+                        elfArrow.PositionInfo.PosX = elfArrow.Owner.PositionInfo.PosX;
+                        elfArrow.PositionInfo.PosY = elfArrow.Owner.PositionInfo.PosY;
+                        elfArrow.PositionInfo.LocalScaleX = elfArrow.Owner.PositionInfo.LocalScaleX;
+                        elfArrow.ProjectileType = (int)Define.ProjectileType.Elf_Arrow;
+                        Push(EnterGame, elfArrow);
+                    }
                     break;
                 case (int)Define.SkillId.Elf_Knife:             // Elf_Knife
                     break;

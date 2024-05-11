@@ -42,8 +42,8 @@ namespace Server.Game
             if (_nextMoveTick >= Environment.TickCount64)   // TickCount64 : millisecond 기준
                 return;
 
-            long tick = 100;   // speed = 10으로 설정해줬으므로 == 0.01
-            _nextMoveTick = Environment.TickCount64 + tick;     // 0.01초당 1칸씩 움직이도록 속도 조정
+            long tick = 1000;     // 0.1초에 1회 PositionInfo.PosX 변화
+            _nextMoveTick = Environment.TickCount64 + tick;    
 
             PositionInfo.PosX += PositionInfo.LocalScaleX * Speed;
 
@@ -56,8 +56,7 @@ namespace Server.Game
             movePacket.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
            
             MyRoom.BroadCast(movePacket);
-
-            
+            Console.WriteLine($"{PositionInfo.PosX}, {PositionInfo.PosY}");
             // 피격 판정은 Client의 HitBox로 
         }
 

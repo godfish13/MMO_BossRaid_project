@@ -11,16 +11,16 @@
     {
       "ClassId": "1",
       "Class": "Elf",
-      "MaxHp": "100",
-      "Hp": "100",
+      "MaxHp": "80",
+      "Hp": "80",
       "MaxSpeed": "10",
       "Acceleration": "40"
     },
     {
       "ClassId": "2",
       "Class": "Furry",
-      "MaxHp": "100",
-      "Hp": "100",
+      "MaxHp": "150",
+      "Hp": "150",
       "MaxSpeed": "6",
       "Acceleration": "40"
     },

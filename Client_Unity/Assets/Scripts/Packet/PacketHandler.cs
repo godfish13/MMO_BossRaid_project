@@ -39,7 +39,7 @@ class PacketHandler
     public static void S_SpawnProjectileHandler(PacketSession session, IMessage packet) // projectile object 입장용
     {
         S_SpawnProjectile spawnProjectilePacket = packet as S_SpawnProjectile;
-        Managers.objectMgr.AddProjectile(spawnProjectilePacket.GameObjectInfo, spawnProjectilePacket.OwnerInfo);       
+        Managers.objectMgr.AddProjectile(spawnProjectilePacket.GameObjectInfo, spawnProjectilePacket.OwnerInfo, spawnProjectilePacket.Speed);       
     }
 
     public static void S_DespawnHandler(PacketSession session, IMessage packet)
@@ -63,9 +63,10 @@ class PacketHandler
         GameObjectType type = Managers.objectMgr.GetGameObjectTypebyId(movePacket.GameObjectId);
         if (type == GameObjectType.Player)
         {
-            if (Managers.objectMgr.MyHumanCtrl.GameObjectId == movePacket.GameObjectId)  // 자신 PosInfo는 클라이언트상 정보를 따름       
+            
+            if (Managers.objectMgr.MyPlayerBaseCtrl.GameObjectId == movePacket.GameObjectId)  // 자신 PosInfo는 클라이언트상 정보를 따름       
                 return;
-
+            
             BaseCtrl baseCtrl = go.GetComponent<BaseCtrl>();
             if (baseCtrl == null)
                 return;
@@ -98,7 +99,6 @@ class PacketHandler
 
         if (skillUser == null) 
             return;
-
     }
 
     public static void S_MonsterTargetHandler(PacketSession session, IMessage packet)
