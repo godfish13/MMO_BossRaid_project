@@ -7,7 +7,8 @@ public class DragonFireballCtrl : DragonPattern
 {
     private void Awake()
     {
-        PatternId = (int)Define.ProjectileType.DragonFireball;
+        PatternId = (int)Define.ProjectileType.Dragon_Fireball;
+        PatternType = (int)Define.MonsterPatternType.Range;
     }
 
     private void C_MovePacketSend()

@@ -18,36 +18,17 @@ public class ObjectMgr : MonoBehaviour
 
         if (type == GameObjectType.Player)
         {
-            if (myCtrl == true)
+            switch (gameObjectInfo.StatInfo.ClassId)
             {
-                GameObject go = Managers.resourceMgr.Instantiate("Character/My_Human_Adventurer");
-                go.name = gameObjectInfo.StatInfo.Class;
-                _players.Add(gameObjectInfo.GameObjectId, go);
-
-                MyHumanCtrl = go.GetComponent<MyHumanCtrl>();
-                MyHumanCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
-                MyHumanCtrl.GameObjectId = gameObjectInfo.GameObjectId;
-                MyHumanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
-                MyHumanCtrl.StatData = gameObjectInfo.StatInfo;
-                MyHumanCtrl.SkillData = gameObjectInfo.SkillInfo;
-
-                MyHumanCtrl.SyncPos();  // 서버상 위치와 유니티상 위치 동기화
-            }
-            else
-            {
-                GameObject go = Managers.resourceMgr.Instantiate("Character/Human_Adventurer");
-                go.name = gameObjectInfo.StatInfo.Class;
-                _players.Add(gameObjectInfo.GameObjectId, go);
-
-                HumanCtrl humanCtrl = go.GetComponent<HumanCtrl>();
-                humanCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
-                humanCtrl.GameObjectId = gameObjectInfo.GameObjectId;
-                humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
-                humanCtrl.StatData = gameObjectInfo.StatInfo;
-                humanCtrl.SkillData = gameObjectInfo.SkillInfo;
-                humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
-               
-                humanCtrl.SyncPos();        // 서버상 위치와 유니티상 위치 동기화
+                case 0:
+                    AddPlayer(gameObjectInfo, "Human_Adventurer", myCtrl);
+                    break;
+                case 1:
+                    AddPlayer(gameObjectInfo, "Elf_Archer", myCtrl);
+                    break;
+                case 2:
+                    AddPlayer(gameObjectInfo, "Furry_Knight", myCtrl);
+                    break;
             }
         }
         else if (type == GameObjectType.Monster)
@@ -65,6 +46,42 @@ public class ObjectMgr : MonoBehaviour
         }      
     }
 
+    public void AddPlayer(GameObjectInfo gameObjectInfo, string className, bool myCtrl)
+    {
+        if (myCtrl == true)
+        {
+            GameObject go = Managers.resourceMgr.Instantiate($"Character/My_{className}");
+            _players.Add(gameObjectInfo.GameObjectId, go);
+
+            MyHumanCtrl = go.GetComponent<MyHumanCtrl>();
+            MyHumanCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
+            MyHumanCtrl.GameObjectId = gameObjectInfo.GameObjectId;
+            MyHumanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+            MyHumanCtrl.StatData = gameObjectInfo.StatInfo;
+            MyHumanCtrl.SkillData = gameObjectInfo.SkillInfo;
+            go.name = MyHumanCtrl.StatData.Class;
+
+            MyHumanCtrl.SyncPos();  // 서버상 위치와 유니티상 위치 동기화
+        }
+        else
+        {
+            GameObject go = Managers.resourceMgr.Instantiate($"Character/{className}");
+            _players.Add(gameObjectInfo.GameObjectId, go);
+
+            HumanCtrl humanCtrl = go.GetComponent<HumanCtrl>();
+            humanCtrl.ClassId = gameObjectInfo.StatInfo.ClassId;
+            humanCtrl.GameObjectId = gameObjectInfo.GameObjectId;
+            humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+            humanCtrl.StatData = gameObjectInfo.StatInfo;
+            humanCtrl.SkillData = gameObjectInfo.SkillInfo;
+            humanCtrl.PositionInfo = gameObjectInfo.PositionInfo;
+            humanCtrl.UI_Number = _players.Count - 1;
+            go.name = humanCtrl.StatData.Class;
+
+            humanCtrl.SyncPos();        // 서버상 위치와 유니티상 위치 동기화
+        }
+    }
+
     public void AddProjectile(GameObjectInfo gameObjectInfo, GameObjectInfo ownerObjectInfo) // MyCtrl : 내가 조종하는지 아닌지 체크
     {
         GameObjectType type = GetGameObjectTypebyId(gameObjectInfo.GameObjectId);
@@ -79,14 +96,14 @@ public class ObjectMgr : MonoBehaviour
                 break;
             case (int)Define.ProjectileType.Elf_Arrow:
                 break;
-            case (int)Define.ProjectileType.DragonFireball:
-                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "DragonFireball");
+            case (int)Define.ProjectileType.Dragon_Fireball:
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Dragon_Fireball");
                 break;
-            case (int)Define.ProjectileType.DragonFireballExplosion:
-                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "DragonFireballExplosion");
+            case (int)Define.ProjectileType.Dragon_FireballExplosion:
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Dragon_FireballExplosion");
                 break;
-            case (int)Define.ProjectileType.DragonThunder:
-                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "DragonThunder");
+            case (int)Define.ProjectileType.Dragon_Thunder:
+                ProjectileGenerator(gameObjectInfo, ownerObjectInfo, "Dragon_Thunder");
                 break;
         }
     }
@@ -156,7 +173,7 @@ public class ObjectMgr : MonoBehaviour
             }
             else
             {
-                Debug.Log("Others projectile added");
+                //Debug.Log("Others projectile added");
                 GameObject Projectile = Managers.resourceMgr.Instantiate($"Projectiles/{projectilePrefabName}");
                 Projectile.GetComponent<ProjectileCtrl>().GameObjectId = gameObjectInfo.GameObjectId;
 
@@ -180,14 +197,16 @@ public class ObjectMgr : MonoBehaviour
             GameObject skillUser;
             if (_monsters.TryGetValue(ownerObjectInfo.GameObjectId, out skillUser))
             {
-                if (projectilePrefabName == "DragonFireball")
+                if (projectilePrefabName == "Dragon_Fireball")
                 {
+                    Projectile.GetComponent<ProjectileCtrl>().OwnerGameObjectId = skillUser.GetComponent<MonsterCtrl>().GameObjectId;
                     Projectile.transform.localScale = skillUser.transform.localScale;
                     Projectile.transform.position = skillUser.transform.position + new Vector3(skillUser.transform.localScale.x * 2.3f, 0, 0);
                     _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);
                 }
-                else if (projectilePrefabName == "DragonThunder")
+                else if (projectilePrefabName == "Dragon_Thunder")
                 {
+                    Projectile.GetComponent<ProjectileCtrl>().OwnerGameObjectId = skillUser.GetComponent<MonsterCtrl>().GameObjectId;
                     Projectile.transform.localScale = skillUser.transform.localScale;
                     Projectile.transform.position = new Vector3(gameObjectInfo.PositionInfo.PosX, gameObjectInfo.PositionInfo.PosY, 0);
                     _projectiles.Add(gameObjectInfo.GameObjectId, Projectile);

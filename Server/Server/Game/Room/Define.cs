@@ -18,21 +18,21 @@ public class Define
         Lizaed_Heal = 8,
         Dragon_Bite = 11,
         Dragon_Burn = 12,
-        Dragon_FireBall = 13,
+        Dragon_Fireball = 13,
         Dragon_Thunder = 14,
     }
-
+    
     public enum ProjectileType
     {
         Human_Bomb = 1,
         Elf_Arrow = 2,
         Lizard_FireBall = 3,
         Lizaed_Heal = 4,
-        DragonBite = 5,
-        DragonBurn = 6,
-        DragonFireball = 7,
-        DragonFireballExplosion = 8,
-        DragonThunder = 9,
+        Dragon_Bite = 11,
+        Dragon_Burn = 12,
+        Dragon_Fireball = 13,
+        Dragon_Thunder = 14,
+        Dragon_FireballExplosion = 15,
     }
 }
 

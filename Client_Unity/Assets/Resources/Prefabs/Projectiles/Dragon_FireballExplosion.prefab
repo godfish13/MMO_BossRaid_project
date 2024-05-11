@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5373061118796645099}
   - component: {fileID: -5360460714342371229}
   m_Layer: 0
-  m_Name: DragonFireballExplosion
+  m_Name: Dragon_FireballExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

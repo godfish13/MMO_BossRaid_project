@@ -44,7 +44,7 @@ namespace Server.Game
         {
             //Console.WriteLine("Explosion");
             Projectile ExplosionEffect = ObjectMgr.Instance.Add<DragonFireballExplosion>();
-            ExplosionEffect.ProjectileType = (int)Define.ProjectileType.DragonFireballExplosion;
+            ExplosionEffect.ProjectileType = (int)Define.ProjectileType.Dragon_FireballExplosion;
             ExplosionEffect.GameObjectInfo.PositionInfo.PosX = PositionInfo.PosX;
             ExplosionEffect.GameObjectInfo.PositionInfo.PosY = 0.3f;
             ExplosionEffect.GameObjectInfo.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;

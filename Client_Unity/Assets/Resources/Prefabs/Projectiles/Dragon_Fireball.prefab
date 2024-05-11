@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6190046150517700514}
   - component: {fileID: 7965443415825130555}
   m_Layer: 13
-  m_Name: DragonFireball
+  m_Name: Dragon_Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

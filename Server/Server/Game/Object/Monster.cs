@@ -342,7 +342,7 @@ namespace Server.Game
                     if (Fireball == null)
                         return;
                     Fireball.Owner = this;
-                    Fireball.ProjectileType = (int)Define.ProjectileType.DragonFireball;
+                    Fireball.ProjectileType = (int)Define.ProjectileType.Dragon_Fireball;
                     Fireball.GameObjectInfo.PositionInfo.PosX = 2.3f * PositionInfo.LocalScaleX;
                     Fireball.GameObjectInfo.PositionInfo.PosY = 0;
                     Fireball.GameObjectInfo.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
@@ -376,7 +376,7 @@ namespace Server.Game
                     if (Thunder == null)
                         return;
                     Thunder.Owner = this;
-                    Thunder.ProjectileType = (int)Define.ProjectileType.DragonThunder;
+                    Thunder.ProjectileType = (int)Define.ProjectileType.Dragon_Thunder;
                     Thunder.GameObjectInfo.PositionInfo.PosX = p.PositionInfo.PosX;
                     Thunder.GameObjectInfo.PositionInfo.PosY = p.PositionInfo.PosY;
                     Thunder.GameObjectInfo.PositionInfo.LocalScaleX = 1;

@@ -26,11 +26,11 @@ public class BaseCtrl : MonoBehaviour
             _positionInfo.PosY = value.PosY;
             _positionInfo.LocalScaleX = value.LocalScaleX;
         }
-    } 
+    }
     #endregion
 
-    SpriteRenderer _spriteRenderer;
-    Animator _animator;
+    protected SpriteRenderer _spriteRenderer;
+    protected Animator _animator;
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;           // 무적 도중 지형 통과를 막기위한 Anchor, isGrounded 판정    
     protected Collider2D _hitBoxCollider;     // 플레이어 피격판정 HitBox
@@ -89,7 +89,7 @@ public class BaseCtrl : MonoBehaviour
         }
     }
 
-    // Stat 프로퍼티
+    #region Stat property
     protected UI_MyHpbar _myHpbar;
 
     public int MaxHp
@@ -98,15 +98,15 @@ public class BaseCtrl : MonoBehaviour
         set { StatData.MaxHp = value; }
     }
 
-    public int Hp   // Hp 변동 시 Ui 표시 수치 변경
+    public virtual int Hp   // Hp 변동 시 Ui 표시 수치 변경
     {
         get { return StatData.Hp; }
         set
         {
             StatData.Hp = value;
-            _myHpbar.HpbarChange((float)Hp / (float)MaxHp);
         }
     }
+    #endregion
 
     [SerializeField] protected Vector2 _input = new Vector2();    // 화살표 키입력
     protected Vector2 _velocity;                  // 가속도에따른 속력
@@ -160,6 +160,7 @@ public class BaseCtrl : MonoBehaviour
         if (collision.gameObject.layer == layerMask) // Collision의 Layer가 지정한 타입 아니면 무시
         {
             C_Hpdelta hpdeltaPacket = new C_Hpdelta();
+            hpdeltaPacket.AttackerGameObjectId = GameObjectId;
             hpdeltaPacket.HittedGameObjectId = collision.GetComponent<MonsterCtrl>().GameObjectId;
             hpdeltaPacket.SkillId = skillId;
             Managers.networkMgr.Send(hpdeltaPacket);

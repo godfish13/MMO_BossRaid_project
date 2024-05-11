@@ -29,7 +29,6 @@ class PacketHandler
     public static void S_SpawnHandler(PacketSession session, IMessage packet)   // 타 오브젝트들이 입장할때 받음
     {
         S_Spawn spawnPacket = packet as S_Spawn;
-        Debug.Log("S_SpawnHandler activated");
 
         foreach (GameObjectInfo gameObjectInfo in spawnPacket.GameObjectInfoList)
         {
@@ -40,16 +39,12 @@ class PacketHandler
     public static void S_SpawnProjectileHandler(PacketSession session, IMessage packet) // projectile object 입장용
     {
         S_SpawnProjectile spawnProjectilePacket = packet as S_SpawnProjectile;
-        //Debug.Log($"S_SpawnProjectileHandler activated / owner : {spawnProjectilePacket.OwnerInfo.GameObjectId}");
-        //Debug.Log($"{spawnProjectilePacket.GameObjectInfo.GameObjectId}, {spawnProjectilePacket.GameObjectInfo.ProjectileType}");
         Managers.objectMgr.AddProjectile(spawnProjectilePacket.GameObjectInfo, spawnProjectilePacket.OwnerInfo);       
     }
 
     public static void S_DespawnHandler(PacketSession session, IMessage packet)
     {
         S_Despawn despawnPacket = packet as S_Despawn;
-
-        Debug.Log($"S_DespawnHandler activated / remove {despawnPacket.GameObjectIdlist}");
 
         foreach (int Id in despawnPacket.GameObjectIdlist)
         {
@@ -115,8 +110,6 @@ class PacketHandler
 
         if (target == null)
             return;
-
-        //monster.GetComponent<MonsterCtrl>().targetSetting(target);
     }
 
     public static void S_HpdeltaHandler(PacketSession session, IMessage packet)
@@ -128,7 +121,8 @@ class PacketHandler
 
         if (type == GameObjectType.Player)
         {
-            // Todo
+            GameObject player = Managers.objectMgr.FindGameObjectbyId(hpdeltaPacket.GameObjectId);
+            player.GetComponent<BaseCtrl>().Hp = hpdeltaPacket.ChangedHp;
         }
         else if (type == GameObjectType.Monster)
         {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1730196561344640066}
   - component: {fileID: 6779346097566558085}
   m_Layer: 13
-  m_Name: DragonThunder
+  m_Name: Dragon_Thunder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,7 +13,8 @@ public class DragonThunder : DragonPattern
 
     private void Awake()
     {
-        PatternId = (int)Define.ProjectileType.DragonThunder;
+        PatternId = (int)Define.ProjectileType.Dragon_Thunder;
+        PatternType = (int)Define.MonsterPatternType.Range;
         _sendPacketOnce = true;
     }
 

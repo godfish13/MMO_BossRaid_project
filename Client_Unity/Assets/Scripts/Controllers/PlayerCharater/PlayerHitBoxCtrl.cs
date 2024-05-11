@@ -28,14 +28,24 @@ public class PlayerHitBoxCtrl : MonoBehaviour
     {
         if (collision.gameObject.layer == MonsterSkillLayerMask || collision.gameObject.layer == MonsterProjectileLayerMask)
         {
-            Debug.Log("아야 맞음!!");
-            Debug.Log($"pattern : {collision.gameObject.GetComponent<DragonPattern>().PatternId}");
-            
+            //Debug.Log($"pattern : {collision.gameObject.GetComponent<DragonPattern>().PatternId}");
+            SendPlayerHpdeltaPacket(collision, collision.gameObject.GetComponent<DragonPattern>().PatternId);
         }
     }
 
-    protected void SendPlayerHpdeltaPacket(Collider2D collision, LayerMask layerMask, int skillId)
+    protected void SendPlayerHpdeltaPacket(Collider2D collision, int monsterPatternId)
     {
-        
+        C_Hpdelta hpdeltaPacket = new C_Hpdelta();
+        if (collision.GetComponent<DragonPattern>().PatternType == (int)Define.MonsterPatternType.Melee)
+        {
+            hpdeltaPacket.AttackerGameObjectId = collision.gameObject.GetComponentInParent<MonsterCtrl>().GameObjectId;
+        }
+        else if (collision.GetComponent<DragonPattern>().PatternType == (int)Define.MonsterPatternType.Range)
+        {
+            hpdeltaPacket.AttackerGameObjectId = collision.GetComponent<ProjectileCtrl>().OwnerGameObjectId;
+        }
+        hpdeltaPacket.HittedGameObjectId = gameObject.GetComponentInParent<BaseCtrl>().GameObjectId;
+        hpdeltaPacket.SkillId = monsterPatternId;
+        Managers.networkMgr.Send(hpdeltaPacket);
     }
 }

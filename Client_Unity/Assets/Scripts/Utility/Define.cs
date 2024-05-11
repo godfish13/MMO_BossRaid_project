@@ -21,12 +21,18 @@ public class Define
         Human_Bomb = 1,
         Elf_Arrow = 2,
         Lizard_FireBall = 3,
-        Lizard_Heal = 4,
-        DragonBite = 5,
-        DragonBurn = 6,
-        DragonFireball = 7,
-        DragonFireballExplosion = 8,
-        DragonThunder = 9,
+        Lizaed_Heal = 4,
+        Dragon_Bite = 11,
+        Dragon_Burn = 12,
+        Dragon_Fireball = 13,
+        Dragon_Thunder = 14,
+        Dragon_FireballExplosion = 15,
+    }
+
+    public enum MonsterPatternType
+    {
+        Melee = 1,
+        Range = 2,
     }
 
     public enum Layer

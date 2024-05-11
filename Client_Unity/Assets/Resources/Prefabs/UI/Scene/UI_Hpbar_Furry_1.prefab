@@ -25,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754699121933647168}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3625, y: 0.48748, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80.817505, y: 22.8047}
+  m_AnchoredPosition: {x: 80.817505, y: 309.35657}
   m_SizeDelta: {x: 91.5588, y: 35.6596}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8981895609179458714
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 999306833967983738}
   - component: {fileID: 8256020629027642933}
   m_Layer: 5
-  m_Name: HumanIcon
+  m_Name: FurryIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 37.1, y: 66.1}
+  m_AnchoredPosition: {x: 37.099976, y: 352.65192}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &999306833967983738
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4723107735738678597, guid: 138daec0b7f3764408be7707020b26e4, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: a57468ed70eeaf8488f5a093b19176f4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -187,7 +187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80.5, y: 22.448105}
+  m_AnchoredPosition: {x: 80.5, y: 309}
   m_SizeDelta: {x: 122, y: 13.6091}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7677879201017033228
@@ -263,7 +263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80.5, y: 22.448105}
+  m_AnchoredPosition: {x: 80.5, y: 309}
   m_SizeDelta: {x: 121, y: 13.6091}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4028820085951519435
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 9106136690945858738}
   - component: {fileID: 1538324144915317869}
   m_Layer: 5
-  m_Name: UI_MyHpbar
+  m_Name: UI_Hpbar_Furry_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

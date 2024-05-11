@@ -62,6 +62,15 @@ namespace Server.Game
             {
                 Player newPlayer = newGameObject as Player;
                 _players.Add(newPlayer.GameObjectId, newPlayer);
+                newPlayer.ClassId = _players.Count - 1;              // 입장 순서대로 0(Human) 1(Elf) 2(Furry)
+
+                StatInfo _stat = null;                                  // Json으로 불러놓은 player Data 넣기
+                DataMgr.StatDictionary.TryGetValue(key: newPlayer.ClassId, out _stat);
+                newPlayer.StatInfo.MergeFrom(_stat);
+                SkillInfo _skill = null;
+                DataMgr.SkillDictionary.TryGetValue(key: newPlayer.ClassId, out _skill);
+                newPlayer.SkillInfo.MergeFrom(_skill);
+
                 newPlayer.MyRoom = this;
                 newPlayer.PositionInfo = new PositionInfo() { State = CreatureState.Idle, PosX = -15, PosY = 6.5f, LocalScaleX = 1}; 
                 // 입장시킬 초기 위치 및 상태 일단 하드코딩 플레이어 입장순서에 따른 위치 초기화 todo
@@ -70,7 +79,6 @@ namespace Server.Game
                 S_EnterGame EnterPacket = new S_EnterGame();
                 EnterPacket.GameObjectInfo = newPlayer.GameObjectInfo;
                 Console.WriteLine($"Id : {EnterPacket.GameObjectInfo.GameObjectId} Enter Packet sended");
-                //Console.WriteLine($"Class : {EnterPacket.GameObjectInfo.StatInfo} Enter Packet sended");
                 newPlayer.MySession.Send(EnterPacket);
                 #endregion
 
@@ -235,29 +243,69 @@ namespace Server.Game
 
             switch (hpdeltaPacket.SkillId)
             {
-                case (int)Define.SkillId.Human_Slash:             // Human_Slash
+                case (int)Define.SkillId.Human_Slash:      
                     {
-                        Console.WriteLine($"hitted {hpdeltaPacket.HittedGameObjectId} by Human_Slash");
+                        //Console.WriteLine($"hitted {hpdeltaPacket.HittedGameObjectId} by Human_Slash");
                         _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
                         Monster.Hp -= player.SkillDamage;
                     }
                     break;
-                case (int)Define.SkillId.Human_ThrowBomb:             // Human_ThrowBomb
+                case (int)Define.SkillId.Human_ThrowBomb:      
                     {
-                        Console.WriteLine($"hitted {hpdeltaPacket.HittedGameObjectId} by Human_ThrowBomb");
+                        //Console.WriteLine($"hitted {hpdeltaPacket.HittedGameObjectId} by Human_ThrowBomb");
                         _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
                         Monster.Hp -= player.SubSkillDamage;
                     }
                     break;
-                case (int)Define.SkillId.Elf_ArrowShot:             // Elf_ArrowShot
-                    break;
-                case (int)Define.SkillId.Elf_Knife:             // Elf_Knife
-                    break;
-                case (int)Define.SkillId.Furry_Slash:             // Furry_Slash
-                    break;
-                case (int)Define.SkillId.Dragon_Bite:             // Dragon_Bite    // 플레이어 체력 깎아주기
+                case (int)Define.SkillId.Elf_ArrowShot:    
                     {
-                        //player.Hp -= _monsters.
+
+                    }
+                    break;
+                case (int)Define.SkillId.Elf_Knife:      
+                    {
+
+                    }
+                    break;
+                case (int)Define.SkillId.Furry_Slash:
+                    {
+
+                    }
+                    break;
+                case (int)Define.SkillId.Dragon_Bite:            
+                    {
+                        Monster monster;
+                        _monsters.TryGetValue(hpdeltaPacket.AttackerGameObjectId, out monster);
+                        Player hittedPlayer;
+                        _players.TryGetValue(hpdeltaPacket.HittedGameObjectId, out hittedPlayer);
+                        hittedPlayer.Hp -= monster.BiteDamage;
+                    }
+                    break;
+                case (int)Define.SkillId.Dragon_Burn:            
+                    {
+                        Monster monster;
+                        _monsters.TryGetValue(hpdeltaPacket.AttackerGameObjectId, out monster);
+                        Player hittedPlayer;
+                        _players.TryGetValue(hpdeltaPacket.HittedGameObjectId, out hittedPlayer);
+                        hittedPlayer.Hp -= monster.BurnDamage;
+                    }
+                    break;
+                case (int)Define.SkillId.Dragon_Fireball:            
+                    {
+                        Monster monster;
+                        _monsters.TryGetValue(hpdeltaPacket.AttackerGameObjectId, out monster);
+                        Player hittedPlayer;
+                        _players.TryGetValue(hpdeltaPacket.HittedGameObjectId, out hittedPlayer);
+                        hittedPlayer.Hp -= monster.FireballDamage;
+                    }
+                    break;
+                case (int)Define.SkillId.Dragon_Thunder:         
+                    {
+                        Monster monster;
+                        _monsters.TryGetValue(hpdeltaPacket.AttackerGameObjectId, out monster);
+                        Player hittedPlayer;
+                        _players.TryGetValue(hpdeltaPacket.HittedGameObjectId, out hittedPlayer);
+                        hittedPlayer.Hp -= monster.ThunderDamage;
                     }
                     break;
             }
@@ -343,25 +391,34 @@ namespace Server.Game
                 return null;
             }
 
+            bool _allDeath = true;
+            foreach (Player p in _players.Values)       // 플레이어들 모두 Death State면 return null
+            {
+                if (p.State != CreatureState.Death)
+                    _allDeath = false;
+            }
+            if (_allDeath)
+                return null;
+
             Player TargetPlayer = new Player();
             foreach (Player p in _players.Values)
             {
-                // 각 플레이어와 거리 계산 연산효율을 위해 X값만 따짐, packet으로 보내는 x단위 0.05f
-                p.DistanceBetweenMonster = Math.Abs(p.PositionInfo.PosX - monster.PositionInfo.PosX);
-                //Console.WriteLine($"{p.GameObjectId} : dist : {p.DistanceBetweenMonster}");
+                if (p.State != CreatureState.Death)
+                {
+                    // 각 플레이어와 거리 계산 연산효율을 위해 X값만 따짐, packet으로 보내는 x단위 0.05f
+                    p.DistanceBetweenMonster = Math.Abs(p.PositionInfo.PosX - monster.PositionInfo.PosX);
 
-                // 가까울수록 Aggravation 수치 up
-                p.Aggravation = (int)(100 / p.DistanceBetweenMonster);
-                //Console.WriteLine($"{p.GameObjectId} : Aggro : {p.Aggravation}");
+                    // 가까울수록 Aggravation 수치 up
+                    p.Aggravation = (int)(100 / p.DistanceBetweenMonster);
 
-                // 난수값 적당히 추가해줘서 무조건 가깝다고 target되지 않게 조정
-                Random rand = new Random();
-                int randomNumber = rand.Next(_players.Count * 20);
-                p.Aggravation += randomNumber;
-                //Console.WriteLine($"{p.GameObjectId} : RandAggro : {p.Aggravation}");
+                    // 난수값 적당히 추가해줘서 무조건 가깝다고 target되지 않게 조정
+                    Random rand = new Random();
+                    int randomNumber = rand.Next(_players.Count * 20);
+                    p.Aggravation += randomNumber;
 
-                if (p.Aggravation > TargetPlayer.Aggravation)
-                    TargetPlayer = p;
+                    if (p.Aggravation > TargetPlayer.Aggravation)
+                        TargetPlayer = p;
+                }
             }
             return TargetPlayer;
         }

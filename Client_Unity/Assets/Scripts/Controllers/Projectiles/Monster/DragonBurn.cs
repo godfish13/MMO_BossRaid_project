@@ -6,7 +6,8 @@ public class DragonBurn : DragonPattern
 {
     private void Awake()
     {
-        PatternId = (int)Define.ProjectileType.DragonBurn;
+        PatternId = (int)Define.ProjectileType.Dragon_Burn;
+        PatternType = (int)Define.MonsterPatternType.Melee;
     }
 
     protected override void Init()

@@ -15,15 +15,8 @@ namespace Server.Game
             ObjectType = GameObjectType.Player;
             ClassId = 0;                        // 따로 입력하는것 못넣을 시 Client쪽 Multi Build and Run Editor에서 1~4로 순서대로 넣자
 
-            StatInfo _stat = null;                                  // Json으로 불러놓은 player Data 넣기
-            DataMgr.StatDictionary.TryGetValue(key: ClassId, out _stat);
-            StatInfo.MergeFrom(_stat);
-
-            SkillInfo _skill = null;
-            DataMgr.SkillDictionary.TryGetValue(key: ClassId, out _skill);
-            SkillInfo.MergeFrom(_skill);
-
             Aggravation = 0;
+            // Stat, Skill Data => GameRoom.EnterGame에서 지정된 ClassId에 따라 초기화
             // PositionInfo => GameRoom.EnterGame에서 초기화
         }
 

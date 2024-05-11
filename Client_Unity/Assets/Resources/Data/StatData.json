@@ -3,32 +3,32 @@
     {
       "ClassId": "0",
       "Class": "Human",
-      "MaxHp": "10",
-      "Hp": "10",
+      "MaxHp": "100",
+      "Hp": "100",
       "MaxSpeed": "8",
       "Acceleration": "40"
     },
     {
       "ClassId": "1",
       "Class": "Elf",
-      "MaxHp": "10",
-      "Hp": "10",
+      "MaxHp": "100",
+      "Hp": "100",
       "MaxSpeed": "10",
       "Acceleration": "40"
     },
     {
       "ClassId": "2",
       "Class": "Furry",
-      "MaxHp": "10",
-      "Hp": "10",
+      "MaxHp": "100",
+      "Hp": "100",
       "MaxSpeed": "6",
       "Acceleration": "40"
     },
     {
       "ClassId": "3",
       "Class": "Lizard",
-      "MaxHp": "10",
-      "Hp": "10",
+      "MaxHp": "100",
+      "Hp": "100",
       "MaxSpeed": "8",
       "Acceleration": "40"
     },

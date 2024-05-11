@@ -7,9 +7,8 @@ using UnityEngine.UI;
 
 public class MyHumanCtrl : HumanCtrl
 {
-    protected BoxCollider2D SlashBox;   // Main Skill 판정범위 히트박스
+    protected BoxCollider2D _slashBox;   // Main Skill 판정범위 히트박스
     
-
     public override CreatureState State     // 패킷 보내는 부분 존재하므로 override
     {
         get { return _state; }
@@ -27,18 +26,44 @@ public class MyHumanCtrl : HumanCtrl
     }
 
     protected override void Init()
-    {        
-        SlashBox = GetComponentsInChildren<BoxCollider2D>()[2];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
+    {
+        _slashBox = GetComponentsInChildren<BoxCollider2D>()[2];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
         _hitBoxCollider = GetComponentsInChildren<Collider2D>()[1]; // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
 
-        base.Init();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+        _collider = GetComponent<Collider2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
 
-        _myHpbar = Managers.UIMgr.ShowSceneUI<UI_MyHpbar>("UI_MyHpbar");    // 클래스에 따라 다르게 고를 예정이므로 일단 My에서 Init
+        transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
+
+        switch (ClassId)
+        {
+            case 0:
+                _myHpbar = Managers.UIMgr.ShowSceneUI<UI_MyHpbar>($"UI_MyHpbar_Human");
+                break;
+            case 1:
+                _myHpbar = Managers.UIMgr.ShowSceneUI<UI_MyHpbar>($"UI_MyHpbar_Elf");
+                break;
+            case 2:
+                _myHpbar = Managers.UIMgr.ShowSceneUI<UI_MyHpbar>($"UI_MyHpbar_Furry");
+                break;
+        }
     }
 
     private void LateUpdate()
     {
         Camera.main.transform.position = new Vector3(transform.position.x, 3.2f, -8);
+    }
+
+    public override int Hp   // Hp 변동 시 UI 표시 수치 변경
+    {
+        get { return StatData.Hp; }
+        set
+        {
+            StatData.Hp = value;
+            _myHpbar.HpbarChange((float)Hp / (float)MaxHp);
+        }
     }
 
     #region Server 통신
@@ -81,6 +106,9 @@ public class MyHumanCtrl : HumanCtrl
     #region UpdateCtrl series
     protected override void UpdateCtrl()
     {
+        if (Hp <= 0)
+            State = CreatureState.Death;
+
         switch (State)
         {
             case CreatureState.Idle:
@@ -206,7 +234,9 @@ public class MyHumanCtrl : HumanCtrl
 
     protected override void UpdateDeath()
     {
-
+        _rigidbody.velocity = Vector3.zero;
+        if (_hitBoxCollider.enabled == true)
+            _hitBoxCollider.enabled = false;
     }
     #endregion
 
@@ -286,8 +316,8 @@ public class MyHumanCtrl : HumanCtrl
     #region MainSkill       
     protected override void AnimEvent_MainSkillSlashOn()
     {
-        SlashBox.enabled = true;
-        SlashBox.transform.localPosition = new Vector2(0.1f, 0); // 충돌 감지를 위해 살짝 앞으로 이동
+        _slashBox.enabled = true;
+        _slashBox.transform.localPosition = new Vector2(0.1f, 0); // 충돌 감지를 위해 살짝 앞으로 이동
 
         SlashEffect.Play();
     }
@@ -298,8 +328,8 @@ public class MyHumanCtrl : HumanCtrl
             _isSkill = false;
         // AnimEvent : Skill 애니메이션 끝나기 전까지 State변화 방지
 
-        SlashBox.enabled = false;
-        SlashBox.transform.localPosition = new Vector2(0, 0);    // 위치 복귀
+        _slashBox.enabled = false;
+        _slashBox.transform.localPosition = new Vector2(0, 0);    // 위치 복귀
 
         SlashEffect.Stop();
     }

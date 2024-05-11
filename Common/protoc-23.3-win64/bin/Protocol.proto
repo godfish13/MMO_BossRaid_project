@@ -130,8 +130,9 @@ message C_SelectCharacter
 
 message C_Hpdelta
 {
-	int32 hittedGameObjectId = 1;
-	int32 skillId = 2;
+	int32 attackerGameObjectId = 1;
+	int32 hittedGameObjectId = 2;
+	int32 skillId = 3;
 }
 
 message PositionInfo

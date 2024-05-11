@@ -6,7 +6,8 @@ public class DragonBite : DragonPattern
 {
     private void Awake()
     {
-        PatternId = (int)Define.ProjectileType.DragonBite;
+        PatternId = (int)Define.ProjectileType.Dragon_Bite;
+        PatternType = (int)Define.MonsterPatternType.Melee;
     }
 
     protected override void Init()

@@ -11,6 +11,7 @@ public class ProjectileCtrl : MonoBehaviour
     #region for Server Connection
     [SerializeField] private int _gameObjectId;
     public int GameObjectId { get { return _gameObjectId; } set { _gameObjectId = value; } }
+    public int OwnerGameObjectId { get; set; }
 
     private PositionInfo _positionInfo = new PositionInfo();
     public PositionInfo PositionInfo             // State, X, Y, LocalScaleX

@@ -39,22 +39,6 @@
       "SubSkillCoolTime": "10.0",
       "JumpPower": "1000.0",
       "JumpCoolTime": "0.05"
-    },
-    {
-      "ClassId": "10",
-      "Class": "Dragon",
-      "BiteDamage": "10",
-      "BiteDelay": "800",
-      "BiteCoolTime": "100",
-      "BurnDamage": "20",
-      "BurnDelay": "1000",
-      "BurnCoolTime": "900",
-      "FireballDamage": "30",
-      "FireballDelay": "1000",
-      "FireballCoolTime": "1000",
-      "ThunderDamage": "50",
-      "ThunderDelay": "2500",
-      "ThunderCoolTime": "3000"
     }
   ]
 }
