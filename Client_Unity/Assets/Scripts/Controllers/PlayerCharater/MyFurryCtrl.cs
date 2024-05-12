@@ -237,7 +237,6 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
 
     protected override void UpdateSubSkill()     // 스킬 가능
     {
-        JumpWhileSkill();
         Fall();
         GetDirInput();
         GetSkillInput();

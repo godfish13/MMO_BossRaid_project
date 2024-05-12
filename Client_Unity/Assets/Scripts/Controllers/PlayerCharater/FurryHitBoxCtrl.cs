@@ -6,6 +6,12 @@ using UnityEngine;
 public class FurryHitBoxCtrl : PlayerHitBoxCtrl
 {
     public bool isGuard;
+    public Transform FurryTransform;
+
+    private void Start()
+    {
+        FurryTransform = GetComponentInParent<MyFurryCtrl>().transform;
+    }
 
     private void Update()
     {
@@ -16,10 +22,21 @@ public class FurryHitBoxCtrl : PlayerHitBoxCtrl
     {
         if (collision.gameObject.layer == MonsterSkillLayerMask || collision.gameObject.layer == MonsterProjectileLayerMask)
         {
-            if (isGuard != true)
+            if (isGuard == true)
             {
-                SendPlayerHpdeltaPacket(collision, collision.gameObject.GetComponent<DragonPattern>().PatternId);
+                if (FurryTransform.localScale.x == 1 && FurryTransform.position.x < 0)
+                {
+                    // 오른쪽보고 몬스터위치(0, 0, 0) 보다 왼쪽에 있으면 가드성공
+                    return;
+                }
+                else if(FurryTransform.localScale.x == -1 && FurryTransform.position.x > 0)
+                {
+                    // 왼쪽보고 몬스터위치(0, 0, 0) 보다 오른쪽에 있으면 가드성공
+                    return;
+                }
             }
+            
+            SendPlayerHpdeltaPacket(collision, collision.gameObject.GetComponent<DragonPattern>().PatternId);
         }
     }
 }

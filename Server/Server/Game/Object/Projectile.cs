@@ -56,7 +56,6 @@ namespace Server.Game
             movePacket.PositionInfo.LocalScaleX = PositionInfo.LocalScaleX;
            
             MyRoom.BroadCast(movePacket);
-            Console.WriteLine($"{PositionInfo.PosX}, {PositionInfo.PosY}");
             // 피격 판정은 Client의 HitBox로 
         }
 
