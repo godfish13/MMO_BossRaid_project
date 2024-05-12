@@ -245,6 +245,8 @@ namespace Server.Game
                     break;
                 case (int)Define.SkillId.Furry_Slash:             // Furry_Slash
                     break;
+                case (int)Define.SkillId.Furry_Bash:             // Furry_Slash
+                    break;
             }
         }
 
@@ -283,6 +285,12 @@ namespace Server.Game
                     {
                         _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
                         Monster.Hp -= player.SkillDamage;
+                    }
+                    break;
+                case (int)Define.SkillId.Furry_Bash:
+                    {
+                        _monsters.TryGetValue(hpdeltaPacket.HittedGameObjectId, out Monster Monster);
+                        Monster.Hp -= player.SubSkillDamage;
                     }
                     break;
                 case (int)Define.SkillId.Dragon_Bite:            

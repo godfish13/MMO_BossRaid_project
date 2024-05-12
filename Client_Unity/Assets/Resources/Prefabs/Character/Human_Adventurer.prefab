@@ -173,6 +173,7 @@ MonoBehaviour:
   _state: 0
   _input: {x: 0, y: 0}
   _isGrounded: 1
+  UI_Number: 0
 --- !u!1001 &8003780461151354398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -270,7 +271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5304945838115232309, guid: 89fdb3101c52fd145b9cc7486ef73458, type: 3}
       propertyPath: m_Name
-      value: Slash_Circle_08_BW
+      value: Slash_Effect
       objectReference: {fileID: 0}
     - target: {fileID: 5304945838115232309, guid: 89fdb3101c52fd145b9cc7486ef73458, type: 3}
       propertyPath: m_Layer

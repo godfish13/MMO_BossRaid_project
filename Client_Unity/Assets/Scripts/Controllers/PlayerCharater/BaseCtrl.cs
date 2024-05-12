@@ -112,7 +112,7 @@ public class BaseCtrl : MonoBehaviour
     protected Vector2 _velocity;                  // 가속도에따른 속력
     float Gravity = 70.0f;        // 중력 가속도
     public bool _isGrounded = true;           // 땅에 붙어있는지 판별
-    protected bool _isSkill = false; // 스킬키 한번 누르면 스킬 사용도중에 x키를 떼도 애니메이션 끝까지 사용되도록 판정용
+    protected bool _isSkill = false; // 스킬키 한번 누르면 스킬 사용도중에 x키를 떼도 애니메이션 끝까지 사용되도록 판정용    
 
     protected virtual void Init()
     {
@@ -265,7 +265,7 @@ public class BaseCtrl : MonoBehaviour
     #endregion
 
     #region Move
-    protected void Move()
+    protected virtual void Move()
     {
         _velocity = _rigidbody.velocity; // 현재 속도 tmp저장
 
@@ -311,7 +311,7 @@ public class BaseCtrl : MonoBehaviour
         _rigidbody.velocity = _velocity;   // 현재 속도 조절
     }
 
-    protected void MoveWhileSkill() // 스킬쓰는 중에 이동 시, 상태변화 없이 천천히 움직임
+    protected virtual void MoveWhileSkill() // 스킬쓰는 중에 이동 시, 상태변화 없이 천천히 움직임
     {
         _velocity = _rigidbody.velocity; // 현재 속도 tmp저장
 
@@ -337,7 +337,7 @@ public class BaseCtrl : MonoBehaviour
         _rigidbody.velocity = _velocity;   // 현재 속도 조절
     }
 
-    protected void BrakeIfSkill()  // SubSkill 사용중이면 좌우이동 정지
+    protected virtual void BrakeIfSkill()  // SubSkill 사용중이면 좌우이동 정지
     {
         if (State == CreatureState.Skill && _isGrounded)
         {
@@ -347,7 +347,7 @@ public class BaseCtrl : MonoBehaviour
         // rg의 x속도 가속도*2로 0까지 감속
     }
 
-    protected void BrakeIfSubSkill()  // SubSkill 사용중이면 좌우이동 정지
+    protected virtual void BrakeIfSubSkill()  // SubSkill 사용중이면 좌우이동 정지
     {
         if (State == CreatureState.Subskill && _isGrounded)
         {
@@ -478,7 +478,7 @@ public class BaseCtrl : MonoBehaviour
     }
 
     // Rolling
-    protected bool _isRollingOn = true;  // 점프가능여부(쿨타임) + 착지 후 점프쿨타임동안 잠깐 가속 딜레이
+    protected bool _isRollingOn = true;  // 구르기 가능여부(쿨타임), 점프 쿨타임 + 몇초
     protected Coroutine _coRollingCoolTimer;
     IEnumerator CoRollingCoolTimer(float time)
     {

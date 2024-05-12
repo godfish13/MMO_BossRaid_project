@@ -13,7 +13,7 @@ public class Define
         Elf_ArrowShot = 3,
         Elf_Knife = 4,
         Furry_Slash = 5,
-        Furry_Guard = 6,
+        Furry_Bash = 6,
         Lizard_FireBall = 7,
         Lizaed_Heal = 8,
         Dragon_Bite = 11,

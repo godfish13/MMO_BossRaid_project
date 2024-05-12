@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7055056160673082933}
   - component: {fileID: 7055056160673082934}
   m_Layer: 7
-  m_Name: Human_SlashBox
+  m_Name: SlashBox_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

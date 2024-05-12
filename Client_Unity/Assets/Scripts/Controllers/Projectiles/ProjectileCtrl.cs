@@ -75,7 +75,7 @@ public class ProjectileCtrl : MonoBehaviour
 
     public float Speed { get; set; } = 1.0f;     // Server 상 projectile update tick(1000 == 1초) * 1tick당 이동량(Speed) // 각 파생 class에서 조절 기본값 1
                             // ex. DragonFireball : Server에서 1000틱당 5이동 => Speed = 5
-    public void SyncPos()
+    public virtual void SyncPos()
     {
         // 변화 없을땐 쓸데없이 작동하지 않도록 조건 추가
         if (State != PositionInfo.State || transform.position.x != PositionInfo.PosX || transform.position.y != PositionInfo.PosY || transform.localScale.x != PositionInfo.LocalScaleX)

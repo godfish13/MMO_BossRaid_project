@@ -44,7 +44,7 @@ namespace Server
             ///////////////////////////////////////////
             ///외부 IP ServerConnect용 IPAddress 영역///
             ///////////////////////////////////////////
-            
+
             // Client 문의 오면 입장
             _listener.init(endPoint, () => { return SessionManager.instance.Generate(); });
             Console.WriteLine("Listening...");

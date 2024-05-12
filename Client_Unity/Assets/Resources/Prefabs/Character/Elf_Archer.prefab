@@ -191,7 +191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2855177595714633361, guid: 7dcebea219143fc47bb07290cc125ec8, type: 3}
       propertyPath: m_Name
-      value: Slash_Straight_08_Blue
+      value: Stab_Effect
       objectReference: {fileID: 0}
     - target: {fileID: 2855177595714633366, guid: 7dcebea219143fc47bb07290cc125ec8, type: 3}
       propertyPath: m_RootOrder

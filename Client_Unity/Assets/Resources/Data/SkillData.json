@@ -25,8 +25,8 @@
       "Class": "Furry",
       "SkillDamage": "20",
       "SkillCoolTime": "0.4",
-      "SubSkillDamage": "0",
-      "SubSkillCoolTime": "0.0",
+      "SubSkillDamage": "10",
+      "SubSkillCoolTime": "0.2",
       "JumpPower": "1000.0",
       "JumpCoolTime": "0.05"
     },

@@ -8,7 +8,10 @@ using UnityEngine.UI;
 public class MyFurryCtrl : MyPlayerBaseCtrl
 {
     protected BoxCollider2D _slashBox;   // Main Skill 판정범위 히트박스
-    
+    protected BoxCollider2D _bashBox;   // Sub Skill 판정범위 히트박스
+    protected ParticleSystem BashEffect;
+    protected GameObject GuardEffect;
+
     public override CreatureState State     // 패킷 보내는 부분 존재하므로 override
     {
         get { return _state; }
@@ -24,12 +27,17 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
             UpdateAnim();
         }
     }
+    public bool isGuard = false;    // Sub Skill (가드) 유지 판정
+    private bool _startBrake = false;   // Bash (Rolling) 중 감속
 
     protected override void Init()
     {
-        _hitBoxCollider = GetComponentsInChildren<Collider2D>()[1]; // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
-        _slashBox = GetComponentsInChildren<BoxCollider2D>()[2];     // 0 : Player / 1 : Player Hitbox / 2 : SlashBox
-        SlashEffect = GetComponentInChildren<ParticleSystem>();
+        _hitBoxCollider = GetComponentsInChildren<Collider2D>()[1]; // 0 : Player / 1 : Player Hitbox / 2 : SlashBox / 3 : BashBox
+        _slashBox = GetComponentsInChildren<BoxCollider2D>()[2];     
+        _bashBox = GetComponentsInChildren<BoxCollider2D>()[3];  
+        SlashEffect = GetComponentsInChildren<ParticleSystem>()[0]; // 0 : SlashEffect / 1 : BashEffect
+        BashEffect = GetComponentsInChildren<ParticleSystem>()[1];
+        GuardEffect = GetComponentInChildren<GuardEffect>().gameObject;
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
@@ -227,17 +235,24 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
         GetSubSkillInput();
     }
 
-    protected override void UpdateSubSkill()     // 다른 행동 불가
+    protected override void UpdateSubSkill()     // 스킬 가능
     {
+        JumpWhileSkill();
         Fall();
-        BrakeIfSubSkill();    // SubSkill 사용하면 Brake
+        GetDirInput();
+        GetSkillInput();
+        GetSubSkillInput();
+        BrakeIfSubSkill();
     }
 
     protected override void UpdateDeath()
     {
         _rigidbody.velocity = Vector3.zero;
         if (_hitBoxCollider.enabled == true)
+        {
+            GuardEffect.SetActive(false);
             _hitBoxCollider.enabled = false;
+        }
     }
     #endregion
 
@@ -267,7 +282,7 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
         else
             _input.y = 0;
 
-        if (_input.x == 0 && _input.y == 0 && _isGrounded && _jumpable && State != CreatureState.Skill && State != CreatureState.Rolling)
+        if (_input.x == 0 && _input.y == 0 && _isGrounded && _jumpable && State != CreatureState.Skill && State != CreatureState.Subskill && State != CreatureState.Rolling)
             State = CreatureState.Idle;   
     }
 
@@ -304,12 +319,23 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
     // Sub Skill Input
     protected void GetSubSkillInput()
     {
-        if (_isSubSkillOn && Input.GetKey(KeyCode.A)) // 한번 사용시 쿨타임동안 스킬사용불가
+        if (Input.GetKey(KeyCode.A))
         {
-            _coSubSkillCoolTimer = StartCoroutine("CoSubSkillCoolTimer", SkillData.SubSkillCoolTime);
-            State = CreatureState.Subskill;   
+            if (isGuard == false)
+                isGuard = true;
+            State = CreatureState.Subskill;
 
+            GuardEffect.SetActive(true);        // 가드이펙트 ON
             // Skill Packet Send Todo
+        }
+        else
+        {
+            isGuard = false;
+            if (State == CreatureState.Subskill && _isSkill == false)
+                State = CreatureState.Tmp;
+
+            GuardEffect.SetActive(false);       // 가드이펙트 OFF
+            // Tmp Packet Send Todo
         }
     }
     #endregion
@@ -361,20 +387,53 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
     // Hit 판정 OnTriggerEnter2D는 BombCtrl에 존재
     #endregion
 
-    #region Rolling        Furry Knight는 구르기 대신 방패 돌진
-    protected override void Rolling()
+    #region Rolling        Furry Knight는 구르기 대신 방패 돌진   
+    protected override void Rolling()   // 배쉬중에 감속
     {
-        
+        if (_startBrake)
+        {
+            _velocity.x -= transform.localScale.x * 1.0f;
+            _rigidbody.velocity = _velocity;
+        }
     }
 
-    protected override void AnimEvent_RollingStart()   // 구르기 중 무적
+    protected override void AnimEvent_RollingStart()  // 배쉬 시작시 정지
     {
-        
+        _velocity.x = 0;
+        _rigidbody.velocity = _velocity;
+    }
+
+    protected void AnimEvent_Rolling()  // 급가속 후 감속
+    {
+        _velocity.x = transform.localScale.x * StatData.MaxSpeed * 3;
+        _rigidbody.velocity = _velocity;
+        _startBrake = true;
+
+        _bashBox.enabled = true;
+        _bashBox.transform.localPosition = new Vector2(0.1f, 0);
+        BashEffect.Play();
     }
 
     protected override void AnimEvent_RollingEnded()
     {
+        if (_input.y == -1) // 구르기 끝나면 속도 상태에 맞춰 초기화(감속)
+        {
+            _velocity.x = transform.localScale.x * StatData.MaxSpeed * 0.3f;
+            _rigidbody.velocity = _velocity;
+        }
+        else
+        {
+            _velocity.x = transform.localScale.x * StatData.MaxSpeed;
+            _rigidbody.velocity = _velocity;
+        }
+        _startBrake = false;
+
+        _bashBox.enabled = true;
+        _bashBox.transform.localPosition = new Vector2(0, 0);
+        BashEffect.Stop();
         
+        State = CreatureState.Tmp;
+        _coRollingCoolTimer = StartCoroutine("CoRollingCoolTimer", SkillData.JumpCoolTime + 1.0f);
     }
     #endregion 
 
