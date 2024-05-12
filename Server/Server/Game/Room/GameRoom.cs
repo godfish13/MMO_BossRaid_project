@@ -62,7 +62,9 @@ namespace Server.Game
             {
                 Player newPlayer = newGameObject as Player;
                 _players.Add(newPlayer.GameObjectId, newPlayer);
-                newPlayer.ClassId = _players.Count - 1;              // 입장 순서대로 0(Human) 1(Elf) 2(Furry)
+  
+                 newPlayer.ClassId = _players.Count - 1;              // 입장 순서대로 0(Human) 1(Elf) 2(Furry)
+                
 
                 StatInfo _stat = null;                                  // Json으로 불러놓은 player Data 넣기
                 DataMgr.StatDictionary.TryGetValue(key: newPlayer.ClassId, out _stat);

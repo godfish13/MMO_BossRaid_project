@@ -3,19 +3,19 @@
     {
       "ClassId": "0",
       "Class": "Human",
-      "SkillDamage": "10",
+      "SkillDamage": "7",
       "SkillCoolTime": "0.3",
-      "SubSkillDamage": "100",
-      "SubSkillCoolTime": "3.0",
+      "SubSkillDamage": "40",
+      "SubSkillCoolTime": "5.0",
       "JumpPower": "1000.0",
       "JumpCoolTime": "0.1"
     },
     {
       "ClassId": "1",
       "Class": "Elf",
-      "SkillDamage": "10",
+      "SkillDamage": "5",
       "SkillCoolTime": "0.4",
-      "SubSkillDamage": "20",
+      "SubSkillDamage": "15",
       "SubSkillCoolTime": "0.0",
       "JumpPower": "1000.0",
       "JumpCoolTime": "0.05"
@@ -23,7 +23,7 @@
     {
       "ClassId": "2",
       "Class": "Furry",
-      "SkillDamage": "20",
+      "SkillDamage": "10",
       "SkillCoolTime": "0.4",
       "SubSkillDamage": "10",
       "SubSkillCoolTime": "0.2",

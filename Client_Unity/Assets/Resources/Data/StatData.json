@@ -11,8 +11,8 @@
     {
       "ClassId": "1",
       "Class": "Elf",
-      "MaxHp": "80",
-      "Hp": "80",
+      "MaxHp": "85",
+      "Hp": "85",
       "MaxSpeed": "10",
       "Acceleration": "40"
     },

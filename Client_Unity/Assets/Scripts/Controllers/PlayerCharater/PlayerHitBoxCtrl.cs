@@ -1,6 +1,7 @@
 using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHitBoxCtrl : MonoBehaviour
@@ -23,6 +24,7 @@ public class PlayerHitBoxCtrl : MonoBehaviour
     {
         if (collision.gameObject.layer == MonsterSkillLayerMask || collision.gameObject.layer == MonsterProjectileLayerMask)
         {
+            //Blink(GetComponentInParent<BaseCtrl>().gameObject);
             SendPlayerHpdeltaPacket(collision, collision.gameObject.GetComponent<DragonPattern>().PatternId);
         }
     }
@@ -42,4 +44,24 @@ public class PlayerHitBoxCtrl : MonoBehaviour
         hpdeltaPacket.SkillId = monsterPatternId;
         Managers.networkMgr.Send(hpdeltaPacket);
     }
+
+    /*private static Material _baseMaterial;
+    private static Material _blinkMaterial;
+
+    protected void Blink(GameObject go)
+    {
+        if (_baseMaterial == null) _baseMaterial = go.GetComponentInParent<BaseCtrl>().transform.GetComponent<SpriteRenderer>().sharedMaterial;
+        if (_blinkMaterial == null) _blinkMaterial = new Material(Shader.Find("GUI/Text Shader"));
+        
+        StartCoroutine(BlinkCoroutine(go));
+    }
+
+    protected IEnumerator BlinkCoroutine(GameObject go)
+    {
+        go.GetComponent<SpriteRenderer>().material = _blinkMaterial;
+
+        yield return new WaitForSeconds(0.1f);
+
+        go.GetComponent<SpriteRenderer>().material = _baseMaterial;
+    }*/
 }

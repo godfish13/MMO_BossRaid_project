@@ -1,4 +1,5 @@
 using Google.Protobuf.Protocol;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -46,7 +47,7 @@ public class MonsterCtrl : MonoBehaviour
             _state = value;
             PositionInfo.State = value;
 
-            UpdateAnim();
+            UpdateAnim();         
         }
     }
 

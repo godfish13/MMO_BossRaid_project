@@ -30,7 +30,11 @@ namespace Server.Game
         public StatInfo StatInfo
         {
             get { return GameObjectInfo.StatInfo; }
-            set { GameObjectInfo.StatInfo = value; }
+            set 
+            { 
+                GameObjectInfo.StatInfo = value;
+                Console.WriteLine($"{GameObjectInfo.StatInfo.Class} : {State}");
+            }
         }
 
         #region StatData Property
