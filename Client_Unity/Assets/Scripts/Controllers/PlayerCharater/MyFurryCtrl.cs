@@ -331,7 +331,7 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
         else
         {
             isGuard = false;
-            if (State == CreatureState.Subskill && _isSkill == false)
+            if (State == CreatureState.Subskill)
                 State = CreatureState.Tmp;
 
             GuardEffect.SetActive(false);       // ∞°µÂ¿Ã∆Â∆Æ OFF
