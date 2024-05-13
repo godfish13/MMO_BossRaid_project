@@ -36,7 +36,6 @@ public class FurryHitBoxCtrl : PlayerHitBoxCtrl
                 }
             }
 
-            //Blink(gameObject);
             SendPlayerHpdeltaPacket(collision, collision.gameObject.GetComponent<DragonPattern>().PatternId);
         }
     }
