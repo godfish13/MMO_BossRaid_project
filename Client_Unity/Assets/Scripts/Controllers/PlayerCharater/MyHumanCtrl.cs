@@ -331,39 +331,4 @@ public class MyHumanCtrl : MyPlayerBaseCtrl
     }
     // Hit 판정 OnTriggerEnter2D는 BombCtrl에 존재
     #endregion
-
-    #region isGround
-    private Collider2D _platformCollider;    // Platform에 착지하면 해당 플랫폼의 collider 기억, 이후 해당 콜라이더에서 떨어지면 점프중인걸로 판별
-
-    public void OnCollisionEnter2D(Collision2D collision)   // Platform에 닿았는지 체크
-    {
-        // OnCollision 발생 시
-        // 충돌 지점의 y 좌표가 플레이어 collider 아랫면(y 축의 최솟값)보다 작거나 같으면 바닥에 접촉했다고 판정
-        // 점프해서 움직이는데 플레이어 콜라이더 양옆이나 위쪽에 뭐가 닿았을 시 _isGrounded = true가 되는것 방지
-        if (collision.contacts.All((i) => (i.point.y <= _collider.bounds.min.y)))
-        {
-            _platformCollider = collision.collider;
-            _isGrounded = true;
-
-            if (State == CreatureState.Rolling) // 구르기 가속도 반동 초기화
-            {
-                _velocity.x = transform.localScale.x * StatData.MaxSpeed;
-                _rigidbody.velocity = _velocity;
-            }
-
-            if (Input.GetKey(KeyCode.X) == false && State != CreatureState.Subskill)    // 스킬들 사용중에는 Land모션 재생 x
-                State = CreatureState.Land; 
-            //Debug.Log("Landed");
-            _coJumpCoolTimer = StartCoroutine("CoJumpCoolTimer", SkillData.JumpCoolTime);     // 착지 후 점프 0.1초 쿨타임 (애니메이션 꼬임 문제 방지)
-        }
-    }
-
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        if (_isGrounded && collision.collider == _platformCollider)
-        {
-            _isGrounded = false;
-        }
-    }
-    #endregion
 }
