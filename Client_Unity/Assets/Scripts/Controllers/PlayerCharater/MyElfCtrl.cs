@@ -8,22 +8,6 @@ using UnityEngine.UI;
 public class MyElfCtrl : MyPlayerBaseCtrl
 {
     protected BoxCollider2D _stabBox;   // Sub Skill 판정범위 히트박스
-    
-    public override CreatureState State     // 패킷 보내는 부분 존재하므로 override
-    {
-        get { return _state; }
-        set
-        {
-            if (_state == value)    // Set과 동시에 animation변경할것이므로 같은값으로 Set하려하면 return
-                return;
-
-            _state = value;
-            PositionInfo.State = value;
-            PacketSendingFlag = true;
-
-            UpdateAnim();
-        }
-    }
 
     protected override void Init()
     {

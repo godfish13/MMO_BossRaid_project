@@ -5,7 +5,23 @@ using System.Linq;
 using UnityEngine;
 
 public class MyPlayerBaseCtrl : PlayerCtrl
-{
+{ 
+    public override CreatureState State     // 패킷 보내는 부분 존재하므로 override
+    {
+        get { return _state; }
+        set
+        {
+            if (_state == value)    // Set과 동시에 animation변경할것이므로 같은값으로 Set하려하면 return
+                return;
+
+            _state = value;
+            PositionInfo.State = value;
+            PacketSendingFlag = true;
+
+            UpdateAnim();
+        }
+    }
+
     #region Server 통신
     protected bool PacketSendingFlag = false; // State 변화, position값이 일정수준 이상 변화시 true
 
