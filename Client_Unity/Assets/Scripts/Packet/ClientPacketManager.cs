@@ -63,7 +63,7 @@ class PacketManager
 		T pkt = new T();
 		pkt.MergeFrom(buffer.Array, buffer.Offset + 4, buffer.Count - 4);
 
-		if (CustomHandler4Client != null)
+		if (CustomHandler4Client != null)	// Server쪽에서는 굳이 필요없으므로 필요한 Client쪽에서 CustomHandler4Client 구현 후 존재하면 Onvoke
 		{
 			CustomHandler4Client.Invoke(session, pkt, id);
 		}

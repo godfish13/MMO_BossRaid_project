@@ -3,16 +3,16 @@
     {
       "ClassId": "0",
       "Class": "Human",
-      "MaxHp": "100",
-      "Hp": "100",
+      "MaxHp": "120",
+      "Hp": "120",
       "MaxSpeed": "8",
       "Acceleration": "40"
     },
     {
       "ClassId": "1",
       "Class": "Elf",
-      "MaxHp": "85",
-      "Hp": "85",
+      "MaxHp": "95",
+      "Hp": "95",
       "MaxSpeed": "10",
       "Acceleration": "40"
     },

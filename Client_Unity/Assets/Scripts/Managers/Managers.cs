@@ -47,7 +47,7 @@ public class Managers : MonoBehaviour
 
     static void init()          //singleton ∆–≈œ
     {
-        if(Mgr_Instance == null)
+        if (Mgr_Instance == null)
         {
             GameObject MgrObject = GameObject.Find("@Managers");
             if(MgrObject == null)
