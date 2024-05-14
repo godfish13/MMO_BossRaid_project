@@ -12,21 +12,6 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
     protected ParticleSystem BashEffect;
     protected GameObject GuardEffect;
 
-    public override CreatureState State     // 패킷 보내는 부분 존재하므로 override
-    {
-        get { return _state; }
-        set
-        {
-            if (_state == value)    // Set과 동시에 animation변경할것이므로 같은값으로 Set하려하면 return
-                return;
-
-            _state = value;
-            PositionInfo.State = value;
-            PacketSendingFlag = true;
-
-            UpdateAnim();
-        }
-    }
     public bool isGuard = false;    // Sub Skill (가드) 유지 판정
     private bool _startBrake = false;   // Bash (Rolling) 중 감속
 
@@ -57,21 +42,6 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
             case 2:
                 _myHpbar = Managers.UIMgr.ShowSceneUI<UI_MyHpbar>($"UI_MyHpbar_Furry");
                 break;
-        }
-    }
-
-    private void LateUpdate()
-    {
-        Camera.main.transform.position = new Vector3(transform.position.x, 3.2f, -8);
-    }
-
-    public override int Hp   // Hp 변동 시 UI 표시 수치 변경
-    {
-        get { return StatData.Hp; }
-        set
-        {
-            StatData.Hp = value;
-            _myHpbar.HpbarChange((float)Hp / (float)MaxHp);
         }
     }
 

@@ -22,6 +22,21 @@ public class MyPlayerBaseCtrl : PlayerCtrl
         }
     }
 
+    private void LateUpdate()
+    {
+        Camera.main.transform.position = new Vector3(transform.position.x, 3.2f, -8);
+    }
+
+    public override int Hp   // Hp 변동 시 UI 표시 수치 변경
+    {
+        get { return StatData.Hp; }
+        set
+        {
+            StatData.Hp = value;
+            _myHpbar.HpbarChange((float)Hp / (float)MaxHp);
+        }
+    }
+
     #region Server 통신
     protected bool PacketSendingFlag = false; // State 변화, position값이 일정수준 이상 변화시 true
 

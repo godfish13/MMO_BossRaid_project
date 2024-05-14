@@ -36,21 +36,6 @@ public class MyElfCtrl : MyPlayerBaseCtrl
         }
     }
 
-    private void LateUpdate()
-    {
-        Camera.main.transform.position = new Vector3(transform.position.x, 3.2f, -8);
-    }
-
-    public override int Hp   // Hp 변동 시 UI 표시 수치 변경
-    {
-        get { return StatData.Hp; }
-        set
-        {
-            StatData.Hp = value;
-            _myHpbar.HpbarChange((float)Hp / (float)MaxHp);
-        }
-    }  
-
     #region UpdateCtrl series
     protected override void UpdateCtrl()
     {
