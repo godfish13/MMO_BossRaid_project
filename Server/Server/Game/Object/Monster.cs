@@ -41,6 +41,8 @@ namespace Server.Game
             set { GameObjectInfo.MonsterSkillInfo = value; }
         }
 
+        float _enCounterRange = 10.0f;
+
         #region SkillData Property
         public int BiteDamage
         {
@@ -189,8 +191,7 @@ namespace Server.Game
             _nextTick = Environment.TickCount64 + tickCycle;
             return true;
         }
-
-        float _enCounterRange = 10.0f;
+       
         private void UpdateAwait()
         {
             if (BehaveCountTimer(1000) == false)

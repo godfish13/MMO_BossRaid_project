@@ -9,6 +9,9 @@ namespace Server.Game
 {
     public class DragonFireballExplosion : Projectile
     {
-        // 따로 작동 없음 이름만 가시성있게
+        public override void UpdateIdle()
+        {
+            // 이동 없음
+        }
     }
 }
