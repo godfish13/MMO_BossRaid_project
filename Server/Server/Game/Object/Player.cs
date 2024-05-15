@@ -13,7 +13,7 @@ namespace Server.Game
         public Player()
         {
             ObjectType = GameObjectType.Player;
-            ClassId = 0;                        // 따로 입력하는것 못넣을 시 Client쪽 Multi Build and Run Editor에서 1~4로 순서대로 넣자
+            ClassId = 0;                        
 
             Aggravation = 0;
             // Stat, Skill Data => GameRoom.EnterGame에서 지정된 ClassId에 따라 초기화
