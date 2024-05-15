@@ -41,7 +41,7 @@ public class Managers : MonoBehaviour
 
     void Update()
     {
-        _inputMgr.UpdateWhenanyKey();   // anyKey가 눌리면 Update 작동
+        //_inputMgr.UpdateWhenanyKey();   // anyKey가 눌리면 Update 작동
         _networkMgr.Update();
     }
 

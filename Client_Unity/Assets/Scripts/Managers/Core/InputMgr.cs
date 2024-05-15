@@ -11,16 +11,16 @@ public class InputMgr
     public Action<Define.MouseEvent> MouseAction = null;
     bool pressed = false;
 
-    public void UpdateWhenanyKey()      // Managers의 Update에서 anyKey가 눌리면 KeyAction 이벤트를 실행시켜줄 함수
+    /*public void UpdateWhenanyKey()      // Managers의 Update에서 anyKey가 눌리면 KeyAction 이벤트를 실행시켜줄 함수
     {
-        /*Debug.Log("keydowning");
-        KeyAction.Invoke();*/       // %%%% 1) ver.Rx inputMgr Move
+        Debug.Log("keydowning");
+        KeyAction.Invoke();       // %%%% 1) ver.Rx inputMgr Move
 
-        /*if (Input.anyKey)
+        if (Input.anyKey)
         {
             //Debug.Log("keydowning");
             KeyAction.Invoke();     // Invoke는 Action을 호출해줌 여기서는 Input.anyKey가 들어오면 KeyAction작동함
-        }                           // KeyAction에 PlayerCtrl에서 Move를 연동시켜놨으므로 Input.anyKey가 들어오면 Move하게 됨*/
+        }                           // KeyAction에 PlayerCtrl에서 Move를 연동시켜놨으므로 Input.anyKey가 들어오면 Move하게 됨
     
         if(EventSystem.current.IsPointerOverGameObject())       // UI를 클릭한건지 판별해줌
         {
@@ -42,7 +42,7 @@ public class InputMgr
                 MouseAction.Invoke(Define.MouseEvent.Click);
             pressed = false;
         }
-    }
+    }*/
 
     public void Clear()
     {
