@@ -126,7 +126,5 @@ public class ProjectileCtrl : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log($"Projectile {gameObject.name} : OnTrigger Enter");
-
-        //Todo damage ÆÇÁ¤ + Packet send
     }
 }

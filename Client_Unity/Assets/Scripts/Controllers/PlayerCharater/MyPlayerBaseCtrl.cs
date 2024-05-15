@@ -74,6 +74,54 @@ public class MyPlayerBaseCtrl : PlayerCtrl
     }
     #endregion
 
+    #region UpdateCtrl
+    protected override void UpdateCtrl()
+    {
+        if (Hp <= 0)
+            State = CreatureState.Death;
+
+        switch (State)
+        {
+            case CreatureState.Idle:
+                UpdateIdle();
+                break;
+            case CreatureState.Run:
+                UpdateRun();
+                break;
+            case CreatureState.Jump:
+                UpdateJump();
+                break;
+            case CreatureState.Fall:
+                UpdateFall();
+                break;
+            case CreatureState.Land:
+                UpdateLand();
+                break;
+            case CreatureState.Crouch:
+                UpdateCrawl();
+                break;
+            case CreatureState.Crawl:
+                UpdateCrawl();
+                break;
+            case CreatureState.Rolling:
+                UpdateRolling();
+                break;
+            case CreatureState.Skill:
+                UpdateSkill();
+                break;
+            case CreatureState.Subskill:
+                UpdateSubSkill();
+                break;
+            case CreatureState.Death:   // 사망
+                UpdateDeath();
+                break;
+            case CreatureState.Tmp:  // 스킬 사용 후 Idle, Move 등 원래 상태로 돌아가되 animation 업데이트는 안해주기 위한 임시 상태
+                UpdateIdle();
+                break;
+        }
+    }
+    #endregion
+
     #region isGround
     private Collider2D _platformCollider;    // Platform에 착지하면 해당 플랫폼의 collider 기억, 이후 해당 콜라이더에서 떨어지면 점프중인걸로 판별
 

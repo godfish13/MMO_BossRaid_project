@@ -86,10 +86,10 @@ internal class MyBombCtrl : BombCtrl
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);   // Packet Send는 base에서
+        base.OnTriggerEnter2D(collision); 
 
         isExplode = true;
-        State = CreatureState.Explosion;      // State Change Flag
+        State = CreatureState.Explosion;  
         C_MovePacketSend();                   // Explosion State로 변화시키라고 1회 통신
         _rigidbody.velocity = new Vector2(0, 0);
         _rigidbody.gravityScale = 0;

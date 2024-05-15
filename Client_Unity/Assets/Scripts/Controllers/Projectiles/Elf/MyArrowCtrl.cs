@@ -22,11 +22,11 @@ public class MyArrowCtrl : ArrowCtrl
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);   // damage 판정, Packet Send는 base에서
+        base.OnTriggerEnter2D(collision);
 
         SendHpdeltaPacket(collision, MonsterLayerMask, (int)Define.SkillId.Elf_ArrowShot);
 
-        State = CreatureState.Death;      // State Change Flag
-        C_MovePacketSend();                   // Death State로 변화시키라고 1회 통신
+        State = CreatureState.Death;      
+        C_MovePacketSend();               // Death State로 변화시키라고 1회 통신
     }
 }

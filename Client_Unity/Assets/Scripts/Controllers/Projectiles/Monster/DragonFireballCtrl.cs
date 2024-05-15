@@ -28,9 +28,9 @@ public class DragonFireballCtrl : DragonPattern
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);   // damage 판정, Packet Send는 base에서
+        base.OnTriggerEnter2D(collision); 
 
-        State = CreatureState.Death;      // State Change Flag
+        State = CreatureState.Death; 
         C_MovePacketSend();                   // Death State로 변화시키라고 1회 통신
     }
 }

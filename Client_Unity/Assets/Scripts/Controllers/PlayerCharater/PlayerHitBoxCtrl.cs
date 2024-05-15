@@ -24,7 +24,6 @@ public class PlayerHitBoxCtrl : MonoBehaviour
     {
         if (collision.gameObject.layer == MonsterSkillLayerMask || collision.gameObject.layer == MonsterProjectileLayerMask)
         {
-            //Blink(GetComponentInParent<BaseCtrl>().gameObject);
             SendPlayerHpdeltaPacket(collision, collision.gameObject.GetComponent<DragonPattern>().PatternId);
         }
     }

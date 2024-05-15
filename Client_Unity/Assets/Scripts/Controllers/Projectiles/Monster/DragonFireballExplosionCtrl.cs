@@ -16,7 +16,7 @@ public class DragonFireballExplosionCtrl : DragonPattern
 
     protected override void Update()    // 파티클 시스템 종료 시 Death State packet 하나 송신
     {
-        if (_sendPacketOnce && particleSystem.isStopped && particleSystem.isPaused == false)   // 낙뢰 이펙트 종료되면 destroy
+        if (_sendPacketOnce && particleSystem.isStopped && particleSystem.isPaused == false)
         {
             _sendPacketOnce = false;    // DespawnPacket 도착 전에 종료되면 패킷 송신 그만하도록
             State = CreatureState.Death;

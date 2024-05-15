@@ -37,52 +37,6 @@ public class MyElfCtrl : MyPlayerBaseCtrl
     }
 
     #region UpdateCtrl series
-    protected override void UpdateCtrl()
-    {
-        if (Hp <= 0)
-            State = CreatureState.Death;
-
-        switch (State)
-        {
-            case CreatureState.Idle:
-                UpdateIdle();
-                break;
-            case CreatureState.Run:
-                UpdateRun();
-                break;
-            case CreatureState.Jump:
-                UpdateJump();
-                break;
-            case CreatureState.Fall:
-                UpdateFall();
-                break;
-            case CreatureState.Land:
-                UpdateLand();
-                break;
-            case CreatureState.Crouch:
-                UpdateCrawl();
-                break;
-            case CreatureState.Crawl:
-                UpdateCrawl();
-                break;
-            case CreatureState.Rolling:
-                UpdateRolling();
-                break;
-            case CreatureState.Skill:
-                UpdateSkill();
-                break;
-            case CreatureState.Subskill:
-                UpdateSubSkill();
-                break;
-            case CreatureState.Death:   // 사망
-                UpdateDeath();
-                break;
-            case CreatureState.Tmp:  // 스킬 사용 후 Idle, Move 등 원래 상태로 돌아가되 animation 업데이트는 안해주기 위한 임시 상태
-                UpdateIdle();
-                break;
-        }
-    }
-
     protected override void UpdateIdle()   // 이동, 구르기, MainSkill, SubSkill 가능
     {
         Move();

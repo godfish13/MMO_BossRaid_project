@@ -50,7 +50,7 @@ public class BombCtrl : ProjectileCtrl
         if (State != PositionInfo.State || transform.position.x != PositionInfo.PosX || transform.position.y != PositionInfo.PosY || transform.localScale.x != PositionInfo.LocalScaleX)
         {
             State = PositionInfo.State;
-            // Server에서 관리되는 투사체는 MoveTowards를 통해 이동
+            // Client의 Addforce로 이동하는 Bomb은 MoveToward 사용 X
             transform.position = new Vector2(PositionInfo.PosX, PositionInfo.PosY);
             transform.localScale = new Vector2(PositionInfo.LocalScaleX, 1);
         }
