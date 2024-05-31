@@ -1,0 +1,20 @@
+{
+  "Stats": [
+    {
+      "ClassId": 0,
+      "Class": "Human",
+      "MaxHp": 120,
+      "Hp": 120,
+      "MaxSpeed": 8.0,
+      "Acceleration": 40.0
+    },
+    {
+      "ClassId": 1,
+      "Class": "noasd",
+      "MaxHp": 105,
+      "Hp": 9,
+      "MaxSpeed": 170.0,
+      "Acceleration": 460.0
+    }
+  ]
+}

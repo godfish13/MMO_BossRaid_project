@@ -1,55 +1,67 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class JsonWriter : EditorWindow
 {
-    [MenuItem("Tools/JsonWriter/CreatureStat")]   // 따로 Class 입력 구현 못했을 시 여기서 인자넘기고 해당 인자값 = classId로 각각 빌드하도록 하자
+    [MenuItem("Tools/JsonWriter/CreatureStat")] 
     static void CreatureStat()
     {
-        EditorWindow StatWindow = GetWindow<JsonWriter>();
-        StatWindow.titleContent = new GUIContent("CreatureStat");
+        //EditorWindow StatWindow = GetWindow<JsonWriter>();    // window 조작용, todo
+        //StatWindow.titleContent = new GUIContent("CreatureStat");
+
+        TestDictionary = LoadJson<StatData, int, Stat>("PlayerData").MakeDict();
+        // Dictionary를 LoadJson하면 "0" : {classId = ~, Class = "~", ... } 이런 형식으로 파싱됨
+        // 그래서 TestDictionary를 바로 Json문자열로 직렬화하면 원하는 형태가 안나옴 (제작과정 문서 참고)
+
+        AddStatData();
     }
 
-    //[MenuItem("Tools/JsonWriter/CharacterSkill")]   // 따로 Class 입력 구현 못했을 시 여기서 인자넘기고 해당 인자값 = classId로 각각 빌드하도록 하자
-    static void CharacterSkill()
+    public void CreateGUI()
     {
-        //PerformWin64Build(1);
+        rootVisualElement.Add(new Label("Hello"));
     }
 
-    //[MenuItem("Tools/JsonWriter/MonsterSkill")]   // 따로 Class 입력 구현 못했을 시 여기서 인자넘기고 해당 인자값 = classId로 각각 빌드하도록 하자
-    static void MonsterSkill()
+    public static Dictionary<int, Stat> TestDictionary { get; private set; } = new Dictionary<int, Stat>();
+
+    static Loader LoadJson<Loader, key, value>(string path) where Loader : ILoader<key, value>
     {
-        //PerformWin64Build(1);
+        TextAsset textAsset = Resources.Load<TextAsset>($"Data/JsonBackUp/{path}");
+        return Newtonsoft.Json.JsonConvert.DeserializeObject<Loader>(textAsset.ToString());
     }
 
-    static void PerformWin64Build(int playerCount)
+    static void AddStatData()
     {
-        for (int i = 0; i < playerCount; i++)
+        Stat PlayerData = new Stat()
         {
-            BuildPipeline.BuildPlayer(GetScenePath(),
-                "0.TestBuilds/Win64/" + GetProjectName() + i.ToString() + "/" + GetProjectName() + i.ToString() + ".exe",
-                BuildTarget.StandaloneWindows64,
-                BuildOptions.AutoRunPlayer);
-        }   // playerCount 갯수만큼 프로젝트들을 만들고 자동실행
-    }
+            ClassId = 1,
+            Class = "noasd",
+            MaxHp = 105,
+            Hp = 9,
+            MaxSpeed = 170,
+            Acceleration = 460
+        };
 
-    static string GetProjectName()
-    {
-        string[] s = Application.dataPath.Split('/');
-        return s[s.Length - 2];     // 프로젝트명 반환
-    } // 이 프로젝트의 경로를 받아오고 '/'마다 절단해서 순서대로 넣어줌
-      // 결과값 : s[0] = C:, s[1] = Unity_Projects, s[2] = MMO_GameWithServer_Project, s[3] = Client, s[4] = Assets
+        // Dictionary에 데이터 추가
+        TestDictionary.Add(PlayerData.ClassId, PlayerData);
 
-    static string[] GetScenePath()  // BuildSetting에 추가되어있는 scene들 코드로 긁어오기
-    {
-        string[] scenes = new string[EditorBuildSettings.scenes.Length];
-
-        for (int i = 0; i < scenes.Length; i++)
+        StatData statsData = new StatData { Stats = new List<Stat>() };
+        foreach (Stat stat in TestDictionary.Values) 
         {
-            scenes[i] = EditorBuildSettings.scenes[i].path;
+            statsData.Stats.Add(stat);
         }
-        return scenes;
+
+        // Dictionary를 JSON 문자열로 직렬화
+        string json = JsonConvert.SerializeObject(statsData, Formatting.Indented);
+
+        System.IO.File.WriteAllText(GetJsonPath("PlayerData"), json);
+    }
+
+    static string GetJsonPath(string jsonFileName)
+    {
+        return string.Format($"Assets/Resources/Data/JsonBackUp/{jsonFileName}.json");
     }
 }
