@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -26,11 +26,16 @@ public class JsonWriter : EditorWindow
     string DeleteClassIdInput;
     #endregion
 
-    [MenuItem("Tools/CreatureStat/CreatureStatAdder")] 
-    static void CreatureStatAdder()
+    [MenuItem("Tools/CreatureStat/CreatureStat Configuration")] 
+    public static void CreatureStatAdder()
     {
         EditorWindow StatWindow = GetWindow<JsonWriter>();    // window 조작용, todo
-        StatWindow.titleContent = new GUIContent("CreatureStat");
+        StatWindow.titleContent = new GUIContent("CreatureStat Configuration");
+    }
+
+    private void OnEnable()
+    {
+        TestDictionary = LoadJson<StatData, int, Stat>("PlayerData").MakeDict();
     }
 
     void OnGUI()
@@ -43,12 +48,12 @@ public class JsonWriter : EditorWindow
         float MaxSpeed;
         float Acceleration;
 
-        ClassIdInput = EditorGUILayout.TextField("ClassId:", ClassIdInput);
-        ClassNameInput = EditorGUILayout.TextField("ClassName:", ClassNameInput);
-        MaxHpInput = EditorGUILayout.TextField("MaxHp:", MaxHpInput);
-        HpInput = EditorGUILayout.TextField("Hp:", HpInput);
-        MaxSpeedInput = EditorGUILayout.TextField("MaxSpeed:", MaxSpeedInput);
-        AccelerationInput = EditorGUILayout.TextField("Acceleration:", AccelerationInput);
+        ClassIdInput = EditorGUILayout.TextField("ClassId", ClassIdInput);
+        ClassNameInput = EditorGUILayout.TextField("ClassName", ClassNameInput);
+        MaxHpInput = EditorGUILayout.TextField("MaxHp", MaxHpInput);
+        HpInput = EditorGUILayout.TextField("Hp", HpInput);
+        MaxSpeedInput = EditorGUILayout.TextField("MaxSpeed", MaxSpeedInput);
+        AccelerationInput = EditorGUILayout.TextField("Acceleration", AccelerationInput);
 
         if (GUILayout.Button("Add StatData"))
         {
@@ -77,7 +82,7 @@ public class JsonWriter : EditorWindow
 
         GUILayout.Label("");
         GUILayout.Label("");
-        DeleteClassIdInput = EditorGUILayout.TextField("Target ClassId:", DeleteClassIdInput);
+        DeleteClassIdInput = EditorGUILayout.TextField("Target ClassId", DeleteClassIdInput);
         if (GUILayout.Button("Delete StatData"))
         {
             if (int.TryParse(DeleteClassIdInput, out DeleteClassId))
@@ -100,7 +105,7 @@ public class JsonWriter : EditorWindow
         #endregion
     }
 
-    static void AddStatData(int classId, string className, int maxHp, int hp, float maxSpeed, float acceleration)
+    void AddStatData(int classId, string className, int maxHp, int hp, float maxSpeed, float acceleration)
     {
         TestDictionary = LoadJson<StatData, int, Stat>("PlayerData").MakeDict();
         // Dictionary를 LoadJson하면 "0" : {classId = ~, Class = "~", ... } 이런 형식으로 파싱됨
@@ -133,9 +138,22 @@ public class JsonWriter : EditorWindow
         // Dictionary를 JSON 문자열로 직렬화
         string json = JsonConvert.SerializeObject(StatDataList, Formatting.Indented);
         System.IO.File.WriteAllText(GetJsonPath("PlayerData"), json);
+
+        OpenFile();
     }
 
-    static void DeleteStatData(int classId)
+    private string relativeJsonFilePath = "Resources/Data/JsonBackUp/PlayerData.json";
+    private string jsonFilePath;
+
+    void OpenFile()
+    {
+        jsonFilePath = Path.Combine(Application.dataPath, relativeJsonFilePath);
+        // json 파일 변경내역 갱신을 위해 한번 열어줌 (유니티 캐시상 열어주지 않으면 변경내용이 반영되지 않음)
+        //System.Diagnostics.Process.Start("notepad.exe", jsonFilePath);    // 메모장으로 열기
+        System.Diagnostics.Process.Start(jsonFilePath); // 기본설정(VisualStudio 2022)로 열기
+    }
+
+    void DeleteStatData(int classId)
     {
         // Dictionary에서 데이터 제거
         TestDictionary.Remove(classId);
@@ -149,9 +167,11 @@ public class JsonWriter : EditorWindow
         // Dictionary를 JSON 문자열로 직렬화
         string json = JsonConvert.SerializeObject(statsData, Formatting.Indented);
         System.IO.File.WriteAllText(GetJsonPath("PlayerData"), json);
+
+        OpenFile();
     }
 
-    static string GetJsonPath(string jsonFileName)
+    string GetJsonPath(string jsonFileName)
     {
         return string.Format($"Assets/Resources/Data/JsonBackUp/{jsonFileName}.json");
     }

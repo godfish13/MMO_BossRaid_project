@@ -2,19 +2,19 @@
   "Stats": [
     {
       "ClassId": 0,
-      "Class": "56",
-      "MaxHp": 45,
-      "Hp": 668,
-      "MaxSpeed": 778.0,
-      "Acceleration": 9.0
+      "Class": "dfnb",
+      "MaxHp": 54,
+      "Hp": 54,
+      "MaxSpeed": 6.0,
+      "Acceleration": 1.0
     },
     {
-      "ClassId": 8,
-      "Class": "jl",
-      "MaxHp": 567,
-      "Hp": 768,
-      "MaxSpeed": 987.0,
-      "Acceleration": 456.0
+      "ClassId": 6,
+      "Class": "dfnb",
+      "MaxHp": 54,
+      "Hp": 54,
+      "MaxSpeed": 6.0,
+      "Acceleration": 1.0
     },
     {
       "ClassId": 10,
