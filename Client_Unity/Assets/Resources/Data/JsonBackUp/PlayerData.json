@@ -10,11 +10,11 @@
     },
     {
       "ClassId": 1,
-      "Class": "noasd",
-      "MaxHp": 105,
-      "Hp": 9,
-      "MaxSpeed": 170.0,
-      "Acceleration": 460.0
+      "Class": "t6d",
+      "MaxHp": 15,
+      "Hp": 6,
+      "MaxSpeed": 10.0,
+      "Acceleration": 40.0
     }
   ]
 }

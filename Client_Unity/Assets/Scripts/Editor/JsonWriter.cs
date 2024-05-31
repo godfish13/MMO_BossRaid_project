@@ -37,12 +37,12 @@ public class JsonWriter : EditorWindow
     {
         Stat PlayerData = new Stat()
         {
-            ClassId = 1,
-            Class = "noasd",
-            MaxHp = 105,
-            Hp = 9,
-            MaxSpeed = 170,
-            Acceleration = 460
+            ClassId = TestDictionary.Count,
+            Class = "t6d",
+            MaxHp = 15,
+            Hp = 6,
+            MaxSpeed = 10,
+            Acceleration = 40
         };
 
         // Dictionary에 데이터 추가
