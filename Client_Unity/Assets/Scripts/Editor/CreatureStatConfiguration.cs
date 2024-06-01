@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,13 +18,12 @@ public class CreatureStatConfiguration : EditorWindow
 
     void OnGUI()
     {
-        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginHorizontal();  // 좌우범위로 나누기 위한 LayOut 시작 (없으면 세로로 이어짐)
 
         #region Window Left Side : Add/Delete Creature Stat
         EditorGUILayout.BeginVertical(GUILayout.Width(position.width / 2)); // 왼쪽 범위 시작지점 지정
 
         AddButton();
-
         DeleteButton();
 
         EditorGUILayout.EndVertical();  //왼쪽 범위 끝
@@ -37,16 +37,18 @@ public class CreatureStatConfiguration : EditorWindow
         EditorGUILayout.EndVertical();  // 오른쪽 범위 종료
         #endregion
 
-        EditorGUILayout.EndHorizontal();    
+        EditorGUILayout.EndHorizontal();    // 좌우범위로 나누기 위한 LayOut 끝    
     }
     
     private void OnEnable()
     {
-        TestDictionary = LoadJson<StatData, int, Stat>("PlayerData").MakeDict();
+        JsonDataDictionary = LoadJson<StatData, int, Stat>(JsonFileName).MakeDict();
     }
 
+    string JsonFileName = "PlayerData";     // 조작할 Json 파일 이름
+
     #region Json Data Dictionary
-    public static Dictionary<int, Stat> TestDictionary { get; private set; } = new Dictionary<int, Stat>();
+    public static Dictionary<int, Stat> JsonDataDictionary { get; private set; } = new Dictionary<int, Stat>();
     static Loader LoadJson<Loader, key, value>(string path) where Loader : ILoader<key, value>
     {
         TextAsset textAsset = Resources.Load<TextAsset>($"Data/JsonBackUp/{path}");
@@ -85,7 +87,7 @@ public class CreatureStatConfiguration : EditorWindow
         {
             if (int.TryParse(ClassIdInput, out ClassId) && int.TryParse(MaxHpInput, out MaxHp) && int.TryParse(HpInput, out Hp) && float.TryParse(MaxSpeedInput, out MaxSpeed) && float.TryParse(AccelerationInput, out Acceleration))
             {
-                if (TestDictionary.TryGetValue(ClassId, out Stat Target))
+                if (JsonDataDictionary.TryGetValue(ClassId, out Stat Target))
                 {
                     Debug.Log("Error : Same ClassId is already existing");  // ClassId 중복 시 에러
                     return;
@@ -104,7 +106,7 @@ public class CreatureStatConfiguration : EditorWindow
 
     void AddStatData(int classId, string className, int maxHp, int hp, float maxSpeed, float acceleration)
     {
-        TestDictionary = LoadJson<StatData, int, Stat>("PlayerData").MakeDict();
+        JsonDataDictionary = LoadJson<StatData, int, Stat>("PlayerData").MakeDict();
         // Dictionary를 LoadJson하면 "0" : {classId = ~, Class = "~", ... } 이런 형식으로 파싱됨
         // 그래서 TestDictionary를 바로 Json문자열로 직렬화하면 원하는 형태가 안나옴 (제작과정 문서 참고)
 
@@ -119,24 +121,24 @@ public class CreatureStatConfiguration : EditorWindow
         };
 
         // Dictionary에 데이터 추가
-        TestDictionary.Add(PlayerData.ClassId, PlayerData);
+        JsonDataDictionary.Add(PlayerData.ClassId, PlayerData);
 
         // Dictionary의 key값 ClassId 순서대로 정렬
-        var sortedSequence = TestDictionary.OrderBy(x => x.Key);
-        TestDictionary = sortedSequence.ToDictionary(x => x.Key, x => x.Value);
+        var sortedSequence = JsonDataDictionary.OrderBy(x => x.Key);
+        JsonDataDictionary = sortedSequence.ToDictionary(x => x.Key, x => x.Value);
 
         // StatData format에 Dictionary 추가
         StatData StatDataList = new StatData { Stats = new List<Stat>() };
-        foreach (Stat stat in TestDictionary.Values)
+        foreach (Stat stat in JsonDataDictionary.Values)
         {
             StatDataList.Stats.Add(stat);
         }
 
-        // Dictionary를 JSON 문자열로 직렬화
+        // Dictionary를 JSON 문자열로 직렬화 및 Json파일로 작성
         string json = JsonConvert.SerializeObject(StatDataList, Formatting.Indented);
-        System.IO.File.WriteAllText(GetJsonPath("PlayerData"), json);
+        System.IO.File.WriteAllText(GetJsonPath(JsonFileName), json);
 
-        OpenFile(); // json 파일 변경내역 갱신을 위해 한번 열어줌 (유니티 캐시상 열어주지 않으면 변경내용이 반영되지 않음)
+        OpenFile(JsonFileName); // json 파일 변경내역 갱신을 위해 한번 열어줌 (유니티 캐시상 열어주지 않으면 변경내용이 반영되지 않음)
     }
 
     void DeleteButton()
@@ -151,7 +153,7 @@ public class CreatureStatConfiguration : EditorWindow
         {
             if (int.TryParse(DeleteClassIdInput, out DeleteClassId))
             {
-                if (TestDictionary.TryGetValue(DeleteClassId, out Stat Target))
+                if (JsonDataDictionary.TryGetValue(DeleteClassId, out Stat Target))
                 {
                     DeleteStatData(DeleteClassId);
                 }
@@ -171,19 +173,19 @@ public class CreatureStatConfiguration : EditorWindow
     void DeleteStatData(int classId)
     {
         // Dictionary에서 데이터 제거
-        TestDictionary.Remove(classId);
+        JsonDataDictionary.Remove(classId);
 
         StatData statsData = new StatData { Stats = new List<Stat>() };
-        foreach (Stat stat in TestDictionary.Values)
+        foreach (Stat stat in JsonDataDictionary.Values)
         {
             statsData.Stats.Add(stat);
         }
 
-        // Dictionary를 JSON 문자열로 직렬화
+        // Dictionary를 JSON 문자열로 직렬화 및 Json파일로 작성
         string json = JsonConvert.SerializeObject(statsData, Formatting.Indented);
-        System.IO.File.WriteAllText(GetJsonPath("PlayerData"), json);
+        System.IO.File.WriteAllText(GetJsonPath(JsonFileName), json);
 
-        OpenFile(); // json 파일 변경내역 갱신을 위해 한번 열어줌 (유니티 캐시상 열어주지 않으면 변경내용이 반영되지 않음)
+        OpenFile(JsonFileName); // json 파일 변경내역 갱신을 위해 한번 열어줌 (유니티 캐시상 열어주지 않으면 변경내용이 반영되지 않음)
     }
 
     string GetJsonPath(string jsonFileName)
@@ -191,9 +193,9 @@ public class CreatureStatConfiguration : EditorWindow
         return string.Format($"Assets/Resources/Data/JsonBackUp/{jsonFileName}.json");
     }
 
-    void OpenFile()     // Unity 내에서 Json 변동 갱신시켜주기위해 Json파일 한번 열어줌
+    void OpenFile(string path)     // Unity 내에서 Json 변동 갱신시켜주기위해 Json파일 한번 열어줌
     {
-        string relativeJsonFilePath = "Resources/Data/JsonBackUp/PlayerData.json";
+        string relativeJsonFilePath = $"Resources/Data/JsonBackUp/{JsonFileName}.json";
         string jsonFilePath;
         jsonFilePath = Path.Combine(Application.dataPath, relativeJsonFilePath);    // 타 프로그램에서 json파일 찾을 수 있게 절대경로 설정 (C:Unity_Projects/~~)
 
@@ -211,7 +213,7 @@ public class CreatureStatConfiguration : EditorWindow
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Width(position.width / 2 - 8f), GUILayout.Height(position.height));
         // 매개변수 각각 현재 스크롤 위치, 스크롤바 좌우 범위, 스크롤바 상하 길이 (alwaysShow 옵션들을 꺼놨으므로 창이 표시하는 내용이 창 길이보다 길어지면 각각 표시됨)
 
-        if (TestDictionary.Count <= 0)
+        if (JsonDataDictionary.Count <= 0)
         {
             GUILayout.Label("");
             GUILayout.Label("There is no Data in PlayerData");
@@ -220,7 +222,7 @@ public class CreatureStatConfiguration : EditorWindow
         else
         {
             // 사전의 각 항목을 반복하여 표시
-            foreach (Stat Stat in TestDictionary.Values)
+            foreach (Stat Stat in JsonDataDictionary.Values)
             {
                 GUILayout.Label("");
                 GUILayout.Label($"ClassId   : {Stat.ClassId}");
