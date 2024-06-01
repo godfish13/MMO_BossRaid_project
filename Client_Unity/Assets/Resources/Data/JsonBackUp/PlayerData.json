@@ -1,28 +1,20 @@
 {
   "Stats": [
     {
-      "ClassId": 0,
-      "Class": "dfnb",
-      "MaxHp": 54,
-      "Hp": 54,
-      "MaxSpeed": 6.0,
-      "Acceleration": 1.0
-    },
-    {
-      "ClassId": 6,
-      "Class": "dfnb",
-      "MaxHp": 54,
-      "Hp": 54,
-      "MaxSpeed": 6.0,
-      "Acceleration": 1.0
+      "ClassId": 1,
+      "Class": "lk;",
+      "MaxHp": 5,
+      "Hp": 6,
+      "MaxSpeed": 8.0,
+      "Acceleration": 9.0
     },
     {
       "ClassId": 10,
-      "Class": "fddf",
-      "MaxHp": 3455,
-      "Hp": 67,
-      "MaxSpeed": 856.0,
-      "Acceleration": 6.0
+      "Class": "tyuety",
+      "MaxHp": 45,
+      "Hp": 626,
+      "MaxSpeed": 4566.0,
+      "Acceleration": 666.0
     }
   ]
 }
