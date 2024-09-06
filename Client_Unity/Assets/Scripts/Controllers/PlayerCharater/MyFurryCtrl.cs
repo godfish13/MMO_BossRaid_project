@@ -314,7 +314,7 @@ public class MyFurryCtrl : MyPlayerBaseCtrl
         }
         _startBrake = false;
 
-        _bashBox.enabled = true;
+        _bashBox.enabled = false;
         _bashBox.transform.localPosition = new Vector2(0, 0);
         BashEffect.Stop();
         

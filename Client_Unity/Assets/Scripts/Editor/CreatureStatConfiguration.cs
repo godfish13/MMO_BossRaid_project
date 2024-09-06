@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web;
 using UnityEditor;
 using UnityEngine;
@@ -58,13 +59,13 @@ public class CreatureStatConfiguration : EditorWindow
 
     #region Window Left Side : Add/Delete Creature Stat
     // GUI Inputs
-    string ClassIdInput;
+    string ClassIdInput;        // Add btn
     string ClassNameInput;
     string MaxHpInput;
     string HpInput;
     string MaxSpeedInput;
     string AccelerationInput;
-    string DeleteClassIdInput;
+    string DeleteClassIdInput;  // Delete btn
 
     void AddButton()
     {
@@ -195,6 +196,7 @@ public class CreatureStatConfiguration : EditorWindow
 
     void OpenFile(string path)     // Unity 내에서 Json 변동 갱신시켜주기위해 Json파일 한번 열어줌
     {
+        // json 파일 변경내역 갱신을 위해 한번 열어줌 (유니티 캐시상 열어주지 않으면 변경내용이 반영되지 않음)
         string relativeJsonFilePath = $"Resources/Data/JsonBackUp/{JsonFileName}.json";
         string jsonFilePath;
         jsonFilePath = Path.Combine(Application.dataPath, relativeJsonFilePath);    // 타 프로그램에서 json파일 찾을 수 있게 절대경로 설정 (C:Unity_Projects/~~)

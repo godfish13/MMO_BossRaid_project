@@ -48,7 +48,7 @@ public class PlayerCtrl : BaseCtrl
     #region MainSkill
     protected virtual void AnimEvent_MainSkillSlashOn()
     {
-        if (ClassId == 0 || ClassId == 2)   // Human Furry 평타 이펙트
+        if (ClassId == 0 || ClassId == 2)   // Human, Furry 평타 이펙트
             SlashEffect.Play();
     }
 
